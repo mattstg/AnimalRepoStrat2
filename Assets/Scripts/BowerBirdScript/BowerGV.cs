@@ -5,7 +5,7 @@ using UnityEngine;
 public class BowerGV {
 
 	public static readonly float BOWERHOMEDISTANCE = 5f;
-	public static readonly float distanceFromDesiredPos = 0.2f;
+	public static readonly float distanceFromDesiredPos = 0.5f;
 	public static readonly float altitudePerSecond = 1;
 	public enum Color {Blue, Yellow, Red, White};
 	public enum Items {Berry, Flower, Feather, Shell, PreciousStone};

@@ -14,8 +14,13 @@ public class BowerIM : InputManager {
 
 	protected override void MouseClickedOnObjOfInterest ()
 	{
-		if (playerBB.isHolding) {
-			playerBB.DropItem ();
+		if (playerBB.altitude > 0) {
+			playerBB.isMoving = false;
+			playerBB.body.velocity = Vector2.zero;
+		} else {
+			if (playerBB.isHolding) {
+				playerBB.DropItem ();
+			}
 		}
 	}
 
