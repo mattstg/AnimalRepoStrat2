@@ -242,14 +242,14 @@ MonoBehaviour:
   rotationSpeedRange: {x: 8, y: 10}
   averageHeadingWeight: 6
   averagePositionWeight: 5
-  neighbourDistance: 12
+  neighbourDistance: 20
   repulsionDistance: 4
   repulsionWeight: 4
   updateFrequency: 3
-  usesWaypoints: 1
+  usesWaypoints: 0
   waypointWeight: 1
   waypointReachedProximity: 45
-  followsLeaders: 1
+  followsLeaders: 0
   leaderWeight: 15
   leaderInfluenceDistance: 55
   followsMother: 0
