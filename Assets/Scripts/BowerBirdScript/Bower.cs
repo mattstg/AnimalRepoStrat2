@@ -20,10 +20,13 @@ public class Bower : MonoBehaviour {
 	}
 		
 	void OnTriggerEnter2D(Collider2D other){
+		//Debug.Log ("something" + other.name);
 		if (other.CompareTag ("Item")) {
+			//Debug.Log ("item added");
 			Item colItem = other.GetComponent<Item>();
 			addItemToCollection (colItem);
 		} else if (other.CompareTag ("BowerBird")) {
+			//Debug.Log ("heh");
 			BowerBird colBird = other.GetComponent<BowerBird>();
 			if (colBird == owner) {
 				//welsome home
@@ -38,7 +41,7 @@ public class Bower : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D other){
 		if (other.CompareTag ("Item")) {
 			Item colItem = other.GetComponent<Item>();
-			addItemToCollection (colItem);
+			removeItemFromCollection (colItem);
 		} else if (other.CompareTag ("BowerBird")) {
 			//BowerBird colBird = other.GetComponent<BowerBird>();
 		} else if (other.CompareTag ("Bower")) {
@@ -56,15 +59,19 @@ public class Bower : MonoBehaviour {
 
 		int totalItems = collection.Count;
 		float bonusSetScore = 1;
-		foreach (int c in colors) { //for every additional additional object of same color you get 2 points
-			if (c / totalItems > .51) {
-				bonusSetScore += c / totalItems;
+		if (totalItems != 0) {
+			foreach (int c in colors) { //for every additional additional object of same color you get 2 points
+				if (c / totalItems > .51) {
+					bonusSetScore += c / totalItems;
+				}
 			}
+			//Debug.Log ("Base Score " + value);
+			//Debug.Log ("bonus set score = " + bonusSetScore + "%");
+			//Debug.Log ("Total score " + value * bonusSetScore);
+			collectionRating = value * bonusSetScore;
+		} else {
+			collectionRating = 0;
 		}
-		Debug.Log ("Base Score " + value);
-		Debug.Log ("bonus set score = " + bonusSetScore + "%");
-		Debug.Log ("Total score " + value * bonusSetScore);
-		collectionRating = value * bonusSetScore;
 	}
 
 	public void addItemToCollection(Item toAdd){
@@ -78,6 +85,7 @@ public class Bower : MonoBehaviour {
 	}
 
 	public float returnRating(){
+		rateCollection ();
 		return collectionRating;
 	}
 
