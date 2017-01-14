@@ -11,7 +11,9 @@ public class BowerGV {
 	public enum Items {Berry, Flower, Feather, Shell, PreciousStone};
 	public static readonly float BOWERSPEED = 20;
 	public static readonly float MaxScaleGrowthFromAlt = 1.5f;
+	public static readonly float bowerInstepctionTime = 5;
 
+	public static readonly float pointsToWIN = 20;
 	public BowerGV(){
 
 	}

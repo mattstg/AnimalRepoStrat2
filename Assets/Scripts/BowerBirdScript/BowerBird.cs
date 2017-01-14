@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BowerBird : MonoBehaviour {
+	public bool canGetBored = true;
 	public Bower bower;
 	public Rigidbody2D body;
 	public Vector2 desiredPos;
@@ -22,6 +23,10 @@ public class BowerBird : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		ParentStart ();
+	}
+
+	public void ParentStart(){
 		body = GetComponent<Rigidbody2D>();
 		startScale = transform.localScale;
 	}
@@ -31,10 +36,10 @@ public class BowerBird : MonoBehaviour {
 		ParentUpdate ();
 	}
 
+	/*
 	public void PlayerUpdate(){
 		ScaleFromAltitude ();
 		if (isMoving) {
-			idleTime = 0;
 			if (Vector2.Distance (desiredPos, transform.position) > BowerGV.distanceFromDesiredPos) {
 				Vector2 moveDir = desiredPos - (Vector2)transform.position;
 				Move (moveDir.normalized);
@@ -45,7 +50,7 @@ public class BowerBird : MonoBehaviour {
 		} else {
 			altitude = Mathf.Clamp (altitude - 2 * BowerGV.altitudePerSecond * Time.deltaTime, 0, 5);
 		}
-	}
+	} */
 
 	public void ParentUpdate(){
 		ScaleFromAltitude ();
@@ -140,16 +145,18 @@ public class BowerBird : MonoBehaviour {
 	}
 
 	public void IdleBoredom(float timeIdle){
-		if (!isHolding) {
-			if (timeIdle > 5) {
-				SeekRandomItem ();
-				idleTime = 0;
-				autoPickup = true;
+		if (canGetBored) {
+			if (!isHolding) {
+				if (timeIdle > 5) {
+					SeekRandomItem ();
+					idleTime = 0;
+					autoPickup = true;
+				} else {
+					idleTime += Time.deltaTime;
+				}
 			} else {
-				idleTime += Time.deltaTime;
+				returnHome ();
 			}
-		} else {
-			returnHome ();
 		}
 	}
 }

@@ -7,8 +7,15 @@ public class PlayerBowerBird : BowerBird {
 	//public GameObject desiredLoc;
 	//public Vector2 desiredPos {get {return (Vector2)desiredLoc.transform.position;}}
 
+	void Start(){
+		ParentStart ();
+		canGetBored = false;
+	}
+
+
 	void Update(){
-		PlayerUpdate ();
+		
+		ParentUpdate ();
 	}
 
 	//just overwriding parent's functions used for bird AI, to do nothing
