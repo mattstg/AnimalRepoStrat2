@@ -14,7 +14,8 @@ public class PlayerBowerBird : BowerBird {
 
 
 	void Update(){
-		
+		Camera.main.gameObject.GetComponent<CameraFollow> ().toFollow = transform;
+		Camera.main.gameObject.GetComponent<CameraFollow> ().SetZoom (5 + altitude);
 		ParentUpdate ();
 	}
 

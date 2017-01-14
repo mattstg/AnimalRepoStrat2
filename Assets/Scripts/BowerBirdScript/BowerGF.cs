@@ -14,7 +14,7 @@ public class BowerGF : GameFlow {
 
 	public override void StartFlow()
 	{
-		stage = -1;
+		stage = 2;
 		nextStep = true;
 	}
 
@@ -103,8 +103,7 @@ public class BowerGF : GameFlow {
 	{
 		playerBB.gameObject.SetActive (true);
 		//frogCinematic.StartWetlandCinematic ();
-		Camera.main.gameObject.GetComponent<CameraFollow> ().toFollow = playerBB.transform;
-		Camera.main.gameObject.GetComponent<CameraFollow> ().SetZoom (3 + playerBB.altitude);
+
 		im.gameObject.SetActive (true);
 		//playerFrog.CreateFrog (true,true);
 	}
@@ -142,6 +141,7 @@ public class BowerGF : GameFlow {
 
 	public override void TextButtonNextPressed ()
 	{
+		Debug.Log("yo");
 		textPanel.gameObject.SetActive (false);
 		nextStep = true;
 	}

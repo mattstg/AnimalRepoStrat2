@@ -9,7 +9,7 @@ public class BowerGV {
 	public static readonly float altitudePerSecond = 1;
 	public enum Color {Blue, Yellow, Red, White};
 	public enum Items {Berry, Flower, Feather, Shell, PreciousStone};
-	public static readonly float BOWERSPEED = 20;
+	public static readonly float BOWERSPEED = 5;
 	public static readonly float MaxScaleGrowthFromAlt = 1.5f;
 	public static readonly float bowerInstepctionTime = 5;
 
