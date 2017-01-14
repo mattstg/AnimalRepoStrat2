@@ -27,17 +27,19 @@ public class Frog : MonoBehaviour {
     Vector2 idleWaitRange = new Vector2(1, 6);
 
     //calling state
-    int maxRange = 3;
-    int currentRange = 0;
-    float currentCallingTime = 0;
-    float timeBetweenRangeIncrease = 1;
+	public GameObject ribbitRing;
+    float maxRange = 5;
+    float currentRange = 0;
+	float rangeRateIncrease = 2.5f;
     float chanceToRepeatCall = .4f;
 
     //mating
     Vector2 rangeOfKids = new Vector2(5, 20);
     float mateCooldown = 12;
     float matMaxCooldown = 12;
-	List<Frog> frogsHearing = new List<Frog>();
+	Transform lastHeardRibbitRing;
+	float lastHeardRibbitCooldown = 3;
+	float lastHeardRibbitCooldownMax = 3;
 
 	public void CreateFrog(bool _isMale, bool _isPlayerDescendant)
     {
@@ -53,6 +55,10 @@ public class Frog : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         mateCooldown -= Time.deltaTime;
+		lastHeardRibbitCooldown -= Time.deltaTime;
+		if (lastHeardRibbitCooldown <= 0)
+			lastHeardRibbitRing = null;
+
 		switch(currentFrogState)
         {
             case FrogState.jumping:
@@ -160,11 +166,12 @@ public class Frog : MonoBehaviour {
 
     protected void EnterCallingState()
     {
-        currentCallingTime = 0;
+       // currentCallingTime = 0;
         currentRange = 0;
         currentFrogState = FrogState.calling;
     }
 
+	/*
     private void CallingState()
     {
         currentCallingTime += Time.deltaTime;
@@ -191,14 +198,14 @@ public class Frog : MonoBehaviour {
             ribbitObj.transform.localScale = new Vector3(1, 1, 1) * (currentRange + 1) * 1.75f;
             ribbitObj.name = "ribbit";
         }
-    }
+    }*/
 
-	/*private void CallingState()
+	private void CallingState()
 	{
-		currentCallingTime += Time.deltaTime;
-		if (frogCallRange > maxRange)
+		if (ribbitRing.transform.localScale.x >= maxRange)
 		{
-			DestroyAllRibitKids();
+			ribbitRing.transform.localScale = new Vector3 (1, 1, 1);
+			ribbitRing.SetActive (false);
 			if (!playerCntrl) {
 				if (Random.Range (0f, 1f) > chanceToRepeatCall) {
 					EnterCallingState (); //re-cycle the state
@@ -209,16 +216,12 @@ public class Frog : MonoBehaviour {
 				EnterIdleState ();
 			}
 		}
-		else if(currentRange != frogCallRange)
+		else
 		{
-			currentRange = frogCallRange;
-			GameObject ribbitObj = Instantiate(Resources.Load("Prefabs/RibbitRing")) as GameObject;
-			ribbitObj.transform.SetParent(transform);
-			ribbitObj.transform.localPosition = new Vector3();
-			ribbitObj.transform.localScale = new Vector3(1, 1, 1) * (currentRange + 1) * 1.75f;
-			ribbitObj.name = "ribbit";
+			ribbitRing.SetActive (true);
+			ribbitRing.transform.localScale = ribbitRing.transform.localScale + new Vector3 (1, 1) * rangeRateIncrease * Time.deltaTime;
 		}
-	}*/
+	}
 
     private void DestroyAllRibitKids()
     {
@@ -279,10 +282,13 @@ public class Frog : MonoBehaviour {
         {
 			if (entering) {
 				//Debug.Log ("enetering ");
+
 				HeardARibbit (otherObj.transform);
+
 			}
 			else {
-				frogsHearing.Remove (otherObj.transform.parent.GetComponent<Frog> ());
+				if (otherObj.transform == lastHeardRibbitRing)
+					lastHeardRibbitRing = null;
 				//Debug.Log ("eaving");
 			}
         }
@@ -294,10 +300,10 @@ public class Frog : MonoBehaviour {
 
     private void HeardARibbit(Transform ribbitLoc)
     {
-		Frog f = ribbitLoc.parent.GetComponent<Frog> ();
-		if (f != this && mateCooldown <= 0 && !isMale && !frogsHearing.Contains(f))
+		if (ribbitLoc != transform && mateCooldown <= 0 && !isMale && lastHeardRibbitRing != ribbitLoc)
         {
-			frogsHearing.Add (f);
+			lastHeardRibbitRing = ribbitLoc;
+			lastHeardRibbitCooldown = lastHeardRibbitCooldownMax;
 //            float angToCenter = MathHelper.AngleBetweenPoints(transform.position, ribbitLoc.position);
             JumpTowardsGoal(ribbitLoc.position);
         }
