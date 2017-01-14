@@ -8,13 +8,13 @@ using UnityEngine;
 public class Frog : MonoBehaviour {
 
     public enum FrogState { jumping,landedJump, idle, calling }
+    FrogInfo frogInfo;
 
-    public bool isMale;
+    public bool isMale { get { return frogInfo.isMale; } }
     public FrogState currentFrogState;
 
     bool inPuddle = false;
-    bool isTouchingFrog { get { return touchingFrogs.Count > 0; } } //not perfect, does not cover case such as 3 frog pileup
-    List<Frog> touchingFrogs = new List<Frog>();
+    Frog lastTouchedFrog;
     //Frog jump stuff
     Vector2 goalPos;
     float frogSpeed = 1;
@@ -28,9 +28,8 @@ public class Frog : MonoBehaviour {
 
     //calling state
 	public GameObject ribbitRing;
-    float maxRange = 5;
-    float currentRange = 0;
-	float rangeRateIncrease = 2.5f;
+    float maxRange = 8;
+	float rangeRateIncrease = 4f;
     float chanceToRepeatCall = .4f;
 
     //mating
@@ -41,10 +40,9 @@ public class Frog : MonoBehaviour {
 	float lastHeardRibbitCooldown = 3;
 	float lastHeardRibbitCooldownMax = 3;
 
-	public void CreateFrog(bool _isMale, bool _isPlayerDescendant)
+	public void CreateFrog(FrogInfo _frogInfo)
     {
-        isMale = _isMale;
-		isPlayerDescendant = _isPlayerDescendant;
+        frogInfo = new FrogInfo(_frogInfo);
 		if(!playerCntrl)
 			EnterIdleState();
 		if (!isMale) {
@@ -62,7 +60,7 @@ public class Frog : MonoBehaviour {
 		switch(currentFrogState)
         {
             case FrogState.jumping:
-                DestroyAllRibitKids();
+                DisableRibbiting();
                 JumpTowardsGoal();
                 break;
             case FrogState.landedJump:			
@@ -119,9 +117,9 @@ public class Frog : MonoBehaviour {
 			return;
 		}
 
-        if(isTouchingFrog)
+        if(lastTouchedFrog != null)
         {
-            if(inPuddle && !isMale && isTouchingMaleFrog() && mateCooldown <= 0)
+            if(inPuddle && !isMale && lastTouchedFrog.isMale && mateCooldown <= 0)
             {//as a female, landed on a frog in a puddle, baby time
                 MakeBaby(false);
                 EnterIdleState();
@@ -129,6 +127,8 @@ public class Frog : MonoBehaviour {
             }
             else
             {//Landed on a frog, hop away to new location
+                if(lastTouchedFrog.playerCntrl)
+                    Debug.Log(string.Format("inpuddle {0}, ismale {1}, isTouchingMaleFrog{2}, mateCooldown{3}", inPuddle, isMale, lastTouchedFrog.isMale, mateCooldown));
                 EnterRandomJump();
             }
         }
@@ -167,7 +167,6 @@ public class Frog : MonoBehaviour {
     protected void EnterCallingState()
     {
        // currentCallingTime = 0;
-        currentRange = 0;
         currentFrogState = FrogState.calling;
     }
 
@@ -223,11 +222,10 @@ public class Frog : MonoBehaviour {
 		}
 	}
 
-    private void DestroyAllRibitKids()
+    private void DisableRibbiting()
     {
-        foreach(Transform t in transform)
-            if (t.name == "ribbit")
-                Destroy(t.gameObject);
+        ribbitRing.transform.localScale = new Vector3(1, 1, 1);
+        ribbitRing.SetActive(false);
     }
 
     private void JumpTowardsGoal()
@@ -266,12 +264,11 @@ public class Frog : MonoBehaviour {
             Frog otherFrog = otherObj.GetComponent<Frog>();
             if (entering)
             {
-                if (!touchingFrogs.Contains(otherFrog))
-                    touchingFrogs.Add(otherFrog);
+                lastTouchedFrog = otherFrog;
             }
-            else
+            else if(lastTouchedFrog == otherFrog)
             {
-                touchingFrogs.Remove(otherFrog);
+                lastTouchedFrog = null;
             }
         }
         else if(otherObj.GetComponent<Puddle>())
@@ -282,13 +279,14 @@ public class Frog : MonoBehaviour {
         {
 			if (entering) {
 				//Debug.Log ("enetering ");
-
 				HeardARibbit (otherObj.transform);
-
 			}
-			else {
-				if (otherObj.transform == lastHeardRibbitRing)
-					lastHeardRibbitRing = null;
+			else
+            {
+                if (otherObj.transform == lastHeardRibbitRing)
+                {
+                    lastHeardRibbitRing = null;
+                }
 				//Debug.Log ("eaving");
 			}
         }
@@ -308,16 +306,7 @@ public class Frog : MonoBehaviour {
             JumpTowardsGoal(ribbitLoc.position);
         }
     }
-    
-    private bool isTouchingMaleFrog()
-    {
-        if (!isTouchingFrog)
-            return false;
-        foreach (Frog f in touchingFrogs)
-            if (f.isMale)
-                return true;
-        return false;
-    }
+
 
     private void SetNewRandomGoalPos()
     {
@@ -335,12 +324,37 @@ public class Frog : MonoBehaviour {
             GameObject newFrog = Instantiate(Resources.Load("Prefabs/Tadpole")) as GameObject;
             newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().tadpoleParent);
             newFrog.transform.position = transform.position;
-			newFrog.GetComponent<Tadpole> ().playerDescendant = _playerDescendant || isPlayerDescendant;
+            Frog.FrogInfo tempFi = new FrogInfo(frogInfo);
+            tempFi.genNumber++;
+            tempFi.isMale = MathHelper.Fiftyfifty();
+            newFrog.GetComponent<Tadpole>().BirthTadpole(tempFi);//playerDescendant = _playerDescendant || isPlayerDescendant;
         }
     }
 
     public void FrogEaten()
     {
         Destroy(this.gameObject);
+    }
+
+    public class FrogInfo
+    {
+        public int genNumber = 0;
+        public bool playerDescendant = false;
+        public bool isMale;
+
+        public FrogInfo(int _genNumber, bool _playerDescendant, bool _isMale)
+        {
+            genNumber = _genNumber;
+            playerDescendant = _playerDescendant;
+            isMale = _isMale;
+        }
+
+        public FrogInfo(FrogInfo toClone)
+        {
+            genNumber = toClone.genNumber;
+            playerDescendant = toClone.playerDescendant;
+            isMale = toClone.isMale;
+        }
+
     }
 }
