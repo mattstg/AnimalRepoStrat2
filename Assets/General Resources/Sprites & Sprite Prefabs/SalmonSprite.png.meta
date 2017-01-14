@@ -1,0 +1,160 @@
+fileFormatVersion: 2
+guid: 568aa4c8dff0a74429893aec58bada73
+timeCreated: 1484180430
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SalmonSprite_4
+    21300002: SalmonSprite_5
+    21300004: SalmonSprite_6
+    21300006: SalmonSprite_7
+    21300008: SalmonSprite_8
+    21300010: SalmonSprite_9
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SalmonSprite_4
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 393
+        width: 29
+        height: 52
+      alignment: 9
+      pivot: {x: 0.83251244, y: 0.7472534}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SalmonSprite_5
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 384
+        width: 47
+        height: 133
+      alignment: 9
+      pivot: {x: 0.5000005, y: 0.32277134}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SalmonSprite_6
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 395
+        width: 29
+        height: 52
+      alignment: 9
+      pivot: {x: 0.1305421, y: 0.7884621}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SalmonSprite_7
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 271
+        width: 46
+        height: 79
+      alignment: 9
+      pivot: {x: 0.50000036, y: 0.9611214}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SalmonSprite_8
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 175
+        width: 34
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8923542}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SalmonSprite_9
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 80
+        width: 63
+        height: 65
+      alignment: 9
+      pivot: {x: 0.48299286, y: 0.87912107}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
