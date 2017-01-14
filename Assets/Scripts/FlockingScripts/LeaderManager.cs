@@ -8,7 +8,8 @@ public class LeaderManager : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		List<GameObject> listGos = GetComponentsInChildren<GameObject> ();
+		List<GameObject> listGos = new List<GameObject> ();
+		listGos.AddRange(GetComponentsInChildren<GameObject>());
 		foreach (GameObject t in listGos) 
 		{
 			leaders.Add (t);
