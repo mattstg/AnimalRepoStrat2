@@ -132,8 +132,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4439849962741582}
   - component: {fileID: 58804253049904554}
-  - component: {fileID: 114982979583636586}
   - component: {fileID: 50304180549929202}
+  - component: {fileID: 114895186513424114}
   m_Layer: 10
   m_Name: Frog
   m_TagString: Untagged
@@ -312,7 +312,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1016186302270240}
-  m_LocalRotation: {x: -0, y: -0, z: 0.9378446, w: 0.34705582}
+  m_LocalRotation: {x: -0, y: -0, z: 0.9378445, w: 0.34705582}
   m_LocalPosition: {x: 1.95, y: 0.014399767, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -339,7 +339,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1415030581194756}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.314907, y: 0.34491754, z: 0}
+  m_LocalPosition: {x: -7.05, y: 0.34491754, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children:
   - {fileID: 4869031968881420}
@@ -365,7 +365,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1035001718534088}
-  m_LocalRotation: {x: -0, y: -0, z: -0.31257665, w: 0.9498925}
+  m_LocalRotation: {x: -0, y: -0, z: -0.31257668, w: 0.9498926}
   m_LocalPosition: {x: -0.72, y: -1.9895853, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
@@ -435,7 +435,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &114982979583636586
+--- !u!114 &114895186513424114
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -443,12 +443,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1415030581194756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5883c9c023470df46a7ea0209f62a1b7, type: 3}
+  m_Script: {fileID: 11500000, guid: aa9c1140f4b4d3345845e356ccfd6d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMale: 0
-  currentFrogState: 0
-  outtaBounds: 0
+  isMale: 1
+  currentFrogState: 1
+  outtaBounds: 1
+  playerCntrl: 0
 --- !u!212 &212104468568446494
 SpriteRenderer:
   m_ObjectHideFlags: 1

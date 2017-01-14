@@ -11,7 +11,10 @@ public class Puddle : MonoBehaviour {
     public void AddTadpole(Tadpole tapdole)
     {
         //Debug.Log("tadpole added: " + activeTadpoles.Count + "/" + carryingCapacity);
-        activeTadpoles.Add(tapdole);
+		if (activeTadpoles.Count > carryingCapacity * 1.5f)
+			KillTadpole (tapdole);
+		else
+       	 	activeTadpoles.Add(tapdole);
     }
 
     public void TadpoleLeaves(Tadpole tadpole)
@@ -29,11 +32,16 @@ public class Puddle : MonoBehaviour {
             {
                 //Debug.Log("tadpole killed: " + activeTadpoles.Count + "/" + carryingCapacity);
                 tadpoleKillCounter = 3;
-                Destroy(activeTadpoles[activeTadpoles.Count - 1].gameObject);
-                activeTadpoles.RemoveAt(activeTadpoles.Count - 1);
+				KillTadpole(activeTadpoles[activeTadpoles.Count - 1]);
             }
         }
     }
+
+	private void KillTadpole(Tadpole t)
+	{
+		Destroy(t.gameObject);
+		activeTadpoles.Remove(t);
+	}
 
 
 }

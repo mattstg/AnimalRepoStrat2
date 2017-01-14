@@ -34,6 +34,10 @@ public class FrogCinematic : MonoBehaviour {
 		updateGroundTransformation = true;
 		groundIsMoistening = false;
 		transformationCounter = 0;
+		foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().frogParent)
+			Destroy (t.gameObject);
+		foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().tadpoleParent)
+			Destroy (t.gameObject);
 	}
 
 	public void StartWetlandCinematic() //also sets up level

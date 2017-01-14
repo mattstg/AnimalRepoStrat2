@@ -8,6 +8,8 @@ public class FrogGF : GameFlow {
 	public GameObject tutorialScreen;
 	int stage = 0;
 	bool nextStep = false;
+	public Frog playerFrog;
+	public InputManager im;
 
 	public override void StartFlow()
 	{
@@ -56,18 +58,20 @@ public class FrogGF : GameFlow {
 
 	private void IntroText2()
 	{
-		string t0 = "Opportunist Speicies: They thrive during opportune times. You will find high populations during certain times of the year, but not so much during others. \n";
-		string t1 = "<B>Short Generation times</B>: To take advantage of the opportunity during the lifetime of the opportunity \n";
+		string t0 = "Opportunist Speicies: ";//They thrive during opportune times. You will find high populations during certain times of the year, but not so much during others. \n";
+		/*string t1 = "<B>Short Generation times</B>: To take advantage of the opportunity during the lifetime of the opportunity \n";
 		string t2 = "Small Bodies: Need to grow up and mature quickly \n";
 		string t3 = "Lots of Eggs: Many other species will flock to this lush grounds during this brief window of oppotunity, plenty will be feeding \n";
-		string t4 = "No Parental Care: With lots of kids, parental care requires too much energy \n";
+		string t4 = "No Parental Care: With lots of kids, parental care requires too much energy \n";*/
 		textPanel.gameObject.SetActive (true);
-		textPanel.SetText (t0 + t1 + t2 + t3 + t4);
+		textPanel.SetText (t0);// + t1 + t2 + t3 + t4);
 		textPanel.StartWriting ();
 	}
 
 	private void PostGameQuestions()
 	{
+		im.gameObject.SetActive (false);
+		frogCinematic.StartAridCinematic ();
 		graphManager.gameObject.SetActive (true);
 		graphManager.titleText.text = "What aspects of reproductive whatever";
 
@@ -94,7 +98,12 @@ public class FrogGF : GameFlow {
 
 	private void StartGame()
 	{
+		playerFrog.gameObject.SetActive (true);
 		frogCinematic.StartWetlandCinematic ();
+		Camera.main.gameObject.GetComponent<CameraFollow> ().toFollow = playerFrog.transform;
+		Camera.main.gameObject.GetComponent<CameraFollow> ().SetZoom (3);
+		im.gameObject.SetActive (true);
+		playerFrog.CreateFrog (true);
 	}
 
 	public void GameFinished()

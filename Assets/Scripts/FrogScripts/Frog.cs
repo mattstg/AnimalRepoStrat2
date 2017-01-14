@@ -19,6 +19,7 @@ public class Frog : MonoBehaviour {
     Vector2 goalPos;
     float frogSpeed = 1;
     public bool outtaBounds = false;
+	public bool playerCntrl = false;
 
     //Frog idle state
     float currentIdleWaitTime;
@@ -33,15 +34,18 @@ public class Frog : MonoBehaviour {
 
     //mating
     Vector2 rangeOfKids = new Vector2(5, 20);
-    float mateCooldown = 0;
+    float mateCooldown = 12;
     float matMaxCooldown = 12;
 
     public void CreateFrog(bool _isMale)
     {
         isMale = _isMale;
-        EnterIdleState();
-		if (!isMale)
+		if(!playerCntrl)
+			EnterIdleState();
+		if (!isMale) {
 			transform.localScale = transform.localScale * 1.5f;
+			frogSpeed /= 2;
+		}
     }
 	// Update is called once per frame
 	void Update () {
@@ -52,7 +56,7 @@ public class Frog : MonoBehaviour {
                 DestroyAllRibitKids();
                 JumpTowardsGoal();
                 break;
-            case FrogState.landedJump:
+            case FrogState.landedJump:			
                 LandedJump();
                 break;
             case FrogState.idle:
@@ -71,7 +75,7 @@ public class Frog : MonoBehaviour {
         currentFrogState = FrogState.jumping;
     }
 
-    private void JumpTowardsGoal(Vector2 goalLoc)
+    protected void JumpTowardsGoal(Vector2 goalLoc)
     {
         float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goalLoc);
 		transform.eulerAngles = new Vector3 (0, 0, angToGoal - 90);
@@ -101,6 +105,11 @@ public class Frog : MonoBehaviour {
             return;
         }
 
+		if (playerCntrl) {
+			EnterIdleState ();
+			return;
+		}
+
         if(isTouchingFrog)
         {
             if(inPuddle && !isMale && isTouchingMaleFrog() && mateCooldown <= 0)
@@ -127,6 +136,8 @@ public class Frog : MonoBehaviour {
 
     private void IdleState()
     {
+		if (playerCntrl)
+			return;
         currentIdleWaitTime -= Time.deltaTime;
         if(currentIdleWaitTime <= 0)
             EnterRandomJump();
@@ -144,7 +155,7 @@ public class Frog : MonoBehaviour {
         currentFrogState = FrogState.jumping;
     }
 
-    private void EnterCallingState()
+    protected void EnterCallingState()
     {
         currentCallingTime = 0;
         currentRange = 0;
@@ -158,14 +169,15 @@ public class Frog : MonoBehaviour {
         if (frogCallRange > maxRange)
         {
             DestroyAllRibitKids();
-            if (Random.Range(0f, 1f) > chanceToRepeatCall)
-            {
-                EnterCallingState(); //re-cycle the state
-            }
-            else
-            {
-                EnterRandomJump();
-            }
+			if (!playerCntrl) {
+				if (Random.Range (0f, 1f) > chanceToRepeatCall) {
+					EnterCallingState (); //re-cycle the state
+				} else {
+					EnterRandomJump ();
+				}
+			} else {
+				EnterIdleState ();
+			}
         }
         else if(currentRange != frogCallRange)
         {
@@ -173,7 +185,7 @@ public class Frog : MonoBehaviour {
             GameObject ribbitObj = Instantiate(Resources.Load("Prefabs/RibbitRing")) as GameObject;
             ribbitObj.transform.SetParent(transform);
             ribbitObj.transform.localPosition = new Vector3();
-            ribbitObj.transform.localScale = new Vector3(1, 1, 1) * (currentRange + 1);
+            ribbitObj.transform.localScale = new Vector3(1, 1, 1) * (currentRange + 1) * 1.75f;
             ribbitObj.name = "ribbit";
         }
     }
