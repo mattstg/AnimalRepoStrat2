@@ -8,6 +8,7 @@ public class Tadpole : MonoBehaviour {
     float timeRemainingToGrow;
     Vector2 tadpoleHatchRange = new Vector2(15,30);
     Puddle puddle = null;
+	public bool playerDescendant = false;
 	// Use this for initialization
 	void Start () {
         isMale = Random.Range(0f, 1f) > .5f;
@@ -28,7 +29,7 @@ public class Tadpole : MonoBehaviour {
             GameObject newFrog = Instantiate(Resources.Load("Prefabs/Frog")) as GameObject;
             newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().frogParent);
             newFrog.transform.position = transform.position;
-            newFrog.GetComponent<Frog>().CreateFrog(isMale);
+			newFrog.GetComponent<Frog>().CreateFrog(isMale,playerDescendant);
             KillTadpole();
         }
 

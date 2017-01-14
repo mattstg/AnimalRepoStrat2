@@ -49,7 +49,7 @@ public class FrogCinematic : MonoBehaviour {
 			GameObject newFrog = Instantiate(Resources.Load("Prefabs/Frog")) as GameObject;
 			newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().frogParent);
 			newFrog.transform.position = GetRandomSpawnLoc();
-			newFrog.GetComponent<Frog>().CreateFrog(Random.Range(0f,1f) > .5f);
+			newFrog.GetComponent<Frog>().CreateFrog(Random.Range(0f,1f) > .5f,false);
 			newFrog.GetComponent<Frog> ().outtaBounds = true;
 		}
 	}

@@ -20,6 +20,7 @@ public class Frog : MonoBehaviour {
     float frogSpeed = 1;
     public bool outtaBounds = false;
 	public bool playerCntrl = false;
+	bool isPlayerDescendant = false;
 
     //Frog idle state
     float currentIdleWaitTime;
@@ -36,10 +37,12 @@ public class Frog : MonoBehaviour {
     Vector2 rangeOfKids = new Vector2(5, 20);
     float mateCooldown = 12;
     float matMaxCooldown = 12;
+	List<Frog> frogsHearing = new List<Frog>();
 
-    public void CreateFrog(bool _isMale)
+	public void CreateFrog(bool _isMale, bool _isPlayerDescendant)
     {
         isMale = _isMale;
+		isPlayerDescendant = _isPlayerDescendant;
 		if(!playerCntrl)
 			EnterIdleState();
 		if (!isMale) {
@@ -114,7 +117,7 @@ public class Frog : MonoBehaviour {
         {
             if(inPuddle && !isMale && isTouchingMaleFrog() && mateCooldown <= 0)
             {//as a female, landed on a frog in a puddle, baby time
-                MakeBaby();
+                MakeBaby(false);
                 EnterIdleState();
                 currentIdleWaitTime = 5; //force wait after having a kid
             }
@@ -190,6 +193,33 @@ public class Frog : MonoBehaviour {
         }
     }
 
+	/*private void CallingState()
+	{
+		currentCallingTime += Time.deltaTime;
+		if (frogCallRange > maxRange)
+		{
+			DestroyAllRibitKids();
+			if (!playerCntrl) {
+				if (Random.Range (0f, 1f) > chanceToRepeatCall) {
+					EnterCallingState (); //re-cycle the state
+				} else {
+					EnterRandomJump ();
+				}
+			} else {
+				EnterIdleState ();
+			}
+		}
+		else if(currentRange != frogCallRange)
+		{
+			currentRange = frogCallRange;
+			GameObject ribbitObj = Instantiate(Resources.Load("Prefabs/RibbitRing")) as GameObject;
+			ribbitObj.transform.SetParent(transform);
+			ribbitObj.transform.localPosition = new Vector3();
+			ribbitObj.transform.localScale = new Vector3(1, 1, 1) * (currentRange + 1) * 1.75f;
+			ribbitObj.name = "ribbit";
+		}
+	}*/
+
     private void DestroyAllRibitKids()
     {
         foreach(Transform t in transform)
@@ -247,7 +277,14 @@ public class Frog : MonoBehaviour {
         }
         else if(otherObj.CompareTag("RibbitRing"))
         {
-            HeardARibbit(otherObj.transform);
+			if (entering) {
+				//Debug.Log ("enetering ");
+				HeardARibbit (otherObj.transform);
+			}
+			else {
+				frogsHearing.Remove (otherObj.transform.parent.GetComponent<Frog> ());
+				//Debug.Log ("eaving");
+			}
         }
         else if(otherObj.name == "Boundry")
         {
@@ -257,8 +294,10 @@ public class Frog : MonoBehaviour {
 
     private void HeardARibbit(Transform ribbitLoc)
     {
-        if (ribbitLoc.parent != this && mateCooldown <= 0 && !isMale)
+		Frog f = ribbitLoc.parent.GetComponent<Frog> ();
+		if (f != this && mateCooldown <= 0 && !isMale && !frogsHearing.Contains(f))
         {
+			frogsHearing.Add (f);
 //            float angToCenter = MathHelper.AngleBetweenPoints(transform.position, ribbitLoc.position);
             JumpTowardsGoal(ribbitLoc.position);
         }
@@ -281,7 +320,7 @@ public class Frog : MonoBehaviour {
         goalPos = MathHelper.V3toV2(transform.position) + goalOffset * frogSpeed;
     }
 
-    private void MakeBaby()
+	private void MakeBaby(bool _playerDescendant)
     {
         mateCooldown = matMaxCooldown;
         int numOfKids = (int)Random.Range(rangeOfKids.x, rangeOfKids.y);
@@ -290,6 +329,7 @@ public class Frog : MonoBehaviour {
             GameObject newFrog = Instantiate(Resources.Load("Prefabs/Tadpole")) as GameObject;
             newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().tadpoleParent);
             newFrog.transform.position = transform.position;
+			newFrog.GetComponent<Tadpole> ().playerDescendant = _playerDescendant || isPlayerDescendant;
         }
     }
 
