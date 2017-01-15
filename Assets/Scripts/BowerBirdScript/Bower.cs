@@ -30,7 +30,7 @@ public class Bower : MonoBehaviour {
 			BowerBird colBird = other.GetComponent<BowerBird>();
 			if (colBird == owner) {
 				//welsome home
-			} else {
+				} else {
 				//enemy in your nest!
 			}
 		} else if (other.CompareTag ("Bower")) {

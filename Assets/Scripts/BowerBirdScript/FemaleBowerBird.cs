@@ -7,6 +7,7 @@ public class FemaleBowerBird : BowerBird {
 	private Bower nextBower;
 	private float[] bowerRating;
 	private float evaluationTime = 0;
+	private Vector2 highestRating = new Vector2(0,0);
 
 	void Start(){
 		ParentStart ();
@@ -39,10 +40,14 @@ public class FemaleBowerBird : BowerBird {
 			//Bower colBower = other.GetComponent<Bower> ();
 		//	isMoving = false;
 		//	body.velocity = Vector2.zero;
-			bowerRating[linkToBowers.i] = other.GetComponent<Bower> ().returnRating ();
+			Bower currentBower = other.GetComponent<Bower> ();
+			bowerRating[linkToBowers.i] = currentBower.returnRating ();
+			highestRating.x = (highestRating.x < bowerRating [linkToBowers.i]) ? bowerRating[linkToBowers.i] : highestRating.x;
+			highestRating.y = (highestRating.x < bowerRating [linkToBowers.i]) ? linkToBowers.i : highestRating.y;
 			if (bowerRating [linkToBowers.i] > BowerGV.pointsToWIN) {
 				//WIN GAME
-				Debug.Log("Winner!!");
+				BowerGF gameMan = GameObject.FindObjectOfType<BowerGF>();
+				gameMan.GameFinished (currentBower.owner,highestRating.x);
 			}
 			//Debug.Log ("bower rated: " + bowerRating [linkToBowers.i]);
 		}
