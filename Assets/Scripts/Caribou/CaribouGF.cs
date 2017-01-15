@@ -2,29 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BowerGF : GameFlow {
+public class CaribouGF : GameFlow {
 
 	//public FrogCinematic frogCinematic;
 	//public GameObject tutorialScreen;
 	int stage = 0;
 	bool nextStep = false;
-	public PlayerBowerBird playerBB;
-	public FemaleBowerBird femaleBB;
 	public InputManager im;
     public GameObject tutorialImage;
 
 	public override void StartFlow()
 	{
 		stage = -1;
-		nextStep = true;
+		nextStep = false;
 	}
 
 	public void Update()
 	{
-		if (!nextStep || stage == 3) {
+        if (!nextStep)
+            return;
 			//we are in game 
-
-		} else {
 
 			stage++;
 			switch (stage) {
@@ -38,7 +35,6 @@ public class BowerGF : GameFlow {
 				ShowTutorial (); //show tutorial
 				break;
 			case 3:
-                    Debug.Log("start");
 				StartGame (); //start game
 				break;
 			case 4:
@@ -48,7 +44,7 @@ public class BowerGF : GameFlow {
 				break;
 			}
 			nextStep = false;
-		}
+		
 	}
 
 	private void IntroText()
@@ -97,22 +93,16 @@ public class BowerGF : GameFlow {
 
 	private void ShowTutorial()
 	{
-        //frogCinematic.StartAridCinematic ();
         tutorialImage.SetActive (true);
 	}
 
 	private void StartGame()
 	{
-		playerBB.gameObject.SetActive (true);
-		//frogCinematic.StartWetlandCinematic ();
-
 		im.gameObject.SetActive (true);
-		//playerFrog.CreateFrog (true,true);
 	}
 
 	public void GameFinished(BowerBird winner, float score)
 	{
-		//play cinamatic
 		nextStep = true;
 	}
 
