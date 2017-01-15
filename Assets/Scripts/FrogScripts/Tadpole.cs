@@ -36,10 +36,13 @@ public class Tadpole : MonoBehaviour {
 
         if (timeRemainingToGrow <= 0)
         {
-            GameObject newFrog = Instantiate(Resources.Load("Prefabs/Frog")) as GameObject;
-            newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().frogParent);
-            newFrog.transform.position = transform.position;
-			newFrog.GetComponent<Frog>().CreateFrog(frogInfo);
+            if (GameObject.FindObjectOfType<FrogWS>().frogParent.childCount < 200)
+            {
+                GameObject newFrog = Instantiate(Resources.Load("Prefabs/Frog")) as GameObject;
+                newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().frogParent);
+                newFrog.transform.position = transform.position;
+                newFrog.GetComponent<Frog>().CreateFrog(frogInfo);
+            }
             KillTadpole();
         }
 

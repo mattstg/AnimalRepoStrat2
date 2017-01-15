@@ -53,6 +53,7 @@ public class FrogCinematic : MonoBehaviour {
 			newFrog.GetComponent<Frog>().CreateFrog(fi);
 			newFrog.GetComponent<Frog> ().outtaBounds = true;
 		}
+        GameObject.FindObjectOfType<SnakeManager>().SetupGame();
 	}
 
 	public void Update()

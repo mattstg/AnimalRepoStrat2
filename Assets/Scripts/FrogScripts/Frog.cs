@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//If you are reading this and from LoL. I applogize for the hardcodedness of it all
+//If you are reading this and from LoL. I applogize for the most hardcoded software I have ever created
 
 public class Frog : MonoBehaviour {
 
@@ -127,8 +127,8 @@ public class Frog : MonoBehaviour {
             }
             else
             {//Landed on a frog, hop away to new location
-                if(lastTouchedFrog.playerCntrl)
-                    Debug.Log(string.Format("inpuddle {0}, ismale {1}, isTouchingMaleFrog{2}, mateCooldown{3}", inPuddle, isMale, lastTouchedFrog.isMale, mateCooldown));
+               // if(lastTouchedFrog.playerCntrl)
+                  //  Debug.Log(string.Format("inpuddle {0}, ismale {1}, isTouchingMaleFrog{2}, mateCooldown{3}", inPuddle, isMale, lastTouchedFrog.isMale, mateCooldown));
                 EnterRandomJump();
             }
         }
