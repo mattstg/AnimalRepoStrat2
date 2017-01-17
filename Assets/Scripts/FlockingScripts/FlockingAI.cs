@@ -121,24 +121,30 @@ public class FlockingAI : MonoBehaviour
 
 		if (usesWaypoints)
 		{
-			vWaypoint = GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint];
-			vWaypoint -= thisPos;
-			vWaypoint = vWaypoint.normalized; //now equals normalized vector towards active waypoint
+            if (GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint] != null)
+            {
+                vWaypoint = GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint];
+                vWaypoint -= thisPos;
+                vWaypoint = vWaypoint.normalized;
+            } //now equals normalized vector towards active waypoint
 		}
 
 		if (followsLeaders)
 		{
-			List<GameObject> golist = GameObject.FindObjectOfType<LeaderManager> ().leaders;
-			foreach (GameObject _leader in golist)
-			{
+            List<GameObject> golist = new List<GameObject>();
+            golist = GameObject.FindObjectOfType<LeaderManager> ().leaders;
+            if (golist[0] != null)
+            {
+                foreach (GameObject _leader in golist)
+			    {
 				Vector2 _leadersPos = V3toV2(_leader.transform.position);
 				float distanceFromLeader = Vector2.Distance(_leadersPos, thisPos);
-				if (distanceFromLeader <= leaderInfluenceDistance)
-				{
-					Vector2 v = (_leader.transform.position - this.transform.position);
-					Vector2 vNormalized = v.normalized;
-					vLeader += vNormalized;//now equals normalized vector towards all influencing leaders
-
+                    if (distanceFromLeader <= leaderInfluenceDistance)
+                    {
+                        Vector2 v = (_leader.transform.position - this.transform.position);
+                        Vector2 vNormalized = v.normalized;
+                        vLeader += vNormalized;//now equals normalized vector towards all influencing leaders
+                    }
 				}
 			}
 		}
@@ -216,7 +222,7 @@ public class FlockingAI : MonoBehaviour
 
 		GameObject.FindObjectOfType<FlockManager>().flock.Add(this.gameObject); // adds this animal to FlockManager's flock list
 
-		rigidbody = gameObject.GetComponent<Rigidbody2D>();
+		rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
 		speed = Random.Range(speedRange.x, speedRange.y);
 		rotationSpeed = Random.Range(rotationSpeedRange.x, rotationSpeedRange.y);
 
