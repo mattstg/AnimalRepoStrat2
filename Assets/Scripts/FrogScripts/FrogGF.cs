@@ -109,7 +109,14 @@ public class FrogGF : GameFlow {
 	public void GameFinished()
 	{
 		nextStep = true;
-	}
+        int matureDescendants = 0;
+        foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().frogParent)
+        {
+            if (t.GetComponent<Frog>().isPlayerDescendant)
+                matureDescendants++;
+        }
+        Debug.Log("you have a total of: " + matureDescendants);
+    }
 
 	public void TutorialFinished()
 	{

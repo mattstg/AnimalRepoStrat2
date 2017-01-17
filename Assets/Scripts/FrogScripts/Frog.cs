@@ -8,19 +8,19 @@ using UnityEngine;
 public class Frog : MonoBehaviour {
 
     public enum FrogState { jumping,landedJump, idle, calling }
-    FrogInfo frogInfo;
+    public FrogInfo frogInfo;
 
     public bool isMale { get { return frogInfo.isMale; } }
     public FrogState currentFrogState;
 
-    bool inPuddle = false;
+    public bool inPuddle = false;
     Frog lastTouchedFrog;
     //Frog jump stuff
     Vector2 goalPos;
     float frogSpeed = 1;
     public bool outtaBounds = false;
 	public bool playerCntrl = false;
-	bool isPlayerDescendant = false;
+	public bool isPlayerDescendant { get { return frogInfo.playerDescendant; }  }
 
     //Frog idle state
     float currentIdleWaitTime;
@@ -40,6 +40,9 @@ public class Frog : MonoBehaviour {
 	float lastHeardRibbitCooldown = 3;
 	float lastHeardRibbitCooldownMax = 3;
 
+    public float publicGenNum;
+    public bool publicIsPlayer;
+
 	public void CreateFrog(FrogInfo _frogInfo)
     {
         frogInfo = new FrogInfo(_frogInfo);
@@ -52,6 +55,7 @@ public class Frog : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
+
         mateCooldown -= Time.deltaTime;
 		lastHeardRibbitCooldown -= Time.deltaTime;
 		if (lastHeardRibbitCooldown <= 0)
@@ -325,13 +329,14 @@ public class Frog : MonoBehaviour {
             newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().tadpoleParent);
             newFrog.transform.position = transform.position;
             Frog.FrogInfo tempFi = new FrogInfo(frogInfo);
-            tempFi.genNumber++;
+            tempFi.genNumber = Mathf.Max(tempFi.genNumber,lastTouchedFrog.frogInfo.genNumber) + 1;
             tempFi.isMale = MathHelper.Fiftyfifty();
+            tempFi.playerDescendant = tempFi.playerDescendant || lastTouchedFrog.frogInfo.playerDescendant;
             newFrog.GetComponent<Tadpole>().BirthTadpole(tempFi);//playerDescendant = _playerDescendant || isPlayerDescendant;
         }
     }
 
-    public void FrogEaten()
+    public virtual void FrogEaten()
     {
         Destroy(this.gameObject);
     }

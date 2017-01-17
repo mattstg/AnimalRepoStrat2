@@ -45,8 +45,8 @@ public class SnakeManager : MonoBehaviour {
     {
         snakesReturned++;
         totalPoints += snake.pointsEaten;
-        averageFoodPoints = totalPoints / snakesReturned;
-        Debug.Log(string.Format("snake returned. point {0}, total pts {1}, total snakes {2}, score avrg {3}", snake.pointsEaten, totalPoints, snakesReturned, averageFoodPoints));
+        averageFoodPoints = Mathf.Max(totalPoints / snakesReturned,3);
+        //Debug.Log(string.Format("snake returned. point {0}, total pts {1}, total snakes {2}, score avrg {3}", snake.pointsEaten, totalPoints, snakesReturned, averageFoodPoints));
         bool resetSnake = true;
         int avrgPts = (int)averageFoodPoints;
         if(avrgPts != activeSnakes.Count)

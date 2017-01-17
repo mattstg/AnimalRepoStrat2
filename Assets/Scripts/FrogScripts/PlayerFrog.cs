@@ -16,4 +16,28 @@ public class PlayerFrog : Frog {
 		if (!outtaBounds && currentFrogState == FrogState.idle)
 			EnterCallingState ();
 	}
+
+    public override void FrogEaten()
+    {
+        Frog frogFound = null;
+        foreach(Transform t in GameObject.FindObjectOfType<FrogWS>().frogParent)
+        {
+            Frog f = t.GetComponent<Frog>();
+            if(f.isPlayerDescendant && f.isMale)
+            {
+                frogFound = f;
+                break;
+            }
+        }
+
+        if(frogFound)
+        {
+            transform.position = frogFound.transform.position;
+            Destroy(frogFound.gameObject);            
+        }
+        else
+        {
+            Debug.Log("No Descendants left, game over");
+        }
+    }
 }

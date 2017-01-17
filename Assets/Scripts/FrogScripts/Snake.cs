@@ -5,10 +5,10 @@ using UnityEngine;
 public class Snake : MonoBehaviour {
 
 
-    float frogPts = .75f;
-    float tadpolePt = .25f;
+    float frogPts = 1f;
+    float tadpolePt = .5f;
     public float pointsEaten;
-    float snakeSpeed = .75f;
+    float snakeSpeed = 1.15f;
     public Vector2 snakeMoveDir = new Vector2(0, -1);
 
     public void Update()

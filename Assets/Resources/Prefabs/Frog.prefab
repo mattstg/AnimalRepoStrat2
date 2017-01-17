@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 4439849962741582}
   - component: {fileID: 58804253049904554}
   - component: {fileID: 50304180549929202}
-  - component: {fileID: 114895186513424114}
+  - component: {fileID: 114311982548040690}
   m_Layer: 10
   m_Name: Frog
   m_TagString: Untagged
@@ -480,7 +480,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &114895186513424114
+--- !u!114 &114311982548040690
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -488,11 +488,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1415030581194756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa9c1140f4b4d3345845e356ccfd6d2a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5883c9c023470df46a7ea0209f62a1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMale: 1
-  currentFrogState: 1
+  currentFrogState: 0
+  inPuddle: 0
   outtaBounds: 1
   playerCntrl: 0
   ribbitRing: {fileID: 1650867780666906}

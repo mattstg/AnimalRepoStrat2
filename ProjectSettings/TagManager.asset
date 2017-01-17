@@ -54,3 +54,6 @@ TagManager:
   - name: Creatures
     uniqueID: 1006921303
     locked: 0
+  - name: Bush
+    uniqueID: 2960738969
+    locked: 0
