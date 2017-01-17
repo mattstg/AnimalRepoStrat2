@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GraphManager : MonoBehaviour {
 
-	public GameFlow gameflow;
+	GameFlow gameflow;
 
 	string slotmbPrefab = "Prefabs/SlotMB";
 
@@ -14,6 +14,11 @@ public class GraphManager : MonoBehaviour {
 	public Text titleText;
 
 	public bool allCorrect = false;
+
+    public void Awake()
+    {
+        gameflow = GameObject.FindObjectOfType<GameFlow>();
+    }
 
 	public void ResetGraphManager()
 	{

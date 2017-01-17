@@ -5,7 +5,7 @@ using System.Collections;
 
 public class TextPanel : MonoBehaviour {
 
-	public GameFlow gameflow;
+	GameFlow gameflow;
 	public Button nextButton;
 
     public Text text;
@@ -14,6 +14,11 @@ public class TextPanel : MonoBehaviour {
     bool started = false;
     int curLetter;
     float timeBanked = 0;
+
+    public void Awake()
+    {
+        gameflow = GameObject.FindObjectOfType<GameFlow>();
+    }
 
     public void SetText(string _completeText)
     {
