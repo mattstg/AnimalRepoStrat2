@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameFlow : MonoBehaviour {
 
+    public GameObject tutorial;
 	public GraphManager graphManager;
 	public TextPanel textPanel;
 

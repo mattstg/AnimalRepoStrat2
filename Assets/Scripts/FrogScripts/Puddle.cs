@@ -39,7 +39,7 @@ public class Puddle : MonoBehaviour {
 
 	private void KillTadpole(Tadpole t)
 	{
-        if(t.gameObject != null)
+        if(t != null)
 		    Destroy(t.gameObject);
 		activeTadpoles.Remove(t);
 	}

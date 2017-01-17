@@ -33,7 +33,7 @@ public class Frog : MonoBehaviour {
     float chanceToRepeatCall = .4f;
 
     //mating
-    Vector2 rangeOfKids = new Vector2(5, 20);
+    Vector2 rangeOfKids = new Vector2(5, 10);
     float mateCooldown = 12;
     float matMaxCooldown = 12;
 	Transform lastHeardRibbitRing;
@@ -125,7 +125,7 @@ public class Frog : MonoBehaviour {
         {
             if(inPuddle && !isMale && lastTouchedFrog.isMale && mateCooldown <= 0)
             {//as a female, landed on a frog in a puddle, baby time
-                MakeBaby(false);
+                MakeBaby();
                 EnterIdleState();
                 currentIdleWaitTime = 5; //force wait after having a kid
             }
@@ -319,10 +319,12 @@ public class Frog : MonoBehaviour {
         goalPos = MathHelper.V3toV2(transform.position) + goalOffset * frogSpeed;
     }
 
-	private void MakeBaby(bool _playerDescendant)
+	private void MakeBaby()
     {
         mateCooldown = matMaxCooldown;
         int numOfKids = (int)Random.Range(rangeOfKids.x, rangeOfKids.y);
+        if (lastTouchedFrog.GetComponent<PlayerFrog>())
+            Debug.Log("having " + numOfKids + " babies with player");
         for (int i = 0; i < numOfKids; i++)
         {
             GameObject newFrog = Instantiate(Resources.Load("Prefabs/Tadpole")) as GameObject;

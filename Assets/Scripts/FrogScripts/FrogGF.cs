@@ -10,6 +10,7 @@ public class FrogGF : GameFlow {
 	bool nextStep = false;
 	public Frog playerFrog;
 	public InputManager im;
+    float gameTimer = 180; //3 mins
 
 	public override void StartFlow()
 	{
@@ -19,6 +20,14 @@ public class FrogGF : GameFlow {
 
 	public void Update()
 	{
+        if (stage == 3)
+        {
+            gameTimer -= Time.deltaTime;
+            if (gameTimer <= 0)
+                GameFinished();
+        }
+
+
 		if (!nextStep)
 			return;
 
