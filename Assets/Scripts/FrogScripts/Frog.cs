@@ -156,7 +156,7 @@ public class Frog : MonoBehaviour {
             EnterRandomJump();
     }
 
-    private void EnterIdleState()
+    protected void EnterIdleState()
     {
         currentFrogState = FrogState.idle;
         currentIdleWaitTime = Random.Range(idleWaitRange.x, idleWaitRange.y);

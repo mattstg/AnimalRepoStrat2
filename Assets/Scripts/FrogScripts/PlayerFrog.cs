@@ -32,6 +32,7 @@ public class PlayerFrog : Frog {
 
         if(frogFound)
         {
+            EnterIdleState();
             transform.position = frogFound.transform.position;
             Destroy(frogFound.gameObject);            
         }
