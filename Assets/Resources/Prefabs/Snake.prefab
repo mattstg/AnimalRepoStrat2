@@ -53,8 +53,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1464248181991964}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6150459, y: 0.8834932, z: 0}
-  m_LocalScale: {x: 0.2, y: -0.3, z: 1}
+  m_LocalPosition: {x: 0.84, y: 1.92, z: 0}
+  m_LocalScale: {x: 0.40697622, y: -0.36987445, z: 1}
   m_Children:
   - {fileID: 4866296711262796}
   m_Father: {fileID: 0}
@@ -104,9 +104,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -0.04, y: 3.2}
+  m_Offset: {x: -0.09734359, y: 3.1999998}
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.57}
+  m_Size: {x: 0.9083685, y: 0.5700003}
 --- !u!114 &114798487309801400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,6 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7f8f2008c1a4f40b0eab7b3f7ca1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsEaten: 0
+  snakeMoveDir: {x: 0, y: -1}
 --- !u!212 &212688965161017820
 SpriteRenderer:
   m_ObjectHideFlags: 1

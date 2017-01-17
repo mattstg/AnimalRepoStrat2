@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class Tadpole : MonoBehaviour {
 
-    bool isMale;
+    Frog.FrogInfo frogInfo;
     float timeRemainingToGrow;
     Vector2 tadpoleHatchRange = new Vector2(15,30);
     Puddle puddle = null;
-	public bool playerDescendant = false;
+    bool tadpoleInitialized = false;
+
 	// Use this for initialization
-	void Start () {
-        isMale = Random.Range(0f, 1f) > .5f;
+    public void Start()
+    {
+        if (!tadpoleInitialized) //cinematic tadpoles dont get birthed
+            BirthTadpole(new Frog.FrogInfo(0, false, MathHelper.Fiftyfifty()));
+    }
+
+
+    public void BirthTadpole(Frog.FrogInfo _frogInfo)
+    {
+        tadpoleInitialized = true;
+        frogInfo = new Frog.FrogInfo(_frogInfo);
         timeRemainingToGrow = Random.Range(tadpoleHatchRange.x, tadpoleHatchRange.y);
         float randAngle = Random.Range(0, 360);
         Vector2 randStartForce = MathHelper.DegreeToVector2(randAngle) * 5;
@@ -26,10 +36,13 @@ public class Tadpole : MonoBehaviour {
 
         if (timeRemainingToGrow <= 0)
         {
-            GameObject newFrog = Instantiate(Resources.Load("Prefabs/Frog")) as GameObject;
-            newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().frogParent);
-            newFrog.transform.position = transform.position;
-			newFrog.GetComponent<Frog>().CreateFrog(isMale,playerDescendant);
+            if (GameObject.FindObjectOfType<FrogWS>().frogParent.childCount < 200)
+            {
+                GameObject newFrog = Instantiate(Resources.Load("Prefabs/Frog")) as GameObject;
+                newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().frogParent);
+                newFrog.transform.position = transform.position;
+                newFrog.GetComponent<Frog>().CreateFrog(frogInfo);
+            }
             KillTadpole();
         }
 

@@ -3,46 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//If you are reading this and from LoL. I applogize for the hardcodedness of it all
+//If you are reading this and from LoL. I applogize for the most hardcoded software I have ever created
 
 public class Frog : MonoBehaviour {
 
     public enum FrogState { jumping,landedJump, idle, calling }
+    public FrogInfo frogInfo;
 
-    public bool isMale;
+    public bool isMale { get { return frogInfo.isMale; } }
     public FrogState currentFrogState;
 
-    bool inPuddle = false;
-    bool isTouchingFrog { get { return touchingFrogs.Count > 0; } } //not perfect, does not cover case such as 3 frog pileup
-    List<Frog> touchingFrogs = new List<Frog>();
+    public bool inPuddle = false;
+    Frog lastTouchedFrog;
     //Frog jump stuff
     Vector2 goalPos;
     float frogSpeed = 1;
     public bool outtaBounds = false;
 	public bool playerCntrl = false;
-	bool isPlayerDescendant = false;
+	public bool isPlayerDescendant { get { return frogInfo.playerDescendant; }  }
 
     //Frog idle state
     float currentIdleWaitTime;
     Vector2 idleWaitRange = new Vector2(1, 6);
 
     //calling state
-    int maxRange = 3;
-    int currentRange = 0;
-    float currentCallingTime = 0;
-    float timeBetweenRangeIncrease = 1;
+	public GameObject ribbitRing;
+    float maxRange = 8;
+	float rangeRateIncrease = 4f;
     float chanceToRepeatCall = .4f;
 
     //mating
     Vector2 rangeOfKids = new Vector2(5, 20);
     float mateCooldown = 12;
     float matMaxCooldown = 12;
-	List<Frog> frogsHearing = new List<Frog>();
+	Transform lastHeardRibbitRing;
+	float lastHeardRibbitCooldown = 3;
+	float lastHeardRibbitCooldownMax = 3;
 
-	public void CreateFrog(bool _isMale, bool _isPlayerDescendant)
+    public float publicGenNum;
+    public bool publicIsPlayer;
+
+	public void CreateFrog(FrogInfo _frogInfo)
     {
-        isMale = _isMale;
-		isPlayerDescendant = _isPlayerDescendant;
+        frogInfo = new FrogInfo(_frogInfo);
 		if(!playerCntrl)
 			EnterIdleState();
 		if (!isMale) {
@@ -52,11 +55,16 @@ public class Frog : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
+
         mateCooldown -= Time.deltaTime;
+		lastHeardRibbitCooldown -= Time.deltaTime;
+		if (lastHeardRibbitCooldown <= 0)
+			lastHeardRibbitRing = null;
+
 		switch(currentFrogState)
         {
             case FrogState.jumping:
-                DestroyAllRibitKids();
+                DisableRibbiting();
                 JumpTowardsGoal();
                 break;
             case FrogState.landedJump:			
@@ -113,9 +121,9 @@ public class Frog : MonoBehaviour {
 			return;
 		}
 
-        if(isTouchingFrog)
+        if(lastTouchedFrog != null)
         {
-            if(inPuddle && !isMale && isTouchingMaleFrog() && mateCooldown <= 0)
+            if(inPuddle && !isMale && lastTouchedFrog.isMale && mateCooldown <= 0)
             {//as a female, landed on a frog in a puddle, baby time
                 MakeBaby(false);
                 EnterIdleState();
@@ -123,6 +131,8 @@ public class Frog : MonoBehaviour {
             }
             else
             {//Landed on a frog, hop away to new location
+               // if(lastTouchedFrog.playerCntrl)
+                  //  Debug.Log(string.Format("inpuddle {0}, ismale {1}, isTouchingMaleFrog{2}, mateCooldown{3}", inPuddle, isMale, lastTouchedFrog.isMale, mateCooldown));
                 EnterRandomJump();
             }
         }
@@ -146,7 +156,7 @@ public class Frog : MonoBehaviour {
             EnterRandomJump();
     }
 
-    private void EnterIdleState()
+    protected void EnterIdleState()
     {
         currentFrogState = FrogState.idle;
         currentIdleWaitTime = Random.Range(idleWaitRange.x, idleWaitRange.y);
@@ -160,11 +170,11 @@ public class Frog : MonoBehaviour {
 
     protected void EnterCallingState()
     {
-        currentCallingTime = 0;
-        currentRange = 0;
+       // currentCallingTime = 0;
         currentFrogState = FrogState.calling;
     }
 
+	/*
     private void CallingState()
     {
         currentCallingTime += Time.deltaTime;
@@ -191,14 +201,14 @@ public class Frog : MonoBehaviour {
             ribbitObj.transform.localScale = new Vector3(1, 1, 1) * (currentRange + 1) * 1.75f;
             ribbitObj.name = "ribbit";
         }
-    }
+    }*/
 
-	/*private void CallingState()
+	private void CallingState()
 	{
-		currentCallingTime += Time.deltaTime;
-		if (frogCallRange > maxRange)
+		if (ribbitRing.transform.localScale.x >= maxRange)
 		{
-			DestroyAllRibitKids();
+			ribbitRing.transform.localScale = new Vector3 (1, 1, 1);
+			ribbitRing.SetActive (false);
 			if (!playerCntrl) {
 				if (Random.Range (0f, 1f) > chanceToRepeatCall) {
 					EnterCallingState (); //re-cycle the state
@@ -209,22 +219,17 @@ public class Frog : MonoBehaviour {
 				EnterIdleState ();
 			}
 		}
-		else if(currentRange != frogCallRange)
+		else
 		{
-			currentRange = frogCallRange;
-			GameObject ribbitObj = Instantiate(Resources.Load("Prefabs/RibbitRing")) as GameObject;
-			ribbitObj.transform.SetParent(transform);
-			ribbitObj.transform.localPosition = new Vector3();
-			ribbitObj.transform.localScale = new Vector3(1, 1, 1) * (currentRange + 1) * 1.75f;
-			ribbitObj.name = "ribbit";
+			ribbitRing.SetActive (true);
+			ribbitRing.transform.localScale = ribbitRing.transform.localScale + new Vector3 (1, 1) * rangeRateIncrease * Time.deltaTime;
 		}
-	}*/
+	}
 
-    private void DestroyAllRibitKids()
+    private void DisableRibbiting()
     {
-        foreach(Transform t in transform)
-            if (t.name == "ribbit")
-                Destroy(t.gameObject);
+        ribbitRing.transform.localScale = new Vector3(1, 1, 1);
+        ribbitRing.SetActive(false);
     }
 
     private void JumpTowardsGoal()
@@ -263,12 +268,11 @@ public class Frog : MonoBehaviour {
             Frog otherFrog = otherObj.GetComponent<Frog>();
             if (entering)
             {
-                if (!touchingFrogs.Contains(otherFrog))
-                    touchingFrogs.Add(otherFrog);
+                lastTouchedFrog = otherFrog;
             }
-            else
+            else if(lastTouchedFrog == otherFrog)
             {
-                touchingFrogs.Remove(otherFrog);
+                lastTouchedFrog = null;
             }
         }
         else if(otherObj.GetComponent<Puddle>())
@@ -281,8 +285,12 @@ public class Frog : MonoBehaviour {
 				//Debug.Log ("enetering ");
 				HeardARibbit (otherObj.transform);
 			}
-			else {
-				frogsHearing.Remove (otherObj.transform.parent.GetComponent<Frog> ());
+			else
+            {
+                if (otherObj.transform == lastHeardRibbitRing)
+                {
+                    lastHeardRibbitRing = null;
+                }
 				//Debug.Log ("eaving");
 			}
         }
@@ -294,24 +302,15 @@ public class Frog : MonoBehaviour {
 
     private void HeardARibbit(Transform ribbitLoc)
     {
-		Frog f = ribbitLoc.parent.GetComponent<Frog> ();
-		if (f != this && mateCooldown <= 0 && !isMale && !frogsHearing.Contains(f))
+		if (ribbitLoc != transform && mateCooldown <= 0 && !isMale && lastHeardRibbitRing != ribbitLoc)
         {
-			frogsHearing.Add (f);
+			lastHeardRibbitRing = ribbitLoc;
+			lastHeardRibbitCooldown = lastHeardRibbitCooldownMax;
 //            float angToCenter = MathHelper.AngleBetweenPoints(transform.position, ribbitLoc.position);
             JumpTowardsGoal(ribbitLoc.position);
         }
     }
-    
-    private bool isTouchingMaleFrog()
-    {
-        if (!isTouchingFrog)
-            return false;
-        foreach (Frog f in touchingFrogs)
-            if (f.isMale)
-                return true;
-        return false;
-    }
+
 
     private void SetNewRandomGoalPos()
     {
@@ -329,12 +328,38 @@ public class Frog : MonoBehaviour {
             GameObject newFrog = Instantiate(Resources.Load("Prefabs/Tadpole")) as GameObject;
             newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().tadpoleParent);
             newFrog.transform.position = transform.position;
-			newFrog.GetComponent<Tadpole> ().playerDescendant = _playerDescendant || isPlayerDescendant;
+            Frog.FrogInfo tempFi = new FrogInfo(frogInfo);
+            tempFi.genNumber = Mathf.Max(tempFi.genNumber,lastTouchedFrog.frogInfo.genNumber) + 1;
+            tempFi.isMale = MathHelper.Fiftyfifty();
+            tempFi.playerDescendant = tempFi.playerDescendant || lastTouchedFrog.frogInfo.playerDescendant;
+            newFrog.GetComponent<Tadpole>().BirthTadpole(tempFi);//playerDescendant = _playerDescendant || isPlayerDescendant;
         }
     }
 
-    public void FrogEaten()
+    public virtual void FrogEaten()
     {
         Destroy(this.gameObject);
+    }
+
+    public class FrogInfo
+    {
+        public int genNumber = 0;
+        public bool playerDescendant = false;
+        public bool isMale;
+
+        public FrogInfo(int _genNumber, bool _playerDescendant, bool _isMale)
+        {
+            genNumber = _genNumber;
+            playerDescendant = _playerDescendant;
+            isMale = _isMale;
+        }
+
+        public FrogInfo(FrogInfo toClone)
+        {
+            genNumber = toClone.genNumber;
+            playerDescendant = toClone.playerDescendant;
+            isMale = toClone.isMale;
+        }
+
     }
 }

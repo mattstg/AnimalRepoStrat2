@@ -49,9 +49,11 @@ public class FrogCinematic : MonoBehaviour {
 			GameObject newFrog = Instantiate(Resources.Load("Prefabs/Frog")) as GameObject;
 			newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().frogParent);
 			newFrog.transform.position = GetRandomSpawnLoc();
-			newFrog.GetComponent<Frog>().CreateFrog(Random.Range(0f,1f) > .5f,false);
+            Frog.FrogInfo fi = new Frog.FrogInfo(0, false, Random.Range(0f, 1f) > .5f);
+			newFrog.GetComponent<Frog>().CreateFrog(fi);
 			newFrog.GetComponent<Frog> ().outtaBounds = true;
 		}
+        GameObject.FindObjectOfType<SnakeManager>().SetupGame();
 	}
 
 	public void Update()
