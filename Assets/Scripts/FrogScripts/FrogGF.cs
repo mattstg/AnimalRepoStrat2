@@ -12,6 +12,7 @@ public class FrogGF : GameFlow {
 	public InputManager im;
     float gameTimer = 180; //3 mins
     bool secondCinematicStarted = false;
+    int matureDescendants = 0;
 
 	public override void StartFlow()
 	{
@@ -52,7 +53,10 @@ public class FrogGF : GameFlow {
 		case 3:
 			StartGame(); //start game
 			break;
-		case 4:
+        case 4:
+            GameResults();
+            break;
+		case 5:
 			PostGameQuestions (); //summary questions
 			break;
 		default:
@@ -83,7 +87,15 @@ public class FrogGF : GameFlow {
 		textPanel.StartWriting ();
 	}
 
-	private void PostGameQuestions()
+    private void GameResults()
+    {
+        string t0 = "Total Score: " + matureDescendants;
+        textPanel.gameObject.SetActive(true);
+        textPanel.SetText(t0);// + t1 + t2 + t3 + t4);
+        textPanel.StartWriting();
+    }
+
+    private void PostGameQuestions()
 	{
 		im.gameObject.SetActive (false);
 		graphManager.gameObject.SetActive (true);
@@ -115,6 +127,7 @@ public class FrogGF : GameFlow {
 		playerFrog.gameObject.SetActive (true);
 		frogCinematic.StartWetlandCinematic ();
 		Camera.main.gameObject.GetComponent<CameraFollow> ().toFollow = playerFrog.transform;
+        Camera.main.transform.localPosition = new Vector3(0, 0, -10);
 		Camera.main.gameObject.GetComponent<CameraFollow> ().SetZoom (3);
 		im.gameObject.SetActive (true);
 		playerFrog.CreateFrog (new Frog.FrogInfo(0,true, true),true);
@@ -123,13 +136,14 @@ public class FrogGF : GameFlow {
 	public void GameFinished()
 	{
 		nextStep = true;
-        int matureDescendants = 0;
+        matureDescendants = 0;
         foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().frogParent)
         {
             if (t.GetComponent<Frog>().isPlayerDescendant)
                 matureDescendants++;
         }
-        Debug.Log("you have a total of: " + matureDescendants);
+        Camera.main.GetComponent<CameraFollow>().toFollow = null;
+        Camera.main.orthographicSize = 5;
     }
 
 	public void TutorialFinished()

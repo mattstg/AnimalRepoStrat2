@@ -148,7 +148,7 @@ public class Frog : MonoBehaviour {
                 EnterRandomJump();
             }
         }
-        else if(inPuddle && isMale)
+        else if(inPuddle && isMale && Random.Range(0,1f) >= .33f)
         {
             //landed in puddle, try ribbiting to attract mate
             EnterCallingState();
