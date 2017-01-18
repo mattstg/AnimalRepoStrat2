@@ -54,6 +54,12 @@ TagManager:
   - name: Creatures
     uniqueID: 1006921303
     locked: 0
+  - name: Water
+    uniqueID: 3585568583
+    locked: 0
+  - name: Rock
+    uniqueID: 4123448347
+    locked: 0
   - name: Trunk
     uniqueID: 3352461247
     locked: 0
