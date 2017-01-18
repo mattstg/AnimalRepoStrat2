@@ -50,8 +50,7 @@ public class FrogCinematic : MonoBehaviour {
         transformationCounter = 0;
         timeToTransformation = 20;
         currentStage = FrogCinematicStage.BecomingArid;
-        evacuateAtEndOfCinematic = true;
-        
+        evacuateAtEndOfCinematic = true;        
     }
 
     public void StartWetlandCinematic() //also sets up level

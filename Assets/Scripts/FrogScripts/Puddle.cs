@@ -33,7 +33,7 @@ public class Puddle : MonoBehaviour {
 
     public void Update()
     {
-        if (activeTadpoles.Count > carryingCapacity)
+        if (activeTadpoles.Count > carryingCapacity && activeTadpoles.Count > 0)
         {
             tadpoleKillCounter -= Time.deltaTime;
             if (tadpoleKillCounter <= 0)

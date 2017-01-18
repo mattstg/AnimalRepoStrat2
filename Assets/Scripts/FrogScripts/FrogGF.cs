@@ -11,6 +11,7 @@ public class FrogGF : GameFlow {
 	public Frog playerFrog;
 	public InputManager im;
     float gameTimer = 180; //3 mins
+    bool secondCinematicStarted = false;
 
 	public override void StartFlow()
 	{
@@ -25,6 +26,11 @@ public class FrogGF : GameFlow {
             gameTimer -= Time.deltaTime;
             if (gameTimer <= 0)
                 GameFinished();
+            if (!secondCinematicStarted && gameTimer <= 20)
+            {
+                secondCinematicStarted = true;
+                frogCinematic.StartSecondAridCinematic();
+            }
         }
 
 
@@ -80,7 +86,6 @@ public class FrogGF : GameFlow {
 	private void PostGameQuestions()
 	{
 		im.gameObject.SetActive (false);
-		frogCinematic.StartFirstAridCinematic ();
 		graphManager.gameObject.SetActive (true);
 		graphManager.titleText.text = "What aspects of reproductive whatever";
 
