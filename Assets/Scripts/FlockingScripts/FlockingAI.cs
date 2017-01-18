@@ -131,17 +131,17 @@ public class FlockingAI : MonoBehaviour
 
 		if (followsLeaders)
 		{
-            List<GameObject> golist = new List<GameObject>();
+            List<Vector2> golist = new List<Vector2>();
             golist = GameObject.FindObjectOfType<LeaderManager> ().leaders;
             if (golist[0] != null)
             {
-                foreach (GameObject _leader in golist)
+                foreach (Vector2 _leader in golist)
 			    {
-				Vector2 _leadersPos = V3toV2(_leader.transform.position);
-				float distanceFromLeader = Vector2.Distance(_leadersPos, thisPos);
+				
+				float distanceFromLeader = Vector2.Distance(_leader, thisPos);
                     if (distanceFromLeader <= leaderInfluenceDistance)
                     {
-                        Vector2 v = (_leader.transform.position - this.transform.position);
+                        Vector2 v = (_leader - V3toV2( this.transform.position));
                         Vector2 vNormalized = v.normalized;
                         vLeader += vNormalized;//now equals normalized vector towards all influencing leaders
                     }
@@ -177,19 +177,27 @@ public class FlockingAI : MonoBehaviour
 
 		if (speedNormalizing) //sets this animal speed to average local speed
 		{
-			localGroupSpeed /= localGroupSize;
-			speed = localGroupSpeed;
+            if (localGroupSize != 0)
+            {
+                localGroupSpeed /= localGroupSize;
+                speed = localGroupSpeed;
+            }
+            else
+            {
+                speed = Random.Range(speedRange.x, speedRange.y);
+            }
 		}
 		if (randomizesSpeed)
 			speed = Random.Range(speedRange.x, speedRange.y); //redetermines speed randomly
 		if (randomizesRotationSpeed)
 			rotationSpeed = Random.Range(rotationSpeedRange.x, rotationSpeedRange.y); //redetermines rotationSpeed randomly
 
+        if (!followsLeaders)
+            Debug.Log("3 " + speed);
 
+        //THE ALMIGHTY ROTATE CODE
 
-		//THE ALMIGHTY ROTATE CODE
-
-		Vector2 direction =
+        Vector2 direction =
 			(
 				(vCenter * averagePositionWeight)
 				+ (vRepel * repulsionWeight)
@@ -225,13 +233,16 @@ public class FlockingAI : MonoBehaviour
 		rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
 		speed = Random.Range(speedRange.x, speedRange.y);
 		rotationSpeed = Random.Range(rotationSpeedRange.x, rotationSpeedRange.y);
+        if (!followsLeaders)
+            Debug.Log("2 " + speed);
 
-		/*foreach(GameObject animal in GameObject.FindObjectOfType<FlockManager>().flock)
+
+        /*foreach(GameObject animal in GameObject.FindObjectOfType<FlockManager>().flock)
         {
             Debug.Log(speed);
         }                     */
 
-	}
+    }
 
 
 	void Update()
@@ -252,14 +263,16 @@ public class FlockingAI : MonoBehaviour
 					
 			}
 		}
+      
 
 
-
-		if (Random.Range (0, updateFrequency) == 0) { //1 chance per <updateFrequency> each update that rules will be applied 
+        if (Random.Range (0, updateFrequency) == 0) { //1 chance per <updateFrequency> each update that rules will be applied 
 			ApplyRules ();
 		}
 
 		Vector2 thisFacingDir = V3toV2 (this.transform.right);
+        if (!followsLeaders)
+            Debug.Log(thisFacingDir.ToString() + " " + speed);
 		rigidbody.AddForce (thisFacingDir * speed);
 
 

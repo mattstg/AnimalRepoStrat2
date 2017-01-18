@@ -246,7 +246,7 @@ MonoBehaviour:
   repulsionDistance: 0.75
   repulsionWeight: 1
   updateFrequency: 3
-  usesWaypoints: 1
+  usesWaypoints: 0
   waypointWeight: 12
   waypointReachedProximity: 20
   followsLeaders: 0

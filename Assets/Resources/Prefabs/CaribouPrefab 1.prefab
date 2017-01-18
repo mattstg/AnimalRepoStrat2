@@ -249,7 +249,7 @@ MonoBehaviour:
   usesWaypoints: 0
   waypointWeight: 1
   waypointReachedProximity: 45
-  followsLeaders: 0
+  followsLeaders: 1
   leaderWeight: 15
   leaderInfluenceDistance: 55
   followsMother: 0
