@@ -80,7 +80,7 @@ public class FrogGF : GameFlow {
 	private void PostGameQuestions()
 	{
 		im.gameObject.SetActive (false);
-		frogCinematic.StartAridCinematic ();
+		frogCinematic.StartFirstAridCinematic ();
 		graphManager.gameObject.SetActive (true);
 		graphManager.titleText.text = "What aspects of reproductive whatever";
 
@@ -101,7 +101,7 @@ public class FrogGF : GameFlow {
 
 	private void ShowTutorial()
 	{
-		frogCinematic.StartAridCinematic ();
+		frogCinematic.StartFirstAridCinematic ();
 		tutorialScreen.SetActive (true);
 	}
 
@@ -112,7 +112,7 @@ public class FrogGF : GameFlow {
 		Camera.main.gameObject.GetComponent<CameraFollow> ().toFollow = playerFrog.transform;
 		Camera.main.gameObject.GetComponent<CameraFollow> ().SetZoom (3);
 		im.gameObject.SetActive (true);
-		playerFrog.CreateFrog (new Frog.FrogInfo(0,true, true));
+		playerFrog.CreateFrog (new Frog.FrogInfo(0,true, true),true);
 	}
 
 	public void GameFinished()

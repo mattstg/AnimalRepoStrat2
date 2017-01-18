@@ -21,6 +21,7 @@ public class Frog : MonoBehaviour {
     public bool outtaBounds = false;
 	public bool playerCntrl = false;
 	public bool isPlayerDescendant { get { return frogInfo.playerDescendant; }  }
+    public bool leaveMap = false;
 
     //Frog idle state
     float currentIdleWaitTime;
@@ -43,7 +44,7 @@ public class Frog : MonoBehaviour {
     public float publicGenNum;
     public bool publicIsPlayer;
 
-	public void CreateFrog(FrogInfo _frogInfo)
+	public void CreateFrog(FrogInfo _frogInfo, bool pioneerFrog = false)
     {
         frogInfo = new FrogInfo(_frogInfo);
 		if(!playerCntrl)
@@ -52,6 +53,8 @@ public class Frog : MonoBehaviour {
 			transform.localScale = transform.localScale * 1.5f;
 			frogSpeed /= 2;
 		}
+        if (pioneerFrog)
+            mateCooldown = 0;
     }
 	// Update is called once per frame
 	void Update () {
@@ -108,6 +111,15 @@ public class Frog : MonoBehaviour {
 
     private void LandedJump()
     {
+        if(leaveMap)
+        {
+            float angToExit = MathHelper.AngleBetweenPoints(new Vector2(), transform.position);
+            JumpTowardsAngle(angToExit);
+            //Debug.Log(string.Format("at pos: {0}, goalPos {1} from offset {2}, angle is {3}", transform.position, goalPos, goalOffset, angToCenter));
+            return;
+        }
+
+
         if(outtaBounds)
         {
             float angToCenter = MathHelper.AngleBetweenPoints(transform.position, new Vector2());
@@ -323,8 +335,6 @@ public class Frog : MonoBehaviour {
     {
         mateCooldown = matMaxCooldown;
         int numOfKids = (int)Random.Range(rangeOfKids.x, rangeOfKids.y);
-        if (lastTouchedFrog.GetComponent<PlayerFrog>())
-            Debug.Log("having " + numOfKids + " babies with player");
         for (int i = 0; i < numOfKids; i++)
         {
             GameObject newFrog = Instantiate(Resources.Load("Prefabs/Tadpole")) as GameObject;

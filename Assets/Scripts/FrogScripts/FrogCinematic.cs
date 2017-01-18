@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FrogCinematic : MonoBehaviour {
 
+    enum FrogCinematicStage { None ,BecomingWet, BecomingArid }
+
 	int startingFrogs = 90;
 	Vector2 spawnBoundry = new Vector2(8,5);
 	float spawnOffsetRange = 2.5f;
@@ -12,7 +14,8 @@ public class FrogCinematic : MonoBehaviour {
 	bool groundIsMoistening = false;
 	float transformationCounter = 0;
 	float timeToTransformation = 5f;
-
+    FrogCinematicStage currentStage = FrogCinematicStage.None;
+    bool evacuateAtEndOfCinematic = false;
 
 	List<Puddle> puddles = new List<Puddle>();
 	Transform puddleParent;
@@ -29,23 +32,34 @@ public class FrogCinematic : MonoBehaviour {
 		}
 	}
 
-	public void StartAridCinematic()
+	public void StartFirstAridCinematic()
 	{
-		updateGroundTransformation = true;
-		groundIsMoistening = false;
 		transformationCounter = 0;
-		foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().frogParent)
+        timeToTransformation = 5;
+        currentStage = FrogCinematicStage.BecomingArid;
+        foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().frogParent)
 			Destroy (t.gameObject);
 		foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().tadpoleParent)
 			Destroy (t.gameObject);
-	}
+        foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().puddleParent)
+            t.GetComponent<Puddle>().activeTadpoles = new List<Tadpole>();
+    }
 
-	public void StartWetlandCinematic() //also sets up level
+    public void StartSecondAridCinematic()
+    {
+        transformationCounter = 0;
+        timeToTransformation = 20;
+        currentStage = FrogCinematicStage.BecomingArid;
+        evacuateAtEndOfCinematic = true;
+        
+    }
+
+    public void StartWetlandCinematic() //also sets up level
 	{
-		updateGroundTransformation = true;
-		groundIsMoistening = true;
-		transformationCounter = 0;
-		for (int i = 0; i <= startingFrogs; i++) {
+        transformationCounter = 0;
+        timeToTransformation = 10;
+        currentStage = FrogCinematicStage.BecomingWet;
+        for (int i = 0; i <= startingFrogs; i++) {
 			GameObject newFrog = Instantiate(Resources.Load("Prefabs/Frog")) as GameObject;
 			newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().frogParent);
 			newFrog.transform.position = GetRandomSpawnLoc();
@@ -58,19 +72,49 @@ public class FrogCinematic : MonoBehaviour {
 
 	public void Update()
 	{
-		if (!updateGroundTransformation)
-			return;
-		transformationCounter += Time.deltaTime;
-		if (groundIsMoistening) {
-			Color moistColor = wetBg.color;
-			moistColor.a = (transformationCounter / timeToTransformation);
-			wetBg.color = moistColor;
-		} else {
-			Color moistColor = wetBg.color;
-			moistColor.a = 1 - (transformationCounter / timeToTransformation);
-			wetBg.color = moistColor;
-		}
+        switch(currentStage)
+        {
+            case FrogCinematicStage.None:
+                break;
+            case FrogCinematicStage.BecomingArid:
+                UpdateBecomingArid();
+                break;
+            case FrogCinematicStage.BecomingWet:
+                UpdateBecomingWet();
+                break;
+        }
 	}
+
+    private void UpdateBecomingArid()
+    {
+        transformationCounter += Time.deltaTime;
+        Color moistColor = wetBg.color;
+        moistColor.a = 1 - (transformationCounter / timeToTransformation);
+        wetBg.color = moistColor;
+        foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().puddleParent)
+        {
+            t.localScale = Vector2.Lerp(t.GetComponent<Puddle>().originalSize, new Vector2(.01f, .01f), (transformationCounter / timeToTransformation));
+            t.GetComponent<Puddle>().carryingCapacity = (int)(( 1- (transformationCounter / timeToTransformation)) * t.GetComponent<Puddle>().originalCarryingCapacity);
+        }
+
+        if (evacuateAtEndOfCinematic && transformationCounter >= timeToTransformation)
+            foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().frogParent)
+                t.GetComponent<Frog>().leaveMap = true;
+    }
+
+    private void UpdateBecomingWet()
+    {
+        transformationCounter += Time.deltaTime;
+        Color moistColor = wetBg.color;
+        moistColor.a = (transformationCounter / timeToTransformation);
+        wetBg.color = moistColor;
+        foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().puddleParent)
+        {
+            t.localScale = Vector2.Lerp( new Vector2(.01f, .01f), t.GetComponent<Puddle>().originalSize, (transformationCounter / timeToTransformation));
+            t.GetComponent<Puddle>().carryingCapacity = (int)((transformationCounter / timeToTransformation) * t.GetComponent<Puddle>().originalCarryingCapacity);
+        }
+    }
+
 
 
 

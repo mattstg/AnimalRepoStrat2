@@ -7,6 +7,14 @@ public class Puddle : MonoBehaviour {
     public int carryingCapacity = 10; //how many it can handle
     public List<Tadpole> activeTadpoles = new List<Tadpole>();
     float tadpoleKillCounter = 3;
+    public Vector2 originalSize;
+    public float originalCarryingCapacity;
+
+    public void Awake()
+    {
+        originalSize = transform.localScale;
+        originalCarryingCapacity = carryingCapacity;
+    }
 
     public void AddTadpole(Tadpole tapdole)
     {
