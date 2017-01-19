@@ -7,14 +7,19 @@ public class FlockingAI : MonoBehaviour
 	//Works best with 1 mass and 4 linear drag
 	//tested on circles of scale 4,2,0 with colliders 
 
-
+	int numOfWP;
 	//bool shouldLog = true;
 	public Rigidbody2D rigidbody;
+	public GameObject mother;
 
 	float speed;
 	public Vector2 speedRange = new Vector2(10, 15);
 	float rotationSpeed;
 	public Vector2 rotationSpeedRange = new Vector2(12, 16);
+
+	public bool isCalf = false;
+	public bool isPredator = false;
+	public bool runsFromPredators = true; 
 
 	Vector2 averageHeading;
 	public float averageHeadingWeight = 15f; //multiplier for strength of averageHeading influence
@@ -131,27 +136,38 @@ public class FlockingAI : MonoBehaviour
 
 		if (followsLeaders)
 		{
-            List<Vector2> golist = new List<Vector2>();
-            golist = GameObject.FindObjectOfType<LeaderManager> ().leaders;
-            if (golist[0] != null)
+            List<Vector2> poslist = new List<Vector2>();
+            poslist = GameObject.FindObjectOfType<LeaderManager> ().leaders;
+			float closestLeaderDistance = 1000;
+			Vector2 closestLeaderPos = Vector2.zero;
+            if (poslist[0] != null)
             {
-                foreach (Vector2 _leader in golist)
+                foreach (Vector2 _leader in poslist)
 			    {
-				
 				float distanceFromLeader = Vector2.Distance(_leader, thisPos);
-                    if (distanceFromLeader <= leaderInfluenceDistance)
-                    {
-                        Vector2 v = (_leader - V3toV2( this.transform.position));
-                        Vector2 vNormalized = v.normalized;
-                        vLeader += vNormalized;//now equals normalized vector towards all influencing leaders
-                    }
+					if (distanceFromLeader < closestLeaderDistance) 
+					{
+						closestLeaderDistance = distanceFromLeader;
+						closestLeaderPos = _leader;
+					}
 				}
+					
+				if (closestLeaderDistance <= leaderInfluenceDistance)
+                    {
+						Vector2 v = closestLeaderPos - V3toV2( this.transform.position);
+                        Vector2 vNormalized = v.normalized;
+                        vLeader = vNormalized;//now equals normalized vector towards all influencing leaders
+                    }
+				
 			}
 		}
 
 		if (followsMother)
 		{
-
+			Vector2 v = (V3toV2(mother.transform.position) - V3toV2(this.transform.position));
+			Vector2 vNormalized = v.normalized;
+			vMother = v.normalized;
+				
 		}
 
 		if (usesRandom)
@@ -182,18 +198,15 @@ public class FlockingAI : MonoBehaviour
                 localGroupSpeed /= localGroupSize;
                 speed = localGroupSpeed;
             }
-            else
-            {
-                speed = Random.Range(speedRange.x, speedRange.y);
-            }
+            
 		}
 		if (randomizesSpeed)
 			speed = Random.Range(speedRange.x, speedRange.y); //redetermines speed randomly
 		if (randomizesRotationSpeed)
 			rotationSpeed = Random.Range(rotationSpeedRange.x, rotationSpeedRange.y); //redetermines rotationSpeed randomly
 
-        if (!followsLeaders)
-            Debug.Log("3 " + speed);
+        //if (!followsLeaders)
+           // Debug.Log("3 " + speed);
 
         //THE ALMIGHTY ROTATE CODE
 
@@ -229,12 +242,12 @@ public class FlockingAI : MonoBehaviour
 	{
 
 		GameObject.FindObjectOfType<FlockManager>().flock.Add(this.gameObject); // adds this animal to FlockManager's flock list
-
+		numOfWP = GameObject.FindObjectOfType<WaypointManager> ().waypointPositions.Count;
 		rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
 		speed = Random.Range(speedRange.x, speedRange.y);
 		rotationSpeed = Random.Range(rotationSpeedRange.x, rotationSpeedRange.y);
-        if (!followsLeaders)
-            Debug.Log("2 " + speed);
+        //if (!followsLeaders)
+		//		Debug.Log("2 " + speed);
 
 
         /*foreach(GameObject animal in GameObject.FindObjectOfType<FlockManager>().flock)
@@ -250,11 +263,9 @@ public class FlockingAI : MonoBehaviour
 		if (usesWaypoints) 
 		{
 			Vector2 waypointCoords = GameObject.FindObjectOfType<WaypointManager> ().waypointPositions [activeWaypoint];
-			float distanceToWaypoint = Vector2.Distance (waypointCoords,
-				                           this.transform.position);
+			float distanceToWaypoint = Vector2.Distance (waypointCoords,V3toV2(this.transform.position));
 			if (distanceToWaypoint <= waypointReachedProximity) 
 			{
-				int numOfWP = GameObject.FindObjectOfType<WaypointManager> ().waypointPositions.Count;
 				if (activeWaypoint + 1 < numOfWP)
 					activeWaypoint++;
 				else
@@ -271,8 +282,8 @@ public class FlockingAI : MonoBehaviour
 		}
 
 		Vector2 thisFacingDir = V3toV2 (this.transform.right);
-        if (!followsLeaders)
-            Debug.Log(thisFacingDir.ToString() + " " + speed);
+		if(randomizesRotationSpeed)
+			Debug.Log(activeWaypoint);
 		rigidbody.AddForce (thisFacingDir * speed);
 
 

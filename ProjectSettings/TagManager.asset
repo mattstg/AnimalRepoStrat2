@@ -8,6 +8,7 @@ TagManager:
   - Item
   - BowerBird
   - Bower
+  - Mother
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,7 @@ public class LeaderManager : MonoBehaviour
 {
        public int posUpdateFrequency = 5;
        public List<Vector2> leaders = new List<Vector2>();
+	public List<Transform> leaderTrans = new List<Transform> ();
        int numOfLeaders;
     // public List<GameObject> listGos = new List<GameObject>();
 
@@ -16,12 +17,14 @@ public class LeaderManager : MonoBehaviour
         //GameObject[] tempI = GetComponentsInChildren<GameObject>();
         // listGos.AddRange(tempI);
         
-        foreach (Transform t in GetComponentsInChildren<Transform>()) 
+        foreach (Transform t in this.transform) 
 		{
              
 			leaders.Add (t.position);
+			leaderTrans.Add (t);
 		}
-        int numOfLeaders = leaders.Count;
+        numOfLeaders = leaders.Count;
+		//Debug.Log (numOfLeaders);
 	}
 
 	// Update is called once per frame
@@ -29,21 +32,18 @@ public class LeaderManager : MonoBehaviour
     {
         if (Random.Range(0, posUpdateFrequency) == 0)
         {
+			
             for (int i = 0; i < numOfLeaders; i++)
             {
-                Transform trans = GetComponentsInChildren<Transform>()[i];
-                Vector3 pos3 = trans.position;
-                Vector2 pos2 = V3toV2(pos3);
-                leaders[i] = pos2;
+
+				leaders [i] = leaderTrans [i].position;
             }
+
+
         }  
+
+
     }
 
-    Vector2 V3toV2(Vector3 _vector3) //makes a Vector2 out of the x and y of a Vector3
-    {
-        float x = _vector3.x;
-        float y = _vector3.y;
-        Vector2 newVector = new Vector2(x, y);
-        return newVector;
-    }
+    
 }
