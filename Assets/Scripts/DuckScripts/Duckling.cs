@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class Duckling : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+	public bool isDead = false;
 	// Update is called once per frame
 	void Update () {
 		

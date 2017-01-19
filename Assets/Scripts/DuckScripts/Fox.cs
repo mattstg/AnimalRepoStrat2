@@ -6,6 +6,8 @@ public class Fox : MonoBehaviour {
 
 	enum FoxState { Idle, FocusedOnGoal} //idle for wander, focused on goal for returning or chasing
 	public GameObject waypointParent;
+	public Transform foxHole;
+	public Transform mouthLoc;
 	List<Vector2> waypoints;
 	float patrolBoxSize = 4;
 	Vector2 patrolOrigin;
@@ -13,7 +15,7 @@ public class Fox : MonoBehaviour {
 	public Vector2 goalPos;
 	Transform chaseTarget;
 	float foxWalkSpeed = 2;
-	float foxRunSpeed = 5;
+	float foxRunSpeed = 4;
 	float foxCurrentSpeed = 2;
 	Transform caughtYoung;
 	float idleWaitTime = 3;
@@ -38,17 +40,33 @@ public class Fox : MonoBehaviour {
 	void Update () {
 		timeWandering += Time.deltaTime;
 
-		if (!chaseTarget) {
-			if (Vector2.Distance (goalPos, transform.position) < .1f) {
+		if (caughtYoung) {
+			caughtYoung.position = mouthLoc.transform.position;
+			goalPos = foxHole.position;
+		}
+
+		if (!chaseTarget) 
+		{
+			if (Vector2.Distance (goalPos, transform.position) < .1f) 
+			{
 				timeWandering = 0;
 				GetComponent<Rigidbody2D> ().velocity = new Vector2 ();
-				if (!chaseTarget) {	
-					idleWaitTime -= Time.deltaTime;
-					if (idleWaitTime <= 0) {
-						idleWaitTime = 3;
-						GetNewWanderPoint ();
+				idleWaitTime -= Time.deltaTime;
+				if (idleWaitTime <= 0) 
+				{
+					
+					if (caughtYoung)
+					{
+						Destroy (caughtYoung.gameObject);
+						caughtYoung = null;
+						transform.FindChild("sightRadius").gameObject.SetActive(false); //refresh hack
+						transform.FindChild("sightRadius").gameObject.SetActive(true);
+
 					}
+					idleWaitTime = 3;
+					GetNewWanderPoint ();
 				}
+
 			} else {
 				MoveTowardsGoal ();
 			}
@@ -58,7 +76,7 @@ public class Fox : MonoBehaviour {
 
 		if (timeWandering >= 7 && !chaseTarget) {
 			GetNewWanderPoint ();
-			//timeWandering
+			timeWandering = 0;
 		}
 	}
 
@@ -67,27 +85,36 @@ public class Fox : MonoBehaviour {
 		currentWaypointIndex++;
 		currentWaypointIndex %= waypoints.Count;
 		goalPos = waypoints [currentWaypointIndex];
+		foxCurrentSpeed = foxWalkSpeed;
 	}
 
 	public void OnCollisionEnter2D(Collision2D coli)
 	{
-		if (coli.gameObject.GetComponent<Duckling> ()) {
-			Debug.Log ("duck collision");
+		if (coli.gameObject.GetComponent<Duckling> () && !caughtYoung) {
+			caughtYoung = coli.gameObject.transform;
+			chaseTarget = null;
+			idleWaitTime = 3;
+			caughtYoung.GetComponent<Duckling> ().isDead = true;
+			Destroy (caughtYoung.GetComponent<CircleCollider2D> ());
+			Destroy (caughtYoung.GetComponent<Rigidbody2D> ());
+			Destroy (caughtYoung.GetComponent<Duckling> ());
+
 		}
 	}
 
 	public void OnTriggerEnter2D(Collider2D coli)
 	{
-		if (coli.GetComponent<Duckling> () && !chaseTarget) {
+		if (coli.GetComponent<Duckling> () && !chaseTarget && !caughtYoung) {
 			foxCurrentSpeed = foxRunSpeed;
 			chaseTarget = coli.transform;
+
 		}
 
 	}
 
 	public void OnTriggerExit2D(Collider2D coli)
 	{
-		if (coli.GetComponent<Duckling> () && coli.GetComponent<Duckling> () == chaseTarget) {
+		if (coli.GetComponent<Duckling> () && coli.GetComponent<Duckling> ().transform == chaseTarget) {
 			chaseTarget = null;
 			foxCurrentSpeed = foxWalkSpeed;
 			GetNewWanderPoint ();
