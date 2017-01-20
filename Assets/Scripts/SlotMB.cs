@@ -28,8 +28,10 @@ public class SlotMB : MonoBehaviour {
 	public void DisplayIncorrectImage()
 	{
 		foreach (Button b in buttons)
-			b.gameObject.SetActive (false);
-		popupImage.gameObject.SetActive (true);
+            b.transform.parent.gameObject.SetActive(false);
+            //b.gameObject.SetActive (false);
+        buttons[0].transform.parent.gameObject.SetActive(true);
+        popupImage.gameObject.SetActive (true);
 		popupImage.GetComponentInChildren<Text> ().text = slot.GetWrongPopup (selectedAns);
 	}
 
@@ -39,14 +41,15 @@ public class SlotMB : MonoBehaviour {
 		foreach (KeyValuePair<int,Slot.SlotInfo> kv in slot.slotInfoDict) {
 			Button but = buttons [kv.Key];
 			but.GetComponentInChildren<Text> ().text = kv.Value.text;
-			but.gameObject.SetActive (true);
+            but.transform.parent.gameObject.SetActive(true);
+            //but.gameObject.SetActive (true);
 		}
 	}
 
 	public void ClosePopupPressed()
 	{
-		RefreshSlot ();
-		popupImage.gameObject.SetActive (false);
+        popupImage.gameObject.SetActive(false);
+        RefreshSlot();
 	}
 
 	public void ButtonPressed(int butID)
@@ -69,8 +72,10 @@ public class SlotMB : MonoBehaviour {
 	public void QuestionIsCorrect()
 	{
 		foreach (Button b in buttons)
-			b.gameObject.SetActive (false);
-		popupImage.gameObject.SetActive (true);
+            b.transform.parent.gameObject.SetActive(false);
+            //b.gameObject.SetActive (false);
+        buttons[0].transform.parent.gameObject.SetActive(true);
+                popupImage.gameObject.SetActive (true);
 		popupImage.GetComponentInChildren<Text> ().text = slot.slotInfoDict[selectedAns].popupText;
 		if(popupImage.GetComponentInChildren<Button> ())
 			popupImage.GetComponentInChildren<Button> ().gameObject.SetActive (false);
@@ -78,8 +83,13 @@ public class SlotMB : MonoBehaviour {
 
 	public void QuestionExplainedPressed()
 	{
-		foreach (Button b in buttons)
-			b.gameObject.SetActive (false);
+        foreach (Button b in buttons)
+        {
+            b.transform.parent.gameObject.SetActive(false);
+//            Debug.Log("p name " + b.transform.parent.name);
+                }
+            //b.gameObject.SetActive (false);
+        buttons[0].transform.parent.gameObject.SetActive(true);
 		popupImage.gameObject.SetActive (true);
 		popupImage.GetComponentInChildren<Text> ().text = slot.questionExplained;
 	}
