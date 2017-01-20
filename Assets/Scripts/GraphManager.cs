@@ -14,6 +14,7 @@ public class GraphManager : MonoBehaviour {
 	public Text titleText;
 
 	public bool allCorrect = false;
+    public bool hasEvaluated = false;
 
     public void Awake()
     {
@@ -29,23 +30,55 @@ public class GraphManager : MonoBehaviour {
 
 	public void GridButtonPressed ()
 	{
-		if (!allCorrect) {
-			int questions = 0;
-			int correct = 0;
-			foreach (Transform t in grid) {
-				questions++;
-				SlotMB slotmb = t.GetComponent<SlotMB> ();
-				if (slotmb.GetIsCorrect ()) {
-					slotmb.QuestionIsCorrect ();
-					correct++;
-				} else {
-					slotmb.DisplayIncorrectImage ();
-				}
-			}
-			if (questions == correct) {
-				allCorrect = true;
-				gridButton.GetComponentInChildren<Text> ().text = "Next";
-			}
+		if (!allCorrect)
+        {
+            if (!hasEvaluated)
+            {
+                int questions = 0;
+                int correct = 0;
+                foreach (Transform t in grid)
+                {
+                    questions++;
+                    SlotMB slotmb = t.GetComponent<SlotMB>();
+                    if (slotmb.GetIsCorrect())
+                    {
+                        slotmb.QuestionIsCorrect();
+                        correct++;
+                    }
+                    else
+                    {
+                        slotmb.DisplayIncorrectImage();
+                    }
+                }
+                if (questions == correct)
+                {
+                    allCorrect = true;
+                    gridButton.GetComponentInChildren<Text>().text = "Next";
+                }
+                else
+                {
+                    gridButton.GetComponentInChildren<Text>().text = "Try Again";
+                }
+                hasEvaluated = true;
+            }
+            else  //if (hasEvaluated)
+            {
+                foreach (Transform t in grid)
+                {
+                    SlotMB slotmb = t.GetComponent<SlotMB>();
+                    if (slotmb.GetIsCorrect())
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        slotmb.ClosePopupPressed();
+                    }
+                }
+                gridButton.GetComponentInChildren<Text>().text = "Submit";
+                hasEvaluated = false;
+            }
+
 		} 
 		else 
 		{

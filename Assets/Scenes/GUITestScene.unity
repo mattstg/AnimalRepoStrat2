@@ -14963,6 +14963,11 @@ Prefab:
       propertyPath: m_FontData.m_MaxSize
       value: 36
       objectReference: {fileID: 0}
+    - target: {fileID: 114961573247032976, guid: 7f735b4f4429ccd48bfc78e25885e8f9,
+        type: 2}
+      propertyPath: m_Text
+      value: Title is a title.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
   m_IsPrefabParent: 0

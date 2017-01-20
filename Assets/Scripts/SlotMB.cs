@@ -8,10 +8,19 @@ public class SlotMB : MonoBehaviour {
 	public Sprite unpressedGraphic;
 	public Sprite pressedGraphic;
 
-	Slot slot;
+    public Sprite infoDefault;
+    public Sprite infoSelected;
+    public Sprite infoCorrect;
+    public Sprite infoIncorrect;
+    public Button infoButton;
+
+    Slot slot;
 	public List<Button> buttons = new List<Button> ();
 	public Image popupImage;
+
 	int selectedAns = 0;
+    bool isExplaining = false;
+    bool isEvaluating = false;
 
 	public void InitializeSlot(Slot _slot)
 	{
@@ -20,7 +29,45 @@ public class SlotMB : MonoBehaviour {
 		RefreshSlot ();
 	}
 
-	public bool GetIsCorrect()
+    public void SetIsExplaining(bool isExp)
+    {
+        if (isExp)
+        {
+            isExplaining = true;
+            infoButton.GetComponent<Image>().sprite = infoSelected;
+        }
+        else
+        {
+            isExplaining = false;
+            infoButton.GetComponent<Image>().sprite = infoDefault;
+        }
+    }
+
+    public void SetIsEvaluating(bool isEval)
+    {
+        if (isEval)
+        {
+            isEvaluating = true;
+            if (GetIsCorrect())
+            {
+                infoButton.interactable = false;
+                infoButton.GetComponent<Image>().sprite = infoCorrect;
+            }
+            else
+            {
+                infoButton.interactable = false;
+                infoButton.GetComponent<Image>().sprite = infoIncorrect;
+            }
+        }
+        else if (!isEval)
+        {
+            isEvaluating = false;
+            infoButton.interactable = true;
+            infoButton.GetComponent<Image>().sprite = infoDefault;
+        }
+    }
+
+    public bool GetIsCorrect()
 	{
 		return slot.IsCorrectAns (selectedAns);
 	}
@@ -33,6 +80,8 @@ public class SlotMB : MonoBehaviour {
         buttons[0].transform.parent.gameObject.SetActive(true);
         popupImage.gameObject.SetActive (true);
 		popupImage.GetComponentInChildren<Text> ().text = slot.GetWrongPopup (selectedAns);
+        SetIsExplaining(false);
+        SetIsEvaluating(true);
 	}
 
 	public void RefreshSlot()
@@ -44,7 +93,9 @@ public class SlotMB : MonoBehaviour {
             but.transform.parent.gameObject.SetActive(true);
             //but.gameObject.SetActive (true);
 		}
-	}
+        SetIsExplaining(false);
+        SetIsEvaluating(false);
+    }
 
 	public void ClosePopupPressed()
 	{
@@ -54,9 +105,16 @@ public class SlotMB : MonoBehaviour {
 
 	public void ButtonPressed(int butID)
 	{
-		if (butID == 0) {
-			QuestionExplainedPressed ();
-			return;
+		if (butID == 0 ) {
+            if (isEvaluating)
+                return;
+            if (!isExplaining) {
+                QuestionExplainedPressed();
+                return;
+            } else {
+                ClosePopupPressed();
+                return;
+            }
 		}
 
 		selectedAns = butID;
@@ -75,11 +133,13 @@ public class SlotMB : MonoBehaviour {
             b.transform.parent.gameObject.SetActive(false);
             //b.gameObject.SetActive (false);
         buttons[0].transform.parent.gameObject.SetActive(true);
-                popupImage.gameObject.SetActive (true);
+        popupImage.gameObject.SetActive (true);
 		popupImage.GetComponentInChildren<Text> ().text = slot.slotInfoDict[selectedAns].popupText;
 		if(popupImage.GetComponentInChildren<Button> ())
 			popupImage.GetComponentInChildren<Button> ().gameObject.SetActive (false);
-	}
+        SetIsExplaining(false);
+        SetIsEvaluating(true);
+    }
 
 	public void QuestionExplainedPressed()
 	{
@@ -92,5 +152,6 @@ public class SlotMB : MonoBehaviour {
         buttons[0].transform.parent.gameObject.SetActive(true);
 		popupImage.gameObject.SetActive (true);
 		popupImage.GetComponentInChildren<Text> ().text = slot.questionExplained;
+        SetIsExplaining(true);
 	}
 }
