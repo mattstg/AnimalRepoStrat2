@@ -109,9 +109,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1763420245976860}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -17.09, y: -0.85, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -6.6823444, y: -29.288887, z: 0.0625}
+  m_LocalScale: {x: 0.7000002, y: 0.7000002, z: 1}
   m_Children:
   - {fileID: 4735992022202558}
   m_Father: {fileID: 0}
@@ -177,35 +177,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da52700164eb1834faedf8df19f0f469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 0}
-  mother: {fileID: 0}
+  head: {fileID: 1858675436165042}
+  headRotationSpeed: 20
+  updateFrequency: 6
   speedRange: {x: 45, y: 50}
   rotationSpeedRange: {x: 8, y: 10}
   isCalf: 1
-  isPredator: 0
-  runsFromPredators: 1
+  fleesFromPredators: 1
+  predFleeDistance: 30
+  fleeWeight: 20
   averageHeadingWeight: 4
   averagePositionWeight: 8
-  neighbourDistance: 6
+  neighbourDistance: 10
   repulsionDistance: 2
-  repulsionWeight: 3
-  updateFrequency: 6
-  usesWaypoints: 1
+  repulsionWeight: 2
+  usesWaypoints: 0
   waypointWeight: 1
   waypointReachedProximity: 45
   followsLeaders: 1
   leaderWeight: 2
   leaderInfluenceDistance: 50
   followsMother: 1
-  motherWeight: 25
+  mother: {fileID: 0}
+  motherWeight: 15
   usesRandom: 1
   randomWeight: 2
   randomRange: 10
-  usesDirectionalInertia: 1
+  usesDirectionalInertia: 0
   inertiaWeight: 3
   randomizesSpeed: 0
   randomizesRotationSpeed: 0
   speedNormalizing: 1
+  isPredator: 0
+  huntRange: 40
+  huntWeight: 1
+  scavenges: 0
+  scavengeDistance: 15
+  scavengeWeight: 12
+  interPredatorRepelDistance: 5
+  interPredatorRepelWeight: 1
+  predNeighborhoodSize: 20
+  predAverageHeadingWeight: 1
+  predAveragePositionWeight: 1
 --- !u!212 &212060221783855688
 SpriteRenderer:
   m_ObjectHideFlags: 1

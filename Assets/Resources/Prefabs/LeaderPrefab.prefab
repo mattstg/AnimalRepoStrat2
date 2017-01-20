@@ -130,8 +130,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1885383847807388}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 5.5759087, y: 0.9775505, z: -0.125}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 31.9, y: 8.7, z: -0.125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4154955641028854}
@@ -205,7 +205,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 6
-  m_AngularDrag: 0
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -237,19 +237,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da52700164eb1834faedf8df19f0f469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 0}
-  mother: {fileID: 0}
+  head: {fileID: 1296992225907802}
+  headRotationSpeed: 20
+  updateFrequency: 6
   speedRange: {x: 45, y: 50}
   rotationSpeedRange: {x: 8, y: 10}
   isCalf: 0
-  isPredator: 0
-  runsFromPredators: 1
+  fleesFromPredators: 1
+  predFleeDistance: 10
+  fleeWeight: 1
   averageHeadingWeight: 0.5
   averagePositionWeight: 0
   neighbourDistance: 15
   repulsionDistance: 0.75
   repulsionWeight: 1
-  updateFrequency: 6
   usesWaypoints: 1
   waypointWeight: 10
   waypointReachedProximity: 30
@@ -257,15 +258,27 @@ MonoBehaviour:
   leaderWeight: 1
   leaderInfluenceDistance: 0
   followsMother: 0
+  mother: {fileID: 0}
   motherWeight: 1
   usesRandom: 1
-  randomWeight: 3
+  randomWeight: 1
   randomRange: 10
   usesDirectionalInertia: 1
   inertiaWeight: 4
   randomizesSpeed: 0
   randomizesRotationSpeed: 0
   speedNormalizing: 1
+  isPredator: 0
+  huntRange: 40
+  huntWeight: 1
+  scavenges: 0
+  scavengeDistance: 15
+  scavengeWeight: 12
+  interPredatorRepelDistance: 5
+  interPredatorRepelWeight: 1
+  predNeighborhoodSize: 20
+  predAverageHeadingWeight: 1
+  predAveragePositionWeight: 1
 --- !u!212 &212320552720650100
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -298,7 +311,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 47e91bca2722b5d47b78552e0c9a4761, type: 3}
-  m_Color: {r: 0.6397059, g: 0.6161873, b: 0.6161873, a: 1}
+  m_Color: {r: 0.83823526, g: 0.83823526, b: 0.83823526, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!212 &212392006877566562
