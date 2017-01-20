@@ -10,11 +10,11 @@ public class WaypointManager : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		Vector2 position;
+	
 		foreach(Transform t in GetComponentsInChildren<Transform>())
 			{
-			position = t.position;
-			waypointPositions.Add (position);
+			
+			waypointPositions.Add (t.position);
 			//Debug.Log (position.x + " " + position.y);
 			}
 		//waypointPositions.AddRange(Get

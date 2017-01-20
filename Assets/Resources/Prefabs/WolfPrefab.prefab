@@ -258,7 +258,7 @@ MonoBehaviour:
   repulsionDistance: 8
   repulsionWeight: 8
   usesWaypoints: 1
-  waypointWeight: 1
+  waypointWeight: 5
   waypointReachedProximity: 40
   followsLeaders: 0
   leaderWeight: 1

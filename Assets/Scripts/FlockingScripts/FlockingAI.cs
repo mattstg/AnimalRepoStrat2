@@ -7,7 +7,7 @@ public class FlockingAI : MonoBehaviour
     //Works best with 1 mass and 4 linear drag
     //tested on circles of scale 4,2,0 with colliders 
 
-    
+    bool waypointCountDone = false;
 	int numOfWP;
     bool isCorpse = false;
 	Rigidbody2D rigidbody;
@@ -446,7 +446,7 @@ public class FlockingAI : MonoBehaviour
                         GameObject.FindObjectOfType<FlockManager>().flock.Add(this.gameObject); // adds this animal to FlockManager's flock list
                         
                     }
-                    numOfWP = GameObject.FindObjectOfType<WaypointManager>().waypointPositions.Count;
+                    
                     rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
                     speed = Random.Range(speedRange.x, speedRange.y);
                     rotationSpeed = Random.Range(rotationSpeedRange.x, rotationSpeedRange.y);
@@ -456,17 +456,26 @@ public class FlockingAI : MonoBehaviour
 
                 void Update()
                  {
-                    
+                    if(!waypointCountDone)
+        {
+            numOfWP = GameObject.FindObjectOfType<WaypointManager>().waypointPositions.Count;
+            waypointCountDone = true;
+        }
+
                     if (usesWaypoints)
                     {
                         Vector2 waypointCoords = GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint];
                         float distanceToWaypoint = Vector2.Distance(waypointCoords, V3toV2(this.transform.position));
                         if (distanceToWaypoint <= waypointReachedProximity)
                         {
-                            if (activeWaypoint + 1 < numOfWP)
-                                activeWaypoint++;
-                            else
-                                usesWaypoints = false;
+                Debug.Log("numOfWP:" + numOfWP);
+                if (activeWaypoint + 1 < numOfWP)
+                {
+                    activeWaypoint++;
+                    Debug.Log("activeWP:" + activeWaypoint);
+                }
+                else
+                    usesWaypoints = false;
 
 
                         }
