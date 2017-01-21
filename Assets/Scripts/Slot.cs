@@ -32,7 +32,7 @@ public class Slot  {
 	{
 		if (slotInfoDict.ContainsKey (pid))
 			return slotInfoDict [pid].popupText;
-		return "Invalid Answer, Select an answer";
+		return "Please select an answer";
 	}
 
 	public bool IsCorrectAns(int qid)

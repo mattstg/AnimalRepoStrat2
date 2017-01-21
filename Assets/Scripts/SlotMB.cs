@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SlotMB : MonoBehaviour {
 
-	public Sprite unpressedGraphic;
+    public Sprite unpressedGraphic;
 	public Sprite pressedGraphic;
 
     public Sprite infoDefault;
@@ -16,18 +16,71 @@ public class SlotMB : MonoBehaviour {
 
     Slot slot;
 	public List<Button> buttons = new List<Button> ();
-	public Image popupImage;
+
+    public GameObject panelQuestion;
+    public GameObject panelInfo;
+    public GameObject panelB1;
+    public GameObject panelB2;
+    public GameObject panelB3;
+    public GameObject panelB4;
+    public Image panelImage;
 
 	int selectedAns = 0;
     bool isExplaining = false;
     bool isEvaluating = false;
 
-	public void InitializeSlot(Slot _slot)
+    int scrWidth = -1;
+    int margins = 120;
+    int answersTotal = 0;
+
+    public void InitializeSlot(Slot _slot)
 	{
-		slot = _slot;
+        scrWidth = Screen.width;
+        slot = _slot;
 		buttons [0].GetComponentInChildren<Text> ().text = _slot.questiontext;
-		RefreshSlot ();
+        foreach (KeyValuePair<int, Slot.SlotInfo> kv in slot.slotInfoDict)
+            answersTotal++;
+        RefreshSlot();
+        AdjustPanelWidths();
 	}
+
+    public void Update()
+    {
+        if(scrWidth != Screen.width)
+        {
+            scrWidth = Screen.width;
+            AdjustPanelWidths();
+        }
+
+    }
+
+    public void AdjustPanelWidths()
+    {
+        int total = scrWidth - margins - 52;
+        float ansProportion = 0.7F;
+        int answerNum = 4;                 //maintains consistent spacing
+      //int answerNum = answersTotal;      //stretches available answers horizontally
+        int answerWidth = Mathf.FloorToInt(((total * ansProportion) / answerNum) / 2) * 2;
+        int totalQ = total - (answerWidth * answerNum);
+        int questionWidth = Mathf.FloorToInt(totalQ / 2) * 2;
+        int imageWidth = Mathf.FloorToInt((total - questionWidth) / 2) * 2;
+
+        var questionRT = panelQuestion.transform as RectTransform;
+        var infoRT = panelInfo.transform as RectTransform;
+        var b1RT = panelB1.transform as RectTransform;
+        var b2RT = panelB2.transform as RectTransform;
+        var b3RT = panelB3.transform as RectTransform;
+        var b4RT = panelB4.transform as RectTransform;
+        var imageRT = panelImage.transform as RectTransform;
+
+        infoRT.sizeDelta = new Vector2(52, infoRT.sizeDelta.y);
+        b1RT.sizeDelta = new Vector2(answerWidth, b1RT.sizeDelta.y);
+        b2RT.sizeDelta = new Vector2(answerWidth, b2RT.sizeDelta.y);
+        b3RT.sizeDelta = new Vector2(answerWidth, b3RT.sizeDelta.y);
+        b4RT.sizeDelta = new Vector2(answerWidth, b4RT.sizeDelta.y);
+        questionRT.sizeDelta = new Vector2(questionWidth, questionRT.sizeDelta.y);
+        imageRT.sizeDelta = new Vector2(imageWidth, imageRT.sizeDelta.y);
+    }
 
     public void SetIsExplaining(bool isExp)
     {
@@ -78,8 +131,8 @@ public class SlotMB : MonoBehaviour {
             b.transform.parent.gameObject.SetActive(false);
             //b.gameObject.SetActive (false);
         buttons[0].transform.parent.gameObject.SetActive(true);
-        popupImage.gameObject.SetActive (true);
-		popupImage.GetComponentInChildren<Text> ().text = slot.GetWrongPopup (selectedAns);
+        panelImage.gameObject.SetActive (true);
+		panelImage.GetComponentInChildren<Text> ().text = slot.GetWrongPopup (selectedAns);
         SetIsExplaining(false);
         SetIsEvaluating(true);
 	}
@@ -99,7 +152,7 @@ public class SlotMB : MonoBehaviour {
 
 	public void ClosePopupPressed()
 	{
-        popupImage.gameObject.SetActive(false);
+        panelImage.gameObject.SetActive(false);
         RefreshSlot();
 	}
 
@@ -133,10 +186,10 @@ public class SlotMB : MonoBehaviour {
             b.transform.parent.gameObject.SetActive(false);
             //b.gameObject.SetActive (false);
         buttons[0].transform.parent.gameObject.SetActive(true);
-        popupImage.gameObject.SetActive (true);
-		popupImage.GetComponentInChildren<Text> ().text = slot.slotInfoDict[selectedAns].popupText;
-		if(popupImage.GetComponentInChildren<Button> ())
-			popupImage.GetComponentInChildren<Button> ().gameObject.SetActive (false);
+        panelImage.gameObject.SetActive (true);
+		panelImage.GetComponentInChildren<Text> ().text = slot.slotInfoDict[selectedAns].popupText;
+		if(panelImage.GetComponentInChildren<Button> ())
+			panelImage.GetComponentInChildren<Button> ().gameObject.SetActive (false);
         SetIsExplaining(false);
         SetIsEvaluating(true);
     }
@@ -150,8 +203,8 @@ public class SlotMB : MonoBehaviour {
                 }
             //b.gameObject.SetActive (false);
         buttons[0].transform.parent.gameObject.SetActive(true);
-		popupImage.gameObject.SetActive (true);
-		popupImage.GetComponentInChildren<Text> ().text = slot.questionExplained;
+		panelImage.gameObject.SetActive (true);
+		panelImage.GetComponentInChildren<Text> ().text = slot.questionExplained;
         SetIsExplaining(true);
 	}
 }

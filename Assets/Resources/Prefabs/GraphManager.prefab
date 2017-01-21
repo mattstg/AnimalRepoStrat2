@@ -289,11 +289,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b101c643f848314a8f5b8161640e7cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameflow: {fileID: 0}
   grid: {fileID: 224909828817644250}
   gridButton: {fileID: 114409733126211388}
   titleText: {fileID: 114428905649665954}
   allCorrect: 0
+  hasEvaluated: 0
 --- !u!114 &114428905649665954
 MonoBehaviour:
   m_ObjectHideFlags: 1

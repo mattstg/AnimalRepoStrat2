@@ -53,7 +53,7 @@ public class GraphManager : MonoBehaviour {
                 if (questions == correct)
                 {
                     allCorrect = true;
-                    gridButton.GetComponentInChildren<Text>().text = "Next";
+                    gridButton.GetComponentInChildren<Text>().text = "Perfect!";
                 }
                 else
                 {
