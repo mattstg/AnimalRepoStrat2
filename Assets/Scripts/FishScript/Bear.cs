@@ -29,7 +29,6 @@ public class Bear : MonoBehaviour {
 	void Update () {
 		curTimeToAct += Time.deltaTime;
 		if (curState == BearState.Swipe) {
-			Debug.Log ("alpha: " + curTimeToAct / maxTimeToAct);
 			SetSwipeAlpha (bearSwipes [curSwipeIndex].GetComponent<SpriteRenderer> (), curTimeToAct / maxTimeToAct);
 			if (curTimeToAct >= maxTimeToAct)
 				Swipes ();

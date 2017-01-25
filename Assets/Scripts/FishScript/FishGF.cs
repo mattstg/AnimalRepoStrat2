@@ -9,7 +9,6 @@ public class FishGF : GameFlow {
 	int stage = 0;
 	bool nextStep = false;
 	public InputManager im;
-    public GameObject tutorialImage;
 
 	public override void StartFlow()
 	{
@@ -93,7 +92,7 @@ public class FishGF : GameFlow {
 
 	private void ShowTutorial()
 	{
-        tutorialImage.SetActive (true);
+        tutorial.SetActive (true);
 	}
 
 	private void StartGame()
@@ -108,7 +107,7 @@ public class FishGF : GameFlow {
 
 	public void TutorialFinished()
 	{
-        tutorialImage.SetActive (false);
+        tutorial.SetActive (false);
 		nextStep = true;
 	}
 
