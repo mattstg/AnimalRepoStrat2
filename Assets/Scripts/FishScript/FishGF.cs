@@ -13,7 +13,7 @@ public class FishGF : GameFlow {
 	public override void StartFlow()
 	{
 		stage = -1;
-		nextStep = true;
+		nextStep = false;
 	}
 
 	public void Update()
