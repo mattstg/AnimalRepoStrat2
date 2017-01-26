@@ -96,6 +96,7 @@ MonoBehaviour:
   speedRange: {x: 10, y: 15}
   rotationSpeedRange: {x: 12, y: 16}
   isCalf: 0
+  isDuckling: 1
   fleesFromPredators: 0
   predFleeDistance: 25
   fleeWeight: 1
@@ -143,6 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34584c738d3be2d48a85b9a5f94e81af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxQuackStrength: 5
+  quackDecayRate: 1
+  quackStrength: 0
   isDead: 0
 --- !u!212 &212733511115470628
 SpriteRenderer:

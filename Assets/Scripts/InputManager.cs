@@ -7,12 +7,21 @@ public class InputManager : MonoBehaviour {
 	public GameObject clickableObj;
 	public Vector2 clickableSize = new Vector2(.5f,.5f);
 
+
+    public void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            OnMouseDown();
+        }
+
+    }
 	public void OnMouseOver()
 	{
 		MouseOver (Camera.main.ScreenToWorldPoint(Input.mousePosition));
 	}
 
-	public virtual void OnMouseDown()
+	public void OnMouseDown()
 	{
 		Vector2 clickedPos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 

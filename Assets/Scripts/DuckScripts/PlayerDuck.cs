@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDuck : MonoBehaviour {
-    public float speed = 5;
+    public float speed = 5f;
     Vector3 TargetPosition;
-    
+    public int quackRadius = 12;
+    float quackCoolDown = 0f;
+    public int maxQuackCooldown = 10;
+    public float quackCoolDownSpeed = 1f;
 
     public void MousePressed(Vector3 loc)
     {
@@ -13,6 +16,28 @@ public class PlayerDuck : MonoBehaviour {
         float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goalVec);
         transform.eulerAngles = new Vector3(0, 0, angToGoal);
         
+    }
+
+    public void Quack()
+    {
+        if (quackCoolDown == 0)
+        {
+            foreach (GameObject duckling in GameObject.FindObjectOfType<DucklingManager>().Ducklings)
+            {
+                if (!duckling.GetComponent<Duckling>().isDead)
+                {
+                    float dist = Vector3.Distance(transform.position, duckling.transform.position);
+                    if (dist <= quackRadius)
+                    {
+                        duckling.GetComponent<Duckling>().quackStrength = duckling.GetComponent<Duckling>().maxQuackStrength;
+                    }
+                }
+            }
+            quackCoolDown = maxQuackCooldown;
+            Debug.Log("quack!");
+        }
+        else
+            Debug.Log("'Quack' is on cool-down!");
     }
 
     public Vector3 GetTargetPos()
@@ -37,5 +62,14 @@ public class PlayerDuck : MonoBehaviour {
         transform.eulerAngles = new Vector3(0, 0, angToGoal);
 
         transform.position = Vector3.MoveTowards(transform.position, TargetPosition , step);
+
+        if(quackCoolDown > 0f)
+        {
+            quackCoolDown -= Time.deltaTime * quackCoolDownSpeed;
+        }
+        else if(quackCoolDown <= 0f)
+        {
+            quackCoolDown = 0f;
+        }
     }
 }

@@ -57,7 +57,8 @@ public class Fox : MonoBehaviour {
 					
 					if (caughtYoung)
 					{
-						Destroy (caughtYoung.gameObject);
+                        
+                        Destroy (caughtYoung.gameObject);
 						caughtYoung = null;
 						transform.FindChild("sightRadius").gameObject.SetActive(false); //refresh hack
 						transform.FindChild("sightRadius").gameObject.SetActive(true);
@@ -95,7 +96,9 @@ public class Fox : MonoBehaviour {
 			chaseTarget = null;
 			idleWaitTime = 3;
 			caughtYoung.GetComponent<Duckling> ().isDead = true;
-			Destroy (caughtYoung.GetComponent<CircleCollider2D> ());
+            GameObject.FindObjectOfType<DucklingManager>().Ducklings.Remove(caughtYoung.gameObject);
+            GameObject.FindObjectOfType<FlockManager>().flock.Remove(caughtYoung.gameObject);
+            Destroy (caughtYoung.GetComponent<CircleCollider2D> ());
 			Destroy (caughtYoung.GetComponent<Rigidbody2D> ());
 			Destroy (caughtYoung.GetComponent<Duckling> ());
 

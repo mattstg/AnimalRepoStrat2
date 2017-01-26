@@ -27,7 +27,7 @@ public class FlockingAI : MonoBehaviour
 
 	public bool isCalf = false;
 
-    
+    public bool isDuckling = false;
 
     public bool fleesFromPredators = true;
     public float predFleeDistance = 25f;
@@ -242,6 +242,7 @@ public class FlockingAI : MonoBehaviour
 
             if (followsMother)
             {
+                
                 Vector2 v = (V3toV2(mother.transform.position) - V3toV2(this.transform.position));
                 Vector2 vNormalized = v.normalized;
                 vMother = v.normalized;
@@ -398,7 +399,7 @@ public class FlockingAI : MonoBehaviour
 
             //THE ALMIGHTY ROTATE CODE
             Vector2 direction;
-            
+            motherWeight = (isDuckling && !gameObject.GetComponent<Duckling>().isDead) ? motherWeight + gameObject.GetComponent<Duckling>().quackStrength : motherWeight;
             
                 direction =
                       ((vCenter * averagePositionWeight)
@@ -483,15 +484,18 @@ public class FlockingAI : MonoBehaviour
                         }
                     }
 
+        if (!(isDuckling && gameObject.GetComponent<Duckling>() == null))
+        {
+            if (Random.Range(0, updateFrequency) == 0)    //1 chance per <updateFrequency> each update that rules will be applied 
+            { 
+                ApplyRules();
+            }
+
+            Vector2 thisFacingDir = V3toV2(this.transform.right);
 
 
-                    if (Random.Range(0, updateFrequency) == 0) { //1 chance per <updateFrequency> each update that rules will be applied 
-                        ApplyRules();
-                    }
-
-                    Vector2 thisFacingDir = V3toV2(this.transform.right);
-                    
-                    rigidbody.AddForce(thisFacingDir * speed);
+            rigidbody.AddForce(thisFacingDir * speed);
+        }
 
                 }
 
