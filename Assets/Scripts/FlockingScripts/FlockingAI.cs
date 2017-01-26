@@ -15,6 +15,7 @@ public class FlockingAI : MonoBehaviour
     float speed;
     float rotationSpeed;
 
+    public bool turnsHead = true;
     public GameObject head;
     public float headRotationSpeed = 20f;
 
@@ -423,12 +424,13 @@ public class FlockingAI : MonoBehaviour
                 //quaternions in 2D are so goddamn annoying
                 Vector3 direction3 = new Vector3(direction.x, direction.y, 0);
                 float angle = Mathf.Atan2(direction3.y, direction3.x) * Mathf.Rad2Deg;
-                
-                
                 Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-                Quaternion q2 = q * Quaternion.Euler(0, 0, 270f);
-                head.transform.rotation = Quaternion.Slerp(head.transform.rotation, q2, Time.deltaTime * headRotationSpeed);
                 transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
+                if(turnsHead)
+                {
+                    Quaternion q2 = q * Quaternion.Euler(0, 0, 270f);
+                    head.transform.rotation = Quaternion.Slerp(head.transform.rotation, q2, Time.deltaTime * headRotationSpeed);
+                }
                 
             }
 
@@ -456,7 +458,7 @@ public class FlockingAI : MonoBehaviour
 
                 void Update()
                  {
-                    if(!waypointCountDone)
+                    if(!waypointCountDone && usesWaypoints)
         {
             numOfWP = GameObject.FindObjectOfType<WaypointManager>().waypointPositions.Count;
             waypointCountDone = true;

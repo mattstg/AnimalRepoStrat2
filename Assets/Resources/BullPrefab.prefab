@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da52700164eb1834faedf8df19f0f469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnsHead: 1
   head: {fileID: 1857684701287814}
   headRotationSpeed: 20
   updateFrequency: 6
