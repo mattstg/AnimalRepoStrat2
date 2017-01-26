@@ -13,7 +13,7 @@ public class FishGF : GameFlow {
 	public override void StartFlow()
 	{
 		stage = -1;
-		nextStep = false;
+		nextStep = true;
 	}
 
 	public void Update()
@@ -24,7 +24,7 @@ public class FishGF : GameFlow {
 
 			stage++;
 			switch (stage) {
-			case 0:
+		case 0:
 				IntroText ();
 				break;
 			case 1:
@@ -39,6 +39,9 @@ public class FishGF : GameFlow {
 			case 4:
 				PostGameQuestions (); //summary questions
 				break;
+		case 5:
+			GoToNextScene ();
+			break;
 			default:
 				break;
 			}
@@ -100,12 +103,12 @@ public class FishGF : GameFlow {
 		im.gameObject.SetActive (true);
 	}
 
-	public void GameFinished(BowerBird winner, float score)
+	public void GameFinished()
 	{
 		nextStep = true;
 	}
 
-	public void TutorialFinished()
+	public override void TutorialClosed()
 	{
         tutorial.SetActive (false);
 		nextStep = true;

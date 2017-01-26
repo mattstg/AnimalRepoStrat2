@@ -9,6 +9,8 @@ public class GraphManager : MonoBehaviour {
 
 	string slotmbPrefab = "Prefabs/SlotMB";
 
+	public AudioSource rightAudio;
+	public AudioSource wrongAudio;
 	public Transform grid;
 	public Button gridButton;
 	public Text titleText;
@@ -32,6 +34,7 @@ public class GraphManager : MonoBehaviour {
 	{
 		if (!allCorrect)
         {
+			
             if (!hasEvaluated)
             {
                 int questions = 0;
@@ -52,11 +55,13 @@ public class GraphManager : MonoBehaviour {
                 }
                 if (questions == correct)
                 {
+					rightAudio.Play ();
                     allCorrect = true;
                     gridButton.GetComponentInChildren<Text>().text = "Perfect!";
                 }
                 else
                 {
+					wrongAudio.Play ();
                     gridButton.GetComponentInChildren<Text>().text = "Try Again";
                 }
                 hasEvaluated = true;
@@ -82,6 +87,7 @@ public class GraphManager : MonoBehaviour {
 		} 
 		else 
 		{
+			
 			gameflow.AnsweredGraphCorrectly ();
 		}
 

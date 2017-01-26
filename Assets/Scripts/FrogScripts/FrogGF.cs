@@ -5,7 +5,6 @@ using UnityEngine;
 public class FrogGF : GameFlow {
 
 	public FrogCinematic frogCinematic;
-	public GameObject tutorialScreen;
 	int stage = 0;
 	bool nextStep = false;
 	public Frog playerFrog;
@@ -16,6 +15,7 @@ public class FrogGF : GameFlow {
 
 	public override void StartFlow()
 	{
+		nextSceneName = "FishScene";
 		stage = -1;
 		nextStep = true;
 	}
@@ -58,6 +58,9 @@ public class FrogGF : GameFlow {
             break;
 		case 5:
 			PostGameQuestions (); //summary questions
+			break;
+		case 6:
+			GoToNextScene ();
 			break;
 		default:
 			break;
@@ -119,7 +122,7 @@ public class FrogGF : GameFlow {
 	private void ShowTutorial()
 	{
 		frogCinematic.StartFirstAridCinematic ();
-		tutorialScreen.SetActive (true);
+		tutorial.SetActive (true);
 	}
 
 	private void StartGame()
@@ -146,9 +149,9 @@ public class FrogGF : GameFlow {
         Camera.main.orthographicSize = 5;
     }
 
-	public void TutorialFinished()
+	public override void TutorialClosed()
 	{
-		tutorialScreen.SetActive (false);
+		tutorial.SetActive (false);
 		nextStep = true;
 	}
 

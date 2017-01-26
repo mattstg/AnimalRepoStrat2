@@ -11,7 +11,6 @@ public class BowerGF : GameFlow {
 	public PlayerBowerBird playerBB;
 	public FemaleBowerBird femaleBB;
 	public InputManager im;
-    public GameObject tutorialImage;
 
 	public override void StartFlow()
 	{
@@ -21,7 +20,7 @@ public class BowerGF : GameFlow {
 
 	public void Update()
 	{
-		if (!nextStep || stage == 3) {
+		if (!nextStep) {
 			//we are in game 
 
 		} else {
@@ -38,11 +37,13 @@ public class BowerGF : GameFlow {
 				ShowTutorial (); //show tutorial
 				break;
 			case 3:
-                    Debug.Log("start");
 				StartGame (); //start game
 				break;
 			case 4:
 				PostGameQuestions (); //summary questions
+				break;
+			case 5:
+				GoToNextScene ();
 				break;
 			default:
 				break;
@@ -98,7 +99,7 @@ public class BowerGF : GameFlow {
 	private void ShowTutorial()
 	{
         //frogCinematic.StartAridCinematic ();
-        tutorialImage.SetActive (true);
+        tutorial.SetActive (true);
 	}
 
 	private void StartGame()
@@ -110,15 +111,21 @@ public class BowerGF : GameFlow {
 		//playerFrog.CreateFrog (true,true);
 	}
 
+	public void CheatFinishGame()
+	{
+		Debug.Log ("ddd");
+		nextStep = true;
+	}
+
 	public void GameFinished(BowerBird winner, float score)
 	{
 		//play cinamatic
 		nextStep = true;
 	}
 
-	public void TutorialFinished()
+	public override void TutorialClosed()
 	{
-        tutorialImage.SetActive (false);
+		tutorial.SetActive (false);
 		nextStep = true;
 	}
 
