@@ -22,10 +22,12 @@ public class Duckling : MonoBehaviour {
         if (quackStrength > 0)
         {
             quackStrength -= Time.deltaTime * quackDecayRate;
+            
         }
         else if(quackStrength <= 0)
         {
             quackStrength = 0;
         }
-	}
+        //Debug.Log(quackStrength);
+    }
 }

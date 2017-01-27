@@ -247,6 +247,11 @@ public class FlockingAI : MonoBehaviour
                 Vector2 vNormalized = v.normalized;
                 vMother = v.normalized;
 
+                if (isDuckling && !gameObject.GetComponent<Duckling>().isDead)
+                {
+                    vMother *= gameObject.GetComponent<Duckling>().quackStrength;
+                }
+
             }
 
             if (usesRandom)
@@ -399,7 +404,8 @@ public class FlockingAI : MonoBehaviour
 
             //THE ALMIGHTY ROTATE CODE
             Vector2 direction;
-            motherWeight = (isDuckling && !gameObject.GetComponent<Duckling>().isDead) ? motherWeight + gameObject.GetComponent<Duckling>().quackStrength : motherWeight;
+            
+                
             
                 direction =
                       ((vCenter * averagePositionWeight)

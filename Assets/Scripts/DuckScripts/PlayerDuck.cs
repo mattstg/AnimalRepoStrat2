@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDuck : MonoBehaviour {
-    
+
+    public GameObject QuackCircle;
     public float speed = 5f;
     //Vector3 TargetPosition;
     public float quackRadius = 12f;
@@ -21,6 +22,7 @@ public class PlayerDuck : MonoBehaviour {
     {
         if (quackCoolDown == 0)
         {
+            QuackCircle.GetComponent<QuackCircle>().currentAlpha = QuackCircle.GetComponent<QuackCircle>().maxAlpha;
             foreach (GameObject duckling in GameObject.FindObjectOfType<DucklingManager>().Ducklings)
             {
                 if (!duckling.GetComponent<Duckling>().isDead)

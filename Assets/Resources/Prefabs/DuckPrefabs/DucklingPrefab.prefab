@@ -92,7 +92,7 @@ MonoBehaviour:
   turnsHead: 0
   head: {fileID: 0}
   headRotationSpeed: 20
-  updateFrequency: 5
+  updateFrequency: 1
   speedRange: {x: 10, y: 15}
   rotationSpeedRange: {x: 12, y: 16}
   isCalf: 0

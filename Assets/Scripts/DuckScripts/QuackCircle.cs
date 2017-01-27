@@ -5,7 +5,9 @@ using UnityEngine;
 public class QuackCircle : MonoBehaviour {
     public GameObject player;
     float qRadius;
-   
+    public float maxAlpha = .5f;
+    public float circleVisibleLife = 2f;
+    public float currentAlpha = 0f;
 
     // Use this for initialization
     void Start () {
@@ -17,7 +19,20 @@ public class QuackCircle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-      
+
+        if (currentAlpha >= 0)
+        {
+            Color tmp = gameObject.GetComponent<SpriteRenderer>().color;
+            tmp.a = currentAlpha;
+            gameObject.GetComponent<SpriteRenderer>().color = tmp;
+            currentAlpha -= maxAlpha / (circleVisibleLife / Time.deltaTime);
+            Debug.Log(gameObject.GetComponent<SpriteRenderer>().color.a);
+        }
+
+        else if (currentAlpha < 0)
+        {
+            currentAlpha = 0f;
+        }
         
 
     }
