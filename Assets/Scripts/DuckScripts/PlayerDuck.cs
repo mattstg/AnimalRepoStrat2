@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDuck : MonoBehaviour {
+    
     public float speed = 5f;
-    Vector3 TargetPosition;
-    public int quackRadius = 12;
+    //Vector3 TargetPosition;
+    public float quackRadius = 12f;
     float quackCoolDown = 0f;
     public int maxQuackCooldown = 10;
     public float quackCoolDownSpeed = 1f;
+    Vector3 targetPos = new Vector3();
 
     public void MousePressed(Vector3 loc)
     {
-        Vector3 goalVec = loc;
-        float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goalVec);
-        transform.eulerAngles = new Vector3(0, 0, angToGoal);
-        
+       targetPos = loc;  
     }
 
     public void Quack()
@@ -50,18 +49,26 @@ public class PlayerDuck : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //GameObject.FindObjectOfType<FlockManager>().flock.Add(this.gameObject);
-        TargetPosition = transform.position;
+        targetPos = transform.position;
+        
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        TargetPosition = GetTargetPos();
+
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         float step = speed * Time.deltaTime;
 
-        float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, TargetPosition);
-        transform.eulerAngles = new Vector3(0, 0, angToGoal);
 
-        transform.position = Vector3.MoveTowards(transform.position, TargetPosition , step);
+        float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, targetPos);
+        if (Vector3.Distance(this.transform.position, targetPos) > .2f)
+        {
+            transform.eulerAngles = new Vector3(0, 0, angToGoal);
+        }
+            
+
+        transform.position = Vector3.MoveTowards(transform.position, targetPos , step);
 
         if(quackCoolDown > 0f)
         {
