@@ -8,8 +8,10 @@ public class FishIM : InputManager {
 	protected override void MouseDown (Vector2 mouseWorldPos)
 	{
 	//	Debug.Log ("mouse down");
-		pF.isMoving = true;
-		pF.MoveTo (mouseWorldPos);
+		if (pF != null) {
+			pF.isMoving = true;
+			pF.MoveTo (mouseWorldPos);
+		}
 	} 
 
 	protected override void MouseClickedOnObjOfInterest ()

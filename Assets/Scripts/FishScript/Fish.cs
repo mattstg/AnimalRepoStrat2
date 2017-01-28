@@ -5,17 +5,16 @@ using UnityEngine;
 public class Fish : MonoBehaviour {
 	public Vector3 desiredPos;
 	public bool isMoving;
-	public Rigidbody2D body;
-	public bool isRotateLeft = false;
 
 	//FISH GV
-	public float rotateSpeed = 0.5f;
-	public float moveSpeed = 0;
+	public float rotateSpeed = 360; //45 degrees per Sec
+	private float rotateSpeedRadians {get{return rotateSpeed * Mathf.PI / 180;} set{rotateSpeedRadians = value;}}
+	public float moveSpeed = 3;
 
 
 	// Use this for initialization
 	void Start () {
-		
+		GetComponent<Rigidbody2D> ().freezeRotation = true;
 	}
 	
 	// Update is called once per frame
@@ -24,46 +23,44 @@ public class Fish : MonoBehaviour {
 	}
 
 	public void FishUpdate(){
-		if (isMoving) {
-
-			float angToGoal = MathHelper.AngleBetweenPoints((Vector2) this.transform.position, (Vector2) desiredPos) - 90;
-			angToGoal = (angToGoal < -180) ? angToGoal + 360 : angToGoal;
-			Debug.Log ("angToGoal " + angToGoal);
-			float currentz = transform.eulerAngles.z;
-			currentz = (currentz > 180) ? currentz - 360 : currentz;
-			Debug.Log ("currentz " + currentz);
-			//isClose ();
-
-			if (currentz + 10 > || angToGoal < currentz - 10) {
-				if (angToGoal > 0)
-				transform.eulerAngles = new Vector3 (0, 0, currentz + rotateSpeed);
-				else
-					transform.eulerAngles = new Vector3 (0, 0, currentz - rotateSpeed);
-			} else {
-				transform.eulerAngles = new Vector3 (0, 0, angToGoal);
-			}
-
-
-
-
-			MoveForward (moveSpeed);
-			
 		
+		if (isMoving) {
+			Vector3 temp = desiredPos - transform.position;
+			if (Mathf.Abs (temp.magnitude) > 0.4f) {
+				RotateToDesPoint ();
+				MoveForward (desiredPos);
+			} else {
+				transform.position = desiredPos;
+				isMoving = false;
+			}
 		} else {
-			MoveForward (moveSpeed/5);
+			//MoveTo (transform.position + 2 * transform.forward);
 		}
 	}
 
-	private void MoveForward(float _speed){
-		//body.AddForce (transform.up * _speed * Time.deltaTime);
+	private void RotateToDesPoint(){
+		transform.eulerAngles = clampXY(Vector3.RotateTowards (transform.eulerAngles, desiredPos, rotateSpeedRadians * Time.deltaTime, rotateSpeedRadians));
+
 	}
 
-	public void MoveTo(Vector2 position){
-		desiredPos = new Vector3 (position.x, position.y, 0);
+	private void MoveForward(Vector3 des){
+		transform.position = clampZ(Vector3.MoveTowards (transform.position,des, moveSpeed * Time.deltaTime));
+	}
+
+	public void MoveTo(Vector3 newDes){
+		desiredPos = newDes;
 		isMoving = true;
 	}
 
 	public bool isClose(float desired, float current){
-
+		return false;
+	}
+		
+	private Vector3 clampZ(Vector3 toChange){
+		return new Vector3 (toChange.x, toChange.y, 0);
+	}
+		
+	private Vector3 clampXY(Vector3 toChange){
+		return new Vector3 (0, 0, toChange.z);
 	}
 }
