@@ -93,18 +93,18 @@ MonoBehaviour:
   head: {fileID: 0}
   headRotationSpeed: 20
   updateFrequency: 1
-  speedRange: {x: 10, y: 15}
-  rotationSpeedRange: {x: 12, y: 16}
+  speedRange: {x: 7, y: 9}
+  rotationSpeedRange: {x: 8, y: 10}
   isCalf: 0
   isDuckling: 1
   fleesFromPredators: 0
   predFleeDistance: 25
   fleeWeight: 1
-  averageHeadingWeight: 15
-  averagePositionWeight: 1
+  averageHeadingWeight: 0.5
+  averagePositionWeight: 0.5
   neighbourDistance: 6
-  repulsionDistance: 0.75
-  repulsionWeight: 15
+  repulsionDistance: 0.5
+  repulsionWeight: 5
   usesWaypoints: 0
   waypointWeight: 1
   waypointReachedProximity: 0
@@ -113,15 +113,16 @@ MonoBehaviour:
   leaderInfluenceDistance: 0
   followsMother: 1
   mother: {fileID: 0}
-  motherWeight: 1
+  motherWeight: 1.5
   usesRandom: 1
-  randomWeight: 1.5
+  randomWeight: 3
   randomRange: 45
-  usesDirectionalInertia: 1
+  randVectUpdateFrequency: 40
+  usesDirectionalInertia: 0
   inertiaWeight: 1
-  randomizesSpeed: 1
-  randomizesRotationSpeed: 1
-  speedNormalizing: 0
+  randomizesSpeed: 0
+  randomizesRotationSpeed: 0
+  speedNormalizing: 1
   isPredator: 0
   huntRange: 40
   huntWeight: 1
@@ -144,8 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34584c738d3be2d48a85b9a5f94e81af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxQuackStrength: 5
-  quackDecayRate: 1
+  maxQuackStrength: 3
+  quackDecayRate: 0.2
   quackStrength: 0
   isDead: 0
 --- !u!212 &212733511115470628

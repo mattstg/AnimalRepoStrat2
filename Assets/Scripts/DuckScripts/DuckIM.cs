@@ -13,7 +13,6 @@ public class DuckIM : InputManager {
 	protected override void MouseClickedOnObjOfInterest ()
 	{
         playerDuck.GetComponent<PlayerDuck>().Quack();
-        Debug.Log("clickedObjOfInt");
 	}
 
 }

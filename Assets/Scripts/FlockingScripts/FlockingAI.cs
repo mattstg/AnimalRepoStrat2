@@ -63,6 +63,8 @@ public class FlockingAI : MonoBehaviour
     public bool usesRandom = true; //applies a random influence on direction
 	public float randomWeight = 1.5f; //multiplier for strength of random influence
 	public float randomRange = 45f; //the largest degree turn left or right that the random vector can be
+    public int randVectUpdateFrequency = 30;
+    Vector2 vRandom = Vector2.zero;
 
     public bool usesDirectionalInertia = true;
 	public float inertiaWeight = 1f;
@@ -141,7 +143,6 @@ public class FlockingAI : MonoBehaviour
             Vector2 vWaypoint = Vector2.zero;
             Vector2 vLeader = Vector2.zero;
             Vector2 vMother = Vector2.zero;
-            Vector2 vRandom = Vector2.zero;
             Vector2 vInertia = Vector2.zero;
             Vector2 vFlee = Vector2.zero;
             Vector2 vHunt = Vector2.zero;
@@ -254,21 +255,7 @@ public class FlockingAI : MonoBehaviour
 
             }
 
-            if (usesRandom)
-            {
-                float x = this.transform.right.x;
-                float y = this.transform.right.y;
-                float deltaAngle = Random.Range(-randomRange, randomRange);
-                deltaAngle = deltaAngle * Mathf.Deg2Rad;
-                float cosTheta = Mathf.Cos(deltaAngle);
-                float sinTheta = Mathf.Sin(deltaAngle);
-                float newX = (x * cosTheta) - (y * sinTheta);
-                float newY = (x * sinTheta) + (y * cosTheta);
-
-                vRandom.x = newX;
-                vRandom.y = newY;
-                vRandom = vRandom.normalized;// now equals a normalized random vector
-            }
+           
 
             if (usesDirectionalInertia)
             {
@@ -422,8 +409,8 @@ public class FlockingAI : MonoBehaviour
                     + (vPredHeading * predAverageHeadingWeight)
                     + (vPredCenter * predAveragePositionWeight)
                     + (vScavenge * scavengeWeight));
-            
 
+            Debug.Log(vRandom.ToString());
             direction = direction.normalized;
 
             if (direction != Vector2.zero)
@@ -465,11 +452,30 @@ public class FlockingAI : MonoBehaviour
 
                 void Update()
                  {
-                    if(!waypointCountDone && usesWaypoints)
+        if (usesRandom)
         {
-            numOfWP = GameObject.FindObjectOfType<WaypointManager>().waypointPositions.Count;
-            waypointCountDone = true;
+            if (Random.Range(0, randVectUpdateFrequency) == 0)
+            {
+                float x = this.transform.right.x;
+                float y = this.transform.right.y;
+                float deltaAngle = Random.Range(-randomRange, randomRange);
+                deltaAngle = deltaAngle * Mathf.Deg2Rad;
+                float cosTheta = Mathf.Cos(deltaAngle);
+                float sinTheta = Mathf.Sin(deltaAngle);
+                float newX = (x * cosTheta) - (y * sinTheta);
+                float newY = (x * sinTheta) + (y * cosTheta);
+
+                vRandom.x = newX;
+                vRandom.y = newY;
+                vRandom = vRandom.normalized;// now equals a normalized random vector
+            }
         }
+
+        if (!waypointCountDone && usesWaypoints)
+                    {
+                        numOfWP = GameObject.FindObjectOfType<WaypointManager>().waypointPositions.Count;
+                        waypointCountDone = true;
+                    }
 
                     if (usesWaypoints)
                     {
@@ -477,11 +483,11 @@ public class FlockingAI : MonoBehaviour
                         float distanceToWaypoint = Vector2.Distance(waypointCoords, V3toV2(this.transform.position));
                         if (distanceToWaypoint <= waypointReachedProximity)
                         {
-                Debug.Log("numOfWP:" + numOfWP);
+                
                 if (activeWaypoint + 1 < numOfWP)
                 {
                     activeWaypoint++;
-                    Debug.Log("activeWP:" + activeWaypoint);
+                    
                 }
                 else
                     usesWaypoints = false;

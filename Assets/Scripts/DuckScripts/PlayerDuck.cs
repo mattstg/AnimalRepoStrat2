@@ -12,6 +12,11 @@ public class PlayerDuck : MonoBehaviour {
     public int maxQuackCooldown = 10;
     public float quackCoolDownSpeed = 1f;
     Vector3 targetPos = new Vector3();
+    AudioSource source;
+    AudioClip quack;
+
+
+
 
     public void MousePressed(Vector3 loc)
     {
@@ -34,10 +39,11 @@ public class PlayerDuck : MonoBehaviour {
                     }
                 }
             }
+            source.Play();
             quackCoolDown = maxQuackCooldown;
-            Debug.Log("quack!");
+       
         }
-        else
+        else                                                          
             Debug.Log("'Quack' is on cool-down!");
     }
 
@@ -52,9 +58,9 @@ public class PlayerDuck : MonoBehaviour {
 	void Start () {
         //GameObject.FindObjectOfType<FlockManager>().flock.Add(this.gameObject);
         targetPos = transform.position;
-        
-
-	}
+        source = GetComponent<AudioSource>();
+        quack =(AudioClip)Resources.Load("sounds/duckCall.mp3");
+    }
 	
 	// Update is called once per frame
 	void Update () {

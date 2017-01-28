@@ -26,7 +26,7 @@ public class QuackCircle : MonoBehaviour {
             tmp.a = currentAlpha;
             gameObject.GetComponent<SpriteRenderer>().color = tmp;
             currentAlpha -= maxAlpha / (circleVisibleLife / Time.deltaTime);
-            Debug.Log(gameObject.GetComponent<SpriteRenderer>().color.a);
+
         }
 
         else if (currentAlpha < 0)
