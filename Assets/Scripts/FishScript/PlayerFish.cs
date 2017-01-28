@@ -6,7 +6,7 @@ public class PlayerFish : Fish {
 
 	// Use this for initialization
 	void  Start () {
-		
+		GetComponent<Rigidbody2D> ().freezeRotation = true;
 	}
 	
 	// Update is called once per frame

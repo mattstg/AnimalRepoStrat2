@@ -3,13 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Fish : MonoBehaviour {
+	private float speedBoostTime = 1;
+
 	public Vector3 desiredPos;
 	public bool isMoving;
 
 	//FISH GV
-	public float rotateSpeed = 360; //45 degrees per Sec
-	private float rotateSpeedRadians {get{return rotateSpeed * Mathf.PI / 180;} set{rotateSpeedRadians = value;}}
-	public float moveSpeed = 3;
+	private float rotateSpeed = 10; //45 degrees per Sec
+	private float speedBoost = 1f; // moveSpeed * speedBoost is max total speed during boost
+	private float timeSinceLastClick = 0f;
+
+	private float realMov = 2;
+	private float moveSpeed {
+		set { realMov = value; } 
+		get {
+			if (timeSinceLastClick < speedBoostTime) {
+				float percentCompletion = 1 - timeSinceLastClick / speedBoostTime;
+				return realMov + realMov * speedBoost * percentCompletion;
+			}
+			else
+				return realMov;
+		}
+	}
 
 
 	// Use this for initialization
@@ -23,33 +38,42 @@ public class Fish : MonoBehaviour {
 	}
 
 	public void FishUpdate(){
-		
+		timeSinceLastClick += Time.deltaTime;
 		if (isMoving) {
 			Vector3 temp = desiredPos - transform.position;
 			if (Mathf.Abs (temp.magnitude) > 0.4f) {
-				RotateToDesPoint ();
+				RotateToDesPoint (desiredPos);
 				MoveForward (desiredPos);
 			} else {
-				transform.position = desiredPos;
+				//transform.position = desiredPos;
 				isMoving = false;
 			}
 		} else {
-			//MoveTo (transform.position + 2 * transform.forward);
+			//RotateToDesPoint (transform.position + transform.up);
+			MoveTo (transform.position + transform.up);
 		}
 	}
 
-	private void RotateToDesPoint(){
-		transform.eulerAngles = clampXY(Vector3.RotateTowards (transform.eulerAngles, desiredPos, rotateSpeedRadians * Time.deltaTime, rotateSpeedRadians));
-
+	private void RotateToDesPoint(Vector3 _desiredPos){
+		Vector3 dirVector = _desiredPos - transform.position;
+		float angle = Mathf.Atan2 (dirVector.y, dirVector.x) * Mathf.Rad2Deg;
+		Quaternion q = Quaternion.AngleAxis (angle + 270,Vector3.forward);
+		transform.rotation = Quaternion.Slerp (transform.rotation, q, rotateSpeed * Time.deltaTime);
 	}
 
 	private void MoveForward(Vector3 des){
 		transform.position = clampZ(Vector3.MoveTowards (transform.position,des, moveSpeed * Time.deltaTime));
 	}
 
-	public void MoveTo(Vector3 newDes){
+	private void MoveTo(Vector3 newDes){
 		desiredPos = newDes;
 		isMoving = true;
+
+	}
+
+	public void PlayerMoveTo(Vector3 newDes){
+		timeSinceLastClick = 0;
+		MoveTo (newDes);
 	}
 
 	public bool isClose(float desired, float current){

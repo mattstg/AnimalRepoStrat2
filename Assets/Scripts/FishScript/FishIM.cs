@@ -10,7 +10,7 @@ public class FishIM : InputManager {
 	//	Debug.Log ("mouse down");
 		if (pF != null) {
 			pF.isMoving = true;
-			pF.MoveTo (mouseWorldPos);
+			pF.PlayerMoveTo (mouseWorldPos);
 		}
 	} 
 
