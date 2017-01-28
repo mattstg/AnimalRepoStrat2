@@ -9,6 +9,7 @@ TagManager:
   - BowerBird
   - Bower
   - Mother
+  - Tree
   layers:
   - Default
   - TransparentFX
@@ -52,11 +53,11 @@ TagManager:
   - name: Effects
     uniqueID: 828437909
     locked: 0
-  - name: Creatures
-    uniqueID: 1006921303
-    locked: 0
   - name: Water
     uniqueID: 3585568583
+    locked: 0
+  - name: Creatures
+    uniqueID: 1006921303
     locked: 0
   - name: Rock
     uniqueID: 4123448347

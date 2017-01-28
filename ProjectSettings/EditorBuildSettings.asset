@@ -13,3 +13,9 @@ EditorBuildSettings:
     path: Assets/Scenes/BowerScene.unity
   - enabled: 1
     path: Assets/Scenes/TestScene.unity
+  - enabled: 1
+    path: Assets/Scenes/FishScene.unity
+  - enabled: 1
+    path: Assets/Scenes/CaribouScene.unity
+  - enabled: 1
+    path: Assets/Scenes/DuckScene.unity

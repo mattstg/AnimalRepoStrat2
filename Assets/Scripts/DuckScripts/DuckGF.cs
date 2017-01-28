@@ -9,7 +9,6 @@ public class DuckGF : GameFlow {
 	int stage = 0;
 	bool nextStep = false;
 	public InputManager im;
-    public GameObject tutorialImage;
 
 	public override void StartFlow()
 	{
@@ -40,6 +39,9 @@ public class DuckGF : GameFlow {
 			case 4:
 				PostGameQuestions (); //summary questions
 				break;
+		case 5:
+			GoToNextScene ();
+			break;
 			default:
 				break;
 			}
@@ -93,7 +95,7 @@ public class DuckGF : GameFlow {
 
 	private void ShowTutorial()
 	{
-        tutorialImage.SetActive (true);
+        tutorial.SetActive (true);
 	}
 
 	private void StartGame()
@@ -101,14 +103,14 @@ public class DuckGF : GameFlow {
 		im.gameObject.SetActive (true);
 	}
 
-	public void GameFinished(BowerBird winner, float score)
+	public void GameFinished()
 	{
 		nextStep = true;
 	}
 
-	public void TutorialFinished()
+	public override void TutorialClosed()
 	{
-        tutorialImage.SetActive (false);
+        tutorial.SetActive (false);
 		nextStep = true;
 	}
 

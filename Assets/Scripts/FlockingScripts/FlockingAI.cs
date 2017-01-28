@@ -15,6 +15,7 @@ public class FlockingAI : MonoBehaviour
     float speed;
     float rotationSpeed;
 
+    public bool turnsHead = true;
     public GameObject head;
     public float headRotationSpeed = 20f;
 
@@ -26,7 +27,7 @@ public class FlockingAI : MonoBehaviour
 
 	public bool isCalf = false;
 
-    
+    public bool isDuckling = false;
 
     public bool fleesFromPredators = true;
     public float predFleeDistance = 25f;
@@ -62,6 +63,8 @@ public class FlockingAI : MonoBehaviour
     public bool usesRandom = true; //applies a random influence on direction
 	public float randomWeight = 1.5f; //multiplier for strength of random influence
 	public float randomRange = 45f; //the largest degree turn left or right that the random vector can be
+    public int randVectUpdateFrequency = 30;
+    Vector2 vRandom = Vector2.zero;
 
     public bool usesDirectionalInertia = true;
 	public float inertiaWeight = 1f;
@@ -140,7 +143,6 @@ public class FlockingAI : MonoBehaviour
             Vector2 vWaypoint = Vector2.zero;
             Vector2 vLeader = Vector2.zero;
             Vector2 vMother = Vector2.zero;
-            Vector2 vRandom = Vector2.zero;
             Vector2 vInertia = Vector2.zero;
             Vector2 vFlee = Vector2.zero;
             Vector2 vHunt = Vector2.zero;
@@ -241,27 +243,19 @@ public class FlockingAI : MonoBehaviour
 
             if (followsMother)
             {
+                
                 Vector2 v = (V3toV2(mother.transform.position) - V3toV2(this.transform.position));
                 Vector2 vNormalized = v.normalized;
                 vMother = v.normalized;
 
+                if (isDuckling && !gameObject.GetComponent<Duckling>().isDead)
+                {
+                    vMother *= gameObject.GetComponent<Duckling>().quackStrength;
+                }
+
             }
 
-            if (usesRandom)
-            {
-                float x = this.transform.right.x;
-                float y = this.transform.right.y;
-                float deltaAngle = Random.Range(-randomRange, randomRange);
-                deltaAngle = deltaAngle * Mathf.Deg2Rad;
-                float cosTheta = Mathf.Cos(deltaAngle);
-                float sinTheta = Mathf.Sin(deltaAngle);
-                float newX = (x * cosTheta) - (y * sinTheta);
-                float newY = (x * sinTheta) + (y * cosTheta);
-
-                vRandom.x = newX;
-                vRandom.y = newY;
-                vRandom = vRandom.normalized;// now equals a normalized random vector
-            }
+           
 
             if (usesDirectionalInertia)
             {
@@ -398,6 +392,7 @@ public class FlockingAI : MonoBehaviour
             //THE ALMIGHTY ROTATE CODE
             Vector2 direction;
             
+                
             
                 direction =
                       ((vCenter * averagePositionWeight)
@@ -414,8 +409,8 @@ public class FlockingAI : MonoBehaviour
                     + (vPredHeading * predAverageHeadingWeight)
                     + (vPredCenter * predAveragePositionWeight)
                     + (vScavenge * scavengeWeight));
-            
 
+            Debug.Log(vRandom.ToString());
             direction = direction.normalized;
 
             if (direction != Vector2.zero)
@@ -423,12 +418,13 @@ public class FlockingAI : MonoBehaviour
                 //quaternions in 2D are so goddamn annoying
                 Vector3 direction3 = new Vector3(direction.x, direction.y, 0);
                 float angle = Mathf.Atan2(direction3.y, direction3.x) * Mathf.Rad2Deg;
-                
-                
                 Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-                Quaternion q2 = q * Quaternion.Euler(0, 0, 270f);
-                head.transform.rotation = Quaternion.Slerp(head.transform.rotation, q2, Time.deltaTime * headRotationSpeed);
                 transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
+                if(turnsHead)
+                {
+                    Quaternion q2 = q * Quaternion.Euler(0, 0, 270f);
+                    head.transform.rotation = Quaternion.Slerp(head.transform.rotation, q2, Time.deltaTime * headRotationSpeed);
+                }
                 
             }
 
@@ -456,11 +452,30 @@ public class FlockingAI : MonoBehaviour
 
                 void Update()
                  {
-                    if(!waypointCountDone)
+        if (usesRandom)
         {
-            numOfWP = GameObject.FindObjectOfType<WaypointManager>().waypointPositions.Count;
-            waypointCountDone = true;
+            if (Random.Range(0, randVectUpdateFrequency) == 0)
+            {
+                float x = this.transform.right.x;
+                float y = this.transform.right.y;
+                float deltaAngle = Random.Range(-randomRange, randomRange);
+                deltaAngle = deltaAngle * Mathf.Deg2Rad;
+                float cosTheta = Mathf.Cos(deltaAngle);
+                float sinTheta = Mathf.Sin(deltaAngle);
+                float newX = (x * cosTheta) - (y * sinTheta);
+                float newY = (x * sinTheta) + (y * cosTheta);
+
+                vRandom.x = newX;
+                vRandom.y = newY;
+                vRandom = vRandom.normalized;// now equals a normalized random vector
+            }
         }
+
+        if (!waypointCountDone && usesWaypoints)
+                    {
+                        numOfWP = GameObject.FindObjectOfType<WaypointManager>().waypointPositions.Count;
+                        waypointCountDone = true;
+                    }
 
                     if (usesWaypoints)
                     {
@@ -468,11 +483,11 @@ public class FlockingAI : MonoBehaviour
                         float distanceToWaypoint = Vector2.Distance(waypointCoords, V3toV2(this.transform.position));
                         if (distanceToWaypoint <= waypointReachedProximity)
                         {
-                Debug.Log("numOfWP:" + numOfWP);
+                
                 if (activeWaypoint + 1 < numOfWP)
                 {
                     activeWaypoint++;
-                    Debug.Log("activeWP:" + activeWaypoint);
+                    
                 }
                 else
                     usesWaypoints = false;
@@ -481,15 +496,18 @@ public class FlockingAI : MonoBehaviour
                         }
                     }
 
+        if (!(isDuckling && gameObject.GetComponent<Duckling>() == null))
+        {
+            if (Random.Range(0, updateFrequency) == 0)    //1 chance per <updateFrequency> each update that rules will be applied 
+            { 
+                ApplyRules();
+            }
+
+            Vector2 thisFacingDir = V3toV2(this.transform.right);
 
 
-                    if (Random.Range(0, updateFrequency) == 0) { //1 chance per <updateFrequency> each update that rules will be applied 
-                        ApplyRules();
-                    }
-
-                    Vector2 thisFacingDir = V3toV2(this.transform.right);
-                    
-                    rigidbody.AddForce(thisFacingDir * speed);
+            rigidbody.AddForce(thisFacingDir * speed);
+        }
 
                 }
 

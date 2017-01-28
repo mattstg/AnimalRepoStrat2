@@ -9235,6 +9235,17 @@ GameObject:
   m_PrefabParentObject: {fileID: 1603410447781072, guid: 7f735b4f4429ccd48bfc78e25885e8f9,
     type: 2}
   m_PrefabInternal: {fileID: 1745491568}
+--- !u!114 &1114622437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1114622436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2121d0fefd42ba947ae3caca55f8567c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1114937531
 GameObject:
   m_ObjectHideFlags: 0
@@ -11007,11 +11018,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249729e3a773a164d803d952b12fe6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorial: {fileID: 0}
+  tutorial: {fileID: 1114622436}
   graphManager: {fileID: 445868751}
   textPanel: {fileID: 1318145790}
   frogCinematic: {fileID: 1336928105}
-  tutorialScreen: {fileID: 1114622436}
   playerFrog: {fileID: 1587365128}
   im: {fileID: 1921402803}
 --- !u!114 &1336928105
@@ -14041,7 +14051,12 @@ Prefab:
         type: 2}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1336928104}
+      objectReference: {fileID: 1114622437}
+    - target: {fileID: 114980760749614548, guid: 7f735b4f4429ccd48bfc78e25885e8f9,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TutFinished
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
   m_IsPrefabParent: 0
