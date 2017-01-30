@@ -410,7 +410,7 @@ public class FlockingAI : MonoBehaviour
                     + (vPredCenter * predAveragePositionWeight)
                     + (vScavenge * scavengeWeight));
 
-            Debug.Log(vRandom.ToString());
+
             direction = direction.normalized;
 
             if (direction != Vector2.zero)

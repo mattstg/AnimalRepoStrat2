@@ -296,7 +296,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0.41, y: 0.06}
   serializedVersion: 2
-  m_Radius: 5.7377357
+  m_Radius: 10
 --- !u!58 &58207127947300028
 CircleCollider2D:
   m_ObjectHideFlags: 1
