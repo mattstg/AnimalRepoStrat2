@@ -62,6 +62,7 @@ public class FlockingAI : MonoBehaviour
 	public float leaderInfluenceDistance;
 
     public bool followsMother = false;
+    public int motherInfluenceDistance = 40;
     public GameObject mother;
     public float motherWeight = 1f; //multiplier for strength of mother influence
 
@@ -248,7 +249,7 @@ public class FlockingAI : MonoBehaviour
 
             if (followsMother)
             {
-                
+                float distToMom = Vector3.Distance(mother.transform.position, this.transform.position);
                 Vector2 v = (V3toV2(mother.transform.position) - V3toV2(this.transform.position));
                 Vector2 vNormalized = v.normalized;
                 vMother = v.normalized;
@@ -257,10 +258,13 @@ public class FlockingAI : MonoBehaviour
                 {
                     vMother *= gameObject.GetComponent<Duckling>().quackStrength;
                 }
-
+             
+                if(distToMom > 0)
+                {
+                    vMother *= motherInfluenceDistance / distToMom;
+                }
+                   
             }
-
-           
 
             if (usesDirectionalInertia)
             {
@@ -520,7 +524,7 @@ public class FlockingAI : MonoBehaviour
             Vector2 thisFacingDir = V3toV2(this.transform.right);
 
 
-            rigidbody.AddForce(thisFacingDir * speed);
+            rigidbody.AddForce(thisFacingDir * speed * Time.deltaTime);
         }
 
                 }

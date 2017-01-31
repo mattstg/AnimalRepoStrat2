@@ -28173,7 +28173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QuackCircle: {fileID: 1995407290}
-  speed: 3
+  speed: 2
   quackRadius: 10
   maxQuackCooldown: 10
   quackCoolDownSpeed: 1

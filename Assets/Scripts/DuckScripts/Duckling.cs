@@ -6,7 +6,7 @@ public class Duckling : MonoBehaviour {
     
     public int maxQuackStrength = 5;
     public float quackDecayRate = 1;
-    public float quackStrength = 0;
+    public float quackStrength = 1;
 	public bool isDead = false;
     // Update is called once per frame
 
@@ -19,14 +19,14 @@ public class Duckling : MonoBehaviour {
         {
             GameObject.FindObjectOfType<DucklingManager>().Ducklings.Remove(this.gameObject);
         }
-        if (quackStrength > 0)
+        if (quackStrength > 1)
         {
             quackStrength -= Time.deltaTime * quackDecayRate;
             
         }
-        else if(quackStrength <= 0)
+        else if(quackStrength <= 1)
         {
-            quackStrength = 0;
+            quackStrength = 1;
         }
         //Debug.Log(quackStrength);
     }
