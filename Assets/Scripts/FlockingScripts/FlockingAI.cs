@@ -8,14 +8,14 @@ public class FlockingAI : MonoBehaviour
     //tested on circles of scale 4,2,0 with colliders 
 
 
-	//waypoints
+    //waypoints
     bool finishedWaypoints = false;
-	int numOfWP;
-	waypointScript currentWaypoint;
+    int numOfWP;
+    public waypointScript currentWaypoint;
 
 
     bool isCorpse = false;
-	Rigidbody2D rigidbody;
+    Rigidbody2D rigidbody;
     int activeWaypoint = 1;
     float speed;
     float rotationSpeed;
@@ -27,10 +27,10 @@ public class FlockingAI : MonoBehaviour
     public int updateFrequency = 5; //the average number of ticks between vector updates
 
     public Vector2 speedRange = new Vector2(10, 15);
-	
-	public Vector2 rotationSpeedRange = new Vector2(12, 16);
 
-	public bool isCalf = false;
+    public Vector2 rotationSpeedRange = new Vector2(12, 16);
+
+    public bool isCalf = false;
 
     public bool isDuckling = false;
 
@@ -38,28 +38,28 @@ public class FlockingAI : MonoBehaviour
     public float predFleeDistance = 25f;
     public float fleeWeight = 1f;
 
-    
 
 
-	public float averageHeadingWeight = 15f; //multiplier for strength of averageHeading influence
 
-	public float averagePositionWeight = 1f; //multiplier for strength of averagePosition influence
+    public float averageHeadingWeight = 15f; //multiplier for strength of averageHeading influence
 
-	public float neighbourDistance = 6f; //distance at which other animal has influence
+    public float averagePositionWeight = 1f; //multiplier for strength of averagePosition influence
+
+    public float neighbourDistance = 6f; //distance at which other animal has influence
 
     public float repulsionDistance = 0.75f; //distance at which other animal has a repulsive effect
 
     public float repulsionWeight = 15f; //multiplier for strength of repulsion influence
 
-	
 
-	public bool usesWaypoints = false;
-	public float waypointWeight = 1f; //multiplier for strength of waypoint influence
-	public float waypointReachedProximity;
+
+    public bool usesWaypoints = false;
+    public float waypointWeight = 1f; //multiplier for strength of waypoint influence
+    public float waypointReachedProximity;
 
     public bool followsLeaders = false;
-	public float leaderWeight = 1f; //multiplier for strength of leader influence
-	public float leaderInfluenceDistance;
+    public float leaderWeight = 1f; //multiplier for strength of leader influence
+    public float leaderInfluenceDistance;
 
     public bool followsMother = false;
     public int motherInfluenceDistance = 40;
@@ -67,16 +67,16 @@ public class FlockingAI : MonoBehaviour
     public float motherWeight = 1f; //multiplier for strength of mother influence
 
     public bool usesRandom = true; //applies a random influence on direction
-	public float randomWeight = 1.5f; //multiplier for strength of random influence
-	public float randomRange = 45f; //the largest degree turn left or right that the random vector can be
+    public float randomWeight = 1.5f; //multiplier for strength of random influence
+    public float randomRange = 45f; //the largest degree turn left or right that the random vector can be
     public int randVectUpdateFrequency = 30;
     Vector2 vRandom = Vector2.zero;
 
     public bool usesDirectionalInertia = true;
-	public float inertiaWeight = 1f;
+    public float inertiaWeight = 1f;
 
 
-	public bool randomizesSpeed = true;
+    public bool randomizesSpeed = true;
 
     public bool randomizesRotationSpeed = true;
 
@@ -103,12 +103,12 @@ public class FlockingAI : MonoBehaviour
     // Methods
 
     Vector2 V3toV2(Vector3 _vector3) //makes a Vector2 out of the x and y of a Vector3
-	{
-		float x = _vector3.x;
-		float y = _vector3.y;
-		Vector2 newVector = new Vector2(x, y);
-		return newVector;
-	}
+    {
+        float x = _vector3.x;
+        float y = _vector3.y;
+        Vector2 newVector = new Vector2(x, y);
+        return newVector;
+    }
 
     public void Dies()
     {
@@ -118,14 +118,14 @@ public class FlockingAI : MonoBehaviour
         GameObject.FindObjectOfType<CalfManager>().calfTransforms.Remove(this.transform);
         GameObject.FindObjectOfType<Corpsemanager>().Corpses.Add(this.gameObject);
         gameObject.AddComponent<DecayCounter>();
-        
+
 
     }
 
     void OnCollisionEnter2D(Collision2D coli)
     {
         FlockingAI ai = coli.gameObject.GetComponent<FlockingAI>();
-        if(ai && ai.isCalf && !(ai.isCorpse))
+        if (ai && ai.isCalf && !(ai.isCorpse))
         {
             ai.Dies();
         }
@@ -164,7 +164,7 @@ public class FlockingAI : MonoBehaviour
             float localGroupSpeed = 0f; //this will be used to calculate local average speed for when speedNormalizing = false
             float dist; //will be distance between this animal and whatever animal is being checked by the foreach loop below
 
-            
+
 
             foreach (GameObject _animal in animals)
             {
@@ -269,12 +269,12 @@ public class FlockingAI : MonoBehaviour
                 {
                     vMother *= gameObject.GetComponent<Duckling>().quackStrength;
                 }
-             
-                if(distToMom > 0)
+
+                if (distToMom > 0)
                 {
                     vMother *= motherInfluenceDistance / distToMom;
                 }
-                   
+
             }
 
             if (usesDirectionalInertia)
@@ -385,7 +385,7 @@ public class FlockingAI : MonoBehaviour
                 Vector2 closestCorpsePos = Vector2.zero;
                 List<GameObject> corpses = GameObject.FindObjectOfType<Corpsemanager>().Corpses;
                 if (corpses.Count != 0)
-                {   
+                {
                     foreach (GameObject _corpse in corpses)
                     {
                         Vector2 corpsePos = V3toV2(_corpse.transform.position);
@@ -396,14 +396,14 @@ public class FlockingAI : MonoBehaviour
                             closestCorpsePos = corpsePos;
                         }
                     }
-                    
+
 
                     if (closestCorpseDistance <= scavengeDistance)
                     {
                         Vector2 v = closestCorpsePos - thisPos;
                         Vector2 vNormalized = v.normalized;
                         vScavenge = vNormalized;
-                        
+
                     }
                 }
             }
@@ -411,24 +411,24 @@ public class FlockingAI : MonoBehaviour
 
             //THE ALMIGHTY ROTATE CODE
             Vector2 direction;
-            
-                
-            
-                direction =
-                      ((vCenter * averagePositionWeight)
-                    + (vRepel * repulsionWeight)
-                    + (vHeading * averageHeadingWeight)
-                    + (vWaypoint * waypointWeight)
-                    + (vLeader * leaderWeight)
-                    + (vMother * motherWeight)
-                    + (vRandom * randomWeight)
-                    + (vInertia * inertiaWeight)
-                    + (vFlee * fleeWeight)
-                    + (vHunt * huntWeight)
-                    + (vPredRepel * interPredatorRepelWeight)
-                    + (vPredHeading * predAverageHeadingWeight)
-                    + (vPredCenter * predAveragePositionWeight)
-                    + (vScavenge * scavengeWeight));
+
+
+
+            direction =
+                  ((vCenter * averagePositionWeight)
+                + (vRepel * repulsionWeight)
+                + (vHeading * averageHeadingWeight)
+                + (vWaypoint * waypointWeight)
+                + (vLeader * leaderWeight)
+                + (vMother * motherWeight)
+                + (vRandom * randomWeight)
+                + (vInertia * inertiaWeight)
+                + (vFlee * fleeWeight)
+                + (vHunt * huntWeight)
+                + (vPredRepel * interPredatorRepelWeight)
+                + (vPredHeading * predAverageHeadingWeight)
+                + (vPredCenter * predAveragePositionWeight)
+                + (vScavenge * scavengeWeight));
 
 
             direction = direction.normalized;
@@ -440,12 +440,12 @@ public class FlockingAI : MonoBehaviour
                 float angle = Mathf.Atan2(direction3.y, direction3.x) * Mathf.Rad2Deg;
                 Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
                 transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
-                if(turnsHead)
+                if (turnsHead)
                 {
                     Quaternion q2 = q * Quaternion.Euler(0, 0, 270f);
                     head.transform.rotation = Quaternion.Slerp(head.transform.rotation, q2, Time.deltaTime * headRotationSpeed);
                 }
-                
+
             }
 
 
@@ -453,25 +453,25 @@ public class FlockingAI : MonoBehaviour
         }
     }
 
-            
-
-                void Start()
-                 {
-                    if (!isPredator)
-                    {
-                        GameObject.FindObjectOfType<FlockManager>().flock.Add(this.gameObject); // adds this animal to FlockManager's flock list
-                        
-                    }
-                    
-                    rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
-                    speed = Random.Range(speedRange.x, speedRange.y);
-                    rotationSpeed = Random.Range(rotationSpeedRange.x, rotationSpeedRange.y);
-
-                }
 
 
-                void Update()
-                 {
+    void Start()
+    {
+        if (!isPredator)
+        {
+            GameObject.FindObjectOfType<FlockManager>().flock.Add(this.gameObject); // adds this animal to FlockManager's flock list
+
+        }
+
+        rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
+        speed = Random.Range(speedRange.x, speedRange.y);
+        rotationSpeed = Random.Range(rotationSpeedRange.x, rotationSpeedRange.y);
+
+    }
+
+
+    void Update()
+    {
         if (usesRandom)
         {
             if (Random.Range(0, randVectUpdateFrequency) == 0)
@@ -494,73 +494,66 @@ public class FlockingAI : MonoBehaviour
         if (!finishedWaypoints && usesWaypoints)
         {
             numOfWP = GameObject.FindObjectOfType<WaypointManager>().waypointPositions.Count;
-			finishedWaypoints = true;
+            finishedWaypoints = true;
         }
 
 
-                    if (usesWaypoints)
+        if (usesWaypoints)
+        {
+                if (usesWaypoints && currentWaypoint == null)
+                {
+                    Vector2 way = GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint];
+                    float dist = Vector2.Distance(way, V3toV2(this.transform.position));
+                    if (dist <= waypointReachedProximity)
                     {
-                        Vector2 waypointCoords = GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint];
-                        float distanceToWaypoint = Vector2.Distance(waypointCoords, V3toV2(this.transform.position));
-                        if (distanceToWaypoint <= waypointReachedProximity)
-                        {
-                
-                            if (activeWaypoint + 1 < numOfWP)
-                            {
-                                activeWaypoint++;
-                    
-                            }
-                            else
-                                usesWaypoints = false;
+                        if (activeWaypoint + 1 < numOfWP)
+                            activeWaypoint++;
+                        else
+                            usesWaypoints = false;
 
-		if (usesWaypoints && currentWaypoint == null)
-        {
-            Vector2 waypointCoords = GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint];
-            float distanceToWaypoint = Vector2.Distance(waypointCoords, V3toV2(this.transform.position));
-            if (distanceToWaypoint <= waypointReachedProximity)
-            {
-				if (activeWaypoint + 1 < numOfWP)
-				    activeWaypoint++;
-				else
-					usesWaypoints = false;
 
+                    }
+                }
+
+                if (usesWaypoints && currentWaypoint != null)
+                {
+                    Vector3 pos = currentWaypoint.transform.position;
+                    //Vector2 waypointCoords = ;
+                    float dist = Vector2.Distance(new Vector2(pos.x, pos.z), V3toV2(this.transform.position));
+                    if (dist <= waypointReachedProximity)
+                    {
+                        if (currentWaypoint.hasNext())
+                            currentWaypoint = currentWaypoint.getNextWaypoint().GetComponent<waypointScript>();
+                        else
+                            usesWaypoints = false;
+                    }
+                }
 
             }
+        
+
+                if (!(isDuckling && gameObject.GetComponent<Duckling>() == null))
+                {
+                    if (Random.Range(0, updateFrequency) == 0)    //1 chance per <updateFrequency> each update that rules will be applied 
+                    {
+                        ApplyRules();
+                    }
+
+                    Vector2 thisFacingDir = V3toV2(this.transform.right);
+
+                    if (!(isPredator && isPredOnStandby))
+                    {
+                        rigidbody.AddForce(thisFacingDir * speed * Time.deltaTime);
+                        
+                    }
+
+                }
+
+            }
+
         }
 
-		if (usesWaypoints && currentWaypoint != null)
-		{
-			Vector3 pos = currentWaypoint.transform.position;
-			Vector2 waypointCoords = new Vector2 (pos.x, pos.z);
-			float distanceToWaypoint = Vector2.Distance(waypointCoords, V3toV2(this.transform.position));
-			if (distanceToWaypoint <= waypointReachedProximity)
-			{
-				if (currentWaypoint.hasNext ())
-					currentWaypoint = currentWaypoint.getNextWaypoint ().GetComponent<waypointScript> ();
-				else
-					usesWaypoints = false;
-			}
-		}
-
-        if (!(isDuckling && gameObject.GetComponent<Duckling>() == null))
-        {
-            if (Random.Range(0, updateFrequency) == 0)    //1 chance per <updateFrequency> each update that rules will be applied 
-            { 
-                ApplyRules();
-            }
-
-            Vector2 thisFacingDir = V3toV2(this.transform.right);
-
-            if(!(isPredator && isPredOnStandby))
-            {
-                rigidbody.AddForce(thisFacingDir * speed * Time.deltaTime);
-            }
-            
-        }
-
-     }
-
-}
+    
         
 
 
