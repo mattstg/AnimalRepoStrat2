@@ -144,8 +144,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 6
-  m_AngularDrag: 0
+  m_LinearDrag: 2
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -177,12 +177,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da52700164eb1834faedf8df19f0f469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnsHead: 1
   head: {fileID: 1858675436165042}
   headRotationSpeed: 20
   updateFrequency: 6
-  speedRange: {x: 45, y: 50}
+  speedRange: {x: 800, y: 820}
   rotationSpeedRange: {x: 8, y: 10}
   isCalf: 1
+  isDuckling: 0
   fleesFromPredators: 1
   predFleeDistance: 30
   fleeWeight: 20
@@ -198,11 +200,13 @@ MonoBehaviour:
   leaderWeight: 2
   leaderInfluenceDistance: 50
   followsMother: 1
+  motherInfluenceDistance: 40
   mother: {fileID: 0}
   motherWeight: 15
   usesRandom: 1
   randomWeight: 2
   randomRange: 10
+  randVectUpdateFrequency: 30
   usesDirectionalInertia: 0
   inertiaWeight: 3
   randomizesSpeed: 0

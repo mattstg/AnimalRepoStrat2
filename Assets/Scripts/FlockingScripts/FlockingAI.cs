@@ -11,7 +11,7 @@ public class FlockingAI : MonoBehaviour
 	int numOfWP;
     bool isCorpse = false;
 	Rigidbody2D rigidbody;
-    int activeWaypoint = 0;
+    int activeWaypoint = 1;
     float speed;
     float rotationSpeed;
 
@@ -78,6 +78,7 @@ public class FlockingAI : MonoBehaviour
     public bool speedNormalizing = false; // causes animals to adjust their speed to the average of those within neighbourDistance
 
     public bool isPredator = false;
+    bool isPredOnStandby = true;
     public float huntRange = 40f;
     public float huntWeight = 1f;
     public bool scavenges = false;
@@ -158,6 +159,8 @@ public class FlockingAI : MonoBehaviour
             float localGroupSpeed = 0f; //this will be used to calculate local average speed for when speedNormalizing = false
             float dist; //will be distance between this animal and whatever animal is being checked by the foreach loop below
 
+            
+
             foreach (GameObject _animal in animals)
             {
                 if (_animal != this.gameObject)
@@ -171,6 +174,14 @@ public class FlockingAI : MonoBehaviour
                         vCenter += _animalsPos;
                         vHeading += _animalsForward;
                         localGroupSize++;
+
+                        if (isPredator && isPredOnStandby)
+                        {
+                            if (localGroupSize > 0)
+                            {
+                                isPredOnStandby = false;
+                            }
+                        }
 
                         if (!isPredator)
                         {
@@ -488,13 +499,13 @@ public class FlockingAI : MonoBehaviour
                         if (distanceToWaypoint <= waypointReachedProximity)
                         {
                 
-                if (activeWaypoint + 1 < numOfWP)
-                {
-                    activeWaypoint++;
+                            if (activeWaypoint + 1 < numOfWP)
+                            {
+                                activeWaypoint++;
                     
-                }
-                else
-                    usesWaypoints = false;
+                            }
+                            else
+                                usesWaypoints = false;
 
 
                         }
@@ -509,13 +520,16 @@ public class FlockingAI : MonoBehaviour
 
             Vector2 thisFacingDir = V3toV2(this.transform.right);
 
-
-            rigidbody.AddForce(thisFacingDir * speed * Time.deltaTime);
+            if(!(isPredator && isPredOnStandby))
+            {
+                rigidbody.AddForce(thisFacingDir * speed * Time.deltaTime);
+            }
+            
         }
 
-                }
+     }
 
-            }
+}
         
 
 
