@@ -5,6 +5,10 @@ using UnityEngine;
 public class Fish : MonoBehaviour {
 	private float speedBoostTime = 1;
 
+	//AI manager
+	private Vector3 vectorAI;
+	public bool followAi = true;
+
 	public Vector3 desiredPos;
 	public bool isMoving;
 
@@ -13,6 +17,7 @@ public class Fish : MonoBehaviour {
 	private float speedBoost = 1f; // moveSpeed * speedBoost is max total speed during boost
 	private float timeSinceLastClick = 0f;
 
+	//Move Speed and Boost Upon Move
 	private float realMov = 2;
 	private float moveSpeed {
 		set { realMov = value; } 
@@ -35,6 +40,16 @@ public class Fish : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		FishUpdate ();
+	}
+
+	public void AIUpdate(){
+		MoveTo (transform.position + vectorAI);
+	}
+
+	public void VectorAISet(Vector3 input){
+		vectorAI = input;
+		vectorAI = vectorAI.normalized;
+		timeSinceLastClick = 0;
 	}
 
 	public void FishUpdate(){
@@ -68,16 +83,11 @@ public class Fish : MonoBehaviour {
 	private void MoveTo(Vector3 newDes){
 		desiredPos = newDes;
 		isMoving = true;
-
 	}
 
 	public void PlayerMoveTo(Vector3 newDes){
 		timeSinceLastClick = 0;
 		MoveTo (newDes);
-	}
-
-	public bool isClose(float desired, float current){
-		return false;
 	}
 		
 	private Vector3 clampZ(Vector3 toChange){

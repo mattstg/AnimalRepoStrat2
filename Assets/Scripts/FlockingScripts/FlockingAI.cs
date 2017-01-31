@@ -7,8 +7,13 @@ public class FlockingAI : MonoBehaviour
     //Works best with 1 mass and 4 linear drag
     //tested on circles of scale 4,2,0 with colliders 
 
-    bool waypointCountDone = false;
+
+	//waypoints
+    bool finishedWaypoints = false;
 	int numOfWP;
+	waypointScript currentWaypoint;
+
+
     bool isCorpse = false;
 	Rigidbody2D rigidbody;
     int activeWaypoint = 0;
@@ -471,30 +476,39 @@ public class FlockingAI : MonoBehaviour
             }
         }
 
-        if (!waypointCountDone && usesWaypoints)
-                    {
-                        numOfWP = GameObject.FindObjectOfType<WaypointManager>().waypointPositions.Count;
-                        waypointCountDone = true;
-                    }
+        if (!finishedWaypoints && usesWaypoints)
+        {
+            numOfWP = GameObject.FindObjectOfType<WaypointManager>().waypointPositions.Count;
+			finishedWaypoints = true;
+        }
 
-                    if (usesWaypoints)
-                    {
-                        Vector2 waypointCoords = GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint];
-                        float distanceToWaypoint = Vector2.Distance(waypointCoords, V3toV2(this.transform.position));
-                        if (distanceToWaypoint <= waypointReachedProximity)
-                        {
-                
-                if (activeWaypoint + 1 < numOfWP)
-                {
-                    activeWaypoint++;
-                    
-                }
-                else
-                    usesWaypoints = false;
+		if (usesWaypoints && currentWaypoint == null)
+        {
+            Vector2 waypointCoords = GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint];
+            float distanceToWaypoint = Vector2.Distance(waypointCoords, V3toV2(this.transform.position));
+            if (distanceToWaypoint <= waypointReachedProximity)
+            {
+				if (activeWaypoint + 1 < numOfWP)
+				    activeWaypoint++;
+				else
+					usesWaypoints = false;
 
+            }
+        }
 
-                        }
-                    }
+		if (usesWaypoints && currentWaypoint != null)
+		{
+			Vector3 pos = currentWaypoint.transform.position;
+			Vector2 waypointCoords = new Vector2 (pos.x, pos.z);
+			float distanceToWaypoint = Vector2.Distance(waypointCoords, V3toV2(this.transform.position));
+			if (distanceToWaypoint <= waypointReachedProximity)
+			{
+				if (currentWaypoint.hasNext ())
+					currentWaypoint = currentWaypoint.getNextWaypoint ().GetComponent<waypointScript> ();
+				else
+					usesWaypoints = false;
+			}
+		}
 
         if (!(isDuckling && gameObject.GetComponent<Duckling>() == null))
         {
