@@ -56,7 +56,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 6
+  m_LinearDrag: 1
   m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
   head: {fileID: 0}
   headRotationSpeed: 20
   updateFrequency: 1
-  speedRange: {x: 7, y: 8}
+  speedRange: {x: 45, y: 47}
   rotationSpeedRange: {x: 9, y: 10}
   isCalf: 0
   isDuckling: 1
@@ -112,6 +112,7 @@ MonoBehaviour:
   leaderWeight: 1
   leaderInfluenceDistance: 0
   followsMother: 1
+  motherInfluenceDistance: 40
   mother: {fileID: 0}
   motherWeight: 1
   usesRandom: 1
