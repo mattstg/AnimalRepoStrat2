@@ -114,6 +114,12 @@ public class DuckGF : GameFlow {
 		nextStep = true;
 	}
 
+    public void GameFinished(float babyDucksSaved)
+    {
+        Debug.Log("game finished: " + babyDucksSaved);
+        nextStep = true;
+    }
+
 	private void StepFive()
 	{
 		string t0 = "Not  \n";
