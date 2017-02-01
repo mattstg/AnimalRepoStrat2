@@ -12,6 +12,10 @@ public class Fish : MonoBehaviour {
 	public Vector3 desiredPos;
 	public bool isMoving;
 
+	private bool isJumping = false;
+	private Vector3 jumpPoint;
+	private float jumpSpeed = 10;
+
 	//FISH GV
 	private float rotateSpeed = 10; //45 degrees per Sec
 	private float speedBoost = 1f; // moveSpeed * speedBoost is max total speed during boost
@@ -53,19 +57,29 @@ public class Fish : MonoBehaviour {
 	}
 
 	public void FishUpdate(){
-		timeSinceLastClick += Time.deltaTime;
-		if (isMoving) {
-			Vector3 temp = desiredPos - transform.position;
-			if (Mathf.Abs (temp.magnitude) > 0.4f) {
-				RotateToDesPoint (desiredPos);
-				MoveForward (desiredPos);
+		if (!isJumping) {
+			timeSinceLastClick += Time.deltaTime;
+			if (isMoving) {
+				Vector3 temp = desiredPos - transform.position;
+				if (Mathf.Abs (temp.magnitude) > 0.4f) {
+					RotateToDesPoint (desiredPos);
+					MoveForward (desiredPos);
+				} else {
+					//transform.position = desiredPos;
+					isMoving = false;
+				}
 			} else {
-				//transform.position = desiredPos;
-				isMoving = false;
+				//RotateToDesPoint (transform.position + transform.up);
+				MoveTo (transform.position + transform.up);
 			}
 		} else {
-			//RotateToDesPoint (transform.position + transform.up);
-			MoveTo (transform.position + transform.up);
+			transform.position = clampZ(Vector3.MoveTowards (transform.position,jumpPoint, jumpSpeed * Time.deltaTime));
+			Vector3 temp = jumpPoint - transform.position;
+			if (Mathf.Abs (temp.magnitude) < 0.4f) {
+				isJumping = false;
+				GetComponent<Rigidbody2D> ().bodyType = RigidbodyType2D.Dynamic;
+				desiredPos = transform.position + Vector3.up;
+			}
 		}
 	}
 
@@ -80,7 +94,7 @@ public class Fish : MonoBehaviour {
 		transform.position = clampZ(Vector3.MoveTowards (transform.position,des, moveSpeed * Time.deltaTime));
 	}
 
-	private void MoveTo(Vector3 newDes){
+	public void MoveTo(Vector3 newDes){
 		desiredPos = newDes;
 		isMoving = true;
 	}
@@ -96,5 +110,12 @@ public class Fish : MonoBehaviour {
 		
 	private Vector3 clampXY(Vector3 toChange){
 		return new Vector3 (0, 0, toChange.z);
+	}
+
+	public void jumpTo(Vector3 landPoint){
+		isJumping = true;
+		Vector3 temp = new Vector3 (transform.position.x, landPoint.y);
+		jumpPoint = temp;
+		GetComponent<Rigidbody2D> ().bodyType = RigidbodyType2D.Static;
 	}
 }
