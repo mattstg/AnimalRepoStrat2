@@ -10,7 +10,7 @@ public class Bear : MonoBehaviour {
 	List<Transform> bearSwipes;
 	List<FlockingAI> fishInRange = new List<FlockingAI> ();
 	public Transform swipeParent;
-	float maxTimeToAct = 2.5f;
+	float maxTimeToAct = 1.25f;
 	float curTimeToAct = 0;
 	int curSwipeIndex = 0;
 	[HideInInspector]

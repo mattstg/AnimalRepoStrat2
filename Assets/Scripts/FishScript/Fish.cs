@@ -18,7 +18,7 @@ public class Fish : MonoBehaviour {
 	private float timeSinceLastClick = 0f;
 
 	//Move Speed and Boost Upon Move
-	private float realMov = 2;
+	private float realMov = 1;
 	private float moveSpeed {
 		set { realMov = value; } 
 		get {
