@@ -25,7 +25,7 @@ public class PlayerCaribou : MonoBehaviour {
         if (snortCoolDown == 0)
         {
 
-            if (PlayerCalf.GetComponent<FlockingAI>() && !PlayerCalf.GetComponent<FlockingAI>().isCorpse)
+            if (PlayerCalf && PlayerCalf.GetComponent<FlockingAI>() && !PlayerCalf.GetComponent<FlockingAI>().isCorpse)
             {
                 PlayerCalf.GetComponent<Calf>().currentSpeedBoost = PlayerCalf.GetComponent<Calf>().maxSpeedBoost;
             }
