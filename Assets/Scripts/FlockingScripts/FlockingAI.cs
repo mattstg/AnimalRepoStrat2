@@ -20,7 +20,6 @@ public class FlockingAI : MonoBehaviour
     int activeWaypoint = 1;
     public float speed;
     float rotationSpeed;
-
     
     public bool turnsHead = true;
     public GameObject head;
@@ -33,7 +32,7 @@ public class FlockingAI : MonoBehaviour
     public Vector2 rotationSpeedRange = new Vector2(12, 16);
 
     public bool isCalf = false;
-
+	public bool isFish = false;
     public bool isDuckling = false;
 
     public bool fleesFromPredators = true;
@@ -98,10 +97,6 @@ public class FlockingAI : MonoBehaviour
     public float predAveragePositionWeight = 1f;
 
 
-
-
-
-
     // Methods
 
     Vector2 V3toV2(Vector3 _vector3) //makes a Vector2 out of the x and y of a Vector3
@@ -116,10 +111,12 @@ public class FlockingAI : MonoBehaviour
     {
         isCorpse = true;
         rigidbody.bodyType = RigidbodyType2D.Static;
-        GameObject.FindObjectOfType<FlockManager>().flock.Remove(this.gameObject);
-        GameObject.FindObjectOfType<CalfManager>().calfTransforms.Remove(this.transform);
-        GameObject.FindObjectOfType<Corpsemanager>().Corpses.Add(this.gameObject);
-        gameObject.AddComponent<DecayCounter>();
+		if (!isFish) {
+			GameObject.FindObjectOfType<FlockManager> ().flock.Remove (this.gameObject);
+			GameObject.FindObjectOfType<CalfManager> ().calfTransforms.Remove (this.transform);
+			GameObject.FindObjectOfType<Corpsemanager> ().Corpses.Add (this.gameObject);
+			gameObject.AddComponent<DecayCounter> ();
+		}
 
 
     }
