@@ -9,6 +9,7 @@ public class FishGF : GameFlow {
 	int stage = 0;
 	bool nextStep = false;
 	public InputManager im;
+	public Vector3 lastCheckpt;
 
 	public override void StartFlow()
 	{
@@ -138,4 +139,11 @@ public class FishGF : GameFlow {
 		textPanel.gameObject.SetActive (false);
 		nextStep = true;
 	}
+
+	public void ReachedCheckpoint(Vector3 checkPt)
+	{
+		lastCheckpt = checkPt;	
+	}
+
+
 }
