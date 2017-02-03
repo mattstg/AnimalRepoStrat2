@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bear : MonoBehaviour {
 
-	enum BearState{Swipe,Rest}
+	enum BearState{Swipe,Rest,WalkingToFood,WalkingBackFromFood,DigestingFood}
 
 	BearState curState = BearState.Rest;
 	List<Transform> bearSwipes;
@@ -73,12 +73,46 @@ public class Bear : MonoBehaviour {
 		if (fishInRange.Count > 0) 
 		{
 			eatingFish = fishInRange [0].transform;
-			fishInRange [0].Dies ();
-			eatingFish.GetComponent<Fish> ().enabled = false;
 
-			//fishInRange[0].dies
+			if (fishInRange [0].gameObject.GetComponent<PlayerFish> ()) {
+				//player dies, restart at checkpoint
+
+			}
+			else
+			{
+				fishInRange [0].Dies ();
+				eatingFish.GetComponent<Fish> ().enabled = false;
+				//fishInRange[0].dies
+			}
+
 		}
 	}
+
+
+	private void ConsumeFish()
+	{
+		if (fishInRange [0].gameObject.GetComponent<PlayerFish> ()) 
+		{
+			GameObject.FindObjectOfType<FishGF>().PlayerDied();
+		}
+	}
+
+	/*private void MoveTowardsGoal()
+	{
+		if (eatingFish)
+			goalPos = eatingFish.position;
+		float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goalPos);
+		float distanceToGoal = Vector2.Distance (goalPos, transform.position);
+		transform.eulerAngles = new Vector3 (0, 0, angToGoal - 90);
+		Vector2 goalDir = goalPos - MathHelper.V3toV2(transform.position);
+		float speed = foxCurrentSpeed;
+		if (distanceToGoal < foxCurrentSpeed * Time.deltaTime)
+			speed = distanceToGoal;
+		//GetComponent<Rigidbody2D> ().AddRelativeForce (goalDir.normalized * foxCurrentSpeed * Time.deltaTime,ForceMode2D.Impulse);
+		GetComponent<Rigidbody2D> ().velocity = goalDir.normalized * speed;
+		//transform.position = Vector2.MoveTowards(transform.position, goalPos, foxCurrentSpeed * Time.deltaTime);
+	}*/
+
 
 	private void SetSwipeAlpha(SpriteRenderer sr, float setAlpha)
 	{

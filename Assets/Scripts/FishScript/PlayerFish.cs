@@ -15,5 +15,4 @@ public class PlayerFish : Fish {
 		FishUpdate ();
 	}
 
-
 }
