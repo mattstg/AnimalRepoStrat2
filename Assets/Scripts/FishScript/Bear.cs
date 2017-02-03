@@ -91,10 +91,10 @@ public class Bear : MonoBehaviour {
 
 	private void ConsumeFish()
 	{
-		if (fishInRange [0].gameObject.GetComponent<PlayerFish> ()) 
+/*		if (fishInRange [0].gameObject.GetComponent<PlayerFish> ()) 
 		{
 			GameObject.FindObjectOfType<FishGF>().PlayerDied();
-		}
+		}*/
 	}
 
 	/*private void MoveTowardsGoal()
