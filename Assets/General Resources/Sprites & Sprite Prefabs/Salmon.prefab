@@ -301,14 +301,14 @@ MonoBehaviour:
   isDuckling: 0
   fleesFromPredators: 0
   predFleeDistance: 25
-  fleeWeight: 1
+  fleeWeight: 0
   averageHeadingWeight: 0
   averagePositionWeight: 1
   neighbourDistance: 6
   repulsionDistance: 0.75
   repulsionWeight: 0
   usesWaypoints: 1
-  waypointWeight: 1
+  waypointWeight: 15
   waypointReachedProximity: 0
   followsLeaders: 0
   leaderWeight: 1
