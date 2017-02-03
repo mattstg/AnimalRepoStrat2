@@ -232,7 +232,11 @@ public class FlockingAI : MonoBehaviour
 
             if (usesWaypoints)
             {
-                if (GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint] != null)
+				if (currentWaypoint != null) {
+					vWaypoint = currentWaypoint.transform.position - transform.position;
+					vWaypoint = vWaypoint.normalized;
+				}
+				else if (GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint] != null)
                 {
                     vWaypoint = GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint];
                     vWaypoint -= thisPos;
@@ -287,7 +291,7 @@ public class FlockingAI : MonoBehaviour
 
             }
 
-            if (usesDirectionalInertia)
+			if (usesDirectionalInertia)
             {
                 vInertia = this.transform.right;
             }
@@ -445,17 +449,23 @@ public class FlockingAI : MonoBehaviour
 
             if (direction != Vector2.zero)
             {
-                //quaternions in 2D are so goddamn annoying
-                Vector3 direction3 = new Vector3(direction.x, direction.y, 0);
-                float angle = Mathf.Atan2(direction3.y, direction3.x) * Mathf.Rad2Deg;
-                Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-                transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
-                if (turnsHead)
-                {
-                    Quaternion q2 = q * Quaternion.Euler(0, 0, 270f);
-                    head.transform.rotation = Quaternion.Slerp(head.transform.rotation, q2, Time.deltaTime * headRotationSpeed);
-                }
-
+				if (isFish) 
+				{
+					GetComponent<Fish> ().VectorAISet (direction);
+				} 
+				else 
+				{
+					//quaternions in 2D are so goddamn annoying
+					Vector3 direction3 = new Vector3 (direction.x, direction.y, 0);
+					float angle = Mathf.Atan2 (direction3.y, direction3.x) * Mathf.Rad2Deg;
+					Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
+					transform.rotation = Quaternion.Slerp (transform.rotation, q, Time.deltaTime * rotationSpeed);
+					if (turnsHead) 
+					{
+						Quaternion q2 = q * Quaternion.Euler (0, 0, 270f);
+						head.transform.rotation = Quaternion.Slerp (head.transform.rotation, q2, Time.deltaTime * headRotationSpeed);
+					}
+				}
             }
 
 
@@ -510,35 +520,31 @@ public class FlockingAI : MonoBehaviour
 
         if (usesWaypoints)
         {
-                if (usesWaypoints && currentWaypoint == null)
-                {
-                    Vector2 way = GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint];
-                    float dist = Vector2.Distance(way, V3toV2(this.transform.position));
-                    if (dist <= waypointReachedProximity)
-                    {
-                        if (activeWaypoint + 1 < numOfWP)
-                            activeWaypoint++;
-                        else
-                            usesWaypoints = false;
+				if (usesWaypoints && currentWaypoint == null) {
+					Vector2 way = GameObject.FindObjectOfType<WaypointManager> ().waypointPositions [activeWaypoint];
+					float dist = Vector2.Distance (way, V3toV2 (this.transform.position));
+					if (dist <= waypointReachedProximity) {
+						if (activeWaypoint + 1 < numOfWP)
+							activeWaypoint++;
+						else
+							usesWaypoints = false;
 
 
-                    }
-                }
+					}
+				} else {
+					Vector3 pos = currentWaypoint.transform.position;
 
-                if (usesWaypoints && currentWaypoint != null)
-                {
-                    Vector3 pos = currentWaypoint.transform.position;
-                    //Vector2 waypointCoords = ;
-                    float dist = Vector2.Distance(new Vector2(pos.x, pos.z), V3toV2(this.transform.position));
-                    if (dist <= waypointReachedProximity)
-                    {
-                        if (currentWaypoint.hasNext())
-                            currentWaypoint = currentWaypoint.getNextWaypoint().GetComponent<waypointScript>();
-                        else
-                            usesWaypoints = false;
-                    }
-                }
-
+					//Vector2 waypointCoords = ;
+				float dist = Vector3.Distance (pos, this.transform.position);
+					if (dist <= 1.25f) {
+					if (currentWaypoint.hasNext ()) {
+						currentWaypoint = currentWaypoint.getNextWaypoint ().GetComponent<waypointScript> ();
+						ApplyRules ();
+					} else {
+						usesWaypoints = false;
+					}
+					}
+				}
             }
         
 
@@ -551,7 +557,7 @@ public class FlockingAI : MonoBehaviour
 
                     Vector2 thisFacingDir = V3toV2(this.transform.right);
 
-                    if (!(isPredator && isPredOnStandby))
+				if (!(isPredator && isPredOnStandby) && !isFish)
                     {
                         rigidbody.AddForce(thisFacingDir * speed * Time.deltaTime);
                         

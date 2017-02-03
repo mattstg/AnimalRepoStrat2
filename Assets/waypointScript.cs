@@ -8,7 +8,7 @@ public class waypointScript : MonoBehaviour {
 	public GameObject wayOne;
 	public GameObject wayTwo;
 	public GameObject wayThree;
-	private int numberOfWaypoints = 0;
+	private int numberOfWaypoints = -1;
 	private bool hasNextWaypoint = false;
 
 	// Use this for initialization

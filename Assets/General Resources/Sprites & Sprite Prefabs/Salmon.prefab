@@ -163,9 +163,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1680575574405470}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.23, y: -48.61, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.66666913, y: -6.2000012, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4103279931969220}
   m_Father: {fileID: 0}
@@ -287,23 +287,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWaypoint: {fileID: 0}
-  turnsHead: 1
+  test: 0
+  isCorpse: 0
+  speed: 0
+  turnsHead: 0
   head: {fileID: 0}
   headRotationSpeed: 20
   updateFrequency: 5
   speedRange: {x: 10, y: 15}
   rotationSpeedRange: {x: 12, y: 16}
   isCalf: 0
+  isFish: 0
   isDuckling: 0
-  fleesFromPredators: 1
+  fleesFromPredators: 0
   predFleeDistance: 25
   fleeWeight: 1
-  averageHeadingWeight: 15
+  averageHeadingWeight: 0
   averagePositionWeight: 1
   neighbourDistance: 6
   repulsionDistance: 0.75
-  repulsionWeight: 15
-  usesWaypoints: 0
+  repulsionWeight: 0
+  usesWaypoints: 1
   waypointWeight: 1
   waypointReachedProximity: 0
   followsLeaders: 0
@@ -313,14 +317,14 @@ MonoBehaviour:
   motherInfluenceDistance: 40
   mother: {fileID: 0}
   motherWeight: 1
-  usesRandom: 1
+  usesRandom: 0
   randomWeight: 1.5
   randomRange: 45
   randVectUpdateFrequency: 30
-  usesDirectionalInertia: 1
+  usesDirectionalInertia: 0
   inertiaWeight: 1
-  randomizesSpeed: 1
-  randomizesRotationSpeed: 1
+  randomizesSpeed: 0
+  randomizesRotationSpeed: 0
   speedNormalizing: 0
   isPredator: 0
   huntRange: 40

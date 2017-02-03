@@ -43,6 +43,7 @@ public class Fish : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		AIUpdate ();
 		FishUpdate ();
 	}
 
@@ -51,6 +52,7 @@ public class Fish : MonoBehaviour {
 	}
 
 	public void VectorAISet(Vector3 input){
+		Debug.Log ("Here!");
 		vectorAI = input;
 		vectorAI = vectorAI.normalized;
 		timeSinceLastClick = 0;
@@ -60,7 +62,11 @@ public class Fish : MonoBehaviour {
 		if (!isJumping) {
 			timeSinceLastClick += Time.deltaTime;
 			if (isMoving) {
-				Vector3 temp = desiredPos - transform.position;
+				Vector3 temp;
+				if(followAi)
+					temp = transform.position + vectorAI;
+					else
+					temp = desiredPos - transform.position;
 				if (Mathf.Abs (temp.magnitude) > 0.4f) {
 					RotateToDesPoint (desiredPos);
 					MoveForward (desiredPos);
