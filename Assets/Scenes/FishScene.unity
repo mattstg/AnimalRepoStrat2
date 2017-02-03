@@ -24850,8 +24850,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 375390983}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -103.75, y: -165, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 14.8, y: 3.9, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 1832682641}
   - {fileID: 1819218620}
@@ -27809,7 +27809,7 @@ MonoBehaviour:
   scoreText: {fileID: 459952435}
   trackScoreAsTime: 1
   im: {fileID: 1819218621}
-  lastCheckpt: {x: -103.5, y: -165, z: 0}
+  lastCheckpt: {x: -30.83, y: -48.18, z: 0}
   playerFish: {fileID: 375390984}
 --- !u!4 &1458108775
 Transform:
@@ -28058,7 +28058,7 @@ Transform:
   m_GameObject: {fileID: 1471101164}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 935924122}
   - {fileID: 1159348694}
@@ -34937,7 +34937,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1865174137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -125.4, y: -188.9, z: 0}
+  m_LocalPosition: {x: -56, y: -74.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 911631062}
