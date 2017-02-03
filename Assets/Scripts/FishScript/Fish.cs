@@ -43,10 +43,8 @@ public class Fish : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("fish pos: " + transform.position);
 		AIUpdate ();
 		FishUpdate ();
-        Debug.Log("fish pos2: " + transform.position);
     }
 
 	public void AIUpdate(){
@@ -54,7 +52,6 @@ public class Fish : MonoBehaviour {
 	}
 
 	public void VectorAISet(Vector3 input){
-		Debug.Log ("Here!");
 		vectorAI = input;
 		vectorAI = vectorAI.normalized;
 		timeSinceLastClick = 0;
