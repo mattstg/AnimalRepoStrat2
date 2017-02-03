@@ -55,6 +55,11 @@ public class Frog : MonoBehaviour {
 		}
         if (pioneerFrog)
             mateCooldown = 0;
+		if (frogInfo.playerDescendant) {
+			Debug.Log ("frog born, player descendant, +1 score");
+			FindObjectOfType<FrogGF> ().score++;
+			Debug.Log ("score is now: " + FindObjectOfType<FrogGF> ().score);
+		}
     }
 	// Update is called once per frame
 	void Update () {
@@ -350,6 +355,10 @@ public class Frog : MonoBehaviour {
 
     public virtual void FrogEaten()
     {
+		if (frogInfo.playerDescendant) {
+			Debug.Log ("frog died, player descendant, -1 score");
+			FindObjectOfType<FrogGF> ().score--;
+		}
         Destroy(this.gameObject);
     }
 

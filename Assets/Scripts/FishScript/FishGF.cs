@@ -6,7 +6,9 @@ public class FishGF : GameFlow {
 
 	//public FrogCinematic frogCinematic;
 	//public GameObject tutorialScreen;
+
 	int stage = 0;
+	int highestScore = 0;
 	bool nextStep = false;
 	public InputManager im;
 	public Vector3 lastCheckpt;
@@ -143,6 +145,14 @@ public class FishGF : GameFlow {
 	public void ReachedCheckpoint(Vector3 checkPt)
 	{
 		lastCheckpt = checkPt;	
+	}
+
+	public void PlayerDied(PlayerFish playerFish)
+	{
+		playerFish.transform.position = lastCheckpt;
+		highestScore = Mathf.Max (score, highestScore);
+		score = 0;
+		//Message 
 	}
 
 

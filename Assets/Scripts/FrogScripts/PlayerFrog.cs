@@ -38,7 +38,17 @@ public class PlayerFrog : Frog {
         }
         else
         {
-            Debug.Log("No Descendants left, game over");
+			foreach(Transform t in GameObject.FindObjectOfType<FrogWS>().frogParent)
+			{
+				Frog f = t.GetComponent<Frog>();
+				if(f.isMale)
+				{
+					EnterIdleState();
+					transform.position = f.transform.position;
+					//Destroy(frogFound.gameObject);  
+					break;
+				}
+			}
         }
     }
 }

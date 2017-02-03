@@ -8,10 +8,22 @@ public class GameFlow : MonoBehaviour {
     public GameObject tutorial;
 	public GraphManager graphManager;
 	public TextPanel textPanel;
+	protected ScoreText scoreText;
+
+	private int _score = 0;
+	public int score {set{ChangeScore (value); }get{return _score; }}
 
 	public void Start()
 	{
+		scoreText = FindObjectOfType<ScoreText> ();
+		scoreText.gameObject.SetActive (false);
 		StartFlow ();
+	}
+
+	public void ChangeScore(int newScore)
+	{
+		scoreText.SetScore (newScore);
+		_score = newScore;
 	}
 
 	public virtual void AnsweredGraphCorrectly()

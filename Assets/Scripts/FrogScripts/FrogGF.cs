@@ -96,6 +96,7 @@ public class FrogGF : GameFlow {
         textPanel.gameObject.SetActive(true);
         textPanel.SetText(t0);// + t1 + t2 + t3 + t4);
         textPanel.StartWriting();
+		scoreText.gameObject.SetActive (false);
     }
 
     private void PostGameQuestions()
@@ -127,6 +128,7 @@ public class FrogGF : GameFlow {
 
 	private void StartGame()
 	{
+		scoreText.gameObject.SetActive (true);
 		playerFrog.gameObject.SetActive (true);
 		frogCinematic.StartWetlandCinematic ();
 		Camera.main.gameObject.GetComponent<CameraFollow> ().toFollow = playerFrog.transform;
