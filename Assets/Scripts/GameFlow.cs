@@ -8,15 +8,16 @@ public class GameFlow : MonoBehaviour {
     public GameObject tutorial;
 	public GraphManager graphManager;
 	public TextPanel textPanel;
-	protected ScoreText scoreText;
+	public ScoreText scoreText;
 
 	private int _score = 0;
 	public int score {set{ChangeScore (value); }get{return _score; }}
+	public bool trackScoreAsTime = false;
+	protected bool roundTimerActive = false;
+	protected float roundTime = 0;
 
 	public void Start()
-	{
-		scoreText = FindObjectOfType<ScoreText> ();
-		scoreText.gameObject.SetActive (false);
+	{		
 		StartFlow ();
 	}
 
@@ -34,6 +35,16 @@ public class GameFlow : MonoBehaviour {
 	public virtual void TextButtonNextPressed()
 	{
 
+	}
+
+	public virtual void Update() //needs to be called by child
+	{
+		if (roundTimerActive) {
+			roundTime += Time.deltaTime;
+		}
+		if (trackScoreAsTime) {
+			scoreText.SetScoreTime (roundTime);
+		}
 	}
 
 	public virtual void StartFlow()

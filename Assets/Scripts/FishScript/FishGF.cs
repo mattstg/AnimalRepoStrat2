@@ -8,19 +8,23 @@ public class FishGF : GameFlow {
 	//public GameObject tutorialScreen;
 
 	int stage = 0;
-	int highestScore = 0;
 	bool nextStep = false;
 	public InputManager im;
 	public Vector3 lastCheckpt;
+	public PlayerFish playerFish;
 
 	public override void StartFlow()
 	{
 		stage = -1;
 		nextStep = false;
+		if (nextStep)
+			playerFish.gameObject.SetActive (false);
+
 	}
 
-	public void Update()
+	public override void Update()
 	{
+		base.Update ();
         if (!nextStep)
             return;
 			//we are in game 
@@ -39,10 +43,13 @@ public class FishGF : GameFlow {
 			case 3:
 				StartGame (); //start game
 				break;
-			case 4:
-				PostGameQuestions (); //summary questions
-				break;
+		case 4:
+			PostGame ();
+			break;
 		case 5:
+			PostGameQuestions (); //summary questions
+			break;
+		case 6:
 			GoToNextScene ();
 			break;
 			default:
@@ -50,6 +57,15 @@ public class FishGF : GameFlow {
 			}
 			nextStep = false;
 		
+	}
+
+	private void PostGame()
+	{
+		roundTimerActive = false;
+		string t0 = "Total time: " + scoreText.TimeAsTimerString (roundTime);
+		textPanel.gameObject.SetActive (true);
+		textPanel.SetText (t0);
+		textPanel.StartWriting ();
 	}
 
 	private void IntroText()
@@ -76,6 +92,7 @@ public class FishGF : GameFlow {
 
 	private void PostGameQuestions()
 	{
+		
 		im.gameObject.SetActive (false);
 		//frogCinematic.StartAridCinematic ();
 		graphManager.gameObject.SetActive (true);
@@ -103,6 +120,9 @@ public class FishGF : GameFlow {
 
 	private void StartGame()
 	{
+		playerFish.gameObject.SetActive (true);
+		roundTimerActive = true;
+		trackScoreAsTime = true;
 		im.gameObject.SetActive (true);
 	}
 
@@ -150,8 +170,6 @@ public class FishGF : GameFlow {
 	public void PlayerDied(PlayerFish playerFish)
 	{
 		playerFish.transform.position = lastCheckpt;
-		highestScore = Mathf.Max (score, highestScore);
-		score = 0;
 		//Message 
 	}
 

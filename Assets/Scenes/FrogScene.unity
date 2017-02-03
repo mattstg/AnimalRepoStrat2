@@ -5383,6 +5383,12 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &625164604 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114721958408501964, guid: 7f735b4f4429ccd48bfc78e25885e8f9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1745491568}
+  m_Script: {fileID: 11500000, guid: b920db32959a79048bc6ad3cab37a201, type: 3}
 --- !u!1 &628467590
 GameObject:
   m_ObjectHideFlags: 0
@@ -11007,10 +11013,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249729e3a773a164d803d952b12fe6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: 
+  nextSceneName: FishScene
   tutorial: {fileID: 1114622436}
   graphManager: {fileID: 445868751}
   textPanel: {fileID: 1318145790}
+  scoreText: {fileID: 625164604}
   frogCinematic: {fileID: 1336928105}
   playerFrog: {fileID: 1587365128}
   im: {fileID: 1921402803}
