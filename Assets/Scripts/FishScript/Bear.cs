@@ -70,8 +70,12 @@ public class Bear : MonoBehaviour {
 		curState = BearState.Rest;
 		curTimeToAct = 0;
 		TurnOffAllTrigger ();
-		if (fishInRange.Count > 0) {
+		if (fishInRange.Count > 0) 
+		{
 			eatingFish = fishInRange [0].transform;
+			fishInRange [0].Dies ();
+			eatingFish.GetComponent<Fish> ().enabled = false;
+
 			//fishInRange[0].dies
 		}
 	}

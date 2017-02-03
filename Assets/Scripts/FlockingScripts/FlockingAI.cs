@@ -13,25 +13,26 @@ public class FlockingAI : MonoBehaviour
     int numOfWP;
     public waypointScript currentWaypoint;
 
+    public bool test = false;
 
     bool isCorpse = false;
     Rigidbody2D rigidbody;
     int activeWaypoint = 1;
-    float speed;
+    public float speed;
     float rotationSpeed;
-
+    
     public bool turnsHead = true;
     public GameObject head;
     public float headRotationSpeed = 20f;
 
     public int updateFrequency = 5; //the average number of ticks between vector updates
 
-    public Vector2 speedRange = new Vector2(10, 15);
+    public Vector2 speedRange = new Vector2(800, 800);
 
     public Vector2 rotationSpeedRange = new Vector2(12, 16);
 
     public bool isCalf = false;
-
+	public bool isFish = false;
     public bool isDuckling = false;
 
     public bool fleesFromPredators = true;
@@ -96,10 +97,6 @@ public class FlockingAI : MonoBehaviour
     public float predAveragePositionWeight = 1f;
 
 
-
-
-
-
     // Methods
 
     Vector2 V3toV2(Vector3 _vector3) //makes a Vector2 out of the x and y of a Vector3
@@ -114,22 +111,27 @@ public class FlockingAI : MonoBehaviour
     {
         isCorpse = true;
         rigidbody.bodyType = RigidbodyType2D.Static;
-        GameObject.FindObjectOfType<FlockManager>().flock.Remove(this.gameObject);
-        GameObject.FindObjectOfType<CalfManager>().calfTransforms.Remove(this.transform);
-        GameObject.FindObjectOfType<Corpsemanager>().Corpses.Add(this.gameObject);
-        gameObject.AddComponent<DecayCounter>();
+		if (!isFish) {
+			GameObject.FindObjectOfType<FlockManager> ().flock.Remove (this.gameObject);
+			GameObject.FindObjectOfType<CalfManager> ().calfTransforms.Remove (this.transform);
+			GameObject.FindObjectOfType<Corpsemanager> ().Corpses.Add (this.gameObject);
+			gameObject.AddComponent<DecayCounter> ();
+		}
 
 
     }
 
     void OnCollisionEnter2D(Collision2D coli)
     {
-        FlockingAI ai = coli.gameObject.GetComponent<FlockingAI>();
-        if (ai && ai.isCalf && !(ai.isCorpse))
+        if (isPredator)
         {
-            ai.Dies();
+            FlockingAI ai = coli.gameObject.GetComponent<FlockingAI>();
+            if (ai && ai.isCalf && !(ai.isCorpse))
+            {
+                ai.Dies();
+            }
         }
-    }
+    } 
 
     void ApplyRules()
     {
@@ -178,7 +180,8 @@ public class FlockingAI : MonoBehaviour
 
                         vCenter += _animalsPos;
                         vHeading += _animalsForward;
-                        localGroupSize++;
+                        if(_animal.GetComponent<FlockingAI>())
+                            localGroupSize++;
 
                         if (isPredator && isPredOnStandby)
                         {
@@ -195,14 +198,21 @@ public class FlockingAI : MonoBehaviour
                         }
                         else
                         {
-                            if (!(_animal.GetComponent<FlockingAI>().isCalf)) //predators don't get repelled by calves
-                                if (dist < repulsionDistance)
-                                    vRepel += (thisPos - _animalsPos);
+                            if (_animal.GetComponent<FlockingAI>())
+                            {
+                                if (!(_animal.GetComponent<FlockingAI>().isCalf)) //predators don't get repelled by calves
+                                    if (dist < repulsionDistance)
+                                        vRepel += (thisPos - _animalsPos);
+                            }
 
                         }
 
-                        FlockingAI _animalsAI = _animal.GetComponent<FlockingAI>(); //getting _animal's speed for calculating average local speed
-                        localGroupSpeed += _animalsAI.speed;
+                        if (_animal.GetComponent<FlockingAI>())
+                        {
+                            FlockingAI _animalsAI = _animal.GetComponent<FlockingAI>(); //getting _animal's speed for calculating average local speed
+                            localGroupSpeed += _animalsAI.speed;
+                        }
+                        
                     }
                 }
             }

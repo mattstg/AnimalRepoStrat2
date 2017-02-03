@@ -9,6 +9,9 @@ public class WaterfallZone : MonoBehaviour {
 		Fish currentFish = coli.GetComponent<Fish> ();
 		if (currentFish != null) {
 			currentFish.jumpTo (jumpToPoint.transform.position);
+			GameObject.FindObjectOfType<FishGF> ().ReachedCheckpoint (jumpToPoint.transform.position);
 		}
 	}
+
+
 }
