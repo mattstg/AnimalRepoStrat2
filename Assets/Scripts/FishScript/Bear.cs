@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Bear : MonoBehaviour {
 
-	enum BearState{Swipe,Rest,WalkingToFood,WalkingBackFromFood,DigestingFood}
+	enum BearState{Hunting,Eating,Retrieving,Returning}
 
-	BearState curState = BearState.Rest;
+	BearState curState = BearState.Eating;
 	List<Transform> bearSwipes;
-	List<FlockingAI> fishInRange = new List<FlockingAI> ();
+	List<Fish> fishInRange = new List<Fish> ();
 	public Transform swipeParent;
 	float maxTimeToAct = 1.25f;
 	float curTimeToAct = 0;
@@ -16,8 +16,13 @@ public class Bear : MonoBehaviour {
 	[HideInInspector]
 	public Transform eatingFish;
 	public Transform bearMouth;
+    public Vector2 originalPos;
+    public Vector3 originalRot;
+    float bearSpeed = 1;
 	// Use this for initialization
 	void Awake() {
+        originalPos = transform.position;
+        originalRot = transform.eulerAngles;
 		bearSwipes = new List<Transform> ();
 		foreach (Transform t in swipeParent) {
 			bearSwipes.Add (t);
@@ -28,25 +33,76 @@ public class Bear : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		curTimeToAct += Time.deltaTime;
-		if (curState == BearState.Swipe) {
-			SetSwipeAlpha (bearSwipes [curSwipeIndex].GetComponent<SpriteRenderer> (), curTimeToAct / maxTimeToAct);
-			if (curTimeToAct >= maxTimeToAct)
-				Swipes ();
-		} 
-		else if (curState == BearState.Rest)
-		{
-			if (eatingFish)
-				eatingFish.transform.position = bearMouth.position;
-			if (curTimeToAct >= maxTimeToAct) 
-			{
-				if (eatingFish)
-				{
-					Destroy (eatingFish.gameObject);
-					eatingFish = null;
-				}
-				BeginSwipe ();
-			}
-		}
+
+        if (curState == BearState.Hunting)
+        {
+            SetSwipeAlpha(bearSwipes[curSwipeIndex].GetComponent<SpriteRenderer>(), curTimeToAct / maxTimeToAct);
+            if (curTimeToAct >= maxTimeToAct)
+                Swipes();
+        }
+        else if (curState == BearState.Retrieving)
+        {
+            if (eatingFish)
+            {
+                if (IsAtGoal(eatingFish.transform.position,true))
+                {
+                    curState = BearState.Returning;
+                    eatingFish.transform.position = bearMouth.position;
+                    curTimeToAct = 0;
+                }
+                else
+                {
+                    MoveTowardsGoal(eatingFish.transform.position);
+                }
+            }
+            else
+            {
+                curState = BearState.Returning;
+            }
+        }
+        else if (curState == BearState.Returning)
+        {
+            if (IsAtGoal(originalPos))
+            {
+                transform.position = originalPos;
+                transform.eulerAngles = originalRot;
+                eatingFish.position = bearMouth.position;
+                eatingFish.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
+                curState = BearState.Eating;
+                curTimeToAct = 0;
+            }
+            else
+            {
+                MoveTowardsGoal(originalPos);
+                if (eatingFish)
+                {
+                    eatingFish.position = bearMouth.position;
+                    eatingFish.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
+                }                
+            }
+        }
+        else if(curState == BearState.Eating)
+        {
+            if (curTimeToAct >= maxTimeToAct)
+            {
+                if (eatingFish)
+                {
+                    if(eatingFish.gameObject.GetComponent<PlayerFish>())
+                    {
+                        GameObject.FindObjectOfType<FishGF>().PlayerDied(eatingFish.gameObject.GetComponent<PlayerFish>());
+                        eatingFish = null;
+                    }
+                    else
+                    {
+                        Destroy(eatingFish.gameObject);
+                        eatingFish = null;
+                    }                    
+                }
+                BeginSwipe();
+            }
+        }
+			
+		
 	}
 
 	private void TurnOffAllTrigger()
@@ -58,7 +114,7 @@ public class Bear : MonoBehaviour {
 	private void BeginSwipe()
 	{
 		curTimeToAct = 0;
-		curState = BearState.Swipe;
+		curState = BearState.Hunting;
 		curSwipeIndex++;
 		curSwipeIndex %= bearSwipes.Count;
 		bearSwipes [curSwipeIndex].gameObject.SetActive (true);
@@ -67,26 +123,29 @@ public class Bear : MonoBehaviour {
 
 	private void Swipes()
 	{
-		curState = BearState.Rest;
-		curTimeToAct = 0;
+        curTimeToAct = 0;
 		TurnOffAllTrigger ();
 		if (fishInRange.Count > 0) 
 		{
+            curState = BearState.Retrieving;
 			eatingFish = fishInRange [0].transform;
-
 			if (fishInRange [0].gameObject.GetComponent<PlayerFish> ()) {
-				//player dies, restart at checkpoint
-
-			}
+                fishInRange[0].gameObject.GetComponent<PlayerFish>().SetPlayerEnabled(false);
+                //player dies, restart at checkpoint
+            }
 			else
 			{
 				fishInRange [0].Dies ();
-				eatingFish.GetComponent<Fish> ().enabled = false;
-				//fishInRange[0].dies
 			}
 
 		}
-	}
+        else
+        {
+            curState = BearState.Eating;
+        }
+        fishInRange.Clear();
+
+    }
 
 
 	private void ConsumeFish()
@@ -97,22 +156,21 @@ public class Bear : MonoBehaviour {
 		}*/
 	}
 
-	/*private void MoveTowardsGoal()
+	private void MoveTowardsGoal(Vector2 goal)
 	{
-		if (eatingFish)
-			goalPos = eatingFish.position;
-		float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goalPos);
-		float distanceToGoal = Vector2.Distance (goalPos, transform.position);
-		transform.eulerAngles = new Vector3 (0, 0, angToGoal - 90);
-		Vector2 goalDir = goalPos - MathHelper.V3toV2(transform.position);
-		float speed = foxCurrentSpeed;
-		if (distanceToGoal < foxCurrentSpeed * Time.deltaTime)
-			speed = distanceToGoal;
-		//GetComponent<Rigidbody2D> ().AddRelativeForce (goalDir.normalized * foxCurrentSpeed * Time.deltaTime,ForceMode2D.Impulse);
-		GetComponent<Rigidbody2D> ().velocity = goalDir.normalized * speed;
-		//transform.position = Vector2.MoveTowards(transform.position, goalPos, foxCurrentSpeed * Time.deltaTime);
-	}*/
+		float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goal);
+		float distanceToGoal = Vector2.Distance (goal, transform.position);
+		transform.eulerAngles = new Vector3 (0, 0, angToGoal + 180);
+		Vector2 goalDir = goal - MathHelper.V3toV2(transform.position);
+		transform.position = Vector2.MoveTowards(transform.position, goal, bearSpeed * Time.deltaTime);
+	}
 
+    private bool IsAtGoal(Vector2 goal, bool mouthAcceptable = false)
+    {
+        if (mouthAcceptable && Vector2.Distance(bearMouth.position, goal) < .2f)
+            return true;
+        return (Vector2.Distance(transform.position, goal) < .2f);
+    }
 
 	private void SetSwipeAlpha(SpriteRenderer sr, float setAlpha)
 	{
@@ -123,7 +181,7 @@ public class Bear : MonoBehaviour {
 
 	public void OnTriggerEnter2D(Collider2D coli)
 	{
-		FlockingAI fish = coli.GetComponent<FlockingAI> ();
+		Fish fish = coli.GetComponent<Fish> ();
 		if (fish && !fishInRange.Contains(fish)) {
 			fishInRange.Add (fish);
 		}
@@ -131,7 +189,7 @@ public class Bear : MonoBehaviour {
 
 	public void OnTriggerExit2D(Collider2D coli)
 	{
-		FlockingAI fish = coli.GetComponent<FlockingAI> ();
+        Fish fish = coli.GetComponent<Fish> ();
 		if (fish) {
 			fishInRange.Remove (fish);
 		}

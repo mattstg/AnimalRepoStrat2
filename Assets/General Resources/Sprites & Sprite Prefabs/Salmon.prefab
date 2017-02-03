@@ -297,7 +297,7 @@ MonoBehaviour:
   speedRange: {x: 10, y: 15}
   rotationSpeedRange: {x: 12, y: 16}
   isCalf: 0
-  isFish: 0
+  isFish: 1
   isDuckling: 0
   fleesFromPredators: 0
   predFleeDistance: 25

@@ -110,6 +110,8 @@ public class FlockingAI : MonoBehaviour
     public void Dies()
     {
         isCorpse = true;
+        if (!rigidbody)
+            rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.bodyType = RigidbodyType2D.Static;
 		if (!isFish) {
 			GameObject.FindObjectOfType<FlockManager> ().flock.Remove (this.gameObject);

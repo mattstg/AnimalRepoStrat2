@@ -52,6 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4498526501956296}
   - component: {fileID: 114469726524879304}
+  - component: {fileID: 50700588050676044}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Untagged
@@ -187,7 +188,7 @@ Transform:
   m_GameObject: {fileID: 1348864143599868}
   m_LocalRotation: {x: -0, y: -0, z: 0.5878738, w: -0.8089527}
   m_LocalPosition: {x: -27.167665, y: -52.04919, z: 0.021101944}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 4428757798124840}
   - {fileID: 4683583280066590}
@@ -221,6 +222,26 @@ Transform:
   m_Father: {fileID: 4498526501956296}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50700588050676044
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1348864143599868}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 3
 --- !u!60 &60382968327825180
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -313,6 +334,8 @@ MonoBehaviour:
   swipeParent: {fileID: 4428757798124840}
   eatingFish: {fileID: 0}
   bearMouth: {fileID: 4400252392988802}
+  originalPos: {x: 0, y: 0}
+  originalRot: {x: 0, y: 0, z: 0}
 --- !u!212 &212002256946146388
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -342,7 +365,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1006921303
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 74c7934d1e07feb40ab562c22d51ca03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -13,12 +13,14 @@ public class ScoreText : MonoBehaviour {
 
 	public void SetScore(int newScore)
 	{
-		textScore.text = newScore.ToString ();
+        if(gameObject.activeInHierarchy)
+		    textScore.text = newScore.ToString ();
 	}
 
 	public void SetScoreTime(float totalTime)
 	{
-		textScore.text = TimeAsTimerString (totalTime); 
+        if (gameObject.activeInHierarchy)
+            textScore.text = TimeAsTimerString (totalTime); 
 	}
 
 	public string TimeAsTimerString(float totalTime)

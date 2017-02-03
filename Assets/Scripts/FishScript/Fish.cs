@@ -43,9 +43,11 @@ public class Fish : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log("fish pos: " + transform.position);
 		AIUpdate ();
 		FishUpdate ();
-	}
+        Debug.Log("fish pos2: " + transform.position);
+    }
 
 	public void AIUpdate(){
 		MoveTo (transform.position + vectorAI);
@@ -103,11 +105,13 @@ public class Fish : MonoBehaviour {
 	public void MoveTo(Vector3 newDes){
 		desiredPos = newDes;
 		isMoving = true;
-	}
+        Debug.Log("Player2 moves to: " + newDes);
+    }
 
 	public void PlayerMoveTo(Vector3 newDes){
 		timeSinceLastClick = 0;
 		MoveTo (newDes);
+        Debug.Log("Player3 moves to: " + newDes);
 	}
 		
 	private Vector3 clampZ(Vector3 toChange){
@@ -124,4 +128,10 @@ public class Fish : MonoBehaviour {
 		jumpPoint = temp;
 		GetComponent<Rigidbody2D> ().bodyType = RigidbodyType2D.Static;
 	}
+
+    public void Dies()
+    {
+        GetComponent<FlockingAI>().Dies();
+        enabled = false;
+    }
 }

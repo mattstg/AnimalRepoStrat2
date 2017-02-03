@@ -19,7 +19,6 @@ public class FishGF : GameFlow {
 		nextStep = false;
 		if (nextStep)
 			playerFish.gameObject.SetActive (false);
-
 	}
 
 	public override void Update()
@@ -170,6 +169,8 @@ public class FishGF : GameFlow {
 	public void PlayerDied(PlayerFish playerFish)
 	{
 		playerFish.transform.position = lastCheckpt;
+        Debug.Log("set player to: " + lastCheckpt);
+        playerFish.SetPlayerEnabled(true);
 		//Message 
 	}
 
