@@ -237,10 +237,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da52700164eb1834faedf8df19f0f469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentWaypoint: {fileID: 0}
+  test: 0
+  speed: 0
   turnsHead: 1
   head: {fileID: 1296992225907802}
   headRotationSpeed: 20
-  updateFrequency: 6
+  updateFrequency: 2
   speedRange: {x: 800, y: 820}
   rotationSpeedRange: {x: 8, y: 10}
   isCalf: 0
@@ -264,9 +267,9 @@ MonoBehaviour:
   mother: {fileID: 0}
   motherWeight: 1
   usesRandom: 1
-  randomWeight: 0.3
-  randomRange: 10
-  randVectUpdateFrequency: 30
+  randomWeight: 1
+  randomRange: 5
+  randVectUpdateFrequency: 500
   usesDirectionalInertia: 1
   inertiaWeight: 4
   randomizesSpeed: 0

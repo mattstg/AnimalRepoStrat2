@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 50399934020616726}
   - component: {fileID: 114834904434604160}
   - component: {fileID: 70265636911961454}
+  - component: {fileID: 114112106456499688}
   m_Layer: 0
   m_Name: CalfPrefab
   m_TagString: Untagged
@@ -166,6 +167,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 4, y: 1.2}
   m_Direction: 1
+--- !u!114 &114112106456499688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1763420245976860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd69a2a8fc4f7f409dc522aac80e2f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerCalf: 0
+  maxSprintCooldown: 15
+  sprintCoolDownSpeed: 1
+  sprintTriggerDistance: 15
+  maxSpeedBoost: 500
+  speedBoostDecayRate: 50
 --- !u!114 &114834904434604160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,17 +195,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da52700164eb1834faedf8df19f0f469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentWaypoint: {fileID: 0}
+  test: 0
+  speed: 0
   turnsHead: 1
   head: {fileID: 1858675436165042}
   headRotationSpeed: 20
-  updateFrequency: 6
+  updateFrequency: 2
   speedRange: {x: 800, y: 820}
   rotationSpeedRange: {x: 8, y: 10}
   isCalf: 1
   isDuckling: 0
   fleesFromPredators: 1
   predFleeDistance: 30
-  fleeWeight: 20
+  fleeWeight: 25
   averageHeadingWeight: 4
   averagePositionWeight: 8
   neighbourDistance: 10
@@ -200,18 +221,18 @@ MonoBehaviour:
   leaderWeight: 2
   leaderInfluenceDistance: 50
   followsMother: 1
-  motherInfluenceDistance: 40
+  motherInfluenceDistance: 30
   mother: {fileID: 0}
-  motherWeight: 15
+  motherWeight: 10
   usesRandom: 1
-  randomWeight: 2
+  randomWeight: 3
   randomRange: 10
-  randVectUpdateFrequency: 30
+  randVectUpdateFrequency: 200
   usesDirectionalInertia: 0
   inertiaWeight: 3
   randomizesSpeed: 0
   randomizesRotationSpeed: 0
-  speedNormalizing: 1
+  speedNormalizing: 0
   isPredator: 0
   huntRange: 40
   huntWeight: 1

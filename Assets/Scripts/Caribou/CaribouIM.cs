@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CaribouIM : InputManager {
-
-	protected override void MouseDown (Vector2 mouseWorldPos)
+    public GameObject playerCaribou;
+    protected override void MouseDown (Vector2 mouseWorldPos)
 	{
-		//Debug.Log ("mouse: " + mouseWorldPos);
-	} 
+        playerCaribou.GetComponent<PlayerCaribou>().MousePressed(mouseWorldPos);
+        //Debug.Log ("mouse: " + mouseWorldPos);
+    } 
 
 	protected override void MouseClickedOnObjOfInterest ()
 	{

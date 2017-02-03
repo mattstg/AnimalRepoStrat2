@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 70754849737859260}
   - component: {fileID: 114703785759266646}
   - component: {fileID: 95775695534971404}
+  - component: {fileID: 114420821383688078}
   m_Layer: 0
   m_Name: WolfPrefab
   m_TagString: Untagged
@@ -232,6 +233,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114420821383688078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653187061860732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7ae2ccb1dc08c4ea4fcf719815659f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSprintCooldown: 15
+  sprintCoolDownSpeed: 1
+  sprintTriggerDistance: 30
+  maxSpeedBoost: 700
+  speedBoostDecayRate: 60
 --- !u!114 &114703785759266646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,12 +260,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da52700164eb1834faedf8df19f0f469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentWaypoint: {fileID: 0}
+  test: 0
+  speed: 0
   turnsHead: 1
   head: {fileID: 1286030784081590}
   headRotationSpeed: 20
-  updateFrequency: 5
-  speedRange: {x: 780, y: 800}
-  rotationSpeedRange: {x: 15, y: 18}
+  updateFrequency: 2
+  speedRange: {x: 700, y: 700}
+  rotationSpeedRange: {x: 12, y: 14}
   isCalf: 0
   isDuckling: 0
   fleesFromPredators: 0
@@ -257,9 +277,9 @@ MonoBehaviour:
   averageHeadingWeight: 1
   averagePositionWeight: 1
   neighbourDistance: 50
-  repulsionDistance: 8
-  repulsionWeight: 8
-  usesWaypoints: 1
+  repulsionDistance: 7
+  repulsionWeight: 15
+  usesWaypoints: 0
   waypointWeight: 5
   waypointReachedProximity: 40
   followsLeaders: 0
@@ -270,9 +290,9 @@ MonoBehaviour:
   mother: {fileID: 0}
   motherWeight: 1
   usesRandom: 1
-  randomWeight: 0.5
+  randomWeight: 1
   randomRange: 10
-  randVectUpdateFrequency: 30
+  randVectUpdateFrequency: 200
   usesDirectionalInertia: 0
   inertiaWeight: 1
   randomizesSpeed: 0
@@ -284,8 +304,8 @@ MonoBehaviour:
   scavenges: 1
   scavengeDistance: 30
   scavengeWeight: 15
-  interPredatorRepelDistance: 5
-  interPredatorRepelWeight: 2
+  interPredatorRepelDistance: 10
+  interPredatorRepelWeight: 4
   predNeighborhoodSize: 30
   predAverageHeadingWeight: 1
   predAveragePositionWeight: 1
