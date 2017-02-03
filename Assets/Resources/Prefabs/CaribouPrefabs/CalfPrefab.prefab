@@ -181,8 +181,8 @@ MonoBehaviour:
   isPlayerCalf: 0
   maxSprintCooldown: 15
   sprintCoolDownSpeed: 1
-  sprintTriggerDistance: 20
-  maxSpeedBoost: 500
+  sprintTriggerDistance: 25
+  maxSpeedBoost: 600
   currentSpeedBoost: 0
   speedBoostDecayRate: 50
 --- !u!114 &114834904434604160
@@ -211,7 +211,7 @@ MonoBehaviour:
   isDuckling: 0
   fleesFromPredators: 1
   predFleeDistance: 20
-  fleeWeight: 50
+  fleeWeight: 53
   averageHeadingWeight: 4
   averagePositionWeight: 8
   neighbourDistance: 10
@@ -226,7 +226,7 @@ MonoBehaviour:
   followsMother: 1
   motherInfluenceDistance: 30
   mother: {fileID: 0}
-  motherWeight: 9
+  motherWeight: 8
   usesRandom: 1
   randomWeight: 3
   randomRange: 10

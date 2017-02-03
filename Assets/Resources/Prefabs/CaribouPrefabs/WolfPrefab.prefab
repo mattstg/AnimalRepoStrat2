@@ -246,7 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSprintCooldown: 15
   sprintCoolDownSpeed: 1
-  sprintTriggerDistance: 30
+  sprintTriggerDistance: 45
   maxSpeedBoost: 700
   speedBoostDecayRate: 60
 --- !u!114 &114703785759266646
@@ -262,14 +262,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWaypoint: {fileID: 0}
   test: 0
+  isCorpse: 0
   speed: 0
   turnsHead: 1
   head: {fileID: 1286030784081590}
   headRotationSpeed: 20
   updateFrequency: 2
   speedRange: {x: 700, y: 700}
-  rotationSpeedRange: {x: 12, y: 14}
+  rotationSpeedRange: {x: 7, y: 9}
   isCalf: 0
+  isFish: 0
   isDuckling: 0
   fleesFromPredators: 0
   predFleeDistance: 25
@@ -293,8 +295,8 @@ MonoBehaviour:
   randomWeight: 1
   randomRange: 10
   randVectUpdateFrequency: 200
-  usesDirectionalInertia: 0
-  inertiaWeight: 1
+  usesDirectionalInertia: 1
+  inertiaWeight: 0.5
   randomizesSpeed: 0
   randomizesRotationSpeed: 0
   speedNormalizing: 0
