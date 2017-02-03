@@ -11,7 +11,7 @@ public class Calf : MonoBehaviour {
     public float sprintCoolDownSpeed = 1f;
     public float sprintTriggerDistance = 30f;
     public float maxSpeedBoost = 200f;
-    float currentSpeedBoost = 0f;
+    public float currentSpeedBoost = 0f;
     public float speedBoostDecayRate = 8f;
 
     // Use this for initialization
@@ -21,10 +21,9 @@ public class Calf : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (sprintCoolDown == 0)
+        if (!isPlayerCalf)
         {
-            if (!isPlayerCalf)
+            if (sprintCoolDown == 0)
             {
                 List<Transform> wolfTrans = GameObject.FindObjectOfType<PredatorManager>().predatorTransforms;
                 float closestWolfDistance = 1000;
@@ -48,15 +47,18 @@ public class Calf : MonoBehaviour {
                     }
                 }
             }
+
+            if (sprintCoolDown > 0f)
+            {
+                sprintCoolDown -= Time.deltaTime * sprintCoolDownSpeed;
+            }
+            else if (sprintCoolDown <= 0f)
+            {
+                sprintCoolDown = 0f;
+            }
         }
-        if (sprintCoolDown > 0f)
-        {
-            sprintCoolDown -= Time.deltaTime * sprintCoolDownSpeed;
-        }
-        else if (sprintCoolDown <= 0f)
-        {
-            sprintCoolDown = 0f;
-        }
+        
+
 
         if (currentSpeedBoost > 0)
         {

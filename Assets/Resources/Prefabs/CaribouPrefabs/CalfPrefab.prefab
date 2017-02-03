@@ -183,6 +183,7 @@ MonoBehaviour:
   sprintCoolDownSpeed: 1
   sprintTriggerDistance: 15
   maxSpeedBoost: 500
+  currentSpeedBoost: 0
   speedBoostDecayRate: 50
 --- !u!114 &114834904434604160
 MonoBehaviour:
@@ -197,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWaypoint: {fileID: 0}
   test: 0
+  isCorpse: 0
   speed: 0
   turnsHead: 1
   head: {fileID: 1858675436165042}
@@ -207,8 +209,8 @@ MonoBehaviour:
   isCalf: 1
   isDuckling: 0
   fleesFromPredators: 1
-  predFleeDistance: 30
-  fleeWeight: 25
+  predFleeDistance: 20
+  fleeWeight: 50
   averageHeadingWeight: 4
   averagePositionWeight: 8
   neighbourDistance: 10

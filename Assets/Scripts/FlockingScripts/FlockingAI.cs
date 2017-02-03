@@ -15,7 +15,7 @@ public class FlockingAI : MonoBehaviour
 
     public bool test = false;
 
-    bool isCorpse = false;
+    public bool isCorpse = false;
     Rigidbody2D rigidbody;
     int activeWaypoint = 1;
     public float speed;

@@ -7,6 +7,12 @@ public class PlayerCaribou : MonoBehaviour {
     public GameObject PlayerCalf;
     Vector3 targetPos = new Vector3();
     public float speed = 5f;
+    float snortCoolDown = 0f;
+    public int maxSnortCooldown = 10;
+    public float snortCoolDownSpeed = 1f;
+
+    AudioSource source;
+    
 
 
     public void MousePressed(Vector3 loc)
@@ -14,10 +20,28 @@ public class PlayerCaribou : MonoBehaviour {
         targetPos = loc;
     }
 
+    public void Snort()
+    {
+        if (snortCoolDown == 0)
+        {
+
+            if (PlayerCalf.GetComponent<FlockingAI>() && !PlayerCalf.GetComponent<FlockingAI>().isCorpse)
+            {
+                PlayerCalf.GetComponent<Calf>().currentSpeedBoost = PlayerCalf.GetComponent<Calf>().maxSpeedBoost;
+            }
+            source.Play();
+            snortCoolDown = maxSnortCooldown;
+        }
+        else
+            Debug.Log("Snort is on cool-down!");
+    }
+
     // Use this for initialization
     void Start () {
         GameObject.FindObjectOfType<FlockManager>().flock.Add(this.gameObject);
         targetPos = transform.position;
+        source = GetComponent<AudioSource>();
+        
     }
 	
 	// Update is called once per frame
@@ -35,5 +59,14 @@ public class PlayerCaribou : MonoBehaviour {
 
 
         transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+
+        if (snortCoolDown > 0f)
+        {
+            snortCoolDown -= Time.deltaTime * snortCoolDownSpeed;
+        }
+        else if (snortCoolDown <= 0f)
+        {
+            snortCoolDown = 0f;
+        }
     }
 }

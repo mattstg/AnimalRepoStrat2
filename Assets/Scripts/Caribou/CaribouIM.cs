@@ -12,7 +12,7 @@ public class CaribouIM : InputManager {
 
 	protected override void MouseClickedOnObjOfInterest ()
 	{
-	
+        playerCaribou.GetComponent<PlayerCaribou>().Snort();
 	}
 
 }
