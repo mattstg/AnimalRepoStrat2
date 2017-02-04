@@ -40,8 +40,6 @@ public class FlockingAI : MonoBehaviour
     public float fleeWeight = 1f;
 
 
-
-
     public float averageHeadingWeight = 15f; //multiplier for strength of averageHeading influence
 
     public float averagePositionWeight = 1f; //multiplier for strength of averagePosition influence
@@ -113,8 +111,8 @@ public class FlockingAI : MonoBehaviour
         if (!rigidbody)
             rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.bodyType = RigidbodyType2D.Static;
-		if (!isFish) {
-			GameObject.FindObjectOfType<FlockManager> ().flock.Remove (this.gameObject);
+        GameObject.FindObjectOfType<FlockManager>().flock.Remove(this.gameObject);
+        if (!isFish) {
 			GameObject.FindObjectOfType<CalfManager> ().calfTransforms.Remove (this.transform);
 			GameObject.FindObjectOfType<Corpsemanager> ().Corpses.Add (this.gameObject);
 			gameObject.AddComponent<DecayCounter> ();
@@ -175,6 +173,11 @@ public class FlockingAI : MonoBehaviour
                 {
                     animals.RemoveAt(i);
                     continue; //go to next iteration
+                }
+                if(_animal.GetComponent<FlockingAI>() && _animal.GetComponent<FlockingAI>().enabled)
+                {
+                    //Since some of them may be turned off, waiting on standby till a player gets close
+                    continue;
                 }
 
                 if (_animal != this.gameObject)
