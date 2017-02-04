@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (toFollow) {
-			transform.position = toFollow.position + new Vector3(0,0,-10) + offset;
+			transform.position = new Vector3(toFollow.position.x + offset.x, toFollow.position.y + offset.y, -10);
 		}
 	}
 

@@ -9,6 +9,6 @@ public class FollowTransform : MonoBehaviour {
 	public void Update()
     {
         if (toFollow)
-            transform.position = new Vector3(toFollow.position.x, toFollow.position.x, 0);
+            transform.position = new Vector3(toFollow.position.x, toFollow.position.y, 0);
     }
 }

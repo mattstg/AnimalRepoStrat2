@@ -102,13 +102,11 @@ public class Fish : MonoBehaviour {
 	public void MoveTo(Vector3 newDes){
 		desiredPos = newDes;
 		isMoving = true;
-        Debug.Log("Player2 moves to: " + newDes);
     }
 
 	public void PlayerMoveTo(Vector3 newDes){
 		timeSinceLastClick = 0;
 		MoveTo (newDes);
-        Debug.Log("Player3 moves to: " + newDes);
 	}
 		
 	private Vector3 clampZ(Vector3 toChange){

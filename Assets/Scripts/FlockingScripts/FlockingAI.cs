@@ -168,10 +168,15 @@ public class FlockingAI : MonoBehaviour
             float localGroupSpeed = 0f; //this will be used to calculate local average speed for when speedNormalizing = false
             float dist; //will be distance between this animal and whatever animal is being checked by the foreach loop below
 
-
-
-            foreach (GameObject _animal in animals)
+            for(int i = animals.Count - 1; i >= 0; i--)
             {
+                GameObject _animal = animals[i];
+                if(!_animal) //if the animal is null
+                {
+                    animals.RemoveAt(i);
+                    continue; //go to next iteration
+                }
+
                 if (_animal != this.gameObject)
                 {
                     dist = Vector2.Distance(_animal.transform.position, this.transform.position);

@@ -16,7 +16,7 @@ public class FishIM : InputManager {
 
 	protected override void MouseClickedOnObjOfInterest ()
 	{
-        Debug.Log("mouse clicked on fish");
+
 	} 
 
 }
