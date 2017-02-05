@@ -8,7 +8,7 @@ public class WaypointManager : MonoBehaviour
 
 
 	// Use this for initialization
-	void Start()
+	void Awake()
 	{
 	
 		foreach(Transform t in GetComponentsInChildren<Transform>())
