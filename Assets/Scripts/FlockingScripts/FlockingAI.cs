@@ -174,7 +174,7 @@ public class FlockingAI : MonoBehaviour
                     animals.RemoveAt(i);
                     continue; //go to next iteration
                 }
-                if(_animal.GetComponent<FlockingAI>() && _animal.GetComponent<FlockingAI>().enabled)
+                if(_animal.GetComponent<FlockingAI>() && !_animal.GetComponent<FlockingAI>().enabled)
                 {
                     //Since some of them may be turned off, waiting on standby till a player gets close
                     continue;
@@ -197,6 +197,7 @@ public class FlockingAI : MonoBehaviour
                         {
                             if (localGroupSize > 0)
                             {
+                                
                                 isPredOnStandby = false;
                             }
                         }
