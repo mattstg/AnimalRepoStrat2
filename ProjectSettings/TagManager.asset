@@ -62,6 +62,9 @@ TagManager:
   - name: Creatures
     uniqueID: 1006921303
     locked: 0
+  - name: TopWater
+    uniqueID: 2327562329
+    locked: 0
   - name: Trunk
     uniqueID: 3352461247
     locked: 0
