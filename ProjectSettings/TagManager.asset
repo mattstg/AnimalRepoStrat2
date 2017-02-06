@@ -65,6 +65,9 @@ TagManager:
   - name: TopWater
     uniqueID: 2327562329
     locked: 0
+  - name: Bear
+    uniqueID: 504739405
+    locked: 0
   - name: Trunk
     uniqueID: 3352461247
     locked: 0
