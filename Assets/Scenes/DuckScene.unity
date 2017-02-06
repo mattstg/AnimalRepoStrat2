@@ -6616,6 +6616,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1803798090702780, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
   m_IsPrefabParent: 0
@@ -9407,7 +9411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &452422497
 Transform:
   m_ObjectHideFlags: 0
@@ -11506,49 +11510,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1afc98c372925b43b304958366d3d4f, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &546376239
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 546376241}
-  - component: {fileID: 546376240}
-  m_Layer: 0
-  m_Name: InputManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &546376240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 546376239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2731e8e690ab32b48be600d7c959521d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickableObj: {fileID: 0}
-  clickableSize: {x: 0.5, y: 0.5}
-  playerDuck: {fileID: 0}
---- !u!4 &546376241
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 546376239}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1958425598}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &547004767
 GameObject:
   m_ObjectHideFlags: 0
@@ -35038,7 +34999,6 @@ GameObject:
   - component: {fileID: 1666415357}
   - component: {fileID: 1666415356}
   - component: {fileID: 1666415359}
-  - component: {fileID: 1666415358}
   m_Layer: 0
   m_Name: MainScripts
   m_TagString: Untagged
@@ -35062,7 +35022,10 @@ MonoBehaviour:
   graphManager: {fileID: 340199533}
   textPanel: {fileID: 340199532}
   scoreText: {fileID: 340199534}
-  im: {fileID: 546376240}
+  trackScoreAsTime: 1
+  im: {fileID: 1753632080}
+  playerDuck: {fileID: 1753632072}
+  ducklingParent: {fileID: 452422496}
 --- !u!4 &1666415357
 Transform:
   m_ObjectHideFlags: 0
@@ -35076,20 +35039,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1666415358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1666415355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2731e8e690ab32b48be600d7c959521d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickableObj: {fileID: 1753632072}
-  clickableSize: {x: 0.5, y: 0.5}
-  playerDuck: {fileID: 1753632072}
 --- !u!61 &1666415359
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36908,13 +36857,14 @@ GameObject:
   - component: {fileID: 1753632077}
   - component: {fileID: 1753632078}
   - component: {fileID: 1753632079}
+  - component: {fileID: 1753632080}
   m_Layer: 0
   m_Name: PlayerDuck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1753632073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37105,6 +37055,20 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1753632080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1753632072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2731e8e690ab32b48be600d7c959521d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickableObj: {fileID: 1753632072}
+  clickableSize: {x: 0.5, y: 0.5}
+  playerDuck: {fileID: 1753632072}
 --- !u!1 &1756218872
 GameObject:
   m_ObjectHideFlags: 0
@@ -41079,8 +41043,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.05, y: 32.56, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 546376241}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

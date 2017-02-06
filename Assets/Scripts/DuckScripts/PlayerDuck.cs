@@ -43,8 +43,6 @@ public class PlayerDuck : MonoBehaviour {
             quackCoolDown = maxQuackCooldown;
        
         }
-        else                                                          
-            Debug.Log("'Quack' is on cool-down!");
     }
 
     public Vector3 GetTargetPos()

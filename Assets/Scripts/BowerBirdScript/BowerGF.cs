@@ -113,7 +113,6 @@ public class BowerGF : GameFlow {
 
 	public void CheatFinishGame()
 	{
-		Debug.Log ("ddd");
 		nextStep = true;
 	}
 

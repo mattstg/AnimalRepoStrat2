@@ -15626,7 +15626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &375390984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21158,6 +21158,10 @@ Prefab:
       objectReference: {fileID: 1458108774}
     - target: {fileID: 1592958607593144, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803798090702780, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -25952,7 +25956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &554669353
 RectTransform:
   m_ObjectHideFlags: 0
@@ -59124,6 +59128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpToPoint: {fileID: 1547004402}
   savesCheckpoint: 1
+  circuitConnectingWaterfall: 0
 --- !u!61 &1190890485
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59984,6 +59989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpToPoint: {fileID: 323499537}
   savesCheckpoint: 0
+  circuitConnectingWaterfall: 0
 --- !u!61 &1207615055
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -64914,7 +64920,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 375390983}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.92, y: -21.64, z: 0}
+  m_LocalPosition: {x: -31.26, y: -46.8, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 1832682641}
@@ -73598,6 +73604,7 @@ MonoBehaviour:
   im: {fileID: 1819218621}
   lastCheckpt: {x: -30.83, y: -48.18, z: 0}
   playerFish: {fileID: 375390984}
+  miniMap: {fileID: 554669352}
 --- !u!4 &1458108775
 Transform:
   m_ObjectHideFlags: 0
@@ -78504,8 +78511,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1543591302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.96, y: 54.13, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 26.96, y: 53.891, z: 0}
+  m_LocalScale: {x: 1, y: 1.1249992, z: 1}
   m_Children:
   - {fileID: 1908119976}
   - {fileID: 1865488687}
@@ -88845,6 +88852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpToPoint: {fileID: 2028223282}
   savesCheckpoint: 1
+  circuitConnectingWaterfall: 1
 --- !u!61 &1761018170
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -12,11 +12,12 @@ public class FishGF : GameFlow {
 	public InputManager im;
 	public Vector3 lastCheckpt;
 	public PlayerFish playerFish;
+    public GameObject miniMap;
 
 	public override void StartFlow()
 	{
 		stage = -1;
-		nextStep = false;
+		nextStep = true;
 		if (nextStep)
 			playerFish.gameObject.SetActive (false);
 	}
@@ -91,8 +92,9 @@ public class FishGF : GameFlow {
 
 	private void PostGameQuestions()
 	{
-		
-		im.gameObject.SetActive (false);
+        ToggleMinimap(false);
+        scoreText.gameObject.SetActive(false);
+        im.gameObject.SetActive (false);
 		//frogCinematic.StartAridCinematic ();
 		graphManager.gameObject.SetActive (true);
 		graphManager.titleText.text = "What aspects of reproductive whatever";
@@ -119,15 +121,23 @@ public class FishGF : GameFlow {
 
 	private void StartGame()
 	{
-		playerFish.gameObject.SetActive (true);
+        ToggleMinimap(true);
+        scoreText.gameObject.SetActive(true);
+        playerFish.gameObject.SetActive (true);
 		roundTimerActive = true;
 		trackScoreAsTime = true;
 		im.gameObject.SetActive (true);
 	}
 
+    public void ToggleMinimap(bool setActive)
+    {
+        miniMap.SetActive(setActive);
+    }
+
 	public void GameFinished()
 	{
-		nextStep = true;
+        ToggleMinimap(false);
+        nextStep = true;
 	}
 
 	public override void TutorialClosed()

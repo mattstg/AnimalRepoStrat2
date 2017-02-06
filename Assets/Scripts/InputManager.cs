@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour {
     {
         if(Input.GetMouseButtonDown(0))
         {
-            OnMouseDown();
+            _MouseClicked();
         }
 
     }
@@ -21,7 +21,7 @@ public class InputManager : MonoBehaviour {
 		MouseOver (Camera.main.ScreenToWorldPoint(Input.mousePosition));
 	}
 
-	public void OnMouseDown()
+	private void _MouseClicked()
 	{
 		Vector2 clickedPos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 

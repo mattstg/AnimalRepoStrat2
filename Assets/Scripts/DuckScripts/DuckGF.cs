@@ -9,45 +9,59 @@ public class DuckGF : GameFlow {
 	int stage = 0;
 	bool nextStep = false;
 	public InputManager im;
+    public GameObject playerDuck;
+    public GameObject ducklingParent;
 
-	public override void StartFlow()
+    public override void StartFlow()
 	{
 		stage = -1;
-		nextStep = false;
+		nextStep = true;
 	}
 
-	public void Update()
+	public override void Update()
 	{
-        if (!nextStep)
-            return;
-			//we are in game 
-
-			stage++;
-			switch (stage) {
-			case 0:
-				IntroText ();
-				break;
-			case 1:
-				IntroText2 ();
-				break;	
-			case 2:
-				ShowTutorial (); //show tutorial
-				break;
-			case 3:
-				StartGame (); //start game
-				break;
-			case 4:
-				PostGameQuestions (); //summary questions
-				break;
-		case 5:
-			GoToNextScene ();
-			break;
-			default:
-				break;
-			}
-			nextStep = false;
+        base.Update();
+        if (nextStep)
+        {
+            stage++;
+            nextStep = false;
+            switch (stage)
+            {
+                case 0:
+                    IntroText();
+                    break;
+                case 1:
+                    IntroText2();
+                    break;
+                case 2:
+                    ShowTutorial(); //show tutorial
+                    break;
+                case 3:
+                    StartGame(); //start game
+                    break;
+                case 4:
+                    PostGame();
+                    break;
+                case 5:
+                    PostGameQuestions(); //summary questions
+                    break;
+                case 6:
+                    GoToNextScene();
+                    break;
+                default:
+                    break;
+            }
+        }
 		
 	}
+
+    private void PostGame()
+    {
+        scoreText.gameObject.SetActive(false);
+        roundTimerActive = false;
+        nextStep = true;
+        im.enabled = false;
+    }
 
 	private void IntroText()
 	{
@@ -73,7 +87,7 @@ public class DuckGF : GameFlow {
 
 	private void PostGameQuestions()
 	{
-		im.gameObject.SetActive (false);
+        im.enabled = false;
 		//frogCinematic.StartAridCinematic ();
 		graphManager.gameObject.SetActive (true);
 		graphManager.titleText.text = "What aspects of reproductive whatever";
@@ -100,8 +114,12 @@ public class DuckGF : GameFlow {
 
 	private void StartGame()
 	{
-		im.gameObject.SetActive (true);
-	}
+        playerDuck.SetActive(true);
+        ducklingParent.SetActive(true);
+        im.enabled = true;
+        scoreText.gameObject.SetActive(true);
+        roundTimerActive = true;
+    }
 
 	public void GameFinished()
 	{
