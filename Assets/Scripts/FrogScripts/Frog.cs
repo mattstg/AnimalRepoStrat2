@@ -29,8 +29,8 @@ public class Frog : MonoBehaviour {
 
     //calling state
 	public GameObject ribbitRing;
-    float maxRange = 8;
-	float rangeRateIncrease = 4f;
+    float maxRange = 4.4f;
+	float rangeRateIncrease = 3f;
     float chanceToRepeatCall = .4f;
 
     //mating
@@ -354,7 +354,6 @@ public class Frog : MonoBehaviour {
     public virtual void FrogEaten()
     {
 		if (frogInfo.playerDescendant) {
-			Debug.Log ("frog died, player descendant, -1 score");
 			FindObjectOfType<FrogGF> ().score--;
 		}
         Destroy(this.gameObject);

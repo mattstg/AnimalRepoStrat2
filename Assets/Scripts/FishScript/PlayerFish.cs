@@ -36,4 +36,21 @@ public class PlayerFish : Fish {
             rb2d.bodyType = RigidbodyType2D.Dynamic;
         }
     }
+
+    public void OnTriggerEnter2D(Collider2D coli)
+    {
+        if(coli.gameObject.CompareTag("BoostZone"))
+        {
+            moveSpeed = 2;
+        }
+        //if oosdgfa
+    }
+    public void OnTriggerExit2D(Collider2D coli)
+    {
+        if (coli.gameObject.CompareTag("BoostZone"))
+        {
+            moveSpeed = 1;
+        }
+        //if oosdgfa
+    }
 }
