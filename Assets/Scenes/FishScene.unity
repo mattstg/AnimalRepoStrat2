@@ -16845,7 +16845,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1324956185
+  m_SortingLayerID: -709398713
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: df6d87b88dca4114c81c250bd89c11a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -31724,7 +31724,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Sprites-Default Masked
   m_Shader: {fileID: 4800000, guid: 728c0e664f8bc78468d36dcb0c49f8d5, type: 3}
-  m_ShaderKeywords: _AXIS_Z _ENABLED_ON _USEALPHACHANNEL_ON
+  m_ShaderKeywords: _AXIS_Z _ENABLED_ON
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -31734,9 +31734,9 @@ Material:
     - first:
         name: _AlphaTex
       second:
-        m_Texture: {fileID: 2800000, guid: eb0e722066ca9c446b0237c8d8b4eef9, type: 3}
-        m_Scale: {x: 0.011111111, y: 0.007898894}
-        m_Offset: {x: -0.056666665, y: -0.4557662}
+        m_Texture: {fileID: 2800000, guid: f1bbbfdd8d5436f4baf2dac5c4138131, type: 3}
+        m_Scale: {x: 0.01111111, y: 0.007898894}
+        m_Offset: {x: -0.0554, y: -0.4562}
     - first:
         name: _DecalTex
       second:
@@ -31794,7 +31794,7 @@ Material:
       second: 255
     - first:
         name: _UseAlphaChannel
-      second: 1
+      second: 0
     m_Colors:
     - first:
         name: _Color
@@ -36305,7 +36305,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 748718806}
-  m_LocalRotation: {x: -0, y: -0, z: -0.2801052, w: 0.9599694}
+  m_LocalRotation: {x: -0, y: -0, z: -0.2801052, w: 0.95996934}
   m_LocalPosition: {x: 1.45, y: 2.45, z: 0}
   m_LocalScale: {x: 1.5594726, y: 1.3366914, z: 1.113909}
   m_Children: []
@@ -56069,7 +56069,7 @@ Transform:
   m_GameObject: {fileID: 1130613690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 5.48, y: 5.48, z: 1}
   m_Children: []
   m_Father: {fileID: 1147835053}
   m_RootOrder: 3
@@ -56103,9 +56103,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -709398713
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5736367d70cf2494d9b96d84651978fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c9a482f102851f4f933f3dc20f2286e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -80471,7 +80471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1578872164
 Transform:
   m_ObjectHideFlags: 0
@@ -93204,7 +93204,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Sprites-Default Masked
   m_Shader: {fileID: 4800000, guid: 728c0e664f8bc78468d36dcb0c49f8d5, type: 3}
-  m_ShaderKeywords: _AXIS_Z _ENABLED_ON _USEALPHACHANNEL_ON
+  m_ShaderKeywords: _AXIS_Z _ENABLED_ON
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -93214,7 +93214,7 @@ Material:
     - first:
         name: _AlphaTex
       second:
-        m_Texture: {fileID: 2800000, guid: f98f5d313369d654194b108c790bd5fb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8142bf05a4086144698d4f4086ba9e26, type: 3}
         m_Scale: {x: 0.0125, y: 0.008928572}
         m_Offset: {x: 0.5, y: 0.5}
     - first:
@@ -93274,7 +93274,7 @@ Material:
       second: 255
     - first:
         name: _UseAlphaChannel
-      second: 1
+      second: 0
     m_Colors:
     - first:
         name: _Color
