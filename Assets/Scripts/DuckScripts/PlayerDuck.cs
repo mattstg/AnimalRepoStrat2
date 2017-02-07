@@ -39,7 +39,8 @@ public class PlayerDuck : MonoBehaviour {
                     }
                 }
             }
-            source.Play();
+            if(MainMenu.Sound_Active)
+                source.Play();
             quackCoolDown = maxQuackCooldown;
        
         }

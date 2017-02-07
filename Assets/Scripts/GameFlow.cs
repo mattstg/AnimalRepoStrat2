@@ -18,6 +18,16 @@ public class GameFlow : MonoBehaviour {
 
 	public void Start()
 	{		
+        if(!MainMenu.Sound_Active)
+        {
+            AudioSource[] adsrc = GameObject.FindObjectsOfType<AudioSource>();
+            foreach (AudioSource a in adsrc)
+                a.gameObject.SetActive(false);
+            AudioLooper al = GameObject.FindObjectOfType<AudioLooper>();
+            if(al)
+                al.gameObject.SetActive(false);
+
+        }
 		StartFlow ();
 	}
 
