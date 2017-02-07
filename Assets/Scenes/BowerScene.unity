@@ -2368,6 +2368,7 @@ MonoBehaviour:
   graphManager: {fileID: 1032610818}
   textPanel: {fileID: 682998174}
   scoreText: {fileID: 732080461}
+  trackScoreAsTime: 0
   playerBB: {fileID: 2020526253}
   femaleBB: {fileID: 1428426548}
   im: {fileID: 149704840}
@@ -9702,6 +9703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa6ab7c213372648b8970f9775b4961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dampTime: 0.5
   toFollow: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
 --- !u!4 &1620860270 stripped
