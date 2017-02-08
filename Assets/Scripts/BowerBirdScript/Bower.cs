@@ -7,6 +7,7 @@ public class Bower : MonoBehaviour {
 	float collectionRating = 0f;
 	List<Item> collection;
 	Rigidbody2D bowerInfluence;
+    public bool isPlayerBower = false;
 
 	// Use this for initialization
 	void Start () {
@@ -77,11 +78,15 @@ public class Bower : MonoBehaviour {
 	public void addItemToCollection(Item toAdd){
 		//should place an object around the bower in the bowerInflunceZone, maybe where dropped
 		collection.Add(toAdd);
+        if(isPlayerBower)
+            GameObject.FindObjectOfType<BowerGF>().ChangeScore((int)returnRating());
 	}
 
 	public Item removeItemFromCollection(Item toRemove){
 		collection.Remove (toRemove);
-		return toRemove;
+        if (isPlayerBower)
+            GameObject.FindObjectOfType<BowerGF>().ChangeScore((int)returnRating());
+        return toRemove;
 	}
 
 	public float returnRating(){

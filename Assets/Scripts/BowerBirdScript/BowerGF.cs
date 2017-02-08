@@ -11,6 +11,7 @@ public class BowerGF : GameFlow {
 	public PlayerBowerBird playerBB;
 	public FemaleBowerBird femaleBB;
 	public InputManager im;
+    public GameObject bowerBirdsParent;
 
 	public override void StartFlow()
 	{
@@ -18,14 +19,13 @@ public class BowerGF : GameFlow {
 		nextStep = true;
 	}
 
-	public void Update()
+	public override void Update()
 	{
-		if (!nextStep) {
-			//we are in game 
-
-		} else {
-
-			stage++;
+        base.Update();
+		if (nextStep)
+        { 
+            nextStep = false;
+            stage++;
 			switch (stage) {
 			case 0:
 				IntroText ();
@@ -39,16 +39,19 @@ public class BowerGF : GameFlow {
 			case 3:
 				StartGame (); //start game
 				break;
-			case 4:
+            case 4:
+                PostGame();
+                break;
+			case 5:
 				PostGameQuestions (); //summary questions
 				break;
-			case 5:
+			case 6:
 				GoToNextScene ();
 				break;
 			default:
 				break;
 			}
-			nextStep = false;
+			
 		}
 	}
 
@@ -76,9 +79,8 @@ public class BowerGF : GameFlow {
 
 	private void PostGameQuestions()
 	{
-		im.gameObject.SetActive (false);
-		//frogCinematic.StartAridCinematic ();
-		graphManager.gameObject.SetActive (true);
+        //frogCinematic.StartAridCinematic ();
+        graphManager.gameObject.SetActive (true);
 		graphManager.titleText.text = "What aspects of reproductive whatever";
 
 		Slot s1 = new Slot ();
@@ -104,10 +106,12 @@ public class BowerGF : GameFlow {
 
 	private void StartGame()
 	{
+        bowerBirdsParent.SetActive(true);
+        scoreText.gameObject.SetActive(true);
 		playerBB.gameObject.SetActive (true);
 		//frogCinematic.StartWetlandCinematic ();
 
-		im.gameObject.SetActive (true);
+		im.enabled = true;
 		//playerFrog.CreateFrog (true,true);
 	}
 
@@ -121,6 +125,13 @@ public class BowerGF : GameFlow {
 		//play cinamatic
 		nextStep = true;
 	}
+
+    public void PostGame()
+    {
+        scoreText.gameObject.SetActive(false);
+        im.enabled = false;
+        nextStep = true;
+    }
 
 	public override void TutorialClosed()
 	{
