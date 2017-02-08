@@ -75,6 +75,9 @@ TagManager:
   - name: Bush
     uniqueID: 2960738969
     locked: 0
+  - name: FlyingCreature
+    uniqueID: 2964990181
+    locked: 0
   - name: TopAll
     uniqueID: 2753931947
     locked: 0
