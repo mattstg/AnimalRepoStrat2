@@ -239,18 +239,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWaypoint: {fileID: 0}
   test: 0
+  isCorpse: 0
   speed: 0
   turnsHead: 1
   head: {fileID: 1880510081260924}
   headRotationSpeed: 40
   updateFrequency: 2
-  speedRange: {x: 800, y: 820}
+  speedRange: {x: 820, y: 830}
   rotationSpeedRange: {x: 8, y: 10}
   isCalf: 0
+  isFish: 0
   isDuckling: 0
   fleesFromPredators: 1
-  predFleeDistance: 15
-  fleeWeight: 5
+  predFleeDistance: 20
+  fleeWeight: 8
   averageHeadingWeight: 6
   averagePositionWeight: 2
   neighbourDistance: 15

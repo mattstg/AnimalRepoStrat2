@@ -279,8 +279,8 @@ MonoBehaviour:
   averageHeadingWeight: 1
   averagePositionWeight: 1
   neighbourDistance: 50
-  repulsionDistance: 7
-  repulsionWeight: 15
+  repulsionDistance: 9
+  repulsionWeight: 20
   usesWaypoints: 0
   waypointWeight: 5
   waypointReachedProximity: 40
@@ -305,7 +305,7 @@ MonoBehaviour:
   huntWeight: 15
   scavenges: 1
   scavengeDistance: 30
-  scavengeWeight: 15
+  scavengeWeight: 18
   interPredatorRepelDistance: 10
   interPredatorRepelWeight: 4
   predNeighborhoodSize: 30
