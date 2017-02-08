@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 212597538053633844}
   - component: {fileID: 50008296708816764}
   - component: {fileID: 58685859073709214}
+  - component: {fileID: 114680190925445030}
   m_Layer: 0
   m_Name: Player Bower Bird
   m_TagString: BowerBird
@@ -52,8 +53,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1473343558164826}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.316906, y: 2.2932496, z: 10}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: -21.7, y: 5.56, z: 10}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0}
   m_Children:
   - {fileID: 4451014617445100}
   m_Father: {fileID: 0}
@@ -106,6 +107,17 @@ CircleCollider2D:
   m_Offset: {x: 0.08, y: 0}
   serializedVersion: 2
   m_Radius: 1.59
+--- !u!114 &114680190925445030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1473343558164826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e2fe4abecea1da42b3842b4dce64458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114890917063240178
 MonoBehaviour:
   m_ObjectHideFlags: 1
