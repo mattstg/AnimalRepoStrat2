@@ -4,55 +4,18 @@ using UnityEngine;
 
 public class PlayerTreeScript : MonoBehaviour {
 
-    //List<Transform> activeCollisions = new List<Transform>();
+    public float activationRadius;
 
-    /*public void OnCollisionEnter2D(Collision2D coli)
+    public void Start()
     {
-        ResolveCollision(coli.gameObject, true);
-    }
-    
-    public void OnCollisionExit2D(Collision2D coli)
-    {
-        ResolveCollision(coli.gameObject, false);
-    }
-   
-    */
-
-    public void OnTriggerExit2D(Collider2D coli)
-    {
-        ResolveCollision(coli.gameObject, false);
-    }
-
-    public void OnTriggerEnter2D(Collider2D coli)
-    {
-        ResolveCollision(coli.gameObject, true);
-    }
-
-    private void ResolveCollision(GameObject go, bool entering)
-    {
-        if (go.CompareTag("Tree"))
-        {
-            if (!entering)
-            {
-                SetAllLeafTransparency(go, 1f);
-            }
-            else
-            {
-                SetAllLeafTransparency(go, .2f);
-            }
-        }
-    }
-
-    private void SetAllLeafTransparency(GameObject tree,float toSet)
-    {
-        foreach (Transform t in tree.transform)
-        {
-            if (t.name == "Leaves")
-            {
-                Color c = t.GetComponent<SpriteRenderer>().color;
-                c.a = toSet;
-                t.GetComponent<SpriteRenderer>().color = c;
-            }
-        }
+        GameObject treeProxActivator = new GameObject();
+        treeProxActivator.name = "treeProxActivator";
+        treeProxActivator.AddComponent<FollowTransform>().toFollow = transform;
+        CircleCollider2D cc2d = treeProxActivator.AddComponent<CircleCollider2D>();
+        cc2d.radius = activationRadius;
+        cc2d.isTrigger = true;
+        treeProxActivator.AddComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        treeProxActivator.AddComponent<TreeRevealer>();
+        Destroy(this);
     }
 }

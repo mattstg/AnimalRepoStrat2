@@ -117,7 +117,6 @@ GameObject:
   - component: {fileID: 4225155421893148}
   - component: {fileID: 212674786329670738}
   - component: {fileID: 58575498108732572}
-  - component: {fileID: 58018710847834586}
   - component: {fileID: 114746467266719018}
   m_Layer: 0
   m_Name: Tree4
@@ -253,20 +252,6 @@ Transform:
   m_Father: {fileID: 4225155421893148}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58018710847834586
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1893915354647996}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 8
 --- !u!58 &58575498108732572
 CircleCollider2D:
   m_ObjectHideFlags: 1
