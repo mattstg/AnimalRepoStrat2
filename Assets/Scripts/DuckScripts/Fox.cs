@@ -8,7 +8,8 @@ public class Fox : MonoBehaviour {
 	public GameObject waypointParent;
 	public Transform foxHole;
 	public Transform mouthLoc;
-	List<Vector2> waypoints;
+    float radius_growth = .1f;
+    List<Vector2> waypoints;
 	float patrolBoxSize = 4;
 	Vector2 patrolOrigin;
 	FoxState currentState = FoxState.Idle;
@@ -21,6 +22,7 @@ public class Fox : MonoBehaviour {
 	float idleWaitTime = 3;
 	int currentWaypointIndex = 0;
 	float timeWandering; //used to stop from getting stuck
+
 
 	// Use this for initialization
 	void Awake()
@@ -125,13 +127,19 @@ public class Fox : MonoBehaviour {
 
 	}
 
-	private void MoveTowardsGoal()
+    public void HeardAQuack()
+    {
+        Transform t = transform.FindChild("sightRadius");
+        t.GetComponent<CircleCollider2D>().radius += radius_growth;
+    }
+
+    private void MoveTowardsGoal()
 	{
 		if (chaseTarget)
 			goalPos = chaseTarget.position;
 		float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goalPos);
 		float distanceToGoal = Vector2.Distance (goalPos, transform.position);
-		transform.eulerAngles = new Vector3 (0, 0, angToGoal - 90);
+		transform.eulerAngles = new Vector3 (0, 0, angToGoal);
 		Vector2 goalDir = goalPos - MathHelper.V3toV2(transform.position);
 		float speed = foxCurrentSpeed;
 		if (distanceToGoal < foxCurrentSpeed * Time.deltaTime)

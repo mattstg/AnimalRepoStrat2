@@ -42,7 +42,7 @@ public class Item : MonoBehaviour {
 		//Debug.Log (itemColor.ToString ());
 		switch (itemColor) {
 		case BowerGV.Color.Blue:
-			GetComponent<SpriteRenderer> ().color = Color.blue;
+                GetComponent<SpriteRenderer>().color = new Color(102f / 255, 102f / 255, 253f / 255, 1); //lighter blue
 			break;
 		case BowerGV.Color.Red:
 			GetComponent<SpriteRenderer> ().color = Color.red;

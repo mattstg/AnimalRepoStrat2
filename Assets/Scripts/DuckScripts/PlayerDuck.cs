@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDuck : MonoBehaviour {
 
     public GameObject QuackCircle;
+    public Transform foxParent;
     public float speed = 5f;
     //Vector3 TargetPosition;
     public float quackRadius = 12f;
@@ -39,6 +40,14 @@ public class PlayerDuck : MonoBehaviour {
                     }
                 }
             }
+            Transform closest = foxParent.GetChild(0);
+            foreach(Transform t in foxParent)
+            {
+                if (Vector2.Distance(transform.position, t.position) < Vector2.Distance(transform.position, closest.position))
+                    closest = t;
+            }
+            closest.GetComponent<Fox>().HeardAQuack();
+
             if(MainMenu.Sound_Active)
                 source.Play();
             quackCoolDown = maxQuackCooldown;

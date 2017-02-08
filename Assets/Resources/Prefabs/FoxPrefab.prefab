@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 95720423731096876}
   - component: {fileID: 114583594019865716}
   m_Layer: 0
-  m_Name: WolfPrefab 1
+  m_Name: FoxPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1134957407856014}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -21.103043, y: 2.4227648, z: 0}
+  m_LocalPosition: {x: -13.5, y: 3.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4368980097365564}
@@ -176,8 +176,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1729410670128608}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: -0.27, y: -0.22, z: 0}
-  m_LocalScale: {x: 0.53195935, y: 0.46613437, z: 1}
+  m_LocalPosition: {x: -0.05, y: -0.24, z: 0}
+  m_LocalScale: {x: 0.35577476, y: 0.27874845, z: 1}
   m_Children:
   - {fileID: 4774525068846040}
   - {fileID: 4705038594158588}
@@ -191,8 +191,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1096477748971526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06, y: -1.38, z: 0}
-  m_LocalScale: {x: 1.6228073, y: 1.9515264, z: 1}
+  m_LocalPosition: {x: 0.05, y: -1.33, z: 0}
+  m_LocalScale: {x: 1.8910525, y: 2.5035849, z: 1}
   m_Children:
   - {fileID: 4267533816016412}
   m_Father: {fileID: 4368980097365564}
@@ -205,8 +205,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1279444350906548}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 1.3, z: 0}
-  m_LocalScale: {x: 0.9, y: 1.0970029, z: 1}
+  m_LocalPosition: {x: 0, y: 1.91, z: 0}
+  m_LocalScale: {x: 1.0413493, y: 1.0970029, z: 1}
   m_Children: []
   m_Father: {fileID: 4368980097365564}
   m_RootOrder: 0
@@ -269,8 +269,8 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.45244393, y: -0.2275886}
-  m_Size: {x: 3.071696, y: 0.7043435}
+  m_Offset: {x: 0.0047211354, y: -0.24083999}
+  m_Size: {x: 0.9117466, y: 0.30680585}
   m_Direction: 1
 --- !u!95 &95444459031840998
 Animator:
@@ -317,7 +317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd5065cea0dd9d43a041554586d628d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypointParent: {fileID: 0}
+  waypointParent: {fileID: 1531696212062176, guid: 24e3be64cc0c4dd4fb9298c8f1045273,
+    type: 2}
   foxHole: {fileID: 0}
   mouthLoc: {fileID: 4987985317859996}
   goalPos: {x: 0, y: 0}
@@ -388,7 +389,7 @@ SpriteRenderer:
   m_SortingLayerID: 1006921303
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300006, guid: 0b74750aa61762742ab5352999e1d6dd, type: 3}
-  m_Color: {r: 1, g: 0.5882353, b: 0.078431375, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!212 &212172079968467546
@@ -457,7 +458,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1006921303
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0b74750aa61762742ab5352999e1d6dd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d55c7d0665974264989f29e211b8dca6, type: 3}
   m_Color: {r: 1, g: 0.5882353, b: 0.078431375, a: 1}
   m_FlipX: 0
   m_FlipY: 0
