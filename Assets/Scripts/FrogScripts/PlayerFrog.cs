@@ -11,7 +11,16 @@ public class PlayerFrog : Frog {
 		}
 	}
 
-	public void ClickedOn()
+    protected override void PlayRibbitNoise()
+    {
+        if(MainMenu.Sound_Active)
+        {
+            GetComponent<AudioSource>().Play();
+        }
+    }
+
+
+    public void ClickedOn()
 	{
 		if (!outtaBounds && currentFrogState == FrogState.idle)
 			EnterCallingState ();

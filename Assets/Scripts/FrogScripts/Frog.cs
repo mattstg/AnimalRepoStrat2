@@ -185,7 +185,8 @@ public class Frog : MonoBehaviour {
 
     protected void EnterCallingState()
     {
-       // currentCallingTime = 0;
+        // currentCallingTime = 0;
+        PlayRibbitNoise();
         currentFrogState = FrogState.calling;
     }
 
@@ -218,6 +219,11 @@ public class Frog : MonoBehaviour {
         }
     }*/
 
+    protected virtual void PlayRibbitNoise()
+    { //just so player can overite it
+
+    }
+
 	private void CallingState()
 	{
 		if (ribbitRing.transform.localScale.x >= maxRange)
@@ -236,7 +242,7 @@ public class Frog : MonoBehaviour {
 		}
 		else
 		{
-			ribbitRing.SetActive (true);
+            ribbitRing.SetActive (true);
 			ribbitRing.transform.localScale = ribbitRing.transform.localScale + new Vector3 (1, 1) * rangeRateIncrease * Time.deltaTime;
 		}
 	}
