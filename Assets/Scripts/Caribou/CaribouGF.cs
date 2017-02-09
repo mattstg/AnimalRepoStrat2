@@ -17,36 +17,37 @@ public class CaribouGF : GameFlow {
 		nextStep = false;
 	}
 
-	public void Update()
+	public override void Update()
 	{
+        base.Update();
         if (!nextStep)
             return;
-			//we are in game 
-
-			stage++;
-			switch (stage) {
-			case 0:
-				IntroText ();
-				break;
-			case 1:
-				IntroText2 ();
-				break;	
-			case 2:
-				ShowTutorial (); //show tutorial
-				break;
-			case 3:
-				StartGame (); //start game
-				break;
-			case 4:
-				PostGameQuestions (); //summary questions
-				break;
-            case 5:
-                GoToNextScene();
-                break;
-			default:
-				break;
-			}
-			nextStep = false;
+        //we are in game 
+        nextStep = false;
+        stage++;
+		switch (stage)
+        {
+		    case 0:
+		    	IntroText ();
+		    	break;
+		    case 1:
+		    	IntroText2 ();
+		    	break;	
+		    case 2:
+		    	ShowTutorial (); //show tutorial
+		    	break;
+		    case 3:
+		    	StartGame (); //start game
+		    	break;
+		    case 4:
+		    	PostGameQuestions (); //summary questions
+		    	break;
+               case 5:
+                   GoToNextScene();
+                   break;
+		    default:
+		    	break;
+		}		
 		
 	}
 

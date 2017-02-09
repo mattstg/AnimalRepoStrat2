@@ -20,7 +20,7 @@ public class FrogGF : GameFlow {
 		nextStep = true;
 	}
 
-	public void Update()
+	public override void Update()
 	{
         if (stage == 3)
         {
@@ -38,8 +38,8 @@ public class FrogGF : GameFlow {
 		if (!nextStep)
 			return;
 
-
-		stage++;
+        nextStep = false;
+        stage++;
 		switch (stage) {
 		case 0:
 			IntroText ();
@@ -65,7 +65,7 @@ public class FrogGF : GameFlow {
 		default:
 			break;
 		}
-		nextStep = false;
+		
 	}
 
 	private void IntroText()
@@ -101,7 +101,8 @@ public class FrogGF : GameFlow {
 
     private void PostGameQuestions()
 	{
-		im.gameObject.SetActive (false);
+        //LOLSDK.Instance.SubmitProgress(0, 0, 10);  SCORE, CURRENTPROGRESS, MAXPROGRESS
+        im.gameObject.SetActive (false);
 		graphManager.gameObject.SetActive (true);
 		graphManager.titleText.text = "What aspects of reproductive whatever";
 
@@ -148,6 +149,7 @@ public class FrogGF : GameFlow {
                 matureDescendants++;
         }
         Camera.main.GetComponent<CameraFollow>().toFollow = null;
+        Camera.main.transform.position = new Vector3(0, 0, -10);
         Camera.main.orthographicSize = 5;
     }
 

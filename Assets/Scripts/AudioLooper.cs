@@ -48,7 +48,7 @@ public class AudioLooper : MonoBehaviour {
 			}
 			else if (curTime[i] + loopCrossOver > audioTotalTrackTime)
 			{
-				audioSources [i].volume = 1 - (curTime [i] - (audioTotalTrackTime-loopCrossOver)) / loopCrossOver - maxVolume;
+				audioSources [i].volume = (1 - ((curTime [i] - (audioTotalTrackTime-loopCrossOver)) / loopCrossOver)) * maxVolume;
 
 				if (!playingAudio [((i + 1) % 2)]) {
 					PlayAudio ((i + 1) % 2);
