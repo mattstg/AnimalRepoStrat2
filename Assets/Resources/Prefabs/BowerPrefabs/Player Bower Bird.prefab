@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 50008296708816764}
   - component: {fileID: 58685859073709214}
   - component: {fileID: 114680190925445030}
+  - component: {fileID: 58617592042671502}
   m_Layer: 0
   m_Name: Player Bower Bird
   m_TagString: BowerBird
@@ -242,6 +243,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58617592042671502
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1473343558164826}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!58 &58685859073709214
 CircleCollider2D:
   m_ObjectHideFlags: 1
