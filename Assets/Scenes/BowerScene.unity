@@ -1929,44 +1929,12 @@ Prefab:
       propertyPath: bower
       value: 
       objectReference: {fileID: 1180365289}
-    - target: {fileID: 0}
-      propertyPath: m_SortingLayerID
-      value: -1329977115
-      objectReference: {fileID: 0}
-    - target: {fileID: 1473343558164826, guid: a7f1587e92c735a408a2d514036984e7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212381135524476676, guid: a7f1587e92c735a408a2d514036984e7,
+    - target: {fileID: 114303469373773884, guid: a7f1587e92c735a408a2d514036984e7,
         type: 2}
-      propertyPath: m_SortingOrder
-      value: 3
+      propertyPath: activationRadius
+      value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 212321175544452984, guid: a7f1587e92c735a408a2d514036984e7,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 212446103874755920, guid: a7f1587e92c735a408a2d514036984e7,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 212430722158606048, guid: a7f1587e92c735a408a2d514036984e7,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4451014617445100, guid: a7f1587e92c735a408a2d514036984e7, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 4451014617445100, guid: a7f1587e92c735a408a2d514036984e7, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.98
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114680190925445030, guid: a7f1587e92c735a408a2d514036984e7, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7f1587e92c735a408a2d514036984e7, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &273345345
@@ -5377,7 +5345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e2fe4abecea1da42b3842b4dce64458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationRadius: 10
+  activationRadius: 5
 --- !u!114 &1180365289 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114511362724035862, guid: e4444d03ea8e24f4da7d831b516880af,
