@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine; using LoLSDK;
 
 
 //If you are reading this and from LoL. I applogize for the most hardcoded software I have ever created

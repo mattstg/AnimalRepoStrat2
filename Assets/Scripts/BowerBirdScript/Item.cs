@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using UnityEngine;
+using UnityEngine; using LoLSDK;
 
 public class Item : MonoBehaviour {
 	public BowerGV.Items itemType;

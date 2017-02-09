@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using UnityEngine; using LoLSDK;
 using System.Collections;
 
 public class LogoSpecularityAnimator : MonoBehaviour

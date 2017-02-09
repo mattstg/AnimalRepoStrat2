@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine; using LoLSDK;
 using UnityEngine.UI;
 
 public class GraphManager : MonoBehaviour {
