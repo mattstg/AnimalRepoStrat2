@@ -40,6 +40,9 @@ public class CaribouGF : GameFlow {
 			case 4:
 				PostGameQuestions (); //summary questions
 				break;
+            case 5:
+                GoToNextScene();
+                break;
 			default:
 				break;
 			}

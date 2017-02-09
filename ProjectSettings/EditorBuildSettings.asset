@@ -19,3 +19,5 @@ EditorBuildSettings:
     path: Assets/Scenes/CaribouScene.unity
   - enabled: 1
     path: Assets/Scenes/DuckScene.unity
+  - enabled: 1
+    path: Assets/Scenes/FinalScene.unity

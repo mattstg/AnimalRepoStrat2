@@ -8,6 +8,11 @@ public class MainMenu : MonoBehaviour {
     public static bool Sound_Active = true;
     public GameObject muteButton;
 
+    void Start()
+    {
+        LOLSDK.Init("com.MSqr.AnimalRepoStats");
+    }
+
 	public void StartPressed()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("FrogScene");

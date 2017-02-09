@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46cc72a6c0cb9340a507b9925050614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: 
+  nextSceneName: FinalScene
   tutorial: {fileID: 0}
   graphManager: {fileID: 1202683639}
   textPanel: {fileID: 1202683640}
