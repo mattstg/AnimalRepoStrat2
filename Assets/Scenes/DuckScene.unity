@@ -9305,34 +9305,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114583594019865716, guid: 688117a81b7e6bb489fe1a0a234fa3b0,
         type: 2}
+      propertyPath: waypointParent
+      value: 
+      objectReference: {fileID: 824025700}
+    - target: {fileID: 114583594019865716, guid: 688117a81b7e6bb489fe1a0a234fa3b0,
+        type: 2}
       propertyPath: foxHole
       value: 
       objectReference: {fileID: 730149816}
     - target: {fileID: 1134957407856014, guid: 688117a81b7e6bb489fe1a0a234fa3b0, type: 2}
       propertyPath: m_Name
       value: Fox0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114583594019865716, guid: 688117a81b7e6bb489fe1a0a234fa3b0,
-        type: 2}
-      propertyPath: waypointParent
-      value: 
-      objectReference: {fileID: 824025700}
-    - target: {fileID: 4181011636390870, guid: 688117a81b7e6bb489fe1a0a234fa3b0, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4987985317859996, guid: 688117a81b7e6bb489fe1a0a234fa3b0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.68
-      objectReference: {fileID: 0}
-    - target: {fileID: 4987985317859996, guid: 688117a81b7e6bb489fe1a0a234fa3b0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114583594019865716, guid: 688117a81b7e6bb489fe1a0a234fa3b0,
-        type: 2}
-      propertyPath: radius_growth
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 688117a81b7e6bb489fe1a0a234fa3b0, type: 2}
@@ -19976,7 +19959,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
