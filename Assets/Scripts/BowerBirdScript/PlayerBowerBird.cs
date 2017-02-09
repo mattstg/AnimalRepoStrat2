@@ -17,6 +17,10 @@ public class PlayerBowerBird : BowerBird {
 		Camera.main.gameObject.GetComponent<CameraFollow> ().toFollow = transform;
 		Camera.main.gameObject.GetComponent<CameraFollow> ().SetZoom (6 + 1.5f*altitude);
 		ParentUpdate ();
+		updateAnimator ();
+		if (altitude != 0) {
+			autoPickup = true;
+		}
 	}
 
 	//just overwriding parent's functions used for bird AI, to do nothing

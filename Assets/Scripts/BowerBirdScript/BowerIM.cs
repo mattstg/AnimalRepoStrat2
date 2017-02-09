@@ -8,7 +8,7 @@ public class BowerIM : InputManager {
 	protected override void MouseDown (Vector2 mouseWorldPos)
 	{
 		playerBB.MoveTo (mouseWorldPos);
-		playerBB.autoPickup = true;
+		//playerBB.autoPickup = true;
 		//Debug.Log ("mouse: " + mouseWorldPos);
 	} 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine; using LoLSDK;
 
 public class BowerBird : MonoBehaviour {
+	public Animator anim;
 	public bool canGetBored = true;
 	public Bower bower;
 	public Rigidbody2D body;
@@ -13,8 +14,11 @@ public class BowerBird : MonoBehaviour {
 	public float altitude = 0;
 	public float idleTime = 0;
 
+	private float rotateSpeed = 90;
+	private Vector3 lastDir = Vector3.forward;
+
 	//for holding items
-	public bool autoPickup = true;
+	public bool autoPickup = false;
 	public Item holding;
 	public bool isHolding = false;
 	public GameObject holdingLoc; // position to place object when we are holding it
@@ -29,6 +33,7 @@ public class BowerBird : MonoBehaviour {
 	public void ParentStart(){
 		body = GetComponent<Rigidbody2D>();
 		startScale = transform.localScale;
+		anim = GetComponentInChildren<Animator> ();
 	}
 
 	// Update is called once per frame
@@ -53,6 +58,13 @@ public class BowerBird : MonoBehaviour {
 	} */
 
 	public void ParentUpdate(){
+		if (body.velocity == Vector2.zero) {
+			RotateToDesPoint (lastDir);
+		} else {
+			lastDir = (Vector3)body.velocity.normalized + transform.position;
+			RotateToDesPoint (lastDir);
+
+		}
 		ScaleFromAltitude ();
 		if (isMoving) {
 			idleTime = 0;
@@ -71,9 +83,10 @@ public class BowerBird : MonoBehaviour {
 				}
 			}
 		} else {
-			altitude = Mathf.Clamp (altitude - 2 * BowerGV.altitudePerSecond * Time.deltaTime, 0, 5);
+			altitude = Mathf.Clamp (altitude - BowerGV.altitudePerSecond * Time.deltaTime, 0, 5);
 			IdleBoredom (idleTime);
 		}
+		updateAnimator ();
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
@@ -108,15 +121,21 @@ public class BowerBird : MonoBehaviour {
 		}*/
 	}
 		
+	public void updateAnimator(){
+		if (anim != null) {
+			if (altitude > 0.02) {
+				anim.SetBool ("isFlying", true);
+			} else {
+				anim.SetBool ("isFlying", false);
+			}
+		}
+	}
+
 	public void DropItem(){
 		isHolding = false;
 		holding.getDropped (new Vector2(holdingLoc.transform.position.x, holdingLoc.transform.position.y - 0.2f));
 		holding = null;
 		autoPickup = false;
-	}
-
-	public void allowPickup(){
-		autoPickup = true;
 	}
 
 	public void Move(Vector2 dir){
@@ -158,5 +177,12 @@ public class BowerBird : MonoBehaviour {
 				returnHome ();
 			}
 		}
+	}
+
+	private void RotateToDesPoint(Vector3 _desiredPos){
+		Vector3 dirVector = _desiredPos - transform.position;
+		float angle = Mathf.Atan2 (dirVector.y, dirVector.x) * Mathf.Rad2Deg;
+		Quaternion q = Quaternion.AngleAxis (angle + 270,Vector3.forward);
+		transform.rotation = Quaternion.Slerp (transform.rotation, q, rotateSpeed * Time.deltaTime);
 	}
 }
