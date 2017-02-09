@@ -8061,6 +8061,14 @@ Prefab:
       propertyPath: m_Name
       value: RockCluster Type 6 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4774624055185300, guid: 666c6b1455df1a049b6f5440c423ef31, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774624055185300, guid: 666c6b1455df1a049b6f5440c423ef31, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -22.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 666c6b1455df1a049b6f5440c423ef31, type: 2}
   m_IsPrefabParent: 0
