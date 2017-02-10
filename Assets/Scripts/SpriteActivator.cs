@@ -9,6 +9,7 @@ public class SpriteActivator : MonoBehaviour {
 	public float gridSize;  //please use divisible sizes
 	public Transform rockParent;
 	public Transform fernParent;
+    public List<Transform> waterParents;
 	public bool rockPartialDisable = false;
 
 	float updateTimer = 3;
@@ -36,6 +37,15 @@ public class SpriteActivator : MonoBehaviour {
         {
             AddToGrid(t);
             t.gameObject.SetActive(false);
+        }
+
+        foreach (Transform waterParent in waterParents)
+        {
+            foreach (Transform t in waterParent)
+            {
+                AddToGrid(t);
+                t.gameObject.SetActive(false);
+            }
         }
     }
 
