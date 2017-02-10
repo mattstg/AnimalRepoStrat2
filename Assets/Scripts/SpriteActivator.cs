@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpriteActivator : MonoBehaviour {
 
 	Dictionary<Vector2,List<Transform>> grid;
-	public Vector2 gridDimensions;
+	//public Vector2 gridDimensions;
 	public float gridSize;  //please use divisible sizes
 	public Transform rockParent;
 	public Transform fernParent;
@@ -13,17 +13,31 @@ public class SpriteActivator : MonoBehaviour {
 
 	float updateTimer = 3;
 	float curUpdate = 0;
-	public Vector2 lastGrid;
+	public Vector2 lastGrid = new Vector2(-10,-10);
 	//public Transform waterParent;
+
+    public void Start()
+    {
+        SetupSpriteActivator();
+    }
 
 	public void SetupSpriteActivator()
 	{
 		grid = new Dictionary<Vector2, List<Transform>> ();
-		foreach (Transform t in rockParent)
-			AddToGrid (t);
-		foreach (Transform t in fernParent)
-			AddToGrid (t);
-	}
+        foreach (Transform t in rockParent)
+        {
+            AddToGrid(t);
+            if (rockPartialDisable)
+                t.GetComponent<SpriteRenderer>().enabled = false;
+            else
+                t.gameObject.SetActive(false);
+        }
+        foreach (Transform t in fernParent)
+        {
+            AddToGrid(t);
+            t.gameObject.SetActive(false);
+        }
+    }
 
 	private void AddToGrid(Transform t)
 	{
@@ -43,29 +57,57 @@ public class SpriteActivator : MonoBehaviour {
 		if (curUpdate >= updateTimer) 
 		{
 			curUpdate = 0;
-			Vector2 curGrid = new Vector2 ((int)transform.position.x, (int)transform.position.y);
+			Vector2 curGrid = new Vector2 ((int)(Camera.main.transform.position.x / gridSize), (int)(Camera.main.transform.position.y / gridSize));
+            Debug.Log("curgrid: " + curGrid);
 			if (curGrid != lastGrid)
 			{
-				//Turn off everything around last grid, then turn on everything around curGrid
-                /*
-				for (int x = lastGrid.x - 1; x <= lastGrid.x + 1; x++)
-					for (int y = lastGrid.y - 1; y <= lastGrid.y + 1; y++) 
-					{
-						if (grid.ContainsKey (new Vector2 (x, y)))
-						{
-							foreach (Transform t in grid[new Vector2(x,y)])
-							{
-								if (rockPartialDisable && t.name == "rock")
-								{
-									//Disable just sprite renderer
-								} else {
-									//diasble object entirelly
-								}
-							}
-						}
-					}*/
-			}
+                //Turn off everything around last grid, then turn on everything around curGrid
+                for (int x = (int)lastGrid.x - 1; x <= lastGrid.x + 1; x++)
+                {
+                    for (int y = (int)lastGrid.y - 1; y <= lastGrid.y + 1; y++)
+                    {
+                        if (grid.ContainsKey(new Vector2(x, y)))
+                        {
+                            Debug.Log("disabling grid: " + new Vector2(x, y));
+                            foreach (Transform t in grid[new Vector2(x, y)])
+                            {
+                                SetActive(t, false);
+                            }
+                        }
+                    }
+                }
+
+                //Turn on all things for new grid
+                for (int x = (int)curGrid.x - 1; x <= curGrid.x + 1; x++)
+                {
+                    for (int y = (int)curGrid.y - 1; y <= curGrid.y + 1; y++)
+                    {
+                        if (grid.ContainsKey(new Vector2(x, y)))
+                        {
+                            foreach (Transform t in grid[new Vector2(x, y)])
+                            {
+                                Debug.Log("enabling grid: " + new Vector2(x, y));
+                                SetActive(t, true);
+                            }
+                        }
+                    }
+                }
+
+                lastGrid = curGrid;
+            }
 		}
 	}
+
+    private void SetActive(Transform t,bool setActive)
+    {
+        if (rockPartialDisable && t.name == "rock")
+        {
+            t.GetComponent<SpriteRenderer>().enabled = setActive;
+        }
+        else
+        {
+            t.gameObject.SetActive(setActive);
+        }
+    }
 
 }
