@@ -9,6 +9,7 @@ public class SpriteActivator : MonoBehaviour {
 	public float gridSize;  //please use divisible sizes
 	public Transform rockParent;
 	public Transform fernParent;
+	public bool rockPartialDisable = false;
 
 	float updateTimer = 3;
 	float curUpdate = 0;
@@ -39,7 +40,31 @@ public class SpriteActivator : MonoBehaviour {
 	public void Update()
 	{
 		curUpdate += Time.deltaTime;
-
+		if (curUpdate >= updateTimer) 
+		{
+			curUpdate = 0;
+			Vector2 curGrid = new Vector2 ((int)transform.position.x, (int)transform.position.y);
+			if (curGrid != lastGrid)
+			{
+				//Turn off everything around last grid, then turn on everything around curGrid
+				for (int x = lastGrid.x - 1; x <= lastGrid.x + 1; x++)
+					for (int y = lastGrid.y - 1; y <= lastGrid.y + 1; y++) 
+					{
+						if (grid.ContainsKey (new Vector2 (x, y)))
+						{
+							foreach (Transform t in grid[new Vector2(x,y)])
+							{
+								if (rockPartialDisable && t.name == "rock")
+								{
+									//Disable just sprite renderer
+								} else {
+									//diasble object entirelly
+								}
+							}
+						}
+					}
+			}
+		}
 	}
 
 }
