@@ -7,7 +7,6 @@ public class DuckGF : GameFlow {
 	//public FrogCinematic frogCinematic;
 	//public GameObject tutorialScreen;
 	int stage = 0;
-	bool nextStep = false;
 	public InputManager im;
     public GameObject playerDuck;
     public GameObject ducklingParent;

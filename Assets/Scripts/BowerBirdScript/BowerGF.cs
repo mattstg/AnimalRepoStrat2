@@ -7,7 +7,6 @@ public class BowerGF : GameFlow {
 	//public FrogCinematic frogCinematic;
 	//public GameObject tutorialScreen;
 	int stage = 0;
-	bool nextStep = false;
 	public PlayerBowerBird playerBB;
 	public FemaleBowerBird femaleBB;
 	public InputManager im;
@@ -110,7 +109,7 @@ public class BowerGF : GameFlow {
         scoreText.gameObject.SetActive(true);
 		playerBB.gameObject.SetActive (true);
 		//frogCinematic.StartWetlandCinematic ();
-
+		roundTimerActive = true;
 		im.enabled = true;
 		//playerFrog.CreateFrog (true,true);
 	}
@@ -128,6 +127,7 @@ public class BowerGF : GameFlow {
 
     public void PostGame()
     {
+		roundTimerActive = false;
         scoreText.gameObject.SetActive(false);
         im.enabled = false;
         nextStep = true;

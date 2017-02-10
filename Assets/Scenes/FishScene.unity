@@ -24369,7 +24369,7 @@ Prefab:
         type: 2}
       propertyPath: currentWaypoint
       value: 
-      objectReference: {fileID: 47488482}
+      objectReference: {fileID: 1361480102}
     - target: {fileID: 4313410404264216, guid: efbb6f778d8e1af408fa6ef5ae38ce8d, type: 2}
       propertyPath: m_LocalScale.x
       value: 0.2
@@ -43969,7 +43969,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 847018189}
-  m_LocalRotation: {x: -0, y: -0, z: 0.6847225, w: -0.728804}
+  m_LocalRotation: {x: -0, y: -0, z: 0.6847224, w: -0.72880393}
   m_LocalPosition: {x: 8.29, y: 7.36, z: 0}
   m_LocalScale: {x: 1.965632, y: -1.557989, z: 1}
   m_Children: []
@@ -73389,6 +73389,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4085305753202870, guid: b0ea64d92163b014193dd1884c67250d,
     type: 2}
   m_PrefabInternal: {fileID: 1361480099}
+--- !u!114 &1361480102 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114602292043016848, guid: b0ea64d92163b014193dd1884c67250d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1361480099}
+  m_Script: {fileID: 11500000, guid: 85d7498ba0393e04c8922209ba617f49, type: 3}
 --- !u!1001 &1362659626
 Prefab:
   m_ObjectHideFlags: 0
@@ -79950,12 +79956,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c323c27ef59534788e4c8da544839a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextStep: 0
+  canTimeOut: 1
   nextSceneName: BowerScene
   tutorial: {fileID: 459952432}
   graphManager: {fileID: 459952434}
   textPanel: {fileID: 459952433}
   scoreText: {fileID: 459952435}
   trackScoreAsTime: 1
+  hasMaxTime: 1
+  maxRoundTime: 180
   im: {fileID: 1819218621}
   lastCheckpt: {x: -30.83, y: -48.18, z: 0}
   playerFish: {fileID: 375390984}
@@ -94504,7 +94514,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1717091414}
-  m_LocalRotation: {x: -0, y: -0, z: 0.6847225, w: -0.728804}
+  m_LocalRotation: {x: -0, y: -0, z: 0.6847224, w: -0.72880393}
   m_LocalPosition: {x: 21.87, y: 54.13, z: 0}
   m_LocalScale: {x: 1.9656297, y: -1.5579897, z: 1}
   m_Children: []

@@ -8,7 +8,6 @@ public class FishGF : GameFlow {
 	//public GameObject tutorialScreen;
 
 	int stage = 0;
-	bool nextStep = false;
 	public InputManager im;
 	public Vector3 lastCheckpt;
 	public PlayerFish playerFish;
@@ -16,6 +15,7 @@ public class FishGF : GameFlow {
 
 	public override void StartFlow()
 	{
+		maxRoundTime = 210;
 		stage = -1;
 		nextStep = true;
 		if (nextStep)
@@ -28,7 +28,7 @@ public class FishGF : GameFlow {
         if (!nextStep)
             return;
 			//we are in game 
-
+		Debug.Log("sdfsjfopdj;");
 			stage++;
 			switch (stage) {
 		case 0:

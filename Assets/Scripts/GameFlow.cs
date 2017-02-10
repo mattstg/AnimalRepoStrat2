@@ -4,6 +4,10 @@ using UnityEngine; using LoLSDK;
 
 public class GameFlow : MonoBehaviour {
 
+	public bool nextStep = false;
+	public bool canTimeOut = true;
+	private float safeGameTime = 0;
+
 	public string nextSceneName = "";
     public GameObject tutorial;
 	public GraphManager graphManager;
@@ -15,6 +19,8 @@ public class GameFlow : MonoBehaviour {
 	public bool trackScoreAsTime = false;
 	protected bool roundTimerActive = false;
 	protected float roundTime = 0;
+
+	public float maxRoundTime = 180;
 
 	public void Start()
 	{		
@@ -51,9 +57,16 @@ public class GameFlow : MonoBehaviour {
 	{
 		if (roundTimerActive) {
 			roundTime += Time.deltaTime;
+			safeGameTime = roundTime;
 		}
 		if (trackScoreAsTime) {
 			scoreText.SetScoreTime (roundTime);
+		}
+		Debug.Log (safeGameTime);
+		Debug.Log (maxRoundTime);
+		if (safeGameTime > maxRoundTime) {
+			nextStep = true;
+			safeGameTime = 0;
 		}
 	}
 

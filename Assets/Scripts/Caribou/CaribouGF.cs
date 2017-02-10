@@ -7,7 +7,6 @@ public class CaribouGF : GameFlow {
 	//public FrogCinematic frogCinematic;
 	//public GameObject tutorialScreen;
 	int stage = 0;
-	bool nextStep = false;
 	public InputManager im;
     public GameObject tutorialImage;
 
@@ -39,16 +38,24 @@ public class CaribouGF : GameFlow {
 		    case 3:
 		    	StartGame (); //start game
 		    	break;
-		    case 4:
+			case 4:
+				PostGame ();
+				break;
+		    case 5:
 		    	PostGameQuestions (); //summary questions
 		    	break;
-               case 5:
+               case 6:
                    GoToNextScene();
                    break;
 		    default:
 		    	break;
 		}		
 		
+	}
+
+	private void PostGame(){
+		roundTimerActive = false;
+		nextStep = true;
 	}
 
 	private void IntroText()
@@ -103,6 +110,7 @@ public class CaribouGF : GameFlow {
 	private void StartGame()
 	{
 		im.gameObject.SetActive (true);
+		roundTimerActive = true;
 	}
 
 	public void GameFinished(BowerBird winner, float score)
