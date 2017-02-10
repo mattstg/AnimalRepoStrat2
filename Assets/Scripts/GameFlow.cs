@@ -62,8 +62,6 @@ public class GameFlow : MonoBehaviour {
 		if (trackScoreAsTime) {
 			scoreText.SetScoreTime (roundTime);
 		}
-		Debug.Log (safeGameTime);
-		Debug.Log (maxRoundTime);
 		if (safeGameTime > maxRoundTime) {
 			nextStep = true;
 			safeGameTime = 0;

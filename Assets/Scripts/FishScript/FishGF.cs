@@ -28,7 +28,6 @@ public class FishGF : GameFlow {
         if (!nextStep)
             return;
 			//we are in game 
-		Debug.Log("sdfsjfopdj;");
 			stage++;
 			switch (stage) {
 		case 0:
