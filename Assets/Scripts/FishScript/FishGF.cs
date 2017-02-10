@@ -7,11 +7,16 @@ public class FishGF : GameFlow {
 	//public FrogCinematic frogCinematic;
 	//public GameObject tutorialScreen;
 
+	public GameObject _fishSpawnPointONE;
+	public GameObject _fishSpawnPointTWO;
+
 	int stage = 0;
 	public InputManager im;
 	public Vector3 lastCheckpt;
+	public bool isFirstCheckpoint = true;
 	public PlayerFish playerFish;
     public GameObject miniMap;
+	public GameObject salmonManager;
 
 	public override void StartFlow()
 	{
@@ -173,12 +178,29 @@ public class FishGF : GameFlow {
 	public void ReachedCheckpoint(Vector3 checkPt)
 	{
 		lastCheckpt = checkPt;	
+		isFirstCheckpoint = false;
 	}
 
 	public void PlayerDied(PlayerFish playerFish)
 	{
 		playerFish.transform.position = lastCheckpt;
         playerFish.SetPlayerEnabled(true);
+		//need to spawn a bunch of fish at base of waterfall
+		if (!isFirstCheckpoint) {
+			for (int c = 0; c < Random.Range ((int)10, 25); c++) {
+				GameObject newFish = Instantiate (Resources.Load ("Prefabs/Salmon")) as GameObject;
+				newFish.transform.SetParent (salmonManager.transform);
+				newFish.transform.position = lastCheckpt + new Vector3 (Random.Range (-2, 2), -7 + Random.Range (-4, 4), 0);
+				newFish.AddComponent<AutoWPAssigner> ();
+			} // move them then add script to stuff
+		} else {
+			for (int c = 0; c < Random.Range ((int)10, 25); c++) {
+				GameObject newFish = Instantiate (Resources.Load ("Prefabs/Salmon")) as GameObject;
+				newFish.transform.SetParent (salmonManager.transform);
+				newFish.transform.position = (Random.Range ((int)0, 2) > 0) ? _fishSpawnPointONE.transform.position : _fishSpawnPointTWO.transform.position;
+				newFish.AddComponent<AutoWPAssigner> ();
+			} // move them then add script to stuff
+		}
 		//Message 
 	}
 

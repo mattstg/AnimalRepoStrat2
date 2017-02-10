@@ -404,11 +404,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c323c27ef59534788e4c8da544839a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextStep: 0
+  canTimeOut: 1
   nextSceneName: 
   tutorial: {fileID: 0}
   graphManager: {fileID: 0}
   textPanel: {fileID: 0}
+  scoreText: {fileID: 0}
+  trackScoreAsTime: 0
+  maxRoundTime: 180
   im: {fileID: 114274132172780148}
+  lastCheckpt: {x: 0, y: 0, z: 0}
+  playerFish: {fileID: 0}
+  miniMap: {fileID: 0}
+  salmonManager: {fileID: 0}
 --- !u!114 &114976455508631292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -420,10 +429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42aa59d5972d084686979b706cf342d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followAi: 1
   desiredPos: {x: 0, y: 0, z: 0}
   isMoving: 0
-  rotateSpeed: 1
-  moveSpeed: 5
 --- !u!212 &212099847901592082
 SpriteRenderer:
   m_ObjectHideFlags: 1
