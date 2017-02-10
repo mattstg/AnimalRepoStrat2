@@ -47,6 +47,7 @@ public class SpriteActivator : MonoBehaviour {
 			if (curGrid != lastGrid)
 			{
 				//Turn off everything around last grid, then turn on everything around curGrid
+                /*
 				for (int x = lastGrid.x - 1; x <= lastGrid.x + 1; x++)
 					for (int y = lastGrid.y - 1; y <= lastGrid.y + 1; y++) 
 					{
@@ -62,7 +63,7 @@ public class SpriteActivator : MonoBehaviour {
 								}
 							}
 						}
-					}
+					}*/
 			}
 		}
 	}
