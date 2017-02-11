@@ -25,6 +25,7 @@ public class SpriteActivator : MonoBehaviour {
 	public void SetupSpriteActivator()
 	{
 		grid = new Dictionary<Vector2, List<Transform>> ();
+        if(rockParent)
         foreach (Transform t in rockParent)
         {
             AddToGrid(t);
@@ -33,12 +34,14 @@ public class SpriteActivator : MonoBehaviour {
             else
                 t.gameObject.SetActive(false);
         }
+        if(fernParent)
         foreach (Transform t in fernParent)
         {
             AddToGrid(t);
             t.gameObject.SetActive(false);
         }
 
+        if(waterParents != null)
         foreach (Transform waterParent in waterParents)
         {
             foreach (Transform t in waterParent)

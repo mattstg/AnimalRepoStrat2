@@ -6,7 +6,7 @@ public class FrogGF : GameFlow {
 
 	public FrogCinematic frogCinematic;
 	int stage = 0;
-	bool nextStep = false;
+	//bool nextStep = false;
 	public Frog playerFrog;
 	public InputManager im;
     float gameTimer = 180; //3 mins
