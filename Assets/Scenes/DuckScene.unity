@@ -9722,6 +9722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b50054200752484ab7471e61bae78af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTree: 1
   triggerColliderTrees: 0
 --- !u!1 &956200913
 GameObject:
@@ -16905,12 +16906,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f33b431f3a6f24197674da8f88d164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextStep: 0
+  canTimeOut: 1
   nextSceneName: CaribouScene
   tutorial: {fileID: 340199531}
   graphManager: {fileID: 340199533}
   textPanel: {fileID: 340199532}
   scoreText: {fileID: 340199534}
   trackScoreAsTime: 1
+  maxRoundTime: 180
   im: {fileID: 1753632080}
   playerDuck: {fileID: 1753632072}
   ducklingParent: {fileID: 452422496}
@@ -17496,7 +17500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e2fe4abecea1da42b3842b4dce64458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationRadius: 11
+  activationRadius: 8
 --- !u!82 &1753632078
 AudioSource:
   m_ObjectHideFlags: 0
