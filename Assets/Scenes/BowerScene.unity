@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 42220088}
   - component: {fileID: 42220087}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: AudioLooper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1792,12 +1792,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90642e55529f71d498ce86be4c943fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextStep: 0
+  canTimeOut: 1
   nextSceneName: DuckScene
   tutorial: {fileID: 1445051141}
   graphManager: {fileID: 1032610818}
   textPanel: {fileID: 682998174}
   scoreText: {fileID: 732080461}
   trackScoreAsTime: 0
+  maxRoundTime: 180
   playerBB: {fileID: 2020526253}
   femaleBB: {fileID: 1428426548}
   im: {fileID: 247273333}
@@ -3467,6 +3470,10 @@ Prefab:
     - target: {fileID: 1803798090702780, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1592958607593144, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
@@ -7145,6 +7152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b50054200752484ab7471e61bae78af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTree: 1
   triggerColliderTrees: 1
 --- !u!1 &1585347485
 GameObject:
