@@ -62,7 +62,7 @@ public class CaribouSpriteActivator : MonoBehaviour {
 		{
 			curUpdate = 0;
 			Vector2 curGrid = new Vector2 ((int)(Camera.main.transform.position.x / gridSize), (int)(Camera.main.transform.position.y / gridSize));
-            Debug.Log("curgrid: " + curGrid);
+            //Debug.Log("curgrid: " + curGrid);
 			if (curGrid != lastGrid)
 			{
                 //Turn off everything around last grid, then turn on everything around curGrid
@@ -72,7 +72,7 @@ public class CaribouSpriteActivator : MonoBehaviour {
                     {
                         if (grid.ContainsKey(new Vector2(x, y)))
                         {
-                            Debug.Log("disabling grid: " + new Vector2(x, y));
+                            //Debug.Log("disabling grid: " + new Vector2(x, y));
                             foreach (Transform t in grid[new Vector2(x, y)])
                             {
                                 SetActive(t, false);
@@ -90,7 +90,7 @@ public class CaribouSpriteActivator : MonoBehaviour {
                         {
                             foreach (Transform t in grid[new Vector2(x, y)])
                             {
-                                Debug.Log("enabling grid: " + new Vector2(x, y));
+                               // Debug.Log("enabling grid: " + new Vector2(x, y));
                                 SetActive(t, true);
                             }
                         }

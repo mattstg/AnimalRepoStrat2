@@ -43,6 +43,11 @@ public class PlayerFish : Fish {
         {
             moveSpeed = 2;
         }
+        if (coli.gameObject.name == "EndZone")
+        {
+            GameObject.FindObjectOfType<FishGF>().nextStep = true;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 1);
+        }
         //if oosdgfa
     }
     public void OnTriggerExit2D(Collider2D coli)

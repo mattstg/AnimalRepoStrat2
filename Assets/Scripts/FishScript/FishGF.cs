@@ -30,42 +30,48 @@ public class FishGF : GameFlow {
 	public override void Update()
 	{
 		base.Update ();
-        if (!nextStep)
-            return;
-			//we are in game 
-			stage++;
-			switch (stage) {
-		case 0:
-				IntroText ();
-				break;
-			case 1:
-				IntroText2 ();
-				break;	
-			case 2:
-				ShowTutorial (); //show tutorial
-				break;
-			case 3:
-				StartGame (); //start game
-				break;
-		case 4:
-			PostGame ();
-			break;
-		case 5:
-			PostGameQuestions (); //summary questions
-			break;
-		case 6:
-			GoToNextScene ();
-			break;
-			default:
-				break;
-			}
-			nextStep = false;
+        if (nextStep)
+        {
+            //we are in game 
+            nextStep = false;
+            stage++;
+            switch (stage)
+            {
+                case 0:
+                    IntroText();
+                    break;
+                case 1:
+                    IntroText2();
+                    break;
+                case 2:
+                    ShowTutorial(); //show tutorial
+                    break;
+                case 3:
+                    StartGame(); //start game
+                    break;
+                case 4:
+                    PostGame();
+                    break;
+                case 5:
+                    PostGameQuestions(); //summary questions
+                    break;
+                case 6:
+                    GoToNextScene();
+                    break;
+                default:
+                    break;
+            }
+        }
+       
 		
 	}
 
 	private void PostGame()
 	{
-		roundTimerActive = false;
+        ToggleMinimap(false);
+        im.gameObject.SetActive(false);
+        playerFish.enabled = false;
+        roundTimerActive = false;
 		string t0 = "Total time: " + scoreText.TimeAsTimerString (roundTime);
 		textPanel.gameObject.SetActive (true);
 		textPanel.SetText (t0);
@@ -96,9 +102,9 @@ public class FishGF : GameFlow {
 
 	private void PostGameQuestions()
 	{
-        ToggleMinimap(false);
+        
         scoreText.gameObject.SetActive(false);
-        im.gameObject.SetActive (false);
+       
 		//frogCinematic.StartAridCinematic ();
 		graphManager.gameObject.SetActive (true);
 		graphManager.titleText.text = "What aspects of reproductive whatever";
