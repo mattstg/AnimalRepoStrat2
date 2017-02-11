@@ -35,9 +35,16 @@ public class TreeRevealer : MonoBehaviour {
         {
             if (t.name == "Leaves")
             {
-                Color c = t.GetComponent<SpriteRenderer>().color;
-                c.a = toSet;
-                t.GetComponent<SpriteRenderer>().color = c;
+                if (t.GetComponent<OpacityFade>())
+                {
+                    t.GetComponent<OpacityFade>().SetTargetOpacity(toSet);
+                }
+                else
+                {
+                    Color c = t.GetComponent<SpriteRenderer>().color;
+                    c.a = toSet;
+                    t.GetComponent<SpriteRenderer>().color = c;
+                }
             }
         }
     }

@@ -38,6 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4299129172733434}
   - component: {fileID: 212897878077362572}
+  - component: {fileID: 114327316160575824}
   m_Layer: 0
   m_Name: Leaves
   m_TagString: Untagged
@@ -116,6 +117,18 @@ CircleCollider2D:
   m_Offset: {x: -0.03, y: 0}
   serializedVersion: 2
   m_Radius: 0.365
+--- !u!114 &114327316160575824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1752965298786514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e46c3ca57ca74b45907fca180ba8885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 2
 --- !u!114 &114496863106692894
 MonoBehaviour:
   m_ObjectHideFlags: 1
