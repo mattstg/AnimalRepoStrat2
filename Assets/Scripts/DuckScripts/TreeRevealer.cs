@@ -24,7 +24,7 @@ public class TreeRevealer : MonoBehaviour {
             }
             else
             {
-                SetAllLeafTransparency(go, .05f);
+                SetAllLeafTransparency(go, .27f);
             }
         }
     }
