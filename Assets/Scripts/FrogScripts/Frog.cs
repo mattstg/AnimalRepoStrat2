@@ -58,6 +58,7 @@ public class Frog : MonoBehaviour {
 		if (frogInfo.playerDescendant) {
 			FindObjectOfType<FrogGF> ().score++;
 		}
+        ribbitRing.GetComponent<OpacityFade>().SetPresentOpacity(0);
     }
 	// Update is called once per frame
 	void Update () {
@@ -229,8 +230,9 @@ public class Frog : MonoBehaviour {
 		if (ribbitRing.transform.localScale.x >= maxRange)
 		{
 			ribbitRing.transform.localScale = new Vector3 (1, 1, 1);
-			ribbitRing.SetActive (false);
-			if (!playerCntrl) {
+            ribbitRing.SetActive (false);
+            ribbitRing.GetComponent<OpacityFade>().SetPresentOpacity(1);
+            if (!playerCntrl) {
 				if (Random.Range (0f, 1f) > chanceToRepeatCall) {
 					EnterCallingState (); //re-cycle the state
 				} else {
@@ -244,8 +246,10 @@ public class Frog : MonoBehaviour {
 		{
             ribbitRing.SetActive (true);
 			ribbitRing.transform.localScale = ribbitRing.transform.localScale + new Vector3 (1, 1) * rangeRateIncrease * Time.deltaTime;
-		}
-	}
+            ribbitRing.GetComponent<OpacityFade>().
+                SetPresentOpacity(1 - ribbitRing.GetComponent<OpacityFade>().GetIntegral(Mathf.Max(0, 3 * ribbitRing.transform.localScale.x / maxRange - 2)));
+        }
+    }
 
     private void DisableRibbiting()
     {

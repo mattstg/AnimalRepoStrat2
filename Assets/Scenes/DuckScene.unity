@@ -20544,6 +20544,7 @@ GameObject:
   - component: {fileID: 1995407291}
   - component: {fileID: 1995407293}
   - component: {fileID: 1995407292}
+  - component: {fileID: 1995407294}
   m_Layer: 0
   m_Name: quackcircle
   m_TagString: Untagged
@@ -20578,7 +20579,6 @@ MonoBehaviour:
   player: {fileID: 1753632072}
   maxAlpha: 0.9
   circleVisibleLife: 3
-  currentAlpha: 0
 --- !u!212 &1995407293
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20614,6 +20614,17 @@ SpriteRenderer:
   m_Color: {r: 0.41176468, g: 0.70791084, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1995407294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1995407290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e46c3ca57ca74b45907fca180ba8885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1995965140
 GameObject:
   m_ObjectHideFlags: 0

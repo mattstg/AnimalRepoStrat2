@@ -78,6 +78,14 @@ public class OpacityFade : MonoBehaviour {
         fadeDuration = duration;
     }
 
+    public void SetPresentOpacity(float opacity)
+    {
+        sourceOpacity = opacity;
+        targetOpacity = opacity;
+        fadeProgress = fadeDuration;
+        ApplyOpacity(targetOpacity);
+    }
+
     public void ApplyOpacity(float newOpacity)
     {
         Color c = gameObject.GetComponent<SpriteRenderer>().color;

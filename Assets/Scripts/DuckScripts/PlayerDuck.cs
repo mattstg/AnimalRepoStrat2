@@ -28,7 +28,9 @@ public class PlayerDuck : MonoBehaviour {
     {
         if (quackCoolDown == 0)
         {
-            QuackCircle.GetComponent<QuackCircle>().currentAlpha = QuackCircle.GetComponent<QuackCircle>().maxAlpha;
+            //QuackCircle.GetComponent<QuackCircle>().currentAlpha = QuackCircle.GetComponent<QuackCircle>().maxAlpha;
+            QuackCircle.GetComponent<OpacityFade>().SetPresentOpacity(QuackCircle.GetComponent<QuackCircle>().maxAlpha);
+            QuackCircle.GetComponent<OpacityFade>().SetTargetOpacity(0, QuackCircle.GetComponent<QuackCircle>().circleVisibleLife);
             foreach (GameObject duckling in GameObject.FindObjectOfType<DucklingManager>().Ducklings)
             {
                 if (!duckling.GetComponent<Duckling>().isDead)
@@ -68,6 +70,7 @@ public class PlayerDuck : MonoBehaviour {
         targetPos = transform.position;
         source = GetComponent<AudioSource>();
         quack =(AudioClip)Resources.Load("sounds/duckCall.mp3");
+        QuackCircle.GetComponent<OpacityFade>().SetPresentOpacity(0);
     }
 	
 	// Update is called once per frame

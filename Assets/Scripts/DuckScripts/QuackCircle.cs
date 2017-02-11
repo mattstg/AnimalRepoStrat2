@@ -7,19 +7,19 @@ public class QuackCircle : MonoBehaviour {
     float qRadius;
     public float maxAlpha = .5f;
     public float circleVisibleLife = 2f;
-    public float currentAlpha = 0f;
+    //public float currentAlpha = 0f;
 
-    // Use this for initialization
-    void Start () {
+    void Start ()
+    {
        qRadius = player.GetComponent<PlayerDuck>().quackRadius;
         float growthFactor = ((qRadius * 2) - 10) / 10;
 
        transform.localScale += new Vector3(growthFactor,growthFactor,0);
     }
 	
-	// Update is called once per frame
-	void Update () {
-
+	void Update ()
+    {
+        /*
         if (currentAlpha >= 0)
         {
             Color tmp = gameObject.GetComponent<SpriteRenderer>().color;
@@ -27,13 +27,13 @@ public class QuackCircle : MonoBehaviour {
             gameObject.GetComponent<SpriteRenderer>().color = tmp;
             currentAlpha -= maxAlpha / (circleVisibleLife / Time.deltaTime);
 
+            gameObject.GetComponent<OpacityFade>().
         }
 
         else if (currentAlpha < 0)
         {
             currentAlpha = 0f;
         }
-        
-
+        */
     }
 }

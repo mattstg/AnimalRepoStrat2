@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 4978290952023330}
   - component: {fileID: 212221808667455172}
   - component: {fileID: 58062132731636658}
+  - component: {fileID: 114928984978915014}
   m_Layer: 0
   m_Name: RibbitRing
   m_TagString: RibbitRing
@@ -499,6 +500,17 @@ MonoBehaviour:
   ribbitRing: {fileID: 1250977909195552}
   publicGenNum: 0
   publicIsPlayer: 0
+--- !u!114 &114928984978915014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1250977909195552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e46c3ca57ca74b45907fca180ba8885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212075727233899528
 SpriteRenderer:
   m_ObjectHideFlags: 1
