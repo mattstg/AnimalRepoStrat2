@@ -17437,8 +17437,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QuackCircle: {fileID: 1995407290}
   foxParent: {fileID: 137737224}
-  speed: 1.3
-  quackRadius: 10
+  speed: 1.5
+  quackRadius: 12
   maxQuackCooldown: 10
   quackCoolDownSpeed: 1
 --- !u!58 &1753632074
@@ -21520,6 +21520,11 @@ Prefab:
       propertyPath: mother
       value: 
       objectReference: {fileID: 1753632072}
+    - target: {fileID: 114375672636788724, guid: 194eb0c23e44bf343868227a62b2a370,
+        type: 2}
+      propertyPath: motherInfluenceDistance
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 194eb0c23e44bf343868227a62b2a370, type: 2}
   m_IsPrefabParent: 0
