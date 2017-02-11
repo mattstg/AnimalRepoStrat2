@@ -1937,6 +1937,11 @@ Prefab:
       propertyPath: activationRadius
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114303469373773884, guid: a7f1587e92c735a408a2d514036984e7,
+        type: 2}
+      propertyPath: fadeDuration
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7f1587e92c735a408a2d514036984e7, type: 2}
   m_IsPrefabParent: 0
@@ -5353,6 +5358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationRadius: 5
+  fadeDuration: 0
 --- !u!114 &1180365289 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114511362724035862, guid: e4444d03ea8e24f4da7d831b516880af,

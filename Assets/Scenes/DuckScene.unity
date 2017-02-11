@@ -17501,6 +17501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationRadius: 8
+  fadeDuration: 2
 --- !u!82 &1753632078
 AudioSource:
   m_ObjectHideFlags: 0

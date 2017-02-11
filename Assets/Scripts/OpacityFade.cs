@@ -4,7 +4,7 @@ using UnityEngine; using LoLSDK;
 
 public class OpacityFade : MonoBehaviour {
 
-    public float fadeDuration = 1;
+    private float fadeDuration = 1;
     private float fadeProgress = 1;
     private float targetOpacity = 1;
 
@@ -34,10 +34,11 @@ public class OpacityFade : MonoBehaviour {
         }
 	}
 
-    public void SetTargetOpacity(float target)
+    public void SetTargetOpacity(float target, float duration)
     {
         targetOpacity = target;
         fadeProgress = 0;
+        fadeDuration = duration;
     }
 
     public void ApplyOpacity(float newOpacity)

@@ -4,6 +4,8 @@ using UnityEngine; using LoLSDK;
 
 public class TreeRevealer : MonoBehaviour {
 
+    public float fadeDuration = 1;
+
     public void OnTriggerExit2D(Collider2D coli)
     {
         ResolveCollision(coli.gameObject, false);
@@ -37,7 +39,7 @@ public class TreeRevealer : MonoBehaviour {
             {
                 if (t.GetComponent<OpacityFade>())
                 {
-                    t.GetComponent<OpacityFade>().SetTargetOpacity(toSet);
+                    t.GetComponent<OpacityFade>().SetTargetOpacity(toSet, fadeDuration);
                 }
                 else
                 {
