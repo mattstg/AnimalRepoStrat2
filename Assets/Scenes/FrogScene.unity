@@ -11015,7 +11015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextStep: 0
-  canTimeOut: 1
+  canTimeOut: 0
   nextSceneName: FishScene
   tutorial: {fileID: 1114622436}
   graphManager: {fileID: 445868751}
