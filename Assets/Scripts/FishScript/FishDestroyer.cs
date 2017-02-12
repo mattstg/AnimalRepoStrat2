@@ -5,7 +5,7 @@ using UnityEngine;
 public class FishDestroyer : MonoBehaviour {
 	public Transform targetTransfrom;
 	public float disntanceToDestroy = 25;
-	public float prcntChance = 2.5f; // per seond
+	public float prcntChance = 10; // per seond
 
 	// Use this for initialization
 	void Start () {
