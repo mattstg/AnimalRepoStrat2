@@ -30,7 +30,7 @@ public class SlotMB : MonoBehaviour {
     bool isEvaluating = false;
 
     int scrWidth = -1;
-    int margins = 120;
+    int margins = 80;
     int answersTotal = 0;
 
     public void InitializeSlot(Slot _slot)
