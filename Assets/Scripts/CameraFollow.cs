@@ -11,6 +11,7 @@ public class CameraFollow : MonoBehaviour {
     public bool useLimits;
     public Vector2 limitBottomLeft;
     public Vector2 limitTopRight;
+    public float viewportMargin = 0.5f;
 
 	// Update is called once per frame
 	void Update () {
@@ -37,24 +38,24 @@ public class CameraFollow : MonoBehaviour {
 
             bool overrule = false;
            
-            if(vpTarget.x < vpBottomLeft.x + 0.5f)
+            if(vpTarget.x < vpBottomLeft.x + viewportMargin)
             {
-                vpTarget.x = vpBottomLeft.x + 0.5f;
+                vpTarget.x = vpBottomLeft.x + viewportMargin;
                 overrule = true;
             }
-            if (vpTarget.x > vpTopRight.x - 0.5f)
+            if (vpTarget.x > vpTopRight.x - viewportMargin)
             {
-                vpTarget.x = vpTopRight.x - 0.5f;
+                vpTarget.x = vpTopRight.x - viewportMargin;
                 overrule = true;
             }
-            if (vpTarget.y < vpBottomLeft.y + 0.5f)
+            if (vpTarget.y < vpBottomLeft.y + viewportMargin)
             {
-                vpTarget.y = vpBottomLeft.y + 0.5f;
+                vpTarget.y = vpBottomLeft.y + viewportMargin;
                 overrule = true;
             }
-            if (vpTarget.y > vpTopRight.y - 0.5f)
+            if (vpTarget.y > vpTopRight.y - viewportMargin)
             {
-                vpTarget.y = vpTopRight.y - 0.5f;
+                vpTarget.y = vpTopRight.y - viewportMargin;
                 overrule = true;
             }
 

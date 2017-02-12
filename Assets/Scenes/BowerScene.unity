@@ -7435,6 +7435,10 @@ MonoBehaviour:
   dampTime: 0.5
   toFollow: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
+  useLimits: 1
+  limitBottomLeft: {x: -55, y: -36}
+  limitTopRight: {x: 37, y: 36}
+  viewportMargin: 0.4
 --- !u!1 &1619118765
 GameObject:
   m_ObjectHideFlags: 0
