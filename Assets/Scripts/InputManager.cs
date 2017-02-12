@@ -10,7 +10,8 @@ public class InputManager : MonoBehaviour {
 
     public void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+      
+        if(Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
             _MouseClicked();
         }
