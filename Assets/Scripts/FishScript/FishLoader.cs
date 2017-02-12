@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FishLoader : MonoBehaviour {
-	public bool reallowSpawn = false;
+	private bool reallowSpawn = true;
 	public GameObject salmonManager;
+	public CircleCollider2D triggerCol;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +28,12 @@ public class FishLoader : MonoBehaviour {
 		newFish.GetComponent<FlockingAI> ().enabled = true;
 		newFish.GetComponent<Animator> ().enabled = true;
 		reallowSpawn = false;
+		triggerCol.enabled = false;
+	}
+
+	public void reAllowSpawn(){
+		reallowSpawn = true;
+		triggerCol.enabled = true;
 	}
 
 }

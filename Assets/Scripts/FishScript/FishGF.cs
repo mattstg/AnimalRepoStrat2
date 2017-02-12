@@ -225,7 +225,7 @@ public class FishGF : GameFlow {
 
 	public void allowNewSpawns(){
 		foreach (FishLoader f in GetComponentsInChildren<FishLoader>()) {
-			f.reallowSpawn = true;
+			f.reAllowSpawn();
 		}
 	}
 
