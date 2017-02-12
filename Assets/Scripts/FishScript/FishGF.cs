@@ -206,6 +206,7 @@ public class FishGF : GameFlow {
 				newFish.AddComponent<AutoWPAssigner> ();
 				newFish.GetComponent<Fish> ().enabled = true;
 				newFish.GetComponent<FlockingAI> ().enabled = true;
+				newFish.GetComponent<Animator> ().enabled = true;
 			} // move them then add script to stuff
 		} else {
 			for (int c = 0; c < Random.Range ((int)10, 25); c++) {
@@ -215,6 +216,7 @@ public class FishGF : GameFlow {
 				newFish.AddComponent<AutoWPAssigner> ();
 				newFish.GetComponent<Fish> ().enabled = true;
 				newFish.GetComponent<FlockingAI> ().enabled = true;
+				newFish.GetComponent<Animator> ().enabled = true;
 			} // move them then add script to stuff
 		}
 		//Message 
