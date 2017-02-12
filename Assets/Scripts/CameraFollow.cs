@@ -8,19 +8,64 @@ public class CameraFollow : MonoBehaviour {
     private Vector3 velocity = Vector3.zero;
     public Transform toFollow;
     public Vector3 offset;
+    public bool useLimits;
+    public Vector2 limitBottomLeft;
+    public Vector2 limitTopRight;
 
 	// Update is called once per frame
 	void Update () {
 		if (toFollow) {
             //transform.position = new Vector3(toFollow.position.x + offset.x, toFollow.position.y + offset.y, -10);
 
-            Vector3 target = new Vector3(toFollow.position.x + offset.x, toFollow.position.y + offset.y, -10);
+            Vector3 target = GetTarget();
             Vector3 point = GetComponent<Camera>().WorldToViewportPoint(target);
             Vector3 delta = target - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z));
             Vector3 destination = transform.position + delta;
             transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
         }
 	}
+
+    public Vector3 GetTarget()
+    {
+        Vector3 target = new Vector3(toFollow.position.x + offset.x, toFollow.position.y + offset.y, -10);
+
+        if (useLimits)
+        {
+            Vector3 vpTarget = GetComponent<Camera>().WorldToViewportPoint(target);
+            Vector3 vpTopRight = GetComponent<Camera>().WorldToViewportPoint(limitTopRight);
+            Vector3 vpBottomLeft = GetComponent<Camera>().WorldToViewportPoint(limitBottomLeft);
+
+            bool overrule = false;
+           
+            if(vpTarget.x < vpBottomLeft.x + 0.5f)
+            {
+                vpTarget.x = vpBottomLeft.x + 0.5f;
+                overrule = true;
+            }
+            if (vpTarget.x > vpTopRight.x - 0.5f)
+            {
+                vpTarget.x = vpTopRight.x - 0.5f;
+                overrule = true;
+            }
+            if (vpTarget.y < vpBottomLeft.y + 0.5f)
+            {
+                vpTarget.y = vpBottomLeft.y + 0.5f;
+                overrule = true;
+            }
+            if (vpTarget.y > vpTopRight.y - 0.5f)
+            {
+                vpTarget.y = vpTopRight.y - 0.5f;
+                overrule = true;
+            }
+
+            if (overrule)
+            {
+                target = GetComponent<Camera>().ViewportToWorldPoint(vpTarget);
+                target.z = -10;
+            }
+        }
+        return target;
+    }
 
 	public void SetZoom(float z)
 	{
