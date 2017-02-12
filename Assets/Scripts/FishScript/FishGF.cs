@@ -194,6 +194,7 @@ public class FishGF : GameFlow {
 
 	public void PlayerDied(PlayerFish playerFish)
 	{
+		destroyAllFish ();
 		playerFish.transform.position = lastCheckpt;
         playerFish.SetPlayerEnabled(true);
 		//need to spawn a bunch of fish at base of waterfall
@@ -225,6 +226,12 @@ public class FishGF : GameFlow {
 	public void allowNewSpawns(){
 		foreach (FishLoader f in GetComponentsInChildren<FishLoader>()) {
 			f.reallowSpawn = true;
+		}
+	}
+
+	public void destroyAllFish(){
+		foreach (Fish f in salmonManager.GetComponentsInChildren<Fish>()) {
+			Destroy (f);
 		}
 	}
 }

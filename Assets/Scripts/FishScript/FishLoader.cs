@@ -19,7 +19,6 @@ public class FishLoader : MonoBehaviour {
 	}
 
 	private void spawnFish(){
-		Debug.Log ("Here!!");
 		GameObject newFish = Instantiate (Resources.Load ("Prefabs/Salmon")) as GameObject;
 		newFish.transform.SetParent (salmonManager.transform);
 		newFish.transform.position = gameObject.transform.position;

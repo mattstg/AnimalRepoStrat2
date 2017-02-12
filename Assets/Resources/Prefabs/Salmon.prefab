@@ -266,7 +266,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1680575574405470}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 56a886061c7d3214590d2a292a7f134b, type: 2}
   m_CullingMode: 0
@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da52700164eb1834faedf8df19f0f469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterSlowCoeff: 1
   currentWaypoint: {fileID: 0}
   test: 0
   isCorpse: 0
