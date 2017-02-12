@@ -302,13 +302,13 @@ MonoBehaviour:
   fleesFromPredators: 0
   predFleeDistance: 25
   fleeWeight: 0
-  averageHeadingWeight: 0
+  averageHeadingWeight: 2
   averagePositionWeight: 1
-  neighbourDistance: 6
-  repulsionDistance: 0.75
-  repulsionWeight: 0
+  neighbourDistance: 1
+  repulsionDistance: 0.3
+  repulsionWeight: 3.5
   usesWaypoints: 1
-  waypointWeight: 15
+  waypointWeight: 5
   waypointReachedProximity: 0
   followsLeaders: 0
   leaderWeight: 1
@@ -317,15 +317,15 @@ MonoBehaviour:
   motherInfluenceDistance: 40
   mother: {fileID: 0}
   motherWeight: 1
-  usesRandom: 0
+  usesRandom: 1
   randomWeight: 1.5
-  randomRange: 45
-  randVectUpdateFrequency: 30
-  usesDirectionalInertia: 0
-  inertiaWeight: 1
+  randomRange: 10
+  randVectUpdateFrequency: 60
+  usesDirectionalInertia: 1
+  inertiaWeight: 0.3
   randomizesSpeed: 0
   randomizesRotationSpeed: 0
-  speedNormalizing: 0
+  speedNormalizing: 1
   isPredator: 0
   huntRange: 40
   huntWeight: 1
