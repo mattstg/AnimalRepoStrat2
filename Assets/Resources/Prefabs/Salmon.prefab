@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 61240126945651066}
   - component: {fileID: 114956482742418932}
   - component: {fileID: 114125182582484008}
+  - component: {fileID: 114565913437716682}
   m_Layer: 14
   m_Name: Salmon
   m_TagString: Untagged
@@ -293,7 +294,7 @@ MonoBehaviour:
   turnsHead: 0
   head: {fileID: 0}
   headRotationSpeed: 20
-  updateFrequency: 5
+  updateFrequency: 10
   speedRange: {x: 10, y: 15}
   rotationSpeedRange: {x: 12, y: 16}
   isCalf: 0
@@ -302,13 +303,13 @@ MonoBehaviour:
   fleesFromPredators: 0
   predFleeDistance: 25
   fleeWeight: 0
-  averageHeadingWeight: 0
-  averagePositionWeight: 1
-  neighbourDistance: 1
-  repulsionDistance: 0.3
-  repulsionWeight: 3.5
+  averageHeadingWeight: 4
+  averagePositionWeight: 2
+  neighbourDistance: 2
+  repulsionDistance: 0.2
+  repulsionWeight: 3
   usesWaypoints: 1
-  waypointWeight: 5
+  waypointWeight: 2
   waypointReachedProximity: 0
   followsLeaders: 0
   leaderWeight: 1
@@ -317,15 +318,15 @@ MonoBehaviour:
   motherInfluenceDistance: 40
   mother: {fileID: 0}
   motherWeight: 1
-  usesRandom: 0
-  randomWeight: 1.5
-  randomRange: 10
-  randVectUpdateFrequency: 60
+  usesRandom: 1
+  randomWeight: 3
+  randomRange: 25
+  randVectUpdateFrequency: 30
   usesDirectionalInertia: 0
   inertiaWeight: 0.3
   randomizesSpeed: 0
   randomizesRotationSpeed: 0
-  speedNormalizing: 0
+  speedNormalizing: 1
   isPredator: 0
   huntRange: 40
   huntWeight: 1
@@ -337,6 +338,17 @@ MonoBehaviour:
   predNeighborhoodSize: 20
   predAverageHeadingWeight: 1
   predAveragePositionWeight: 1
+--- !u!114 &114565913437716682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1680575574405470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c9b6094df381a64682a9696cd4adf49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114956482742418932
 MonoBehaviour:
   m_ObjectHideFlags: 1
