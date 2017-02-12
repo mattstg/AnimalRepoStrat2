@@ -202,8 +202,10 @@ public class FishGF : GameFlow {
 			for (int c = 0; c < Random.Range ((int)10, 25); c++) {
 				GameObject newFish = Instantiate (Resources.Load ("Prefabs/Salmon")) as GameObject;
 				newFish.transform.SetParent (salmonManager.transform);
-				newFish.transform.position = lastCheckpt + new Vector3 (Random.Range (-2, 2), -7 + Random.Range (-4, 4), 0);
+				newFish.transform.position = lastCheckpt + new Vector3 (Random.Range (-3, 3), -11 + Random.Range (-4, 4), 0);
 				newFish.AddComponent<AutoWPAssigner> ();
+				newFish.GetComponent<Fish> ().enabled = true;
+				newFish.GetComponent<FlockingAI> ().enabled = true;
 			} // move them then add script to stuff
 		} else {
 			for (int c = 0; c < Random.Range ((int)10, 25); c++) {
@@ -211,9 +213,12 @@ public class FishGF : GameFlow {
 				newFish.transform.SetParent (salmonManager.transform);
 				newFish.transform.position = (Random.Range ((int)0, 2) > 0) ? _fishSpawnPointONE.transform.position : _fishSpawnPointTWO.transform.position;
 				newFish.AddComponent<AutoWPAssigner> ();
+				newFish.GetComponent<Fish> ().enabled = true;
+				newFish.GetComponent<FlockingAI> ().enabled = true;
 			} // move them then add script to stuff
 		}
 		//Message 
+
 	}
 
 
