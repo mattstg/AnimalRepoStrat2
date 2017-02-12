@@ -231,7 +231,7 @@ public class FishGF : GameFlow {
 
 	public void destroyAllFish(){
 		foreach (Fish f in salmonManager.GetComponentsInChildren<Fish>()) {
-			Destroy (f);
+			Destroy (f.gameObject);
 		}
 	}
 }
