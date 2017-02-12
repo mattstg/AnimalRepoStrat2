@@ -2986,6 +2986,10 @@ MonoBehaviour:
   dampTime: 0.5
   toFollow: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
+  useLimits: 0
+  limitBottomLeft: {x: 0, y: 0}
+  limitTopRight: {x: 0, y: 0}
+  viewportMargin: 0.5
 --- !u!1 &429705069
 GameObject:
   m_ObjectHideFlags: 0
@@ -13076,7 +13080,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 72e5d2b82352e2b488dcad0490e5ad7f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 62668bc517fdcbe43a979227795d84b8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
