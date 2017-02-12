@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class FlockingAI : MonoBehaviour
-{   //Settings initiate as a decent caribou/buffalo flocker
-    //Works best with 1 mass and 4 linear drag
-    //tested on circles of scale 4,2,0 with colliders 
+{
 
+    float waterSlowCoeff = 0f;
 
-    //waypoints
     bool finishedWaypoints = false;
     int numOfWP;
     public waypointScript currentWaypoint;
@@ -588,7 +586,7 @@ public class FlockingAI : MonoBehaviour
 
 				if (!(isPredator && isPredOnStandby) && !isFish)
                     {
-                        rigidbody.AddForce(thisFacingDir * speed * Time.deltaTime);
+                        rigidbody.AddForce(thisFacingDir * speed * waterSlowCoeff * Time.deltaTime);
                         
                     }
 
