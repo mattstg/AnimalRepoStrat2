@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class FlockingAI : MonoBehaviour
 {
 
-    float waterSlowCoeff = 0f;
+    float waterSlowCoeff = 1f;
 
     bool finishedWaypoints = false;
     int numOfWP;
