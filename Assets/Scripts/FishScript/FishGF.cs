@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine; using LoLSDK;
 
 public class FishGF : GameFlow {
-
 	//public FrogCinematic frogCinematic;
 	//public GameObject tutorialScreen;
 
@@ -219,9 +218,13 @@ public class FishGF : GameFlow {
 				newFish.GetComponent<Animator> ().enabled = true;
 			} // move them then add script to stuff
 		}
+		allowNewSpawns ();
 		//Message 
-
 	}
 
-
+	public void allowNewSpawns(){
+		foreach (FishLoader f in GetComponentsInChildren<FishLoader>()) {
+			f.reallowSpawn = true;
+		}
+	}
 }

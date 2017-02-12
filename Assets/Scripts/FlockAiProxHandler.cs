@@ -20,8 +20,9 @@ public class FlockAiProxHandler : MonoBehaviour {
 			if (coli.gameObject.GetComponent<Animator>())
 				coli.gameObject.GetComponent<Animator>().enabled = true;
 			
-			if (coli.gameObject.GetComponent<FishLoader>())
-				coli.gameObject.GetComponent<FishLoader>().enabled = true;
+			if (coli.gameObject.GetComponent<FishLoader> ()) {
+				coli.gameObject.GetComponent<FishLoader> ().enabled = true;
+			}
 			
             enabledObjects.Add(coli.gameObject.transform);
         }
