@@ -68,7 +68,7 @@ public class GraphManager : MonoBehaviour {
                 {
 					wrongAudio.Play ();
                     gridButton.GetComponentInChildren<Text>().text = "Try Again";
-                    totalScore += correct / questions;
+                    totalScore += (float)correct / (float)questions;
                 }
                 hasEvaluated = true;
             }
@@ -92,12 +92,36 @@ public class GraphManager : MonoBehaviour {
 		} 
 		else 
 		{
-            Debug.Log("calculated end score: " + totalScore / tries + " total raw: " + totalScore + " tries: " + tries);
+            int roundNumber = GetRoundNumber();
+            int progressNumber = roundNumber * 2 + 1;
+            ProgressTracker.Instance.SetRoundMult((float)totalScore / (float)tries, GetRoundNumber(), tries);
+            ProgressTracker.Instance.SubmitProgress(progressNumber);
+            //Debug.Log("calculated end score: " + totalScore / tries + " total raw: " + totalScore + " tries: " + tries);
 			gameflow.AnsweredGraphCorrectly ();
 		}
 
 //		Debug.Log (string.Format ("Score is {0}/{1}", correct, questions));
 	}
+
+    private int GetRoundNumber()
+    {
+        switch(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name)
+        {
+            case "FrogScene":
+                return 0;
+            case "FishScene":
+                return 1;
+            case "BowerScene":
+                return 2;
+            case "DuckScene":
+                return 3;
+            case "CaribouScene":
+                return 4;
+            default:
+                Debug.Log("scene failure");
+                return 0;
+        }
+    }
 
 	public void AddSlot(Slot slot)
 	{

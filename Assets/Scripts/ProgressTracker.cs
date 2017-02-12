@@ -22,6 +22,8 @@ public class ProgressTracker {
 	float[] roundScores = new float[5];
 	float[] roundMult = new float[5];
     float maxScorePerRound = 100;
+    float roundMultMax = .5f; //50% increase at 100% bonus
+    float lossPerQuizAttempt = .05f;
 
 
 	private ProgressTracker()
@@ -38,8 +40,9 @@ public class ProgressTracker {
 		roundScores [round] = score;
 	}
 
-	public void SetRoundMult(float score, int round)
+	public void SetRoundMult(float score, int round, int tries)
 	{
+        score = Mathf.Max(score - (tries * lossPerQuizAttempt), 0);
 		roundMult [round] = score;
 	}
 
@@ -48,8 +51,10 @@ public class ProgressTracker {
 		float totalScore = 0;
 		for (int i = 0; i < 5; i++) 
 		{
-			totalScore += roundScores [i] * (1 + roundMult [i]) * maxScorePerRound;
-		}
+            totalScore += roundScores [i] * (1 + roundMult [i]* roundMultMax) * maxScorePerRound;
+            Debug.Log(string.Format("{0} : {1}", roundScores[i], roundMult[i]));
+            Debug.Log(string.Format("total score in {0} iteration: {1}", i, totalScore));
+        }
         LOLSDK.Instance.SubmitProgress((int)totalScore, progressNumber, 10);// SCORE, CURRENTPROGRESS, MAXPROGRESS
     }
 }

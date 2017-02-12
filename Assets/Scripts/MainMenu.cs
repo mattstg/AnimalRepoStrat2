@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour {
 
     void Start()
     {
-        LOLSDK.Init("com.MSqr.AnimalRepoStats");
+        LOLSDK.Init("com.Pansimula.BidForLife");
     }
 
 	public void StartPressed()
