@@ -185,8 +185,12 @@ public class FlockingAI : MonoBehaviour
                     dist = Vector2.Distance(_animal.transform.position, this.transform.position);
                     if (dist <= neighbourDistance)
                     {
+                        Vector2 _animalsForward = Vector2.zero;
                         Vector2 _animalsPos = V3toV2(_animal.transform.position);
-                        Vector2 _animalsForward = V3toV2(_animal.transform.right);  // right because unity 2d is stupid
+                        if(!isFish)
+                         _animalsForward = V3toV2(_animal.transform.right);  // right because unity 2d is stupid
+                        else if (isFish)
+                         _animalsForward = V3toV2(_animal.transform.forward);
 
                         vCenter += _animalsPos;
                         vHeading += _animalsForward;
@@ -304,7 +308,10 @@ public class FlockingAI : MonoBehaviour
 
 			if (usesDirectionalInertia)
             {
-                vInertia = this.transform.right;
+                if(!isFish)
+                    vInertia = this.transform.right;
+                else if(isFish)
+                    vInertia = this.transform.forward;
             }
 
             if (speedNormalizing) //sets this animal speed to average local speed
@@ -507,8 +514,19 @@ public class FlockingAI : MonoBehaviour
         {
             if (Random.Range(0, randVectUpdateFrequency) == 0)
             {
-                float x = this.transform.right.x;
-                float y = this.transform.right.y;
+                float x = 0;
+                float y = 0;
+                if (!isFish)
+                {
+                    x = this.transform.right.x;
+                    y = this.transform.right.y;
+                }
+                else if(isFish)
+                {
+                    x = this.transform.forward.x;
+                    y = this.transform.forward.y;
+                }
+
                 float deltaAngle = Random.Range(-randomRange, randomRange);
                 deltaAngle = deltaAngle * Mathf.Deg2Rad;
                 float cosTheta = Mathf.Cos(deltaAngle);
