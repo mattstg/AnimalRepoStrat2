@@ -130,7 +130,11 @@ public class BowerGF : GameFlow {
 		roundTimerActive = false;
         scoreText.gameObject.SetActive(false);
         im.enabled = false;
-        nextStep = true;
+        //nextStep = true;
+        string t0 = "Score: " + score;
+        textPanel.gameObject.SetActive(true);
+        textPanel.SetText(t0);
+        textPanel.StartWriting();
     }
 
 	public override void TutorialClosed()

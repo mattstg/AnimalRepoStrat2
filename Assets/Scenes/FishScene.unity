@@ -16236,9 +16236,10 @@ GameObject:
   - component: {fileID: 1309052321}
   - component: {fileID: 375390987}
   - component: {fileID: 375390986}
-  - component: {fileID: 375390985}
   - component: {fileID: 375390984}
   - component: {fileID: 375390988}
+  - component: {fileID: 375390989}
+  - component: {fileID: 375390985}
   m_Layer: 13
   m_Name: PlayerSalmon
   m_TagString: Untagged
@@ -16261,21 +16262,20 @@ MonoBehaviour:
   followAi: 1
   desiredPos: {x: 0, y: 0, z: 0}
   isMoving: 0
---- !u!61 &375390985
-BoxCollider2D:
+--- !u!70 &375390985
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 61695614141282074, guid: b6fe2e58675a336409d808eb9924ceb8,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 375390983}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.88}
-  serializedVersion: 2
-  m_Size: {x: 1, y: 3.46}
+  m_Offset: {x: 0.03, y: -0.87}
+  m_Size: {x: 0.4, y: 3.8}
+  m_Direction: 0
 --- !u!50 &375390986
 Rigidbody2D:
   serializedVersion: 4
@@ -16327,6 +16327,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: {x: 10, y: 12}
+--- !u!58 &375390989
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 375390983}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &377692622
 GameObject:
   m_ObjectHideFlags: 0
@@ -18373,6 +18387,11 @@ Prefab:
     - target: {fileID: 1680575574405470, guid: efbb6f778d8e1af408fa6ef5ae38ce8d, type: 2}
       propertyPath: m_Name
       value: Salmon (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 61240126945651066, guid: efbb6f778d8e1af408fa6ef5ae38ce8d,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: efbb6f778d8e1af408fa6ef5ae38ce8d, type: 2}
@@ -41602,7 +41621,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 847018189}
-  m_LocalRotation: {x: -0, y: -0, z: 0.6847225, w: -0.728804}
+  m_LocalRotation: {x: -0, y: -0, z: 0.6847224, w: -0.72880393}
   m_LocalPosition: {x: 8.29, y: 7.36, z: 0}
   m_LocalScale: {x: 1.965632, y: -1.557989, z: 1}
   m_Children: []
@@ -84189,7 +84208,7 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: -3.9578073, y: -5.3141913}
+  - {x: -3.945621, y: -5.316407}
   - {x: -4.1614423, y: -5.0812335}
   - {x: -4.165203, y: -4.7516527}
   - {x: -3.8710515, y: -3.9424837}
@@ -84198,7 +84217,7 @@ EdgeCollider2D:
   - {x: -3.6544654, y: -4.4041157}
   - {x: -3.6305401, y: -4.40397}
   - {x: -3.6313741, y: -4.522102}
-  - {x: -3.9225237, y: -5.2989826}
+  - {x: -3.9408617, y: -5.313653}
 --- !u!68 &1605336394
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -89963,7 +89982,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1717091414}
-  m_LocalRotation: {x: -0, y: -0, z: 0.6847225, w: -0.728804}
+  m_LocalRotation: {x: -0, y: -0, z: 0.6847224, w: -0.72880393}
   m_LocalPosition: {x: 21.87, y: 54.13, z: 0}
   m_LocalScale: {x: 1.9656297, y: -1.5579897, z: 1}
   m_Children: []

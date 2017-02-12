@@ -130,7 +130,7 @@ public class Fox : MonoBehaviour {
     public void HeardAQuack()
     {
         Transform t = transform.FindChild("sightRadius");
-        t.GetComponent<CircleCollider2D>().radius += radius_growth;
+        t.localScale = t.localScale * (1  + radius_growth);
     }
 
     private void MoveTowardsGoal()
