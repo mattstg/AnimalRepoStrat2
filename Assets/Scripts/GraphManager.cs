@@ -18,6 +18,9 @@ public class GraphManager : MonoBehaviour {
 	public bool allCorrect = false;
     public bool hasEvaluated = false;
 
+    int tries = 0;
+    float totalScore = 0;
+
     public void Awake()
     {
         gameflow = GameObject.FindObjectOfType<GameFlow>();
@@ -37,6 +40,7 @@ public class GraphManager : MonoBehaviour {
 			
             if (!hasEvaluated)
             {
+                tries++;
                 int questions = 0;
                 int correct = 0;
                 foreach (Transform t in grid)
@@ -58,11 +62,13 @@ public class GraphManager : MonoBehaviour {
 					rightAudio.Play ();
                     allCorrect = true;
                     gridButton.GetComponentInChildren<Text>().text = "Perfect!";
+                    totalScore += 1;
                 }
                 else
                 {
 					wrongAudio.Play ();
                     gridButton.GetComponentInChildren<Text>().text = "Try Again";
+                    totalScore += correct / questions;
                 }
                 hasEvaluated = true;
             }
@@ -83,11 +89,10 @@ public class GraphManager : MonoBehaviour {
                 gridButton.GetComponentInChildren<Text>().text = "Submit";
                 hasEvaluated = false;
             }
-
 		} 
 		else 
 		{
-			
+            Debug.Log("calculated end score: " + totalScore / tries + " total raw: " + totalScore + " tries: " + tries);
 			gameflow.AnsweredGraphCorrectly ();
 		}
 

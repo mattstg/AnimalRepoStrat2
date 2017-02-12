@@ -12,8 +12,10 @@ public class BowerGF : GameFlow {
 	public InputManager im;
     public GameObject bowerBirdsParent;
 
+    float scoreFor100 = 20;
+
 	public override void StartFlow()
-	{
+	{        
 		stage = -1;
 		nextStep = true;
 	}
@@ -135,6 +137,10 @@ public class BowerGF : GameFlow {
         textPanel.gameObject.SetActive(true);
         textPanel.SetText(t0);
         textPanel.StartWriting();
+        float scorePerc = Mathf.Min(1, score / scoreFor100);
+        ProgressTracker.Instance.SetRoundScore(scorePerc, 2);
+        ProgressTracker.Instance.SubmitProgress(4);
+
     }
 
 	public override void TutorialClosed()

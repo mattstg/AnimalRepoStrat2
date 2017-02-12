@@ -18,12 +18,15 @@ public class FishGF : GameFlow {
     public GameObject miniMap;
 	public GameObject salmonManager;
 
+    float timeScore100 = 150;
+
 	public override void StartFlow()
 	{
 		maxRoundTime = 210;
 		stage = -1;
 		nextStep = true;
-		if (nextStep)
+        roundTimeToGetFullScore = 150;
+        if (nextStep)
 			playerFish.gameObject.SetActive (false);
 	}
 
@@ -76,7 +79,10 @@ public class FishGF : GameFlow {
 		textPanel.gameObject.SetActive (true);
 		textPanel.SetText (t0);
 		textPanel.StartWriting ();
-	}
+        float scorePerc = GetTimedRoundScore();
+        ProgressTracker.Instance.SetRoundScore(scorePerc, 1);
+        ProgressTracker.Instance.SubmitProgress(2);
+    }
 
 	private void IntroText()
 	{

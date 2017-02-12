@@ -13,6 +13,8 @@ public class FrogGF : GameFlow {
     bool secondCinematicStarted = false;
     int matureDescendants = 0;
 
+    int frogsForMaxScore = 90;
+
 	public override void StartFlow()
 	{
 		nextSceneName = "FishScene";
@@ -97,6 +99,9 @@ public class FrogGF : GameFlow {
         textPanel.SetText(t0);// + t1 + t2 + t3 + t4);
         textPanel.StartWriting();
 		scoreText.gameObject.SetActive (false);
+        float scorePerc = Mathf.Min(matureDescendants / frogsForMaxScore, 1);
+        ProgressTracker.Instance.SetRoundScore(scorePerc, 0);
+        ProgressTracker.Instance.SubmitProgress(0);        
     }
 
     private void PostGameQuestions()

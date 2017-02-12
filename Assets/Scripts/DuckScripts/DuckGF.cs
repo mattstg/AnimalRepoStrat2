@@ -13,6 +13,7 @@ public class DuckGF : GameFlow {
 
     public override void StartFlow()
 	{
+        roundTimeToGetFullScore = 90;
 		stage = -1;
 		nextStep = true;
 	}
@@ -60,6 +61,11 @@ public class DuckGF : GameFlow {
         roundTimerActive = false;
         nextStep = true;
         im.enabled = false;
+        int ducklingsLeft = ducklingParent.transform.childCount;
+        float timeScore = GetTimedRoundScore();
+        float scorePerc = ducklingsLeft * timeScore;
+        ProgressTracker.Instance.SetRoundScore(scorePerc, 3);
+        ProgressTracker.Instance.SubmitProgress(6);
     }
 
 	private void IntroText()

@@ -19,6 +19,7 @@ public class GameFlow : MonoBehaviour {
 	public bool trackScoreAsTime = false;
 	protected bool roundTimerActive = false;
 	protected float roundTime = 0;
+    protected float roundTimeToGetFullScore = 0;
 
 	public float maxRoundTime = 180;
 
@@ -42,6 +43,11 @@ public class GameFlow : MonoBehaviour {
 		scoreText.SetScore (newScore);
 		_score = newScore;
 	}
+
+    protected float GetTimedRoundScore()
+    {
+        return 1 - ((roundTime - roundTimeToGetFullScore) / (maxRoundTime - roundTimeToGetFullScore));
+    }
 
 	public virtual void AnsweredGraphCorrectly()
 	{

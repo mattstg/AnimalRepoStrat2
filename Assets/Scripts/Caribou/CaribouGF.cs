@@ -10,11 +10,17 @@ public class CaribouGF : GameFlow {
 	public InputManager im;
     public GameObject tutorialImage;
 
-	public override void StartFlow()
+    public Transform playerTransform;
+    public List<Transform> allParentTransforms; //bull, wolves, reindeers calves, leaders
+
+    public override void StartFlow()
 	{
 		stage = -1;
-		nextStep = false;
-	}
+		nextStep = true;
+        playerTransform.gameObject.SetActive(false);
+        foreach (Transform t in allParentTransforms)
+            t.gameObject.SetActive(false);
+    }
 
 	public override void Update()
 	{
@@ -111,15 +117,18 @@ public class CaribouGF : GameFlow {
 	{
 		im.gameObject.SetActive (true);
 		roundTimerActive = true;
-	}
+        playerTransform.gameObject.SetActive(true);
+        foreach(Transform t in allParentTransforms)
+            t.gameObject.SetActive(true);
+    }
 
 	public void GameFinished(BowerBird winner, float score)
 	{
 		nextStep = true;
 	}
 
-	public void TutorialFinished()
-	{
+    public override void TutorialClosed()
+    {
         tutorialImage.SetActive (false);
 		nextStep = true;
 	}

@@ -706,7 +706,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 95950431}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b46cc72a6c0cb9340a507b9925050614, type: 3}
   m_Name: 
@@ -722,6 +722,13 @@ MonoBehaviour:
   maxRoundTime: 180
   im: {fileID: 1533461204}
   tutorialImage: {fileID: 1202683638}
+  playerTransform: {fileID: 435775776}
+  allParentTransforms:
+  - {fileID: 1747590022}
+  - {fileID: 899331458}
+  - {fileID: 1290488494}
+  - {fileID: 406137861}
+  - {fileID: 372145278}
 --- !u!4 &95950433
 Transform:
   m_ObjectHideFlags: 0
@@ -7934,6 +7941,7 @@ MonoBehaviour:
   useLimits: 1
   limitBottomLeft: {x: -98, y: 2}
   limitTopRight: {x: 98, y: 1490}
+  viewportMargin: 0.5
 --- !u!1 &955527190
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LoLSDK;
 
 public class ProgressTracker {
 
 	private static ProgressTracker instance;
-
-
 
 	public static ProgressTracker Instance
 	{
@@ -22,6 +21,8 @@ public class ProgressTracker {
 
 	float[] roundScores = new float[5];
 	float[] roundMult = new float[5];
+    float maxScorePerRound = 100;
+
 
 	private ProgressTracker()
 	{
@@ -42,13 +43,13 @@ public class ProgressTracker {
 		roundMult [round] = score;
 	}
 
-	public float SubmitProgress()
+	public void SubmitProgress(int progressNumber)
 	{
 		float totalScore = 0;
 		for (int i = 0; i < 5; i++) 
 		{
-			totalScore += roundScores [i] *	roundMult [i];
+			totalScore += roundScores [i] * (1 + roundMult [i]) * maxScorePerRound;
 		}
-		return totalScore;
-	}
+        LOLSDK.Instance.SubmitProgress((int)totalScore, progressNumber, 10);// SCORE, CURRENTPROGRESS, MAXPROGRESS
+    }
 }
