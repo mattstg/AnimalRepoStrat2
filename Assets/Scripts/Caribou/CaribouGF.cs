@@ -22,8 +22,10 @@ public class CaribouGF : GameFlow {
 	{
 		stage = -1;
 		nextStep = true;
+        roundTimeToGetFullScore = 210;
         playerTransform.gameObject.SetActive(false);
         SaveCheckpoint(playerTransform.position);
+        //
         foreach (Transform t in allParentTransforms)
         {
             if(t.name == "WolfManager")
@@ -76,8 +78,17 @@ public class CaribouGF : GameFlow {
 
 	private void PostGame(){
 		roundTimerActive = false;
-		nextStep = true;
-	}
+		//nextStep = true;
+        scoreText.gameObject.SetActive(true);
+        im.enabled = false;
+        ProgressTracker.Instance.SetRoundScore(GetTimedRoundScore(), 4);
+        ProgressTracker.Instance.SubmitProgress(8);
+        string t0 = "You completed the run in " + scoreText.TimeAsTimerString(roundTime);
+        textPanel.gameObject.SetActive(true);
+        textPanel.SetText(t0);
+        textPanel.StartWriting();
+
+    }
 
 	private void IntroText()
 	{
@@ -103,7 +114,7 @@ public class CaribouGF : GameFlow {
 
 	private void PostGameQuestions()
 	{
-		im.gameObject.SetActive (false);
+		
 		//frogCinematic.StartAridCinematic ();
 		graphManager.gameObject.SetActive (true);
 		graphManager.titleText.text = "What aspects of reproductive whatever";
@@ -130,7 +141,8 @@ public class CaribouGF : GameFlow {
 
 	private void StartGame()
 	{
-		im.gameObject.SetActive (true);
+        scoreText.gameObject.SetActive(true);
+        im.gameObject.SetActive (true);
 		roundTimerActive = true;
         playerTransform.gameObject.SetActive(true);
         foreach(Transform t in allParentTransforms)

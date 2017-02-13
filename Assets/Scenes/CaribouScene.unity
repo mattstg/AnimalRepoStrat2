@@ -739,7 +739,7 @@ MonoBehaviour:
   textPanel: {fileID: 1202683640}
   scoreText: {fileID: 626417871}
   trackScoreAsTime: 1
-  maxRoundTime: 180
+  maxRoundTime: 300
   im: {fileID: 95950434}
   tutorialImage: {fileID: 1202683638}
   playerTransform: {fileID: 435775776}
@@ -3830,6 +3830,20 @@ Prefab:
     - target: {fileID: 1592958607593144, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803798090702780, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114110429546999070, guid: 7f735b4f4429ccd48bfc78e25885e8f9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 95950432}
+    - target: {fileID: 114110429546999070, guid: 7f735b4f4429ccd48bfc78e25885e8f9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForceNextStep
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
