@@ -6,6 +6,7 @@ public class PlayerDuck : MonoBehaviour {
 
     public GameObject QuackCircle;
     public Transform foxParent;
+    public AbilityBar abilityBar;
     public float speed = 5f;
     //Vector3 TargetPosition;
     public float quackRadius = 12f;
@@ -15,8 +16,6 @@ public class PlayerDuck : MonoBehaviour {
     Vector3 targetPos = new Vector3();
     AudioSource source;
     AudioClip quack;
-
-
 
 
     public void MousePressed(Vector3 loc)
@@ -97,5 +96,7 @@ public class PlayerDuck : MonoBehaviour {
         {
             quackCoolDown = 0f;
         }
+
+        abilityBar.SetFillAmount(quackCoolDown / maxQuackCooldown);
     }
 }

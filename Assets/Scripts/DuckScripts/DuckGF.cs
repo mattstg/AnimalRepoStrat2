@@ -57,6 +57,7 @@ public class DuckGF : GameFlow {
 
     private void PostGame()
     {
+        playerDuck.GetComponent<PlayerDuck>().abilityBar.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
         roundTimerActive = false;
         nextStep = true;
@@ -120,6 +121,7 @@ public class DuckGF : GameFlow {
 	private void StartGame()
 	{
         playerDuck.SetActive(true);
+        playerDuck.GetComponent<PlayerDuck>().abilityBar.gameObject.SetActive(true);
         ducklingParent.SetActive(true);
         im.enabled = true;
         scoreText.gameObject.SetActive(true);
