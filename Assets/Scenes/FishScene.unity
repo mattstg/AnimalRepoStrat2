@@ -35280,9 +35280,9 @@ MonoBehaviour:
   dampTime: 0.5
   toFollow: {fileID: 1309052321}
   offset: {x: 0, y: 0, z: 0}
-  useLimits: 0
-  limitBottomLeft: {x: 0, y: 0}
-  limitTopRight: {x: 0, y: 0}
+  useLimits: 1
+  limitBottomLeft: {x: 4.5, y: 1}
+  limitTopRight: {x: 85.3, y: 220}
   viewportMargin: 0.5
 --- !u!1001 &682862413
 Prefab:
