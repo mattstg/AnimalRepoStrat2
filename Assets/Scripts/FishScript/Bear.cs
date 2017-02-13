@@ -79,10 +79,6 @@ public class Bear : MonoBehaviour {
                     curState = BearState.Eating;
                     curTimeToAct = 0;
                 }
-                if (gameObject.name=="Bear (4)")
-                {
-                    Debug.Log(transform.eulerAngles.z);
-                }
             }
             else
             {
