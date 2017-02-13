@@ -10,10 +10,11 @@ public class SnakeManager : MonoBehaviour {
     float totalPoints = 3;
     int snakesReturned = 1;
     List<Snake> activeSnakes = new List<Snake>();
-
+    Transform player;
 
     public void Start()
     {
+        
         SetupGame();
     }
 
@@ -28,6 +29,8 @@ public class SnakeManager : MonoBehaviour {
         averageFoodPoints = 0;
         totalPoints = 3;
         snakesReturned = 1;
+        player = GameObject.FindObjectOfType<FrogGF>().playerFrog.transform;
+        Debug.Log("player: " + player);
     }
 
     private void CreateSnake()
@@ -82,28 +85,43 @@ public class SnakeManager : MonoBehaviour {
 
     private void SetupSnake(Snake snake, cardinalDir headingDir)
     {
+        bool playerTargeted = Random.Range(0,1f) > .8f;
+        if (!player)
+            playerTargeted = false;
         Vector2 spawnBoundry = new Vector2(6.2f, 4.8f);
         float snakeLength = 2;
         switch (headingDir)
         {
             case cardinalDir.North:
                 snake.snakeMoveDir = new Vector2(0, 1);
-                snake.transform.position = new Vector2(Random.Range(-spawnBoundry.x, spawnBoundry.x), -spawnBoundry.y - snakeLength);
+                if(!playerTargeted)
+                    snake.transform.position = new Vector2(Random.Range(-spawnBoundry.x, spawnBoundry.x), -spawnBoundry.y - snakeLength);
+                else
+                    snake.transform.position = new Vector2(player.position.x, -spawnBoundry.y - snakeLength);
                 snake.transform.eulerAngles = new Vector3(0, 0, 180);
                 break;
             case cardinalDir.East:
                 snake.snakeMoveDir = new Vector2(1, 0);
-                snake.transform.position = new Vector2(-spawnBoundry.x - snakeLength, Random.Range(-spawnBoundry.y, spawnBoundry.y));
+                if(!playerTargeted)
+                    snake.transform.position = new Vector2(-spawnBoundry.x - snakeLength, Random.Range(-spawnBoundry.y, spawnBoundry.y));
+                else
+                    snake.transform.position = new Vector2(-spawnBoundry.x - snakeLength, player.position.y);
                 snake.transform.eulerAngles = new Vector3(0, 0, 90);
                 break;
             case cardinalDir.South:
                 snake.snakeMoveDir = new Vector2(0, -1);
-                snake.transform.position = new Vector2(Random.Range(-spawnBoundry.x, spawnBoundry.x), spawnBoundry.y + snakeLength);
+                if (!playerTargeted)
+                    snake.transform.position = new Vector2(Random.Range(-spawnBoundry.x, spawnBoundry.x), spawnBoundry.y + snakeLength);
+                else
+                    snake.transform.position = new Vector2(player.position.x, spawnBoundry.y + snakeLength);
                 snake.transform.eulerAngles = new Vector3(0, 0, 0);
                 break;
             case cardinalDir.West:
                 snake.snakeMoveDir = new Vector2(-1, 0);
-                snake.transform.position = new Vector2(spawnBoundry.x + snakeLength, Random.Range(-spawnBoundry.y, spawnBoundry.y));
+                if(!playerTargeted)
+                    snake.transform.position = new Vector2(spawnBoundry.x + snakeLength, Random.Range(-spawnBoundry.y, spawnBoundry.y));
+                else
+                    snake.transform.position = new Vector2(spawnBoundry.x + snakeLength, player.position.y);
                 snake.transform.eulerAngles = new Vector3(0, 0, 270);
                 break;
             default:
