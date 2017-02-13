@@ -32,8 +32,6 @@ public class PlayerCaribou : MonoBehaviour {
             source.Play();
             snortCoolDown = maxSnortCooldown;
         }
-        else
-            Debug.Log("Snort is on cool-down!");
     }
 
     // Use this for initialization

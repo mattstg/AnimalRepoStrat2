@@ -113,10 +113,23 @@ public class FlockingAI : MonoBehaviour
         if (!isFish) {
 			GameObject.FindObjectOfType<CalfManager> ().calfTransforms.Remove (this.transform);
 			GameObject.FindObjectOfType<Corpsemanager> ().Corpses.Add (this.gameObject);
-			gameObject.AddComponent<DecayCounter> ();
+            if (name != "PlayerCalf")
+                gameObject.AddComponent<DecayCounter>();
+            else
+                gameObject.AddComponent<PlayerCalfDie>();
+
 		}
+    }
 
-
+    public void Undies() //when respawn calf
+    {
+        isCorpse = false;
+        if (!rigidbody)
+            rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody.bodyType = RigidbodyType2D.Dynamic;
+        GameObject.FindObjectOfType<FlockManager>().flock.Add(this.gameObject);
+        GameObject.FindObjectOfType<CalfManager>().calfTransforms.Add(this.transform);
+        GameObject.FindObjectOfType<Corpsemanager>().Corpses.Remove(this.gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D coli)
