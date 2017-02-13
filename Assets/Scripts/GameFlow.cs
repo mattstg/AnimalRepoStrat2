@@ -89,6 +89,11 @@ public class GameFlow : MonoBehaviour {
 
 	}
 
+    public void ForceNextStep() //only to be used by button to skip game
+    {
+        nextStep = true; 
+    }
+
 	public void GoToNextScene()
 	{
 		UnityEngine.SceneManagement.SceneManager.LoadScene (nextSceneName);

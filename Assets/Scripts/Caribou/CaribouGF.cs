@@ -11,15 +11,32 @@ public class CaribouGF : GameFlow {
     public GameObject tutorialImage;
 
     public Transform playerTransform;
+    public Transform playerCalf;
     public List<Transform> allParentTransforms; //bull, wolves, reindeers calves, leaders
+
+    Dictionary<Transform, Vector2> wolfStartingPositions;
+    Dictionary<Transform, Vector2> savedPosition;
+    Vector2 lastCheckpoint;
 
     public override void StartFlow()
 	{
 		stage = -1;
 		nextStep = true;
+        roundTimeToGetFullScore = 210;
         playerTransform.gameObject.SetActive(false);
+        SaveCheckpoint(playerTransform.position);
+        //
         foreach (Transform t in allParentTransforms)
+        {
+            if(t.name == "WolfManager")
+            {
+                wolfStartingPositions = new Dictionary<Transform, Vector2>();
+                foreach (Transform wolf in t)
+                    wolfStartingPositions.Add(wolf, wolf.position);
+            }
             t.gameObject.SetActive(false);
+            
+        }
     }
 
 	public override void Update()
@@ -61,8 +78,17 @@ public class CaribouGF : GameFlow {
 
 	private void PostGame(){
 		roundTimerActive = false;
-		nextStep = true;
-	}
+		//nextStep = true;
+        scoreText.gameObject.SetActive(true);
+        im.enabled = false;
+        ProgressTracker.Instance.SetRoundScore(GetTimedRoundScore(), 4);
+        ProgressTracker.Instance.SubmitProgress(8);
+        string t0 = "You completed the run in " + scoreText.TimeAsTimerString(roundTime);
+        textPanel.gameObject.SetActive(true);
+        textPanel.SetText(t0);
+        textPanel.StartWriting();
+
+    }
 
 	private void IntroText()
 	{
@@ -88,7 +114,7 @@ public class CaribouGF : GameFlow {
 
 	private void PostGameQuestions()
 	{
-		im.gameObject.SetActive (false);
+		
 		//frogCinematic.StartAridCinematic ();
 		graphManager.gameObject.SetActive (true);
 		graphManager.titleText.text = "What aspects of reproductive whatever";
@@ -115,7 +141,8 @@ public class CaribouGF : GameFlow {
 
 	private void StartGame()
 	{
-		im.gameObject.SetActive (true);
+        scoreText.gameObject.SetActive(true);
+        im.gameObject.SetActive (true);
 		roundTimerActive = true;
         playerTransform.gameObject.SetActive(true);
         foreach(Transform t in allParentTransforms)
@@ -157,4 +184,30 @@ public class CaribouGF : GameFlow {
 		textPanel.gameObject.SetActive (false);
 		nextStep = true;
 	}
+
+    public void PlayerCalfDied()
+    {
+        LoadCheckpoint();
+    }
+
+    public void SaveCheckpoint(Vector2 checkpointPos)
+    {
+        lastCheckpoint = checkpointPos;
+        savedPosition = new Dictionary<Transform, Vector2>();
+        foreach(Transform parentTransform in allParentTransforms)
+            if(parentTransform.name != "WolfManager")
+                foreach(Transform t in parentTransform)
+                    savedPosition.Add(t, t.position);
+    }
+
+    public void LoadCheckpoint()
+    {
+        foreach (KeyValuePair<Transform, Vector2> kv in savedPosition)
+            kv.Key.position = kv.Value;
+        foreach (KeyValuePair<Transform, Vector2> kv in wolfStartingPositions)
+            kv.Key.position = kv.Value;
+        playerTransform.position = lastCheckpoint;
+        playerCalf.position = new Vector2(playerTransform.position.x, playerTransform.position.y - 8);
+        playerCalf.GetComponent<FlockingAI>().Undies();
+    }
 }
