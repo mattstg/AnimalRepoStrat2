@@ -51,7 +51,10 @@ public class Frog : MonoBehaviour {
 			EnterIdleState();
 		if (!isMale) {
 			transform.localScale = transform.localScale * 1.5f;
-			frogSpeed /= 2;
+            SpriteRenderer renderer;
+            renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+            renderer.color = new Color(.1f, .2f, .1f, 1f); 
+            frogSpeed /= 2;
 		}
         if (pioneerFrog)
             mateCooldown = 0;
