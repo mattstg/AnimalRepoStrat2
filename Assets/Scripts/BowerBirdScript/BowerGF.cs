@@ -12,7 +12,7 @@ public class BowerGF : GameFlow {
 	public InputManager im;
     public GameObject bowerBirdsParent;
 
-    float scoreFor100 = 40;
+	float scoreFor100 = 35;
 
 	public override void StartFlow()
 	{        
