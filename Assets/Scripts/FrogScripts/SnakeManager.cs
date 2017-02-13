@@ -30,7 +30,6 @@ public class SnakeManager : MonoBehaviour {
         totalPoints = 3;
         snakesReturned = 1;
         player = GameObject.FindObjectOfType<FrogGF>().playerFrog.transform;
-        Debug.Log("player: " + player);
     }
 
     private void CreateSnake()
