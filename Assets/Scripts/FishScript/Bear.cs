@@ -66,15 +66,17 @@ public class Bear : MonoBehaviour {
             {
                 transform.position = originalPos;
                 transform.eulerAngles = originalRot;
-                eatingFish.position = bearMouth.position;
-                eatingFish.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
+				if (eatingFish != null) {
+					eatingFish.position = bearMouth.position;
+					eatingFish.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
+				}
                 curState = BearState.Eating;
                 curTimeToAct = 0;
             }
             else
             {
                 MoveTowardsGoal(originalPos);
-                if (eatingFish)
+				if (eatingFish && eatingFish != null)
                 {
                     eatingFish.position = bearMouth.position;
                     eatingFish.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
