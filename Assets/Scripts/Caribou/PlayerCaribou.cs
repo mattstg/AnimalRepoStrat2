@@ -5,6 +5,7 @@ using UnityEngine; using LoLSDK;
 public class PlayerCaribou : MonoBehaviour {
 
     public GameObject PlayerCalf;
+    public AbilityBar abilityBar;
     Vector3 targetPos = new Vector3();
     public float speed = 5f;
     float snortCoolDown = 0f;
@@ -66,5 +67,7 @@ public class PlayerCaribou : MonoBehaviour {
         {
             snortCoolDown = 0f;
         }
+
+        abilityBar.SetFillAmount(snortCoolDown / maxSnortCooldown);
     }
 }

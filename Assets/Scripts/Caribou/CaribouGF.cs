@@ -77,7 +77,8 @@ public class CaribouGF : GameFlow {
 	}
 
 	private void PostGame(){
-		roundTimerActive = false;
+        playerTransform.GetComponent<PlayerCaribou>().abilityBar.gameObject.SetActive(false);
+        roundTimerActive = false;
 		//nextStep = true;
         scoreText.gameObject.SetActive(true);
         im.enabled = false;
@@ -141,6 +142,7 @@ public class CaribouGF : GameFlow {
 
 	private void StartGame()
 	{
+        playerTransform.GetComponent<PlayerCaribou>().abilityBar.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(true);
         im.gameObject.SetActive (true);
 		roundTimerActive = true;
