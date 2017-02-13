@@ -190,6 +190,7 @@ public class CaribouGF : GameFlow {
         LoadCheckpoint();
     }
 
+
     public void SaveCheckpoint(Vector2 checkpointPos)
     {
         lastCheckpoint = checkpointPos;
@@ -203,7 +204,12 @@ public class CaribouGF : GameFlow {
     public void LoadCheckpoint()
     {
         foreach (KeyValuePair<Transform, Vector2> kv in savedPosition)
+        {
+            if (!kv.Key.gameObject.activeInHierarchy)
+                kv.Key.gameObject.GetComponent<FlockingAI>().Undies();
             kv.Key.position = kv.Value;
+            kv.Key.eulerAngles = new Vector3(0,0,90);
+        }
         foreach (KeyValuePair<Transform, Vector2> kv in wolfStartingPositions)
             kv.Key.position = kv.Value;
         playerTransform.position = lastCheckpoint;

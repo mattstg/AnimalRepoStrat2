@@ -130,6 +130,7 @@ public class FlockingAI : MonoBehaviour
         GameObject.FindObjectOfType<FlockManager>().flock.Add(this.gameObject);
         GameObject.FindObjectOfType<CalfManager>().calfTransforms.Add(this.transform);
         GameObject.FindObjectOfType<Corpsemanager>().Corpses.Remove(this.gameObject);
+        gameObject.SetActive(true);
     }
 
     void OnCollisionEnter2D(Collision2D coli)

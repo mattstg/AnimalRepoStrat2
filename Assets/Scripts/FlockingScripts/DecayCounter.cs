@@ -5,9 +5,6 @@ using UnityEngine; using LoLSDK;
 public class DecayCounter : MonoBehaviour {
     public float countdown = 10f;
 	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -15,7 +12,8 @@ public class DecayCounter : MonoBehaviour {
         if(countdown <= 0)
         {
             GameObject.FindObjectOfType<Corpsemanager>().Corpses.Remove(this.gameObject);
-            Destroy(gameObject);
+            Destroy(this);
+            gameObject.SetActive(false);
         }
 	}
 }
