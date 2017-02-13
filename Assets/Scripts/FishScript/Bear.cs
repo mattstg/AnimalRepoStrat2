@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine; using LoLSDK;
 
@@ -130,7 +130,7 @@ public class Bear : MonoBehaviour {
 		if (fishInRange.Count > 0) 
 		{
             curState = BearState.Retrieving;
-			if (eatingFish != null) {
+			if (fishInRange [0] != null) {
 				eatingFish = fishInRange [0].transform;
 			}
 			if (fishInRange [0].gameObject.GetComponent<PlayerFish> ()) {
