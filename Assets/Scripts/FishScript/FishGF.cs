@@ -9,7 +9,6 @@ public class FishGF : GameFlow {
 	public GameObject _fishSpawnPointONE;
 	public GameObject _fishSpawnPointTWO;
 
-	int stage = 0;
 	public InputManager im;
 	public Vector3 lastCheckpt;
 	public bool isFirstCheckpoint = true;
@@ -19,9 +18,12 @@ public class FishGF : GameFlow {
 
     float timeScore100 = 150;
 
-	public override void StartFlow()
+	protected override void StartFlow()
 	{
-		maxRoundTime = 210;
+        introLessons = 2;
+        outroLessons = 3;
+        lessonType = LessonType.Fish;
+        maxRoundTime = 210;
 		stage = -1;
 		nextStep = true;
         roundTimeToGetFullScore = 150;
@@ -29,7 +31,7 @@ public class FishGF : GameFlow {
 			playerFish.gameObject.SetActive (false);
 	}
 
-	public override void Update()
+	/*public override void Update()
 	{
 		base.Update ();
         if (nextStep)
@@ -66,9 +68,9 @@ public class FishGF : GameFlow {
         }
        
 		
-	}
+	}*/
 
-	private void PostGame()
+	protected override void PostGame()
 	{
         ToggleMinimap(false);
         im.gameObject.SetActive(false);
@@ -83,7 +85,7 @@ public class FishGF : GameFlow {
         ProgressTracker.Instance.SubmitProgress(2);
     }
 
-	private void IntroText()
+	/*private void IntroText()
 	{
 		string t0 = "Dinosaurs \n";
 		string t1 = "Are \n";
@@ -99,13 +101,13 @@ public class FishGF : GameFlow {
 		/*string t1 = "<B>Short Generation times</B>: To take advantage of the opportunity during the lifetime of the opportunity \n";
 		string t2 = "Small Bodies: Need to grow up and mature quickly \n";
 		string t3 = "Lots of Eggs: Many other species will flock to this lush grounds during this brief window of oppotunity, plenty will be feeding \n";
-		string t4 = "No Parental Care: With lots of kids, parental care requires too much energy \n";*/
+		string t4 = "No Parental Care: With lots of kids, parental care requires too much energy \n";
 		textPanel.gameObject.SetActive (true);
 		textPanel.SetText (t0);// + t1 + t2 + t3 + t4);
 		textPanel.StartWriting ();
-	}
+	}*/
 
-	private void PostGameQuestions()
+	protected override void PostGameQuestions()
 	{
         
         scoreText.gameObject.SetActive(false);
@@ -129,12 +131,12 @@ public class FishGF : GameFlow {
 		graphManager.AddSlot (s2);
 	}
 
-	private void ShowTutorial()
+	/*private void ShowTutorial()
 	{
         tutorial.SetActive (true);
-	}
+	}*/
 
-	private void StartGame()
+	protected override void StartGame()
 	{
         ToggleMinimap(true);
         scoreText.gameObject.SetActive(true);
@@ -155,7 +157,7 @@ public class FishGF : GameFlow {
         nextStep = true;
 	}
 
-	public override void TutorialClosed()
+	/*public override void TutorialClosed()
 	{
         tutorial.SetActive (false);
 		nextStep = true;
@@ -173,7 +175,7 @@ public class FishGF : GameFlow {
 		textPanel.StartWriting ();
 	}
 
-	public override void AnsweredGraphCorrectly ()
+	/*public override void AnsweredGraphCorrectly ()
 	{
 		graphManager.gameObject.SetActive (false);
 		graphManager.ResetGraphManager ();
@@ -184,7 +186,7 @@ public class FishGF : GameFlow {
 	{
 		textPanel.gameObject.SetActive (false);
 		nextStep = true;
-	}
+	}*/
 
 	public void ReachedCheckpoint(Vector3 checkPt)
 	{

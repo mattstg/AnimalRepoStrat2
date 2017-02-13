@@ -6,7 +6,6 @@ public class BowerGF : GameFlow {
 
 	//public FrogCinematic frogCinematic;
 	//public GameObject tutorialScreen;
-	int stage = 0;
 	public PlayerBowerBird playerBB;
 	public FemaleBowerBird femaleBB;
 	public InputManager im;
@@ -14,13 +13,16 @@ public class BowerGF : GameFlow {
 
 	float scoreFor100 = 35;
 
-	public override void StartFlow()
-	{        
-		stage = -1;
+	protected override void StartFlow()
+	{
+        introLessons = 2;
+        outroLessons = 3;
+        lessonType = LessonType.Bower;
+        stage = -1;
 		nextStep = true;
 	}
 
-	public override void Update()
+	/*public override void Update()
 	{
         base.Update();
 		if (nextStep)
@@ -72,13 +74,13 @@ public class BowerGF : GameFlow {
 		/*string t1 = "<B>Short Generation times</B>: To take advantage of the opportunity during the lifetime of the opportunity \n";
 		string t2 = "Small Bodies: Need to grow up and mature quickly \n";
 		string t3 = "Lots of Eggs: Many other species will flock to this lush grounds during this brief window of oppotunity, plenty will be feeding \n";
-		string t4 = "No Parental Care: With lots of kids, parental care requires too much energy \n";*/
+		string t4 = "No Parental Care: With lots of kids, parental care requires too much energy \n";
 		textPanel.gameObject.SetActive (true);
 		textPanel.SetText (t0);// + t1 + t2 + t3 + t4);
 		textPanel.StartWriting ();
-	}
+	}*/
 
-	private void PostGameQuestions()
+	protected override void PostGameQuestions()
 	{
         //frogCinematic.StartAridCinematic ();
         graphManager.gameObject.SetActive (true);
@@ -99,13 +101,13 @@ public class BowerGF : GameFlow {
 		graphManager.AddSlot (s2);
 	}
 
-	private void ShowTutorial()
+	/*private void ShowTutorial()
 	{
         //frogCinematic.StartAridCinematic ();
         tutorial.SetActive (true);
-	}
+	}*/
 
-	private void StartGame()
+	protected override void StartGame()
 	{
         bowerBirdsParent.SetActive(true);
         scoreText.gameObject.SetActive(true);
@@ -127,7 +129,7 @@ public class BowerGF : GameFlow {
 		nextStep = true;
 	}
 
-    public void PostGame()
+    protected override void PostGame()
     {
 		roundTimerActive = false;
         scoreText.gameObject.SetActive(false);
@@ -143,7 +145,7 @@ public class BowerGF : GameFlow {
 
     }
 
-	public override void TutorialClosed()
+	/*public override void TutorialClosed()
 	{
 		tutorial.SetActive (false);
 		nextStep = true;
@@ -172,5 +174,5 @@ public class BowerGF : GameFlow {
 	{
 		textPanel.gameObject.SetActive (false);
 		nextStep = true;
-	}
+	}*/
 }

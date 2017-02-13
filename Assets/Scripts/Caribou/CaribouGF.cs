@@ -6,7 +6,6 @@ public class CaribouGF : GameFlow {
 
 	//public FrogCinematic frogCinematic;
 	//public GameObject tutorialScreen;
-	int stage = 0;
 	public InputManager im;
     public GameObject tutorialImage;
 
@@ -18,9 +17,12 @@ public class CaribouGF : GameFlow {
     Dictionary<Transform, Vector2> savedPosition;
     Vector2 lastCheckpoint;
 
-    public override void StartFlow()
+    protected override void StartFlow()
 	{
-		stage = -1;
+        introLessons = 2;
+        outroLessons = 3;
+        lessonType = LessonType.Caribou;
+        stage = -1;
 		nextStep = true;
         roundTimeToGetFullScore = 210;
         playerTransform.gameObject.SetActive(false);
@@ -39,7 +41,7 @@ public class CaribouGF : GameFlow {
         }
     }
 
-	public override void Update()
+	/*public override void Update()
 	{
         base.Update();
         if (!nextStep)
@@ -74,9 +76,9 @@ public class CaribouGF : GameFlow {
 		    	break;
 		}		
 		
-	}
+	}*/
 
-	private void PostGame(){
+	protected override void PostGame(){
         playerTransform.GetComponent<PlayerCaribou>().abilityBar.gameObject.SetActive(false);
         roundTimerActive = false;
 		//nextStep = true;
@@ -90,7 +92,7 @@ public class CaribouGF : GameFlow {
         textPanel.StartWriting();
 
     }
-
+    /*
 	private void IntroText()
 	{
 		string t0 = "Dinosaurs \n";
@@ -107,13 +109,13 @@ public class CaribouGF : GameFlow {
 		/*string t1 = "<B>Short Generation times</B>: To take advantage of the opportunity during the lifetime of the opportunity \n";
 		string t2 = "Small Bodies: Need to grow up and mature quickly \n";
 		string t3 = "Lots of Eggs: Many other species will flock to this lush grounds during this brief window of oppotunity, plenty will be feeding \n";
-		string t4 = "No Parental Care: With lots of kids, parental care requires too much energy \n";*/
+		string t4 = "No Parental Care: With lots of kids, parental care requires too much energy \n";
 		textPanel.gameObject.SetActive (true);
 		textPanel.SetText (t0);// + t1 + t2 + t3 + t4);
 		textPanel.StartWriting ();
 	}
-
-	private void PostGameQuestions()
+    */
+	protected override void PostGameQuestions()
 	{
 		
 		//frogCinematic.StartAridCinematic ();
@@ -135,12 +137,12 @@ public class CaribouGF : GameFlow {
 		graphManager.AddSlot (s2);
 	}
 
-	private void ShowTutorial()
+	/*private void ShowTutorial()
 	{
         tutorialImage.SetActive (true);
-	}
+	}*/
 
-	private void StartGame()
+	protected override void StartGame()
 	{
         playerTransform.GetComponent<PlayerCaribou>().abilityBar.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(true);
@@ -156,7 +158,7 @@ public class CaribouGF : GameFlow {
 		nextStep = true;
 	}
 
-    public override void TutorialClosed()
+    /*public override void TutorialClosed()
     {
         tutorialImage.SetActive (false);
 		nextStep = true;
@@ -185,7 +187,7 @@ public class CaribouGF : GameFlow {
 	{
 		textPanel.gameObject.SetActive (false);
 		nextStep = true;
-	}
+	}*/
 
     public void PlayerCalfDied()
     {

@@ -20,8 +20,14 @@ public class GameFlow : MonoBehaviour {
 	protected bool roundTimerActive = false;
 	protected float roundTime = 0;
     protected float roundTimeToGetFullScore = 0;
+    protected int stage = 0;
 
-	public float maxRoundTime = 180;
+    protected LessonType lessonType;
+    protected int introLessons;
+    protected int outroLessons;
+    protected int currentLesson;
+
+    public float maxRoundTime = 180;
 
 	public void Start()
 	{		
@@ -49,14 +55,33 @@ public class GameFlow : MonoBehaviour {
         return 1 - ((roundTime - roundTimeToGetFullScore) / (maxRoundTime - roundTimeToGetFullScore));
     }
 
-	public virtual void AnsweredGraphCorrectly()
-	{
-		
-	}
+    public virtual void AnsweredGraphCorrectly()
+    {
+        graphManager.gameObject.SetActive(false);
+        graphManager.ResetGraphManager();
+        nextStep = true;
+    }
 
-	public virtual void TextButtonNextPressed()
+    public virtual void TextButtonNextPressed()
 	{
-
+        if (stage != 3) //post game has a text button too
+        {
+            currentLesson++;
+            if (currentLesson == introLessons || currentLesson >= introLessons + outroLessons) //means you just reached end of intro or outro lessons
+            {
+                textPanel.gameObject.SetActive(false);
+                nextStep = true;
+            }
+            else
+            {
+                DisplayLesson();
+            }
+        }
+        else
+        {
+            textPanel.gameObject.SetActive(false);
+            nextStep = true;
+        }
 	}
 
 	public virtual void Update() //needs to be called by child
@@ -72,22 +97,79 @@ public class GameFlow : MonoBehaviour {
 			nextStep = true;
 			safeGameTime = 0;
 		}
-	}
 
-	public virtual void StartFlow()
+        if (nextStep)
+        {
+            nextStep = false;
+            stage++;
+            switch (stage)
+            {
+                case 0:
+                    DisplayLesson();
+                    break;
+                case 1:
+                    OpenTutorial(); //show tutorial
+                    break;
+                case 2:
+                    StartGame(); //start game
+                    break;
+                case 3:
+                    PostGame();
+                    break;
+                case 4:
+                    DisplayLesson();
+                    break;
+                case 5:
+                    PostGameQuestions(); //summary questions
+                    break;
+                case 6:
+                    GoToNextScene();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    }
+
+    protected virtual void StartGame()
+    {
+
+    }
+
+    protected virtual void PostGame()
+    {
+
+    }
+
+    protected virtual void DisplayLesson()
+    {
+        string lessonText = LessonRetriever.Instance.RetrieveLesson(lessonType, currentLesson);
+        textPanel.gameObject.SetActive(true);
+        textPanel.SetText(lessonText);
+        textPanel.StartWriting();
+    }
+
+    protected virtual void PostGameQuestions()
+    {
+
+    }
+
+    protected virtual void StartFlow()
 	{
 
 	}
 
 	public virtual void TutorialClosed()
 	{
+        tutorial.SetActive(false);
+        nextStep = true;
+    }
 
-	}
-
-	public virtual void OpenTutorial()
+    protected virtual void OpenTutorial()
 	{
-
-	}
+        tutorial.SetActive(true);
+    }
 
     public void ForceNextStep() //only to be used by button to skip game
     {

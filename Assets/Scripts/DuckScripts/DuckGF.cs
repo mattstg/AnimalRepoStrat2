@@ -6,19 +6,21 @@ public class DuckGF : GameFlow {
 
 	//public FrogCinematic frogCinematic;
 	//public GameObject tutorialScreen;
-	int stage = 0;
 	public InputManager im;
     public GameObject playerDuck;
     public GameObject ducklingParent;
 
-    public override void StartFlow()
+    protected override void StartFlow()
 	{
+        introLessons = 2;
+        outroLessons = 3;
+        lessonType = LessonType.Duck;
         roundTimeToGetFullScore = 90;
 		stage = -1;
 		nextStep = true;
 	}
 
-	public override void Update()
+	/*public override void Update()
 	{
         base.Update();
         if (nextStep)
@@ -53,9 +55,9 @@ public class DuckGF : GameFlow {
             }
         }
 		
-	}
+	}*/
 
-    private void PostGame()
+    protected override void PostGame()
     {
         playerDuck.GetComponent<PlayerDuck>().abilityBar.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
@@ -68,7 +70,7 @@ public class DuckGF : GameFlow {
         ProgressTracker.Instance.SetRoundScore(scorePerc, 3);
         ProgressTracker.Instance.SubmitProgress(6);
     }
-
+    /*
 	private void IntroText()
 	{
 		string t0 = "Dinosaurs \n";
@@ -85,12 +87,12 @@ public class DuckGF : GameFlow {
 		/*string t1 = "<B>Short Generation times</B>: To take advantage of the opportunity during the lifetime of the opportunity \n";
 		string t2 = "Small Bodies: Need to grow up and mature quickly \n";
 		string t3 = "Lots of Eggs: Many other species will flock to this lush grounds during this brief window of oppotunity, plenty will be feeding \n";
-		string t4 = "No Parental Care: With lots of kids, parental care requires too much energy \n";*/
+		string t4 = "No Parental Care: With lots of kids, parental care requires too much energy \n";
 		textPanel.gameObject.SetActive (true);
 		textPanel.SetText (t0);// + t1 + t2 + t3 + t4);
 		textPanel.StartWriting ();
 	}
-
+    */
 	private void PostGameQuestions()
 	{
         im.enabled = false;
@@ -112,13 +114,13 @@ public class DuckGF : GameFlow {
 		graphManager.AddSlot (s1);
 		graphManager.AddSlot (s2);
 	}
-
+    /*
 	private void ShowTutorial()
 	{
         tutorial.SetActive (true);
-	}
+	}*/
 
-	private void StartGame()
+	protected override void StartGame()
 	{
         playerDuck.SetActive(true);
         playerDuck.GetComponent<PlayerDuck>().abilityBar.gameObject.SetActive(true);
@@ -133,18 +135,18 @@ public class DuckGF : GameFlow {
 		nextStep = true;
 	}
 
-	public override void TutorialClosed()
+	/*public override void TutorialClosed()
 	{
         tutorial.SetActive (false);
 		nextStep = true;
-	}
+	}*/
 
     public void GameFinished(float babyDucksSaved)
     {
         Debug.Log("game finished: " + babyDucksSaved);
         nextStep = true;
     }
-
+    /*
 	private void StepFive()
 	{
 		string t0 = "Not  \n";
@@ -168,5 +170,5 @@ public class DuckGF : GameFlow {
 	{
 		textPanel.gameObject.SetActive (false);
 		nextStep = true;
-	}
+	}*/
 }

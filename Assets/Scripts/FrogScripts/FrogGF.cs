@@ -5,7 +5,7 @@ using UnityEngine; using LoLSDK;
 public class FrogGF : GameFlow {
 
 	public FrogCinematic frogCinematic;
-	int stage = 0;
+	//int stage = 0;
 	//bool nextStep = false;
 	public Frog playerFrog;
 	public InputManager im;
@@ -15,8 +15,11 @@ public class FrogGF : GameFlow {
 
     int frogsForMaxScore = 90;
 
-	public override void StartFlow()
+	protected override void StartFlow()
 	{
+        introLessons = 2;
+        outroLessons = 3;
+        lessonType = LessonType.Frog;
 		nextSceneName = "FishScene";
 		stage = -1;
 		nextStep = true;
@@ -36,7 +39,8 @@ public class FrogGF : GameFlow {
             }
         }
 
-
+        base.Update();
+/*
 		if (!nextStep)
 			return;
 
@@ -66,33 +70,11 @@ public class FrogGF : GameFlow {
 			break;
 		default:
 			break;
-		}
+		}*/
 		
 	}
 
-	private void IntroText()
-	{
-		string t0 = "Dinosaurs \n";
-		string t1 = "Are \n";
-		string t2 = "Aliens \n";
-		textPanel.gameObject.SetActive (true);
-		textPanel.SetText (t0 + t1 + t2);
-		textPanel.StartWriting ();
-	}
-
-	private void IntroText2()
-	{
-		string t0 = "Opportunist Speicies: ";//They thrive during opportune times. You will find high populations during certain times of the year, but not so much during others. \n";
-		/*string t1 = "<B>Short Generation times</B>: To take advantage of the opportunity during the lifetime of the opportunity \n";
-		string t2 = "Small Bodies: Need to grow up and mature quickly \n";
-		string t3 = "Lots of Eggs: Many other species will flock to this lush grounds during this brief window of oppotunity, plenty will be feeding \n";
-		string t4 = "No Parental Care: With lots of kids, parental care requires too much energy \n";*/
-		textPanel.gameObject.SetActive (true);
-		textPanel.SetText (t0);// + t1 + t2 + t3 + t4);
-		textPanel.StartWriting ();
-	}
-
-    private void GameResults()
+    protected override void PostGame()
     {
         string t0 = "Total Score: " + matureDescendants;
         textPanel.gameObject.SetActive(true);
@@ -104,7 +86,7 @@ public class FrogGF : GameFlow {
         ProgressTracker.Instance.SubmitProgress(0);        
     }
 
-    private void PostGameQuestions()
+    protected override void PostGameQuestions()
 	{
         //LOLSDK.Instance.SubmitProgress(0, 0, 10);  SCORE, CURRENTPROGRESS, MAXPROGRESS
         im.gameObject.SetActive (false);
@@ -126,13 +108,13 @@ public class FrogGF : GameFlow {
 		graphManager.AddSlot (s2);
 	}
 
-	private void ShowTutorial()
-	{
+    protected override void OpenTutorial()
+    {
 		frogCinematic.StartFirstAridCinematic ();
 		tutorial.SetActive (true);
 	}
 
-	private void StartGame()
+    protected override void StartGame()
 	{
 		scoreText.gameObject.SetActive (true);
 		playerFrog.gameObject.SetActive (true);
@@ -158,11 +140,11 @@ public class FrogGF : GameFlow {
         Camera.main.orthographicSize = 5;
     }
 
-	public override void TutorialClosed()
+	/*public override void TutorialClosed()
 	{
 		tutorial.SetActive (false);
 		nextStep = true;
-	}
+	}*/
 
 	private void StepFive()
 	{
@@ -176,16 +158,16 @@ public class FrogGF : GameFlow {
 		textPanel.StartWriting ();
 	}
 
-	public override void AnsweredGraphCorrectly ()
+	/*public override void AnsweredGraphCorrectly ()
 	{
 		graphManager.gameObject.SetActive (false);
 		graphManager.ResetGraphManager ();
 		nextStep = true;
-	}
+	}*/
 
-	public override void TextButtonNextPressed ()
+	/*public override void TextButtonNextPressed ()
 	{
 		textPanel.gameObject.SetActive (false);
 		nextStep = true;
-	}
+	}*/
 }

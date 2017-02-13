@@ -3810,7 +3810,7 @@ Prefab:
     - target: {fileID: 114982663140004108, guid: 08118f3feb273f44ebbd688fed9919c2,
         type: 2}
       propertyPath: carryingCapacity
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 212445058859267394, guid: 08118f3feb273f44ebbd688fed9919c2,
         type: 2}
@@ -10426,7 +10426,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1735209406321796, guid: 5e81ff0c761014149ac71aa5d426a76d, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212144018857352136, guid: 5e81ff0c761014149ac71aa5d426a76d,
         type: 2}
@@ -11941,7 +11941,7 @@ Prefab:
     - target: {fileID: 114982663140004108, guid: 08118f3feb273f44ebbd688fed9919c2,
         type: 2}
       propertyPath: carryingCapacity
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 212445058859267394, guid: 08118f3feb273f44ebbd688fed9919c2,
         type: 2}
@@ -14138,10 +14138,6 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1336928104}
-    - target: {fileID: 1592958607593144, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
   m_IsPrefabParent: 0
@@ -14700,7 +14696,7 @@ Prefab:
     - target: {fileID: 114982663140004108, guid: 08118f3feb273f44ebbd688fed9919c2,
         type: 2}
       propertyPath: carryingCapacity
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 212445058859267394, guid: 08118f3feb273f44ebbd688fed9919c2,
         type: 2}
@@ -15684,7 +15680,7 @@ Prefab:
     - target: {fileID: 114982663140004108, guid: 08118f3feb273f44ebbd688fed9919c2,
         type: 2}
       propertyPath: carryingCapacity
-      value: 40
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 212445058859267394, guid: 08118f3feb273f44ebbd688fed9919c2,
         type: 2}
