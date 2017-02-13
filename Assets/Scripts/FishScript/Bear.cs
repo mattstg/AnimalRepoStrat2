@@ -130,7 +130,9 @@ public class Bear : MonoBehaviour {
 		if (fishInRange.Count > 0) 
 		{
             curState = BearState.Retrieving;
-			eatingFish = fishInRange [0].transform;
+			if (eatingFish != null) {
+				eatingFish = fishInRange [0].transform;
+			}
 			if (fishInRange [0].gameObject.GetComponent<PlayerFish> ()) {
                 fishInRange[0].gameObject.GetComponent<PlayerFish>().SetPlayerEnabled(false);
                 //player dies, restart at checkpoint
