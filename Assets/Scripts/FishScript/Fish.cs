@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine; using LoLSDK;
 
 public class Fish : MonoBehaviour {
-	private float speedBoostTime = 1;
+	private float speedBoostTime = 1f;
 
 	//AI manager
 	private Vector3 vectorAI;
@@ -18,7 +18,7 @@ public class Fish : MonoBehaviour {
 
 	//FISH GV
 	private float rotateSpeed = 10; //45 degrees per Sec
-	private float speedBoost = 1f; // moveSpeed * speedBoost is max total speed during boost
+	private float speedBoost = .8f;
 	private float timeSinceLastClick = 0f;
 
 	//Move Speed and Boost Upon Move

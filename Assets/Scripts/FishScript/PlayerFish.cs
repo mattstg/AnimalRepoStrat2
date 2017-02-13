@@ -41,7 +41,7 @@ public class PlayerFish : Fish {
     {
         if(coli.gameObject.CompareTag("BoostZone"))
         {
-            moveSpeed = 2;
+            moveSpeed = 2f;
         }
         if (coli.gameObject.name == "EndZone")
         {
@@ -50,6 +50,7 @@ public class PlayerFish : Fish {
         }
         //if oosdgfa
     }
+
     public void OnTriggerExit2D(Collider2D coli)
     {
         if (coli.gameObject.CompareTag("BoostZone"))
