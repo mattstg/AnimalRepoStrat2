@@ -69,11 +69,15 @@ public class Item : MonoBehaviour {
 		
 	public bool getPickedUp(BowerBird toBeCarrier){
 		if (!isCarried) {
-			if (isIn != null && isIn.isOwnerNear()) {
-				carrier = toBeCarrier;
-				isCarried = true;
-				return true;
-				//theft has occured
+			if (isIn != null) {
+				if (!isIn.isOwnerNear ()) {
+					carrier = toBeCarrier;
+					isCarried = true;
+					return true;
+					//theft has occured
+				} else {
+					return false;
+				}
 			} else {
 				//not owned by anyone
 				carrier = toBeCarrier;

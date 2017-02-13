@@ -112,6 +112,10 @@ public class BowerBird : MonoBehaviour {
 				if (colItem.getPickedUp (this)) {
 					isHolding = true;
 					holding = colItem;
+				} else {
+					//cannot steal
+					if(canGetBored)
+						SeekRandomItem();
 				}
 			}
 		} /*else if (other.CompareTag ("BowerBird")) {
