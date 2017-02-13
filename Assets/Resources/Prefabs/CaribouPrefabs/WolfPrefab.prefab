@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4006171162728448}
   - component: {fileID: 212831668942409486}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: tailback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4568260874043190}
   - component: {fileID: 212877291714557602}
   - component: {fileID: 95712564774400870}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: tailfront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4386341511879666}
   - component: {fileID: 212401881140777688}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 114703785759266646}
   - component: {fileID: 95775695534971404}
   - component: {fileID: 114420821383688078}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: WolfPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4654850598934948}
   - component: {fileID: 212866546950929474}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,14 +115,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1653187061860732}
-  m_LocalRotation: {x: -0, y: -0, z: 0.6237215, w: 0.78164667}
-  m_LocalPosition: {x: -7.223571, y: 21.907452, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.21143296, w: 0.9773925}
+  m_LocalPosition: {x: 20.443789, y: 1200.973, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4654850598934948}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 77.177}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -24.413002}
 --- !u!4 &4386341511879666
 Transform:
   m_ObjectHideFlags: 1
