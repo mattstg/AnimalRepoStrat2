@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 47e91bca2722b5d47b78552e0c9a4761
-timeCreated: 1484352366
+timeCreated: 1486986110
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -79,12 +79,12 @@ TextureImporter:
       name: cARIBOU_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 20
-        width: 147
-        height: 415
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 22
+        y: 36
+        width: 269
+        height: 546
+      alignment: 9
+      pivot: {x: 0.5, y: 0.49084842}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -92,12 +92,12 @@ TextureImporter:
       name: cARIBOU_1
       rect:
         serializedVersion: 2
-        x: 178
-        y: 253
-        width: 79
-        height: 173
+        x: 290
+        y: 100
+        width: 200
+        height: 299
       alignment: 9
-      pivot: {x: 0.49132124, y: 0.15123294}
+      pivot: {x: 0.4913214, y: 0.30497935}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -105,12 +105,12 @@ TextureImporter:
       name: cARIBOU_2
       rect:
         serializedVersion: 2
-        x: 301
-        y: 312
-        width: 168
-        height: 123
+        x: 467
+        y: 421
+        width: 214
+        height: 161
       alignment: 9
-      pivot: {x: 0.03474154, y: 0.054052584}
+      pivot: {x: 0.12513526, y: 0.18135858}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -118,12 +118,12 @@ TextureImporter:
       name: cARIBOU_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 40
-        width: 28
-        height: 167
+        x: 512
+        y: 25
+        width: 57
+        height: 190
       alignment: 9
-      pivot: {x: 0.47551236, y: 0.8900373}
+      pivot: {x: 0.46544018, y: 0.8216605}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -131,12 +131,12 @@ TextureImporter:
       name: cARIBOU_4
       rect:
         serializedVersion: 2
-        x: 275
-        y: 144
-        width: 32
-        height: 38
+        x: 618
+        y: 147
+        width: 51
+        height: 63
       alignment: 9
-      pivot: {x: 0.5, y: 0.73456293}
+      pivot: {x: 0.5, y: 0.6235238}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -144,12 +144,12 @@ TextureImporter:
       name: cARIBOU_5
       rect:
         serializedVersion: 2
-        x: 277
-        y: 56
-        width: 29
-        height: 50
+        x: 617
+        y: 23
+        width: 55
+        height: 78
       alignment: 9
-      pivot: {x: 0.5, y: 0.8016832}
+      pivot: {x: 0.5, y: 0.6589186}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
