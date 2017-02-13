@@ -7,6 +7,8 @@ public class Item : MonoBehaviour {
 	public bool overrrideColor = true;
 	public bool overrideType = true;
 
+	public Bower isIn;
+
 	//being carried
 	public BowerBird carrier;
 	public bool isCarried;
@@ -67,9 +69,17 @@ public class Item : MonoBehaviour {
 		
 	public bool getPickedUp(BowerBird toBeCarrier){
 		if (!isCarried) {
-			carrier = toBeCarrier;
-			isCarried = true;
-			return true;
+			if (isIn != null && isIn.isOwnerNear()) {
+				carrier = toBeCarrier;
+				isCarried = true;
+				return true;
+				//theft has occured
+			} else {
+				//not owned by anyone
+				carrier = toBeCarrier;
+				isCarried = true;
+				return true;
+			}
 		} else {
 			return false;
 		}
@@ -83,5 +93,9 @@ public class Item : MonoBehaviour {
 
 	public void UpdatePos(){
 		gameObject.transform.position = carrier.holdingLoc.transform.position;
+	}
+
+	public void isOwned(Bower owner){
+		isIn = owner;
 	}
 }

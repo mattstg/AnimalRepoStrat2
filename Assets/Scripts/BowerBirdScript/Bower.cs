@@ -26,6 +26,7 @@ public class Bower : MonoBehaviour {
 			//Debug.Log ("item added");
 			Item colItem = other.GetComponent<Item>();
 			addItemToCollection (colItem);
+			colItem.isOwned (this);
 		} else if (other.CompareTag ("BowerBird")) {
 			//Debug.Log ("heh");
 			BowerBird colBird = other.GetComponent<BowerBird>();
@@ -43,6 +44,7 @@ public class Bower : MonoBehaviour {
 		if (other.CompareTag ("Item")) {
 			Item colItem = other.GetComponent<Item>();
 			removeItemFromCollection (colItem);
+			colItem.isOwned (null);
 		} else if (other.CompareTag ("BowerBird")) {
 			//BowerBird colBird = other.GetComponent<BowerBird>();
 		} else if (other.CompareTag ("Bower")) {
