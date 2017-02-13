@@ -63,21 +63,23 @@ public class AudioLooper : MonoBehaviour {
 
     private void ModVolume(int track, float newVolume)
     {
-        #if UNITY_EDITOR
+        //#if UNITY_EDITOR
             audioSources[track].volume = newVolume;
             //LOLSDK.Instance.ConfigureSound("FrogCall", tru, false);
-        #else
-            LOLSDK.Instance.PlaySound("FrogCall", tru, false);
-        #endif
+        /*#else
+            LOLSDK.Instance.PlaySound("FrogCall", true, false);
+        #endif*/
     }
 
 	private void StopAudio(int track)
 	{
-        #if UNITY_EDITOR
-                audioSources[track].Play();
+        audioSources[track].Play();
+        /*
+#if UNITY_EDITOR
+        audioSources[track].Play();
         #else
                 LOLSDK.Instance.StopSound(audioName);
-        #endif
+        #endif*/
         audioSources[track].Stop ();
 		curTime [track] = 0;
 		playingAudio [track] = false;
@@ -85,11 +87,13 @@ public class AudioLooper : MonoBehaviour {
 
 	private void PlayAudio(int track)
 	{
-        #if UNITY_EDITOR
-            audioSources[track].Play();
+        audioSources[track].Play();
+        /*
+#if UNITY_EDITOR
+        audioSources[track].Play();
         #else
             LOLSDK.Instance.PlaySound("FrogCall", true, false);
-        #endif
+        #endif */
         audioSources[track].Play();
 		playingAudio [track] = true;
 		curTime [track] = 0;
