@@ -15,7 +15,11 @@ public class PlayerFrog : Frog {
     {
         if(MainMenu.Sound_Active)
         {
+#if UNITY_EDITOR
             GetComponent<AudioSource>().Play();
+#else
+        LOLSDK.Instance.PlaySound("FrogCall", false, false);
+#endif
         }
     }
 

@@ -49,8 +49,14 @@ public class PlayerDuck : MonoBehaviour {
             }
             closest.GetComponent<Fox>().HeardAQuack();
 
-            if(MainMenu.Sound_Active)
+            if (MainMenu.Sound_Active)
+            { //WoodDuckCall
+#if UNITY_EDITOR
                 source.Play();
+#else
+        LOLSDK.Instance.PlaySound("WoodDuckCall", false, false);
+#endif
+            }
             quackCoolDown = maxQuackCooldown;
        
         }
