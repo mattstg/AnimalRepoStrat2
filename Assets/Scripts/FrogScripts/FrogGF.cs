@@ -27,7 +27,7 @@ public class FrogGF : GameFlow {
 
 	public override void Update()
 	{
-        if (stage == 3)
+        if (stage == 2)
         {
             gameTimer -= Time.deltaTime;
             if (gameTimer <= 0)
