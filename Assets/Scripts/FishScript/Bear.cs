@@ -18,7 +18,10 @@ public class Bear : MonoBehaviour {
 	public Transform bearMouth;
     public Vector2 originalPos;
     public Vector3 originalRot;
+    public float rotDampTime = 0.5f;
+    private Vector3 rotVelocity = Vector2.zero;
     float bearSpeed = 1;
+
 	// Use this for initialization
 	void Awake() {
         originalPos = transform.position;
@@ -65,13 +68,21 @@ public class Bear : MonoBehaviour {
             if (IsAtGoal(originalPos))
             {
                 transform.position = originalPos;
-                transform.eulerAngles = originalRot;
+                //transform.eulerAngles = originalRot;
+                transform.eulerAngles = Vector3.SmoothDamp(transform.eulerAngles, originalRot, ref rotVelocity, rotDampTime);
 				if (eatingFish != null) {
 					eatingFish.position = bearMouth.position;
 					eatingFish.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
 				}
-                curState = BearState.Eating;
-                curTimeToAct = 0;
+                if (transform.eulerAngles.z <= originalRot.z + 2 && transform.eulerAngles.z >= originalRot.z -2)
+                {
+                    curState = BearState.Eating;
+                    curTimeToAct = 0;
+                }
+                if (gameObject.name=="Bear (4)")
+                {
+                    Debug.Log(transform.eulerAngles.z);
+                }
             }
             else
             {
@@ -85,7 +96,7 @@ public class Bear : MonoBehaviour {
         }
         else if(curState == BearState.Eating)
         {
-            if (curTimeToAct >= maxTimeToAct)
+            if (curTimeToAct >= maxTimeToAct/4)
             {
                 if (eatingFish)
                 {
@@ -164,10 +175,11 @@ public class Bear : MonoBehaviour {
 	{
 		float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goal);
 		float distanceToGoal = Vector2.Distance (goal, transform.position);
-		transform.eulerAngles = new Vector3 (0, 0, angToGoal + 180);
-		Vector2 goalDir = goal - MathHelper.V3toV2(transform.position);
+        //transform.eulerAngles = new Vector3 (0, 0, angToGoal + 180);
+        transform.eulerAngles = Vector3.SmoothDamp(transform.eulerAngles, new Vector3(0, 0, angToGoal + 180), ref rotVelocity, rotDampTime);
+        Vector2 goalDir = goal - MathHelper.V3toV2(transform.position);
 		transform.position = Vector2.MoveTowards(transform.position, goal, bearSpeed * Time.deltaTime);
-	}
+    }
 
     private bool IsAtGoal(Vector2 goal, bool mouthAcceptable = false)
     {
