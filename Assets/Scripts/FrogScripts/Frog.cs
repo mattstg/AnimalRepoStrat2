@@ -53,7 +53,7 @@ public class Frog : MonoBehaviour {
 			transform.localScale = transform.localScale * 1.5f;
             SpriteRenderer renderer;
             renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
-            renderer.color = new Color(.97f, .345f, .207f, 1f); 
+            renderer.color = new Color(0f, .63f, 0f, 1f); 
             frogSpeed /= 2;
 		}
         if (pioneerFrog)
