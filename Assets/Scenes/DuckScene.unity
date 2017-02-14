@@ -12382,12 +12382,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385c5660d11278d4692fb1a43fc4a0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: 
+  audioName: DuckAmbient
   playOnStart: 1
   maxVolume: 0.3
   audioTotalTrackTime: 36
   loopCrossOver: 5
-  toLoop: {fileID: 8300000, guid: 3efb20c325dbe98468ea195b4103ed52, type: 3}
+  toLoop: {fileID: 8300000, guid: 8c15f8b296089be42beedb9b8641ae98, type: 3}
 --- !u!4 &1288963862
 Transform:
   m_ObjectHideFlags: 0
@@ -16852,7 +16852,7 @@ MonoBehaviour:
   graphManager: {fileID: 340199533}
   textPanel: {fileID: 340199532}
   scoreText: {fileID: 340199534}
-  musicName: 
+  musicName: DuckMusic
   music: {fileID: 1666415358}
   audioLooper: {fileID: 1288963861}
   trackScoreAsTime: 1
@@ -16882,7 +16882,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 39d89a550ffae8248b9395f8a61159b2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 00c6f0a6e695cb24992d02a0e879116a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -17634,7 +17634,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a471cff70857941469a437c461698b3e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 19cbda65383747740bf6a9e4a9d065e7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

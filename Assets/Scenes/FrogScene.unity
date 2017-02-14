@@ -11306,7 +11306,7 @@ MonoBehaviour:
   graphManager: {fileID: 445868751}
   textPanel: {fileID: 1318145790}
   scoreText: {fileID: 625164604}
-  musicName: 
+  musicName: FrogMusic
   music: {fileID: 1336928106}
   audioLooper: {fileID: 1726606010}
   trackScoreAsTime: 0
@@ -11334,7 +11334,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1774c7732c6954748921fa2e76ddf559, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 86e9eb90fe840434ab569ada2a00c8c5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -13444,7 +13444,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 62668bc517fdcbe43a979227795d84b8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 40fdfba18a67d4344bb5c7a6e3155367, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -14217,12 +14217,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385c5660d11278d4692fb1a43fc4a0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: 
+  audioName: FrogAmbient
   playOnStart: 1
   maxVolume: 0.25
   audioTotalTrackTime: 13
   loopCrossOver: 4
-  toLoop: {fileID: 8300000, guid: 590fb1cb640ad404eab83c9d8cac9daf, type: 3}
+  toLoop: {fileID: 8300000, guid: 6f8f2938626831940afd699de3ad3e93, type: 3}
 --- !u!4 &1726606011
 Transform:
   m_ObjectHideFlags: 0

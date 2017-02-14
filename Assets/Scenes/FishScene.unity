@@ -77872,7 +77872,7 @@ MonoBehaviour:
   graphManager: {fileID: 459952434}
   textPanel: {fileID: 459952433}
   scoreText: {fileID: 459952435}
-  musicName: 
+  musicName: FishMusic
   music: {fileID: 1458108777}
   audioLooper: {fileID: 1484533725}
   trackScoreAsTime: 1
@@ -77929,8 +77929,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f2db4ad30a095af44a556622666e439c, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: bc649ccc4557e9a408f8d5bc54dae820, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -79643,12 +79643,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385c5660d11278d4692fb1a43fc4a0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: 
+  audioName: FishAmbient
   playOnStart: 1
   maxVolume: 0.3
   audioTotalTrackTime: 27
   loopCrossOver: 4
-  toLoop: {fileID: 8300000, guid: 5d0fd4a85de770a4daeab58daab9ed9b, type: 3}
+  toLoop: {fileID: 8300000, guid: c4229d4814a44a0418e84c6a0470f1af, type: 3}
 --- !u!4 &1484533726
 Transform:
   m_ObjectHideFlags: 0

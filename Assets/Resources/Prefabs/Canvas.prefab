@@ -244,7 +244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1912175522186628
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +329,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 68f066a4b09dd934d9974279c2e09f61, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c40191a138a4fe1458200ed15a55bbb9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -409,7 +409,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 49a46c77fde407c45ac73507e6ba1601, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 06106bb90556dfb41a497dd5794ef77a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -489,7 +489,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 87ca7fa7a2680a24887543951892029c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 891afb23930ac3d4f988452386a8c9c9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -845,7 +845,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: GameFinished
+        m_MethodName: CheatFinishGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -880,8 +880,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasManger: {fileID: 114332441753297124}
-  rightAudio: {fileID: 0}
-  wrongAudio: {fileID: 0}
   grid: {fileID: 224643205195430468}
   gridButton: {fileID: 114296018186145170}
   titleText: {fileID: 114961573247032976}
@@ -1498,7 +1496,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 0
 --- !u!114 &114980760749614548
 MonoBehaviour:
   m_ObjectHideFlags: 1

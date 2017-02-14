@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
 
-    public static bool Sound_Active = false;
+    public static bool Sound_Active = true;
     public GameObject muteButton;
 
     void Start()
