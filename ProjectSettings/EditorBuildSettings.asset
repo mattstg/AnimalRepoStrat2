@@ -8,6 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/_Init.unity
   - enabled: 1
+    path: Assets/Scenes/IntroScene.unity
+  - enabled: 1
     path: Assets/Scenes/FrogScene.unity
   - enabled: 1
     path: Assets/Scenes/BowerScene.unity

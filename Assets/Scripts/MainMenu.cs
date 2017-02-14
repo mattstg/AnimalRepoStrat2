@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour {
 
 	public void StartPressed()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("FrogScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("IntroScene");
         LOLAudio.Instance.StopAudio("OpenningSong.mp3");
     }
 
