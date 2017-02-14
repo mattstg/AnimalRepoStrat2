@@ -353,12 +353,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385c5660d11278d4692fb1a43fc4a0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: 
+  audioName: BowerAmbient
   playOnStart: 1
   maxVolume: 0.3
   audioTotalTrackTime: 61
   loopCrossOver: 5
-  toLoop: {fileID: 8300000, guid: c3fc4ddfbf610904783587a786b1ad7e, type: 3}
+  toLoop: {fileID: 8300000, guid: b921441bbfb290046b6c6e3d40847d2e, type: 3}
 --- !u!4 &42220088
 Transform:
   m_ObjectHideFlags: 0
@@ -1443,7 +1443,7 @@ MonoBehaviour:
   graphManager: {fileID: 1032610818}
   textPanel: {fileID: 682998174}
   scoreText: {fileID: 732080461}
-  musicName: 
+  musicName: BowerMusic
   music: {fileID: 247273334}
   audioLooper: {fileID: 42220087}
   trackScoreAsTime: 0
@@ -1488,7 +1488,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 28615e87a00233d4786eabdbeec39504, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7d3c66d629dc2044baa790cfb1102755, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3161,24 +3161,6 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 247273331}
-    - target: {fileID: 114110429546999070, guid: 7f735b4f4429ccd48bfc78e25885e8f9,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CheatFinishGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 114965604596815702, guid: 7f735b4f4429ccd48bfc78e25885e8f9,
-        type: 2}
-      propertyPath: m_Text
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1803798090702780, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592958607593144, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
   m_IsPrefabParent: 0

@@ -739,7 +739,7 @@ MonoBehaviour:
   graphManager: {fileID: 1202683639}
   textPanel: {fileID: 1202683640}
   scoreText: {fileID: 626417871}
-  musicName: 
+  musicName: CaribouMusic
   music: {fileID: 95950437}
   audioLooper: {fileID: 562197630}
   trackScoreAsTime: 1
@@ -822,7 +822,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 15771abc10e61c2469e5835221066498, type: 3}
+  m_audioClip: {fileID: 8300000, guid: be03e797c9d06d64593b5cce0c8abb77, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3586,7 +3586,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9eef375ad34385e4390d3af2ce7626fc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0f7560490f624b3468edc236da0d6640, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5281,12 +5281,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385c5660d11278d4692fb1a43fc4a0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: 
+  audioName: CaribouAmbient
   playOnStart: 1
   maxVolume: 0.3
   audioTotalTrackTime: 10
   loopCrossOver: 2
-  toLoop: {fileID: 8300000, guid: 2a2e25a9ad795114ab18682cfb85f643, type: 3}
+  toLoop: {fileID: 8300000, guid: 0680d3d24c37b8f459ece0b67c4bc795, type: 3}
 --- !u!4 &562197631
 Transform:
   m_ObjectHideFlags: 0

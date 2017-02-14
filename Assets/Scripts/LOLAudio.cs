@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using LoLSDK;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+//#if UNITY_EDITOR
+//using UnityEditor;
+//#endif
 
 public class LOLAudio
 {
@@ -25,16 +25,9 @@ public class LOLAudio
     }
     #endregion
 
-    bool isEditorMode;
+    bool isEditorMode = true;
 
-    private LOLAudio()
-    {
-        #if UNITY_EDITOR
-                isEditorMode = true;
-        #else
-                isEditorMode = false;
-        #endif
-    }
+    private LOLAudio(){}
 
     public void PlayAudio(AudioSource audioSrc, string name, bool background = false, bool loop = false)
     {
