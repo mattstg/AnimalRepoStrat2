@@ -82,9 +82,11 @@ public class Bower : MonoBehaviour {
 
 	public void addItemToCollection(Item toAdd){
 		//should place an object around the bower in the bowerInflunceZone, maybe where dropped
-		collection.Add(toAdd);
-        if(isPlayerBower)
-            GameObject.FindObjectOfType<BowerGF>().ChangeScore((int)returnRating());
+		if (!collection.Contains (toAdd)) {
+			collection.Add (toAdd);
+			if (isPlayerBower)
+				GameObject.FindObjectOfType<BowerGF> ().ChangeScore ((int)returnRating ());
+		}
 	}
 
 	public Item removeItemFromCollection(Item toRemove){
