@@ -15,6 +15,6 @@ public class AbilityBar : MonoBehaviour {
 	public void SetFillAmount(float perc)
     {
         perc = Mathf.Clamp(perc, 0, 1);
-        abilityBar.fillAmount = perc;
+        abilityBar.fillAmount = 1 - perc;
     }
 }
