@@ -8,6 +8,7 @@ public class BowerGF : GameFlow {
 	//public GameObject tutorialScreen;
 	public PlayerBowerBird playerBB;
 	public FemaleBowerBird femaleBB;
+	public GameObject bowerDirection;
 	public InputManager im;
     public GameObject bowerBirdsParent;
 
@@ -115,6 +116,7 @@ public class BowerGF : GameFlow {
 		//frogCinematic.StartWetlandCinematic ();
 		roundTimerActive = true;
 		im.enabled = true;
+		bowerDirection.SetActive (true);
 		//playerFrog.CreateFrog (true,true);
 	}
 
