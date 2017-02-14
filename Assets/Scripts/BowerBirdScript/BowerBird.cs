@@ -57,19 +57,65 @@ public class BowerBird : MonoBehaviour {
 		}
 	} */
 
+	public bool isMovingWrongWay(){
+		Vector2 desiredDir = desiredPos - (Vector2)transform.position;
+		desiredDir = desiredDir.normalized;
+		Vector2 currentDir = body.velocity.normalized;
+
+		if (currentDir.x < 0 && desiredDir.x > 0)
+			return true;
+
+		if (currentDir.x > 0 && desiredDir.x < 0)
+			return true;
+
+		if (currentDir.y < 0 && desiredDir.y > 0)
+			return true;
+	
+		if (currentDir.y > 0 && desiredDir.y < 0)
+			return true;
+			
+		return false;
+	}
+
+	public Vector2 MRot(float deg, Vector2 inV){
+		float nx = inV.x * Mathf.Cos (deg * Mathf.Deg2Rad) - inV.y * Mathf.Sin (deg * Mathf.Deg2Rad);
+		float ny = inV.x * Mathf.Sin (deg * Mathf.Deg2Rad) + inV.y * Mathf.Cos (deg * Mathf.Deg2Rad);
+		return new Vector2 (nx,ny);
+	}
+
+	public float handleAngle(float input){
+		if (input > 180) {
+			return input - 360;
+		}
+		if(input < -180){
+			return input + 360;
+		}
+
+
+		return input;
+	}
+
 	public void ParentUpdate(){
 		if (body.velocity == Vector2.zero) {
 			RotateToDesPoint (lastDir);
 		} else {
 			lastDir = (Vector3)body.velocity.normalized + transform.position;
 			RotateToDesPoint (lastDir);
-
 		}
+
 		ScaleFromAltitude ();
 		if (isMoving) {
 			idleTime = 0;
 			if (Vector2.Distance (desiredPos, transform.position) > BowerGV.distanceFromDesiredPos) {
 				Vector2 moveDir = desiredPos - (Vector2)transform.position;
+				if (isMovingWrongWay()) {
+					float angle = handleAngle (Vector2.Angle (body.velocity, moveDir));
+					if(angle > 0)
+						body.velocity = MRot (120 * Time.deltaTime , body.velocity);
+					else
+						body.velocity = MRot (-120 * Time.deltaTime , body.velocity);
+					body.velocity = new Vector2 (body.velocity.x * 0.96f, body.velocity.y * 0.96f);
+				} 
 				Move (moveDir.normalized);
 			} else {
 				if (returningHome) {
