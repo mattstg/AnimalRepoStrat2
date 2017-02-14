@@ -22,7 +22,7 @@ public class PlayerFrog : Frog {
 
     protected override void PlayRibbitNoise()
     {
-        LOLAudio.Instance.PlayAudio(audioSrc, "FrogCall.wav", false, false);
+        LOLAudio.Instance.PlayAudio("FrogCall.wav", false);
     }
 
 

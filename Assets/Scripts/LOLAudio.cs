@@ -21,26 +21,52 @@ public class LOLAudio
     }
     #endregion
 
-    bool isEditorMode = true;
+    //bool isWebGlBuild = false;
 
-    private LOLAudio(){}
+    private LOLAudio()
+    {
+        if (!MainMenu.SDK_Initialized)
+        {
+            MainMenu.SDK_Initialized = true;
+            LOLSDK.Init("com.Pansimula.BidForLife");
+        }
+    }
 
-    public void PlayAudio(AudioSource audioSrc, string name, bool background = false, bool loop = false)
+    public void PlayAudio(string _name, bool loop = false)
     {
         if (!MainMenu.Sound_Active)
             return;
 
-        if (isEditorMode)
-        {
-            audioSrc.Play();
-            audioSrc.loop = loop;
-        }
-        else
-            LOLSDK.Instance.PlaySound(name, background, loop);
+        LOLSDK.Instance.PlaySound("Resources/" + _name, false, loop);
+        //if (!isWebGlBuild)
+        //    PlayLocalAudio(_name, false, loop);
+        //else
+        //    LOLSDK.Instance.PlaySound("Resources/" + _name, false, loop);
     }
 
-    public void StopAudio(string name)
+    public void StopAudio(string _name)
     {
-        LOLSDK.Instance.StopSound(name);
+        LOLSDK.Instance.StopSound("Resources/" + _name);
     }
+
+    /*private void PlayLocalAudio(string _name, bool background, bool loop)
+    {
+        _name = System.IO.Path.GetFileNameWithoutExtension(_name);
+        Debug.Log("filename: " + _name);
+
+        if(!loop)
+            AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>(_name), new Vector3());
+        else
+        {
+            GameObject go = new GameObject();
+            AudioSource audioSrc = go.AddComponent<AudioSource>();
+            audioSrc.clip = Resources.Load<AudioClip>(_name);
+            audioSrc.loop = true;
+            audioSrc.Play();
+        }
+        
+        audioSrc.Play();
+            audioSrc.loop = loop;
+            
+    }*/
 }

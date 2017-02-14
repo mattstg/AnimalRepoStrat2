@@ -14,8 +14,7 @@ public class GameFlow : MonoBehaviour {
 	public TextPanel textPanel;
 	public ScoreText scoreText;
 
-    public AudioSource music;
-    public AudioLooper audioLooper;
+    private AudioLooper audioLooper;
 
 	private int _score = 0;
 	public int score {set{ChangeScore (value); }get{return _score; }}
@@ -33,8 +32,9 @@ public class GameFlow : MonoBehaviour {
     public float maxRoundTime = 180;
 
 	public void Start()
-	{		
-		StartFlow ();
+	{
+        audioLooper = new AudioLooper();
+        StartFlow ();
 	}
 
 	public void ChangeScore(int newScore)
@@ -79,6 +79,7 @@ public class GameFlow : MonoBehaviour {
 
 	public virtual void Update() //needs to be called by child
 	{
+        audioLooper.Update();
 		if (roundTimerActive) {
 			roundTime += Time.deltaTime;
 			safeGameTime = roundTime;
@@ -129,7 +130,7 @@ public class GameFlow : MonoBehaviour {
 
     private void StartMusic()
     {
-        LOLAudio.Instance.PlayAudio(music, lessonType + "Music.mp3", false, true);
+        LOLAudio.Instance.PlayAudio(lessonType + "Music.mp3", true);
         audioLooper.StartAudioLooper(lessonType);
     }
 
