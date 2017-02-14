@@ -21,7 +21,7 @@ public class FishDestroyer : MonoBehaviour {
 
 	public void tryToDestroy(){
 		foreach (Fish t in GetComponentsInChildren<Fish>()) {
-			if(Vector3.Distance(targetTransfrom.position,t.transform.position) > disntanceToDestroy){
+			if(Vector3.Distance(targetTransfrom.position,t.transform.position) > disntanceToDestroy && !t.isBeingEaten){
 				Destroy (t.gameObject);
 			}
 		}

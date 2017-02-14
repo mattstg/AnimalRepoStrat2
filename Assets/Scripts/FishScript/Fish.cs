@@ -4,7 +4,7 @@ using UnityEngine; using LoLSDK;
 
 public class Fish : MonoBehaviour {
 	private float speedBoostTime = 1f;
-
+	public bool isBeingEaten = false;
 	//AI manager
 	private Vector3 vectorAI;
 	public bool followAi = true;
