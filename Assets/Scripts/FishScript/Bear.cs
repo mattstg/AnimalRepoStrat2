@@ -139,7 +139,7 @@ public class Bear : MonoBehaviour {
             curState = BearState.Retrieving;
 			if (fishInRange [0] != null) {
 				eatingFish = fishInRange [0].transform;
-				fishInRange [0].isBeingEaten;
+				fishInRange [0].isBeingEaten = true;
 			}
 			if (fishInRange [0].gameObject.GetComponent<PlayerFish> ()) {
                 fishInRange[0].gameObject.GetComponent<PlayerFish>().SetPlayerEnabled(false);
