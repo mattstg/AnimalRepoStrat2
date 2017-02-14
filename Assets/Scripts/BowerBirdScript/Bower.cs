@@ -60,7 +60,7 @@ public class Bower : MonoBehaviour {
 			value += (int) i.itemType + 1;
 		}
 
-		collectionRating = value + colors[0] * 2;
+		collectionRating = value + (colors[0] * 2);
 		/*
 		int totalItems = collection.Count;
 		//float bonusSetScore = 1;
