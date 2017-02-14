@@ -60,6 +60,8 @@ public class Bower : MonoBehaviour {
 			value += (int) i.itemType + 1;
 		}
 
+		collectionRating = value + colors[0] * 2;
+		/*
 		int totalItems = collection.Count;
 		//float bonusSetScore = 1;
 		if (totalItems != 0) {
@@ -68,14 +70,14 @@ public class Bower : MonoBehaviour {
 				if (c / totalItems > .51f) {
 					bonusSetScore += c / totalItems / 2;
 				}
-			} */
+			} 
 			//Debug.Log ("Base Score " + value);
 			//Debug.Log ("bonus set score = " + bonusSetScore + "%");
 			//Debug.Log ("Total score " + value * bonusSetScore);
 			collectionRating = value + colors[0] * 2;
 		} else {
 			collectionRating = 0;
-		}
+		} */
 	}
 
 	public void addItemToCollection(Item toAdd){

@@ -62,19 +62,13 @@ public class BowerBird : MonoBehaviour {
 		desiredDir = desiredDir.normalized;
 		Vector2 currentDir = body.velocity.normalized;
 
-		if (currentDir.x < 0 && desiredDir.x > 0)
-			return true;
+		float angle = handleAngle (Vector2.Angle (currentDir, desiredDir));
 
-		if (currentDir.x > 0 && desiredDir.x < 0)
-			return true;
+		if (angle < 45 && angle > -45) {
+			return false;
+		}
 
-		if (currentDir.y < 0 && desiredDir.y > 0)
-			return true;
-	
-		if (currentDir.y > 0 && desiredDir.y < 0)
-			return true;
-			
-		return false;
+		return true;
 	}
 
 	public Vector2 MRot(float deg, Vector2 inV){
@@ -87,11 +81,10 @@ public class BowerBird : MonoBehaviour {
 		if (input > 180) {
 			return input - 360;
 		}
+
 		if(input < -180){
 			return input + 360;
 		}
-
-
 		return input;
 	}
 
@@ -114,7 +107,8 @@ public class BowerBird : MonoBehaviour {
 						body.velocity = MRot (120 * Time.deltaTime , body.velocity);
 					else
 						body.velocity = MRot (-120 * Time.deltaTime , body.velocity);
-					body.velocity = new Vector2 (body.velocity.x * 0.96f, body.velocity.y * 0.96f);
+					
+					body.velocity = new Vector2 (body.velocity.x * 0.97f, body.velocity.y * 0.97f);
 				} 
 				Move (moveDir.normalized);
 			} else {
