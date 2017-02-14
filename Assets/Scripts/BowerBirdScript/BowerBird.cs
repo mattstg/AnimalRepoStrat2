@@ -210,7 +210,7 @@ public class BowerBird : MonoBehaviour {
 	public void IdleBoredom(float timeIdle){
 		if (canGetBored) {
 			if (!isHolding) {
-				if (timeIdle > 5) {
+				if (timeIdle > 12) {
 					SeekRandomItem ();
 					idleTime = 0;
 					autoPickup = true;
