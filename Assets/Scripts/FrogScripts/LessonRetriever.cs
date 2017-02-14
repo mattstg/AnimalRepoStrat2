@@ -7,7 +7,7 @@ using UnityEngine;
 /// 535 characters per lesson max
 /////////////////////////////////////////////////////
 
-public enum LessonType { Intro, Frog, Fish, Bower, Duck, Caribou, Post }
+public enum LessonType { Frog, Fish, Bower, Duck, Caribou, Post, Intro }
 public class LessonRetriever  {
 
     #region Singleton

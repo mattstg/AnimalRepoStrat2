@@ -44,4 +44,9 @@ public class IntroGF : GameFlow {
         }
     }
 
+    protected override void GoToNextScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("FrogScene");
+    }
+
 }

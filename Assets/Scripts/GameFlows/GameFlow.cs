@@ -186,6 +186,7 @@ public class GameFlow : MonoBehaviour {
 
 	protected virtual void GoToNextScene()
 	{
-		UnityEngine.SceneManagement.SceneManager.LoadScene (nextSceneName);
+        ScoreScreenManager.nextSceneName = nextSceneName;
+		UnityEngine.SceneManagement.SceneManager.LoadScene ("ScoreScreen");
 	}
 }
