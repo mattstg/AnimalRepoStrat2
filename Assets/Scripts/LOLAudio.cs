@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using LoLSDK;
 
-//#if UNITY_EDITOR
-//using UnityEditor;
-//#endif
-
 public class LOLAudio
 {
 #region Singleton

@@ -17918,6 +17918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42aa59d5972d084686979b706cf342d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBeingEaten: 0
   followAi: 1
   desiredPos: {x: 0, y: 0, z: 0}
   isMoving: 0
@@ -22937,6 +22938,11 @@ Prefab:
     - target: {fileID: 1803798090702780, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114110429546999070, guid: 7f735b4f4429ccd48bfc78e25885e8f9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForceNextStep
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
@@ -77872,7 +77878,6 @@ MonoBehaviour:
   graphManager: {fileID: 459952434}
   textPanel: {fileID: 459952433}
   scoreText: {fileID: 459952435}
-  musicName: FishMusic
   music: {fileID: 1458108777}
   audioLooper: {fileID: 1484533725}
   trackScoreAsTime: 1
@@ -79643,7 +79648,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385c5660d11278d4692fb1a43fc4a0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: FishAmbient
   playOnStart: 1
   maxVolume: 0.3
   audioTotalTrackTime: 27

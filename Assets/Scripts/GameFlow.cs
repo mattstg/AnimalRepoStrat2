@@ -14,7 +14,6 @@ public class GameFlow : MonoBehaviour {
 	public TextPanel textPanel;
 	public ScoreText scoreText;
 
-    public string musicName;
     public AudioSource music;
     public AudioLooper audioLooper;
 
@@ -130,13 +129,13 @@ public class GameFlow : MonoBehaviour {
 
     private void StartMusic()
     {
-        LOLAudio.Instance.PlayAudio(music, musicName, false, true);
-        audioLooper.StartAudioLooper();
+        LOLAudio.Instance.PlayAudio(music, lessonType + "Music.mp3", false, true);
+        audioLooper.StartAudioLooper(lessonType);
     }
 
     private void CloseMusic()
     {
-        LOLAudio.Instance.StopAudio(musicName);
+        LOLAudio.Instance.StopAudio(lessonType + "Music.mp3");
         audioLooper.CloseAudioLooper();
     }
 

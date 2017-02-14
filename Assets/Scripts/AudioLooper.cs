@@ -4,7 +4,6 @@ using UnityEngine; using LoLSDK;
 
 public class AudioLooper : MonoBehaviour {
 
-    public string audioName;
 	public bool playOnStart = false;
 	public float maxVolume;
 	public float audioTotalTrackTime;
@@ -17,9 +16,9 @@ public class AudioLooper : MonoBehaviour {
 
 //	bool playingAudio = false;
 
-    public void StartAudioLooper()
+    public void StartAudioLooper(LessonType lessonType)
     {
-
+        //audioName = lessonType + "Ambient.mp3";
     }
 
     public void CloseAudioLooper()

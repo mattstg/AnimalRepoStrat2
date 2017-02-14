@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour {
 	public void StartPressed()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("FrogScene");
+        //LOLAudio.Instance.PlayAudio(null, "correct", false, false);
     }
 
     public void MutePressed()

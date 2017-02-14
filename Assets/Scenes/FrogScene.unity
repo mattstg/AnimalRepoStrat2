@@ -1543,6 +1543,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1336928104}
+    - target: {fileID: 114110429546999070, guid: 7f735b4f4429ccd48bfc78e25885e8f9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForceNextStep
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
   m_IsPrefabParent: 0
@@ -11306,7 +11311,6 @@ MonoBehaviour:
   graphManager: {fileID: 445868751}
   textPanel: {fileID: 1318145790}
   scoreText: {fileID: 625164604}
-  musicName: FrogMusic
   music: {fileID: 1336928106}
   audioLooper: {fileID: 1726606010}
   trackScoreAsTime: 0

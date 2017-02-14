@@ -353,7 +353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385c5660d11278d4692fb1a43fc4a0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: BowerAmbient
   playOnStart: 1
   maxVolume: 0.3
   audioTotalTrackTime: 61
@@ -1443,7 +1442,6 @@ MonoBehaviour:
   graphManager: {fileID: 1032610818}
   textPanel: {fileID: 682998174}
   scoreText: {fileID: 732080461}
-  musicName: BowerMusic
   music: {fileID: 247273334}
   audioLooper: {fileID: 42220087}
   trackScoreAsTime: 0
@@ -3243,6 +3241,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 247273331}
+    - target: {fileID: 114110429546999070, guid: 7f735b4f4429ccd48bfc78e25885e8f9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForceNextStep
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f735b4f4429ccd48bfc78e25885e8f9, type: 2}
   m_IsPrefabParent: 0
