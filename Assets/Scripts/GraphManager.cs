@@ -9,8 +9,7 @@ public class GraphManager : MonoBehaviour {
 
 	string slotmbPrefab = "Prefabs/SlotMB";
 
-	public AudioSource rightAudio;
-	public AudioSource wrongAudio;
+    public CanvasManager canvasManger;
 	public Transform grid;
 	public Button gridButton;
 	public Text titleText;
@@ -59,14 +58,14 @@ public class GraphManager : MonoBehaviour {
                 }
                 if (questions == correct)
                 {
-					rightAudio.Play ();
+                    canvasManger.PlayAudio(UISoundEffect.Right);
                     allCorrect = true;
                     gridButton.GetComponentInChildren<Text>().text = "Perfect!";
                     totalScore += 1;
                 }
                 else
                 {
-					wrongAudio.Play ();
+                    canvasManger.PlayAudio(UISoundEffect.Wrong);
                     gridButton.GetComponentInChildren<Text>().text = "Try Again";
                     totalScore += (float)correct / (float)questions;
                 }

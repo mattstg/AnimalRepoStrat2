@@ -15,8 +15,18 @@ public class AudioLooper : MonoBehaviour {
 	float[] curTime = new float[2];
 	bool[] playingAudio = new bool[2];
 
-
 //	bool playingAudio = false;
+
+    public void StartAudioLooper()
+    {
+
+    }
+
+    public void CloseAudioLooper()
+    {
+
+    }
+    /*
 
 	public void Start()
 	{
@@ -59,7 +69,7 @@ public class AudioLooper : MonoBehaviour {
 					StopAudio (i);
 			}
 		}
-	}
+	}*/
 
     private void ModVolume(int track, float newVolume)
     {

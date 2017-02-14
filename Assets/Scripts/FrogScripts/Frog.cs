@@ -44,7 +44,7 @@ public class Frog : MonoBehaviour {
     public float publicGenNum;
     public bool publicIsPlayer;
 
-	public void CreateFrog(FrogInfo _frogInfo, bool pioneerFrog = false)
+	public virtual void CreateFrog(FrogInfo _frogInfo, bool pioneerFrog = false)
     {
         frogInfo = new FrogInfo(_frogInfo);
 		if(!playerCntrl)

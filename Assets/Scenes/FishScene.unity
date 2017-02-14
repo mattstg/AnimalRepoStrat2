@@ -7118,6 +7118,7 @@ MonoBehaviour:
   bearMouth: {fileID: 2110170007}
   originalPos: {x: 0, y: 0}
   originalRot: {x: 0, y: 0, z: 0}
+  rotDampTime: 0.5
 --- !u!1 &167021813
 GameObject:
   m_ObjectHideFlags: 0
@@ -19380,6 +19381,7 @@ MonoBehaviour:
   bearMouth: {fileID: 1715055100}
   originalPos: {x: 0, y: 0}
   originalRot: {x: 0, y: 0, z: 0}
+  rotDampTime: 0.5
 --- !u!4 &404146488 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4687065472179012, guid: d892c2585d516ff4b87ce059fe3768aa,
@@ -27911,7 +27913,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 483360853}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -29751,6 +29753,7 @@ MonoBehaviour:
   bearMouth: {fileID: 733148988}
   originalPos: {x: 0, y: 0}
   originalRot: {x: 0, y: 0, z: 0}
+  rotDampTime: 0.5
 --- !u!1 &580285818
 GameObject:
   m_ObjectHideFlags: 0
@@ -37539,6 +37542,7 @@ MonoBehaviour:
   bearMouth: {fileID: 480192038}
   originalPos: {x: 0, y: 0}
   originalRot: {x: 0, y: 0, z: 0}
+  rotDampTime: 0.5
 --- !u!1 &714157493
 GameObject:
   m_ObjectHideFlags: 0
@@ -45417,6 +45421,7 @@ MonoBehaviour:
   bearMouth: {fileID: 1103032577}
   originalPos: {x: 0, y: 0}
   originalRot: {x: 0, y: 0, z: 0}
+  rotDampTime: 0.5
 --- !u!1001 &874529812
 Prefab:
   m_ObjectHideFlags: 0
@@ -45554,115 +45559,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 0.141}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1 &875417676
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 875417678}
-  - component: {fileID: 875417677}
-  m_Layer: 0
-  m_Name: FishMusic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!82 &875417677
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 875417676}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!4 &875417678
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 875417676}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.517686, y: 13.14751, z: 0.453125}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &875707035
 GameObject:
   m_ObjectHideFlags: 0
@@ -58066,6 +57962,7 @@ MonoBehaviour:
   bearMouth: {fileID: 1806523005}
   originalPos: {x: 0, y: 0}
   originalRot: {x: 0, y: 0, z: 0}
+  rotDampTime: 0.5
 --- !u!4 &1092264341 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4687065472179012, guid: d892c2585d516ff4b87ce059fe3768aa,
@@ -70542,6 +70439,7 @@ MonoBehaviour:
   bearMouth: {fileID: 1052828904}
   originalPos: {x: 0, y: 0}
   originalRot: {x: 0, y: 0, z: 0}
+  rotDampTime: 0.5
 --- !u!1 &1342433583 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1015547427406850, guid: b0ea64d92163b014193dd1884c67250d,
@@ -75869,6 +75767,7 @@ MonoBehaviour:
   bearMouth: {fileID: 1534378943}
   originalPos: {x: 0, y: 0}
   originalRot: {x: 0, y: 0, z: 0}
+  rotDampTime: 0.5
 --- !u!1 &1435172211
 GameObject:
   m_ObjectHideFlags: 0
@@ -77947,6 +77846,7 @@ GameObject:
   - component: {fileID: 1458108775}
   - component: {fileID: 1458108774}
   - component: {fileID: 1458108776}
+  - component: {fileID: 1458108777}
   m_Layer: 0
   m_Name: MainScripts
   m_TagString: Untagged
@@ -77972,6 +77872,9 @@ MonoBehaviour:
   graphManager: {fileID: 459952434}
   textPanel: {fileID: 459952433}
   scoreText: {fileID: 459952435}
+  musicName: 
+  music: {fileID: 1458108777}
+  audioLooper: {fileID: 1484533725}
   trackScoreAsTime: 1
   maxRoundTime: 180
   _fishSpawnPointONE: {fileID: 2086938967}
@@ -78017,6 +77920,86 @@ MonoBehaviour:
   - {fileID: 723371245}
   rockPartialDisable: 0
   lastGrid: {x: 0, y: 0}
+--- !u!82 &1458108777
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458108773}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f2db4ad30a095af44a556622666e439c, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1459356846 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1015547427406850, guid: b0ea64d92163b014193dd1884c67250d,
@@ -79660,6 +79643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385c5660d11278d4692fb1a43fc4a0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioName: 
   playOnStart: 1
   maxVolume: 0.3
   audioTotalTrackTime: 27
@@ -79676,7 +79660,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1486334030 stripped
 Transform:
@@ -81412,6 +81396,7 @@ MonoBehaviour:
   bearMouth: {fileID: 595107071}
   originalPos: {x: 0, y: 0}
   originalRot: {x: 0, y: 0, z: 0}
+  rotDampTime: 0.5
 --- !u!1001 &1513315037
 Prefab:
   m_ObjectHideFlags: 0
@@ -95448,6 +95433,7 @@ MonoBehaviour:
   bearMouth: {fileID: 642969232}
   originalPos: {x: 0, y: 0}
   originalRot: {x: 0, y: 0, z: 0}
+  rotDampTime: 0.5
 --- !u!1 &1776694230
 GameObject:
   m_ObjectHideFlags: 0
