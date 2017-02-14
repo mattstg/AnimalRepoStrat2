@@ -17,13 +17,13 @@ public class CanvasManager : MonoBehaviour {
         switch(soundType)
         {
             case UISoundEffect.Click:
-                LOLAudio.Instance.PlayAudio("ClickNoise.wav", false, false);
+                LOLAudio.Instance.PlayAudio("ClickNoise.wav", false);
                 break;
             case UISoundEffect.Right:
-                LOLAudio.Instance.PlayAudio("correct.wav", false, false);
+                LOLAudio.Instance.PlayAudio("correct.wav", false);
                 break;
             case UISoundEffect.Wrong:
-                LOLAudio.Instance.PlayAudio("wrong.wav", false, false);
+                LOLAudio.Instance.PlayAudio("wrong.wav", false);
                 break;
         }
     }

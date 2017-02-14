@@ -34,6 +34,11 @@ public class AudioLooper {
                     {
                         PlayAudio(GOI(i));
                     }
+                    if(curTime[i] >= trackLength)
+                    {
+                        curTime[i] = 0;
+                        playingAudio[i] = false;
+                    }
                 }
             }
         }
@@ -43,13 +48,13 @@ public class AudioLooper {
     {
         curTime[i] = 0;
         playingAudio[i] = true;
-        LOLSDK.Instance.PlaySound(audioName);
+        LOLAudio.Instance.PlayAudio(audioName, false);
     }
 
     public void CloseAudioLooper()
     {
-        LOLSDK.Instance.StopSound(audioName);
-        LOLSDK.Instance.StopSound(audioName);
+        LOLAudio.Instance.StopAudio(audioName);
+        LOLAudio.Instance.StopAudio(audioName);
     }
 
 

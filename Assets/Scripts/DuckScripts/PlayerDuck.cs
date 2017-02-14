@@ -49,7 +49,7 @@ public class PlayerDuck : MonoBehaviour {
             }
             closest.GetComponent<Fox>().HeardAQuack();
 
-            LOLAudio.Instance.PlayAudio("DuckCall.wav", false, false);
+            LOLAudio.Instance.PlayAudio("DuckCall.wav", false);
             quackCoolDown = maxQuackCooldown;
         }
     }

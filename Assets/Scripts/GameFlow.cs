@@ -79,6 +79,7 @@ public class GameFlow : MonoBehaviour {
 
 	public virtual void Update() //needs to be called by child
 	{
+        audioLooper.Update();
 		if (roundTimerActive) {
 			roundTime += Time.deltaTime;
 			safeGameTime = roundTime;
@@ -129,7 +130,7 @@ public class GameFlow : MonoBehaviour {
 
     private void StartMusic()
     {
-        LOLAudio.Instance.PlayAudio(lessonType + "Music.mp3", false, true);
+        LOLAudio.Instance.PlayAudio(lessonType + "Music.mp3", true);
         audioLooper.StartAudioLooper(lessonType);
     }
 
