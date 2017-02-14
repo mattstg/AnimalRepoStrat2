@@ -61,18 +61,18 @@ public class Bower : MonoBehaviour {
 		}
 
 		int totalItems = collection.Count;
-		float bonusSetScore = 1;
+		//float bonusSetScore = 1;
 		if (totalItems != 0) {
+			/*
 			foreach (int c in colors) { //for every additional additional object of same color you get 2 points
 				if (c / totalItems > .51f) {
 					bonusSetScore += c / totalItems / 2;
 				}
-			}
+			} */
 			//Debug.Log ("Base Score " + value);
 			//Debug.Log ("bonus set score = " + bonusSetScore + "%");
 			//Debug.Log ("Total score " + value * bonusSetScore);
-			bonusSetScore = Mathf.Clamp(bonusSetScore,1,1.33f);
-			collectionRating = value * bonusSetScore;
+			collectionRating = value + colors[0] * 2;
 		} else {
 			collectionRating = 0;
 		}
