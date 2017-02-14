@@ -9,8 +9,12 @@ public class WaterStream : MonoBehaviour {
 
 	public void OnCollisionStay2D(Collision2D coli)
     {
-        if(coli.gameObject.GetComponent<Rigidbody2D>())
+        if (coli.gameObject.name == "PlayerCaribou")
+            Debug.Log("outside");
+        if (coli.gameObject.GetComponent<Rigidbody2D>())
         {
+            if (coli.gameObject.name == "PlayerCaribou")
+                Debug.Log("inside");
 			Vector2 p = coli.gameObject.transform.position;
 			coli.gameObject.transform.position = Vector2.MoveTowards (p, p + dirOfStream * forceOfStream, forceOfStream * Time.deltaTime);
         }
@@ -18,9 +22,13 @@ public class WaterStream : MonoBehaviour {
 
     public void OnTriggerStay2D(Collider2D coli)
     {
-		if(coli.gameObject.GetComponent<Rigidbody2D>())
+        if (coli.gameObject.name == "PlayerCaribou")
+            Debug.Log("outside2");
+        if (coli.gameObject.GetComponent<Rigidbody2D>())
 		{
-			Vector2 p = coli.gameObject.transform.position;
+            if (coli.gameObject.name == "PlayerCaribou")
+                Debug.Log("inside2");
+            Vector2 p = coli.gameObject.transform.position;
 			coli.gameObject.transform.position = Vector2.MoveTowards (p, p + dirOfStream * forceOfStream, forceOfStream * Time.deltaTime);
 		}
     }
