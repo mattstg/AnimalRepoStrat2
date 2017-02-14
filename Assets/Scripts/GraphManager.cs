@@ -92,10 +92,12 @@ public class GraphManager : MonoBehaviour {
 		else 
 		{
             int roundNumber = GetRoundNumber();
-            int progressNumber = roundNumber * 2 + 1;
-            ProgressTracker.Instance.SetRoundMult((float)totalScore / (float)tries, GetRoundNumber(), tries);
-            ProgressTracker.Instance.SubmitProgress(progressNumber);
-            //Debug.Log("calculated end score: " + totalScore / tries + " total raw: " + totalScore + " tries: " + tries);
+            if (roundNumber != -1)
+            {
+                int progressNumber = roundNumber * 2 + 1;
+                ProgressTracker.Instance.SetRoundMult((float)totalScore / (float)tries, GetRoundNumber(), tries);
+                ProgressTracker.Instance.SubmitProgress(progressNumber);
+            }
 			gameflow.AnsweredGraphCorrectly ();
 		}
 
@@ -116,6 +118,9 @@ public class GraphManager : MonoBehaviour {
                 return 3;
             case "CaribouScene":
                 return 4;
+            case "IntroScene":
+            case "FinalScene":
+                return -1;
             default:
                 Debug.Log("scene failure");
                 return 0;

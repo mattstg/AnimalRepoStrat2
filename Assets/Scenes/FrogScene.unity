@@ -3087,8 +3087,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1921402802}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11255,6 +11254,7 @@ GameObject:
   - component: {fileID: 1336928102}
   - component: {fileID: 1336928104}
   - component: {fileID: 1336928105}
+  - component: {fileID: 1336928106}
   m_Layer: 0
   m_Name: MainScripts
   m_TagString: Untagged
@@ -11314,7 +11314,7 @@ MonoBehaviour:
   maxRoundTime: 180
   frogCinematic: {fileID: 1336928105}
   playerFrog: {fileID: 1587365128}
-  im: {fileID: 1921402803}
+  im: {fileID: 1336928106}
 --- !u!114 &1336928105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11326,6 +11326,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcc74a13aede5744ba6a73be19f4410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1336928106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1336928101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f8135ae685d5c40aa848b834087693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickableObj: {fileID: 1587365127}
+  clickableSize: {x: 0.25, y: 0.25}
+  playerFrog: {fileID: 1587365128}
 --- !u!1 &1354161981
 GameObject:
   m_ObjectHideFlags: 0
@@ -16182,64 +16196,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1 &1921402800
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1921402802}
-  - component: {fileID: 1921402801}
-  - component: {fileID: 1921402803}
-  m_Layer: 0
-  m_Name: InputManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!61 &1921402801
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1921402800}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 50, y: 50}
---- !u!4 &1921402802
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1921402800}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 420870793}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1921402803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1921402800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89f8135ae685d5c40aa848b834087693, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickableObj: {fileID: 1587365127}
-  clickableSize: {x: 0.15, y: 0.15}
-  playerFrog: {fileID: 1587365128}
 --- !u!1 &1939352046
 GameObject:
   m_ObjectHideFlags: 0

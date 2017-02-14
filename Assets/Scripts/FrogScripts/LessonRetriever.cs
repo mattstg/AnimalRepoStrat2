@@ -4,6 +4,7 @@ using UnityEngine;
 
 /////////////////////////////////////////////////////
 /// If altering the number of lessons, you must go into the respective Gameflow class (ex FrogGF) and chance the value  introLessons/outroLessons in StartFlow()
+/// 535 characters per lesson max
 /////////////////////////////////////////////////////
 
 public enum LessonType { Intro, Frog, Fish, Bower, Duck, Caribou, Post }
@@ -54,13 +55,15 @@ public class LessonRetriever  {
         switch(lessonNumber)
         {
             case 0:
-                return "";
+                return "this is the pre game";
             case 1:
-                return "";
+                return "This is the pre game 2";
             case 2:
-                return "";
+                return "this is the post game";
             case 3:
-                return "";
+                return "this is the post game2";
+            case 4:
+                return "this is the post game3";
             default:
                 Debug.Log("Lesson out of bounds " + lessonNumber);
                 return "";
@@ -172,13 +175,15 @@ public class LessonRetriever  {
         switch (lessonNumber)
         {
             case 0:
-                return "";
+                return "this is the pre game";
             case 1:
-                return "";
+                return "This is the pre game 2";
             case 2:
-                return "";
+                return "this is the post game";
             case 3:
-                return "";
+                return "this is the post game2";
+            case 4:
+                return "this is the post game3";
             default:
                 Debug.Log("Lesson out of bounds " + lessonNumber);
                 return "";

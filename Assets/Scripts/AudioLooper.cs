@@ -13,12 +13,15 @@ public class AudioLooper {
 
     public void StartAudioLooper(LessonType lessonType)
     {
-        curTime[0] = curTime[1] = 0;
-        playingAudio[0] = playingAudio[1] = false;
-        trackLength = GetLengthOfAmbient(lessonType);
-        audioName = lessonType + "Ambient.mp3";
-        isPlaying = true;
-        PlayAudio(0);
+        if (lessonType != LessonType.Intro && lessonType != LessonType.Post) //they have music, not ambience
+        {
+            curTime[0] = curTime[1] = 0;
+            playingAudio[0] = playingAudio[1] = false;
+            trackLength = GetLengthOfAmbient(lessonType);
+            audioName = lessonType + "Ambient.mp3";
+            isPlaying = true;
+            PlayAudio(0);
+        }
     }
 
     public void Update()
