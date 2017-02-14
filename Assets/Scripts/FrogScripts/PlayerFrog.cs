@@ -1,10 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine; using LoLSDK;
+using UnityEngine;
+using LoLSDK;
 
 public class PlayerFrog : Frog {
 
-	public void MousePressed(Vector3 loc)
+    private AudioSource audioSrc;
+
+    public override void CreateFrog(FrogInfo _frogInfo, bool pioneerFrog = false)
+    {
+        audioSrc = GetComponent<AudioSource>();
+        base.CreateFrog(_frogInfo, pioneerFrog);
+    }
+
+    public void MousePressed(Vector3 loc)
 	{
 		if (!outtaBounds && ( currentFrogState == FrogState.idle || currentFrogState == FrogState.calling)) {
 			JumpTowardsGoal (loc);
@@ -13,14 +22,7 @@ public class PlayerFrog : Frog {
 
     protected override void PlayRibbitNoise()
     {
-        if(MainMenu.Sound_Active)
-        {
-#if UNITY_EDITOR
-            GetComponent<AudioSource>().Play();
-#else
-        LOLSDK.Instance.PlaySound("FrogCall", false, false);
-#endif
-        }
+        LOLAudio.Instance.PlayAudio(audioSrc, "FrogCall.wav", false, false);
     }
 
 

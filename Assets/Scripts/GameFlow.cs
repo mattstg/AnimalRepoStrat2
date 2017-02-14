@@ -14,6 +14,10 @@ public class GameFlow : MonoBehaviour {
 	public TextPanel textPanel;
 	public ScoreText scoreText;
 
+    public string musicName;
+    public AudioSource music;
+    public AudioLooper audioLooper;
+
 	private int _score = 0;
 	public int score {set{ChangeScore (value); }get{return _score; }}
 	public bool trackScoreAsTime = false;
@@ -31,16 +35,6 @@ public class GameFlow : MonoBehaviour {
 
 	public void Start()
 	{		
-        if(!MainMenu.Sound_Active)
-        {
-            AudioSource[] adsrc = GameObject.FindObjectsOfType<AudioSource>();
-            foreach (AudioSource a in adsrc)
-                a.gameObject.SetActive(false);
-            AudioLooper al = GameObject.FindObjectOfType<AudioLooper>();
-            if(al)
-                al.gameObject.SetActive(false);
-
-        }
 		StartFlow ();
 	}
 
@@ -105,6 +99,7 @@ public class GameFlow : MonoBehaviour {
             switch (stage)
             {
                 case 0:
+                    StartMusic();
                     DisplayLesson();
                     break;
                 case 1:
@@ -123,6 +118,7 @@ public class GameFlow : MonoBehaviour {
                     PostGameQuestions(); //summary questions
                     break;
                 case 6:
+                    CloseMusic();
                     GoToNextScene();
                     break;
                 default:
@@ -130,6 +126,18 @@ public class GameFlow : MonoBehaviour {
             }
         }
 
+    }
+
+    private void StartMusic()
+    {
+        LOLAudio.Instance.PlayAudio(music, musicName, false, true);
+        audioLooper.StartAudioLooper();
+    }
+
+    private void CloseMusic()
+    {
+        LOLAudio.Instance.StopAudio(musicName);
+        audioLooper.CloseAudioLooper();
     }
 
     protected virtual void StartGame()
