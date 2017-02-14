@@ -14,7 +14,7 @@ public class GameFlow : MonoBehaviour {
 	public TextPanel textPanel;
 	public ScoreText scoreText;
 
-    private AudioLooper audioLooper;
+    protected AudioLooper audioLooper;
 
 	private int _score = 0;
 	public int score {set{ChangeScore (value); }get{return _score; }}
@@ -128,13 +128,13 @@ public class GameFlow : MonoBehaviour {
 
     }
 
-    private void StartMusic()
+    protected void StartMusic()
     {
         LOLAudio.Instance.PlayAudio(lessonType + "Music.mp3", true);
         audioLooper.StartAudioLooper(lessonType);
     }
 
-    private void CloseMusic()
+    protected void CloseMusic()
     {
         LOLAudio.Instance.StopAudio(lessonType + "Music.mp3");
         audioLooper.CloseAudioLooper();
@@ -160,7 +160,7 @@ public class GameFlow : MonoBehaviour {
 
     protected virtual void PostGameQuestions()
     {
-
+        QuestionRetriever.Instance.SetupQuestions(graphManager, lessonType);
     }
 
     protected virtual void StartFlow()
@@ -184,7 +184,7 @@ public class GameFlow : MonoBehaviour {
         nextStep = true; 
     }
 
-	public void GoToNextScene()
+	protected virtual void GoToNextScene()
 	{
 		UnityEngine.SceneManagement.SceneManager.LoadScene (nextSceneName);
 	}
