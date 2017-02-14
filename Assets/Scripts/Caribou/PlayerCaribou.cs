@@ -31,7 +31,7 @@ public class PlayerCaribou : MonoBehaviour {
                 PlayerCalf.GetComponent<Calf>().currentSpeedBoost = PlayerCalf.GetComponent<Calf>().maxSpeedBoost;
             }
             //CaribouNoise
-            LOLAudio.Instance.PlayAudio(source, "CaribouCall.wav", false, false);
+            LOLAudio.Instance.PlayAudio("CaribouCall.wav", false, false);
             snortCoolDown = maxSnortCooldown;
         }
     }

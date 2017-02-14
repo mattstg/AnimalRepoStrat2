@@ -21,26 +21,31 @@ public class LOLAudio
     }
     #endregion
 
-    bool isEditorMode = true;
+    bool isWebGlBuild = true;
 
     private LOLAudio(){}
 
-    public void PlayAudio(AudioSource audioSrc, string name, bool background = false, bool loop = false)
+    public void PlayAudio(string _name, bool background = false, bool loop = false)
     {
         if (!MainMenu.Sound_Active)
             return;
 
-        if (isEditorMode)
-        {
-            audioSrc.Play();
-            audioSrc.loop = loop;
-        }
+        if (!isWebGlBuild)
+            PlayLocalAudio(_name, background, loop);
         else
-            LOLSDK.Instance.PlaySound(name, background, loop);
+            LOLSDK.Instance.PlaySound("Resources/" + _name, background, loop);
     }
 
-    public void StopAudio(string name)
+    public void StopAudio(string _name)
     {
-        LOLSDK.Instance.StopSound(name);
+        LOLSDK.Instance.StopSound("Resources/" + _name);
+    }
+
+    private void PlayLocalAudio(string _name, bool background, bool loop)
+    {
+        /*
+        audioSrc.Play();
+            audioSrc.loop = loop;
+            */
     }
 }

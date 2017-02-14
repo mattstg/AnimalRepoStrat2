@@ -11,12 +11,13 @@ public class MainMenu : MonoBehaviour {
     void Start()
     {
         LOLSDK.Init("com.Pansimula.BidForLife");
+        LOLAudio.Instance.PlayAudio("OpenningSong.mp3", false, true);
     }
 
 	public void StartPressed()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("FrogScene");
-        //LOLAudio.Instance.PlayAudio(null, "correct", false, false);
+        LOLAudio.Instance.StopAudio("OpenningSong.mp3");
     }
 
     public void MutePressed()
