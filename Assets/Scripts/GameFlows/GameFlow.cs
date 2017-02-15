@@ -23,6 +23,7 @@ public class GameFlow : MonoBehaviour {
 	protected float roundTime = 0;
     protected float roundTimeToGetFullScore = 0;
     protected int stage = 0;
+    protected bool gameForceEnded = false;
 
     protected LessonType lessonType;
     protected int introLessons;
@@ -93,7 +94,8 @@ public class GameFlow : MonoBehaviour {
 		if (safeGameTime > maxRoundTime) {
 			nextStep = true;
 			safeGameTime = 0;
-		}
+            gameForceEnded = true;
+        }
 
         if (nextStep)
         {

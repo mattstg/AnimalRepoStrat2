@@ -37,15 +37,22 @@ public class FishGF : GameFlow {
         im.enabled = false;
         playerFish.enabled = false;
         roundTimerActive = false;
-		string t0 = "Total time: " + scoreText.TimeAsTimerString (roundTime);
+        string toOut = "";
+        if(gameForceEnded)
+        {
+            toOut = "You did not make it up the stream in time for the migration, and because your bodies mutations, will not survive back in a life at sea, your descendency ends here";
+        }
+        else
+        {
+            toOut = "You have made it to the spawning grounds! Total time: " + scoreText.TimeAsTimerString(roundTime);
+        }
 		textPanel.gameObject.SetActive (true);
-		textPanel.SetText (t0);
+		textPanel.SetText (toOut);
 		textPanel.StartWriting ();
         float scorePerc = GetTimedRoundScore();
         scoreText.gameObject.SetActive(false);
         ProgressTracker.Instance.SetRoundScore(scorePerc, 1);
         ProgressTracker.Instance.SubmitProgress(2);
-
     }
 
 
