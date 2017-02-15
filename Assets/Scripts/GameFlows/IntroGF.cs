@@ -25,7 +25,7 @@ public class IntroGF : GameFlow {
             switch (stage)
             {
                 case 0:
-                    StartMusic();
+                    //StartMusic(); already playing from main menu scene
                     DisplayLesson();
                     break;
                 case 1:
