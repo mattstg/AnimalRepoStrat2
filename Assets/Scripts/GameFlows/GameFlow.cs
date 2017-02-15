@@ -29,6 +29,8 @@ public class GameFlow : MonoBehaviour {
     protected int outroLessons;
     protected int currentLesson;
 
+    protected int currentTut = 0;
+
     public float maxRoundTime = 180;
 
 	public void Start()
@@ -76,6 +78,7 @@ public class GameFlow : MonoBehaviour {
             nextStep = true;
         }
 	}
+
 
 	public virtual void Update() //needs to be called by child
 	{
@@ -168,15 +171,23 @@ public class GameFlow : MonoBehaviour {
 
 	}
 
-	public virtual void TutorialClosed()
+	public virtual void NextTutorialButtonPressed()
 	{
-        tutorial.SetActive(false);
-        nextStep = true;
+        currentTut++;
+        if (currentTut < 3)
+            tutorial.GetComponent<UnityEngine.UI.Image>().sprite = TutorialRetriever.Instance.GetTutorialImage(lessonType, currentTut);
+        else
+        {
+            tutorial.SetActive(false);
+            nextStep = true;
+        }
     }
 
     protected virtual void OpenTutorial()
 	{
         tutorial.SetActive(true);
+        Debug.Log("called");
+        tutorial.GetComponent<UnityEngine.UI.Image>().sprite = TutorialRetriever.Instance.GetTutorialImage(lessonType, currentTut);
     }
 
     public void ForceNextStep() //only to be used by button to skip game

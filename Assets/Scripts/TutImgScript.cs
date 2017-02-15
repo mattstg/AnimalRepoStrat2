@@ -7,6 +7,6 @@ public class TutImgScript : MonoBehaviour {
 
 	public void TutFinished()
     {
-		GameObject.FindObjectOfType<GameFlow> ().TutorialClosed ();
+		GameObject.FindObjectOfType<GameFlow> ().NextTutorialButtonPressed ();
     }
 }

@@ -60,7 +60,7 @@ public class FrogGF : GameFlow {
     protected override void OpenTutorial()
     {
 		frogCinematic.StartFirstAridCinematic ();
-		tutorial.SetActive (true);
+        base.OpenTutorial();
 	}
 
     protected override void StartGame()
