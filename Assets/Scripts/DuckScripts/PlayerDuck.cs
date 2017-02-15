@@ -13,7 +13,7 @@ public class PlayerDuck : MonoBehaviour {
     float quackCoolDown = 0f;
     public int maxQuackCooldown = 10;
     public float quackCoolDownSpeed = 1f;
-    Vector3 targetPos = new Vector3();
+    public Vector3 targetPos = new Vector3();
     AudioSource source;
     AudioClip quack;
 
