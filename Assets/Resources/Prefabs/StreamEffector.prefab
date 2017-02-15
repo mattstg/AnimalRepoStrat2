@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4696652669873438}
   - component: {fileID: 61127220616571880}
-  - component: {fileID: 114291491374526158}
+  - component: {fileID: 114259917969191010}
   m_Layer: 0
   m_Name: StreamEffector
   m_TagString: Untagged
@@ -55,7 +55,7 @@ BoxCollider2D:
   m_Offset: {x: 1.8760548, y: -0.22176838}
   serializedVersion: 2
   m_Size: {x: 4.752108, y: 1.120966}
---- !u!114 &114291491374526158
+--- !u!114 &114259917969191010
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -63,8 +63,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1516161957102264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7620bd3d9d8b944fbacbb2ea32c1183, type: 3}
+  m_Script: {fileID: 11500000, guid: c3061790337d17747a465e3c81851a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceOfStream: 8
-  dirOfStream: {x: -1, y: 0}
+  forceOfStream: 3
+  dirOfStream: {x: 1, y: 0}
