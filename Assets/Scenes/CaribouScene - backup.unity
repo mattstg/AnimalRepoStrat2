@@ -534,6 +534,11 @@ Prefab:
       propertyPath: forceOfStream
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -606,6 +611,11 @@ Prefab:
         type: 2}
       propertyPath: forceOfStream
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -1374,6 +1384,11 @@ Prefab:
       propertyPath: forceOfStream
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -1787,6 +1802,11 @@ Prefab:
         type: 2}
       propertyPath: forceOfStream
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -2656,6 +2676,11 @@ Prefab:
         type: 2}
       propertyPath: forceOfStream
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -5847,6 +5872,11 @@ Prefab:
       propertyPath: forceOfStream
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -7152,6 +7182,11 @@ Prefab:
       propertyPath: forceOfStream
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -7646,6 +7681,11 @@ Prefab:
         type: 2}
       propertyPath: forceOfStream
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -9345,6 +9385,11 @@ Prefab:
       propertyPath: forceOfStream
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -10719,6 +10764,11 @@ Prefab:
         type: 2}
       propertyPath: forceOfStream
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -12210,6 +12260,11 @@ Prefab:
       propertyPath: forceOfStream
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -12474,6 +12529,11 @@ Prefab:
         type: 2}
       propertyPath: forceOfStream
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -13030,6 +13090,11 @@ Prefab:
         type: 2}
       propertyPath: forceOfStream
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -15210,6 +15275,11 @@ Prefab:
       propertyPath: forceOfStream
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -15774,6 +15844,11 @@ Prefab:
       propertyPath: forceOfStream
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -15836,6 +15911,11 @@ Prefab:
         type: 2}
       propertyPath: forceOfStream
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -16772,6 +16852,11 @@ Prefab:
         type: 2}
       propertyPath: forceOfStream
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -18348,6 +18433,11 @@ Prefab:
       propertyPath: forceOfStream
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -18579,6 +18669,11 @@ Prefab:
         type: 2}
       propertyPath: forceOfStream
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -20545,6 +20640,11 @@ Prefab:
       propertyPath: forceOfStream
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -20818,6 +20918,11 @@ Prefab:
         type: 2}
       propertyPath: forceOfStream
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: isFlippedAroundYAxis
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
