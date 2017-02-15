@@ -9,8 +9,10 @@ public class BowerGF : GameFlow {
 	public GameObject bowerDirection;
 	public InputManager im;
     public GameObject bowerBirdsParent;
+	public string winningText = "";
 
 	float scoreFor100 = 35;
+
 
 	protected override void StartFlow()
 	{
@@ -36,14 +38,15 @@ public class BowerGF : GameFlow {
 		nextStep = true;
 	}
 
-	public void GameFinished(BowerBird winner, float score)
+	public void GameFinished(BowerBird winner, float _score)
 	{
+		score = _score;
 		if (winner.isPlayer) {
 			//player winner
-
+			winningText = "You have attracted the attention of the female! You win with a Bower score of ";
 		} else {
 			//enemy bower wins
-
+			winningText = "One of your rivals has attracted the attention of the female with a Bower score of ";
 		}
 		nextStep = true;
 	}
@@ -53,7 +56,7 @@ public class BowerGF : GameFlow {
 		roundTimerActive = false;
         scoreText.gameObject.SetActive(false);
         im.enabled = false;
-        string t0 = "Score: " + score;
+		string t0 = winningText + score + "!";
         textPanel.gameObject.SetActive(true);
         textPanel.SetText(t0);
         textPanel.StartWriting();
