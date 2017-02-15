@@ -22,7 +22,7 @@ public class PlayerFrog : Frog {
 
     protected override void PlayRibbitNoise()
     {
-        LOLAudio.Instance.PlayAudio(audioSrc, "FrogCall.wav", false, false);
+        LOLAudio.Instance.PlayAudio("FrogCall.wav", false);
     }
 
 
@@ -53,17 +53,25 @@ public class PlayerFrog : Frog {
         }
         else
         {
+            bool safetyCatch = true;
 			foreach(Transform t in GameObject.FindObjectOfType<FrogWS>().frogParent)
 			{
 				Frog f = t.GetComponent<Frog>();
-				if(f.isMale)
+				if(f.isMale && !f.outtaBounds)
 				{
 					EnterIdleState();
 					transform.position = f.transform.position;
-					//Destroy(frogFound.gameObject);  
+                    //Destroy(frogFound.gameObject);  
+                    safetyCatch = false;
 					break;
 				}
 			}
+            if(safetyCatch)
+            {
+                EnterIdleState();
+                transform.position = new Vector2(0, 0);
+            }
+
         }
     }
 }

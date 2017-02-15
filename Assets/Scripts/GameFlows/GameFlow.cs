@@ -14,9 +14,7 @@ public class GameFlow : MonoBehaviour {
 	public TextPanel textPanel;
 	public ScoreText scoreText;
 
-    public string musicName;
-    public AudioSource music;
-    public AudioLooper audioLooper;
+    protected AudioLooper audioLooper;
 
 	private int _score = 0;
 	public int score {set{ChangeScore (value); }get{return _score; }}
@@ -34,8 +32,9 @@ public class GameFlow : MonoBehaviour {
     public float maxRoundTime = 180;
 
 	public void Start()
-	{		
-		StartFlow ();
+	{
+        audioLooper = new AudioLooper();
+        StartFlow ();
 	}
 
 	public void ChangeScore(int newScore)
@@ -80,6 +79,7 @@ public class GameFlow : MonoBehaviour {
 
 	public virtual void Update() //needs to be called by child
 	{
+        audioLooper.Update();
 		if (roundTimerActive) {
 			roundTime += Time.deltaTime;
 			safeGameTime = roundTime;
@@ -128,15 +128,15 @@ public class GameFlow : MonoBehaviour {
 
     }
 
-    private void StartMusic()
+    protected void StartMusic()
     {
-        LOLAudio.Instance.PlayAudio(music, musicName, false, true);
-        audioLooper.StartAudioLooper();
+        LOLAudio.Instance.PlayAudio(lessonType + "Music.mp3", true);
+        audioLooper.StartAudioLooper(lessonType);
     }
 
-    private void CloseMusic()
+    protected void CloseMusic()
     {
-        LOLAudio.Instance.StopAudio(musicName);
+        LOLAudio.Instance.StopAudio(lessonType + "Music.mp3");
         audioLooper.CloseAudioLooper();
     }
 
@@ -160,7 +160,7 @@ public class GameFlow : MonoBehaviour {
 
     protected virtual void PostGameQuestions()
     {
-
+        QuestionRetriever.Instance.SetupQuestions(graphManager, lessonType);
     }
 
     protected virtual void StartFlow()
@@ -184,8 +184,9 @@ public class GameFlow : MonoBehaviour {
         nextStep = true; 
     }
 
-	public void GoToNextScene()
+	protected virtual void GoToNextScene()
 	{
-		UnityEngine.SceneManagement.SceneManager.LoadScene (nextSceneName);
+        ScoreScreenManager.nextSceneName = nextSceneName;
+		UnityEngine.SceneManagement.SceneManager.LoadScene ("ScoreScreen");
 	}
 }

@@ -53,7 +53,7 @@ public class Frog : MonoBehaviour {
 			transform.localScale = transform.localScale * 1.5f;
             SpriteRenderer renderer;
             renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
-            renderer.color = new Color(.1f, .2f, .1f, 1f); 
+            renderer.color = new Color(0f, .63f, 0f, 1f); 
             frogSpeed /= 2;
 		}
         if (pioneerFrog)
@@ -361,6 +361,7 @@ public class Frog : MonoBehaviour {
             tempFi.isMale = MathHelper.Fiftyfifty();
             tempFi.playerDescendant = tempFi.playerDescendant || lastTouchedFrog.frogInfo.playerDescendant;
             newFrog.GetComponent<Tadpole>().BirthTadpole(tempFi);//playerDescendant = _playerDescendant || isPlayerDescendant;
+            newFrog.GetComponent<Tadpole>().enabled = true;
         }
     }
 

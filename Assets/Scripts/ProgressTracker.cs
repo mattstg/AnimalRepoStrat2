@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using LoLSDK;
+using System.Linq;
 
 public class ProgressTracker {
 
@@ -35,27 +36,39 @@ public class ProgressTracker {
 		}
 	}
 
-	public void SetRoundScore(float score, int round)
+    public float GetRoundScore(LessonType lesson)
+    {
+        return roundScores[(int)lesson]*maxScorePerRound;
+    }
+
+    public float GetMultScore(LessonType lesson)
+    {
+        return 1 + roundScores[(int)lesson]*roundMultMax;
+    }
+
+
+    public void SetRoundScore(float score, int round)
 	{
-		roundScores [round] = score;
+		roundScores [round] = Mathf.Clamp(score,0,1);
 	}
 
 	public void SetRoundMult(float score, int round, int tries)
 	{
-        score = Mathf.Max(score - (tries * lossPerQuizAttempt), 0);
+        score = Mathf.Clamp(score - (tries * lossPerQuizAttempt), 0,1);
 		roundMult [round] = score;
 	}
 
 	public void SubmitProgress(int progressNumber)
 	{
-		float totalScore = 0;
-		for (int i = 0; i < 5; i++) 
-		{
-            totalScore += roundScores [i] * (1 + roundMult [i]* roundMultMax) * maxScorePerRound;
-            //Debug.Log(string.Format("{0} : {1}", roundScores[i], roundMult[i]));
-            //Debug.Log(string.Format("total score in {0} iteration: {1}", i, totalScore));
-        }
         if(trackProgress)
-            LOLSDK.Instance.SubmitProgress((int)totalScore, progressNumber, 10);// SCORE, CURRENTPROGRESS, MAXPROGRESS
+            LOLSDK.Instance.SubmitProgress(GetTotalScore(), progressNumber, 10);// SCORE, CURRENTPROGRESS, MAXPROGRESS
+    }
+
+    public int GetTotalScore()
+    {
+        float totalScore = 0;
+        for (int i = 0; i < 5; i++)
+            totalScore += roundScores[i] * (1 + roundMult[i] * roundMultMax) * maxScorePerRound;
+        return (int)totalScore;
     }
 }

@@ -134,13 +134,12 @@ public class Bear : MonoBehaviour {
 	{
         curTimeToAct = 0;
 		TurnOffAllTrigger ();
-		if (fishInRange.Count > 0) 
+		if (fishInRange.Count > 0 && fishInRange[0] != null) 
 		{
             curState = BearState.Retrieving;
-			if (fishInRange [0] != null) {
-				eatingFish = fishInRange [0].transform;
-				fishInRange [0].isBeingEaten = true;
-			}
+			eatingFish = fishInRange [0].transform;
+			fishInRange [0].isBeingEaten = true;
+			
 			if (fishInRange [0].gameObject.GetComponent<PlayerFish> ()) {
                 fishInRange[0].gameObject.GetComponent<PlayerFish>().SetPlayerEnabled(false);
                 //player dies, restart at checkpoint
@@ -149,14 +148,12 @@ public class Bear : MonoBehaviour {
 			{
 				fishInRange [0].Dies ();
 			}
-
-		}
+        }
         else
         {
             curState = BearState.Eating;
         }
         fishInRange.Clear();
-
     }
 
 

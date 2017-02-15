@@ -9,8 +9,9 @@ public class Tadpole : MonoBehaviour {
     Vector2 tadpoleHatchRange = new Vector2(15,30);
     Puddle puddle = null;
     bool tadpoleInitialized = false;
+    bool oneUpdateWarning = true;
 
-	// Use this for initialization
+    // Use this for initialization
     public void Start()
     {
         if (!tadpoleInitialized) //cinematic tadpoles dont get birthed
@@ -32,7 +33,10 @@ public class Tadpole : MonoBehaviour {
 	void Update () {
         timeRemainingToGrow -= Time.deltaTime;
         if (!puddle)
-            KillTadpole();
+            if (!oneUpdateWarning)
+                KillTadpole();
+            else
+                oneUpdateWarning = false;
 
         if (timeRemainingToGrow <= 0)
         {
