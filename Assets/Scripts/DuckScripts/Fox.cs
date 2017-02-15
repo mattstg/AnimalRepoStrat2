@@ -15,13 +15,16 @@ public class Fox : MonoBehaviour {
 	FoxState currentState = FoxState.Idle;
 	public Vector2 goalPos;
 	Transform chaseTarget;
-	float foxWalkSpeed = 2;
-	float foxRunSpeed = 4;
-	float foxCurrentSpeed = 2;
+	float foxWalkSpeed = 1.5f;
+	float foxRunSpeed = 3.5f;
+	float foxCurrentSpeed = 1.5f;
 	Transform caughtYoung;
 	float idleWaitTime = 3;
 	int currentWaypointIndex = 0;
 	float timeWandering; //used to stop from getting stuck
+    bool justAteYoung = false;
+    readonly float GVateYoungCooldownMax = 3;
+    float ateYoungCooldown = 3;
 
 
 	// Use this for initialization
@@ -42,6 +45,19 @@ public class Fox : MonoBehaviour {
 	void Update () {
 		timeWandering += Time.deltaTime;
 
+        if (justAteYoung)
+        {
+            ateYoungCooldown -= Time.deltaTime;
+            if (ateYoungCooldown <= 0)
+            {
+                ateYoungCooldown = GVateYoungCooldownMax;
+                justAteYoung = false;
+                transform.FindChild("sightRadius").gameObject.SetActive(false); //refresh hack
+                transform.FindChild("sightRadius").gameObject.SetActive(true);
+            }
+        }
+
+
 		if (caughtYoung) {
 			caughtYoung.position = mouthLoc.transform.position;
 			goalPos = foxHole.position;
@@ -56,16 +72,15 @@ public class Fox : MonoBehaviour {
 				idleWaitTime -= Time.deltaTime;
 				if (idleWaitTime <= 0) 
 				{
-					
-					if (caughtYoung)
-					{
-                        
-                        Destroy (caughtYoung.gameObject);
-						caughtYoung = null;
-						transform.FindChild("sightRadius").gameObject.SetActive(false); //refresh hack
-						transform.FindChild("sightRadius").gameObject.SetActive(true);
-
-					}
+                    if (caughtYoung)
+                    {
+                        Destroy(caughtYoung.gameObject);
+                        caughtYoung = null;
+                        transform.FindChild("sightRadius").gameObject.SetActive(false); //refresh hack
+                        transform.FindChild("sightRadius").gameObject.SetActive(true);
+                        justAteYoung = true;
+                        ateYoungCooldown = GVateYoungCooldownMax;
+                    }
 					idleWaitTime = 3;
 					GetNewWanderPoint ();
 				}
@@ -109,7 +124,7 @@ public class Fox : MonoBehaviour {
 
 	public void OnTriggerEnter2D(Collider2D coli)
 	{
-		if (coli.GetComponent<Duckling> () && !chaseTarget && !caughtYoung) {
+		if (coli.GetComponent<Duckling> () && !chaseTarget && !caughtYoung && !justAteYoung) {
 			foxCurrentSpeed = foxRunSpeed;
 			chaseTarget = coli.transform;
 
