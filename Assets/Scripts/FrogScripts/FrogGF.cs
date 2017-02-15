@@ -55,7 +55,6 @@ public class FrogGF : GameFlow {
         float scorePerc = Mathf.Min((float)matureDescendants / (float)frogsForMaxScore, 1);
         ProgressTracker.Instance.SetRoundScore(scorePerc, 0);
         ProgressTracker.Instance.SubmitProgress(0);
-        CloseMusic();      
     }
 
     protected override void OpenTutorial()
