@@ -13,10 +13,12 @@ public class WaterStream : MonoBehaviour {
 		{
 			Vector2 _old = coli.gameObject.transform.position;
 			Vector2 _new = coli.gameObject.transform.position = Vector2.MoveTowards (_old, _old + dirOfStream * forceOfStream, forceOfStream * Time.deltaTime);
-			Vector2 temp = _old - _new;
-			if (coli.gameObject.GetComponent<PlayerDuck> () != null) {
-				PlayerDuck player = coli.gameObject.GetComponent<PlayerDuck> ();
-				player.targetPos = player.targetPos + (Vector3) temp;
+           
+
+            if (coli.gameObject.GetComponent<PlayerDuck> () != null) {
+                Vector2 offset = dirOfStream * forceOfStream * Time.deltaTime;
+                PlayerDuck player = coli.gameObject.GetComponent<PlayerDuck> ();
+                player.targetPos = player.targetPos + new Vector3(offset.x, offset.y, 0);
 			}
 		}
 	}
@@ -27,11 +29,12 @@ public class WaterStream : MonoBehaviour {
 		{
 			Vector2 _old = coli.gameObject.transform.position;
 			Vector2 _new = coli.gameObject.transform.position = Vector2.MoveTowards (_old, _old + dirOfStream * forceOfStream, forceOfStream * Time.deltaTime);
-			Vector2 temp = _old - _new;
-			if (coli.gameObject.GetComponent<PlayerDuck> () != null) {
-				PlayerDuck player = coli.gameObject.GetComponent<PlayerDuck> ();
-				player.targetPos = player.targetPos + (Vector3) temp;
-			}
+            
+            if (coli.gameObject.GetComponent<PlayerDuck> () != null) {
+                Vector2 offset = dirOfStream * forceOfStream * Time.deltaTime;
+                PlayerDuck player = coli.gameObject.GetComponent<PlayerDuck> ();
+                player.targetPos = player.targetPos + new Vector3(offset.x, offset.y, 0);
+            }
 		}
 	}
 }
