@@ -361,6 +361,7 @@ public class Frog : MonoBehaviour {
             tempFi.isMale = MathHelper.Fiftyfifty();
             tempFi.playerDescendant = tempFi.playerDescendant || lastTouchedFrog.frogInfo.playerDescendant;
             newFrog.GetComponent<Tadpole>().BirthTadpole(tempFi);//playerDescendant = _playerDescendant || isPlayerDescendant;
+            newFrog.GetComponent<Tadpole>().enabled = true;
         }
     }
 
