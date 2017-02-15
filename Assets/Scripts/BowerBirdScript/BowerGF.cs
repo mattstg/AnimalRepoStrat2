@@ -38,6 +38,13 @@ public class BowerGF : GameFlow {
 
 	public void GameFinished(BowerBird winner, float score)
 	{
+		if (winner.isPlayer) {
+			//player winner
+
+		} else {
+			//enemy bower wins
+
+		}
 		nextStep = true;
 	}
 

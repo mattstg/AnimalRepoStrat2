@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine; using LoLSDK;
 
 public class BowerBird : MonoBehaviour {
+	public bool isPlayer = false;
 	public Animator anim;
 	public bool canGetBored = true;
 	public Bower bower;

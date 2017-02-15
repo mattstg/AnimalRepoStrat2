@@ -128,7 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 22395204}
   m_Layer: 0
-  m_Name: Shit Boundaries
+  m_Name: Boundaries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,52 +247,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 446b4a4b8679e7244aa0a71c278c3efa, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &42220086
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 42220088}
-  - component: {fileID: 42220087}
-  m_Layer: 0
-  m_Name: AudioLooper
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &42220087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 42220086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 385c5660d11278d4692fb1a43fc4a0a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioName: BowerAmbient
-  playOnStart: 1
-  maxVolume: 0.3
-  audioTotalTrackTime: 61
-  loopCrossOver: 5
-  toLoop: {fileID: 8300000, guid: b921441bbfb290046b6c6e3d40847d2e, type: 3}
---- !u!4 &42220088
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 42220086}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -31.23, y: -46.978, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &42190346
 Prefab:
   m_ObjectHideFlags: 0
@@ -362,6 +316,46 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a81a481aaa31ff4a8bc50d66ef6976f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &42220086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 42220088}
+  - component: {fileID: 42220087}
+  m_Layer: 0
+  m_Name: AudioLooper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &42220087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 42220086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385c5660d11278d4692fb1a43fc4a0a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &42220088
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 42220086}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -31.23, y: -46.978, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &46319744
 Prefab:
   m_ObjectHideFlags: 0
@@ -577,16 +571,16 @@ Transform:
   - {fileID: 372339737}
   - {fileID: 1840657797}
   - {fileID: 278900604}
-  - {fileID: 221117256}
   - {fileID: 222732383}
+  - {fileID: 221117256}
   - {fileID: 73604246}
   - {fileID: 1799385490}
   - {fileID: 1522701529}
-  - {fileID: 31592228}
   - {fileID: 218611982}
   - {fileID: 1021420241}
   - {fileID: 209120496}
   - {fileID: 235983125}
+  - {fileID: 31592228}
   - {fileID: 505873839}
   - {fileID: 59824392}
   - {fileID: 1607395136}
@@ -595,11 +589,13 @@ Transform:
   - {fileID: 1958353859}
   - {fileID: 1299164098}
   - {fileID: 332999442}
+  - {fileID: 1718402746}
   - {fileID: 1416083304}
   - {fileID: 1973350165}
   - {fileID: 679211349}
   - {fileID: 1758769356}
   - {fileID: 1509715794}
+  - {fileID: 1455858293}
   - {fileID: 50767385}
   - {fileID: 1336584765}
   - {fileID: 1731430282}
@@ -3822,7 +3818,7 @@ GameObject:
   - component: {fileID: 1069122315}
   - component: {fileID: 1069122317}
   m_Layer: 0
-  m_Name: shitBoundry (2)
+  m_Name: Boundry (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4834,7 +4830,7 @@ GameObject:
   - component: {fileID: 1310422530}
   - component: {fileID: 1310422532}
   m_Layer: 0
-  m_Name: shitBoundry (3)
+  m_Name: Boundry (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5089,7 +5085,7 @@ GameObject:
   - component: {fileID: 1380165302}
   - component: {fileID: 1380165304}
   m_Layer: 0
-  m_Name: shitBoundry (1)
+  m_Name: Boundry (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5429,6 +5425,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1603410447781072, guid: 7f735b4f4429ccd48bfc78e25885e8f9,
     type: 2}
   m_PrefabInternal: {fileID: 732080460}
+--- !u!4 &1455858293 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4264184663583658, guid: 9a81a481aaa31ff4a8bc50d66ef6976f,
+    type: 2}
+  m_PrefabInternal: {fileID: 42190346}
 --- !u!1001 &1457478108
 Prefab:
   m_ObjectHideFlags: 0
@@ -5937,7 +5938,7 @@ Transform:
   - {fileID: 1241966534}
   - {fileID: 1193968851}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1571982464
 MonoBehaviour:
@@ -6457,6 +6458,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1276097981}
   m_Script: {fileID: 11500000, guid: a91845c3e7f0c8f47b7f5284e1e684a0, type: 3}
+--- !u!4 &1718402746 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4264184663583658, guid: 9a81a481aaa31ff4a8bc50d66ef6976f,
+    type: 2}
+  m_PrefabInternal: {fileID: 46319744}
 --- !u!4 &1724746136 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4264184663583658, guid: 9a81a481aaa31ff4a8bc50d66ef6976f,
@@ -7898,7 +7904,7 @@ GameObject:
   - component: {fileID: 2129691164}
   - component: {fileID: 2129691166}
   m_Layer: 0
-  m_Name: shitBoundry
+  m_Name: Boundry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

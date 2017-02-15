@@ -10,6 +10,7 @@ public class PlayerBowerBird : BowerBird {
 	void Start(){
 		ParentStart ();
 		canGetBored = false;
+		isPlayer = true;
 	}
 
 
