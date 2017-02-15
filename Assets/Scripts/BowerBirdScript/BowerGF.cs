@@ -11,7 +11,7 @@ public class BowerGF : GameFlow {
     public GameObject bowerBirdsParent;
 	public string winningText = "";
 
-	float scoreFor100 = 35;
+	float scoreFor100 = 24;
 
 
 	protected override void StartFlow()
