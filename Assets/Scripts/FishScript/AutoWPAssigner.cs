@@ -4,6 +4,8 @@ using UnityEngine; using LoLSDK;
 
 public class AutoWPAssigner : MonoBehaviour {
 
+    public bool upwardsOnly;
+
 	public void Start()
     {
         waypointScript[] wps = GameObject.FindObjectsOfType<waypointScript>();
@@ -12,11 +14,14 @@ public class AutoWPAssigner : MonoBehaviour {
         int closestIndex = 0;
         for(int i = 0; i < wps.Length; i++)
         {
-            dist = (Vector2.Distance(transform.position, wps[i].transform.position));
-            if (dist < closestDistance)
+            if (wps[i].transform.position.y > transform.position.y || !upwardsOnly)
             {
-                closestIndex = i;
-                closestDistance = dist;
+                dist = (Vector2.Distance(transform.position, wps[i].transform.position));
+                if (dist < closestDistance)
+                {
+                    closestIndex = i;
+                    closestDistance = dist;
+                }
             }
         }
         GetComponent<FlockingAI>().currentWaypoint = wps[closestIndex];

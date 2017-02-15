@@ -199,10 +199,12 @@ public class CaribouGF : GameFlow {
     {
         lastCheckpoint = checkpointPos;
         savedPosition = new Dictionary<Transform, Vector2>();
-        foreach(Transform parentTransform in allParentTransforms)
-            if(parentTransform.name != "WolfManager")
-                foreach(Transform t in parentTransform)
+        foreach (Transform parentTransform in allParentTransforms)
+            if (parentTransform.name != "WolfManager")
+                foreach (Transform t in parentTransform)
+                {
                     savedPosition.Add(t, t.position);
+                }
     }
 
     public void LoadCheckpoint()
@@ -213,6 +215,7 @@ public class CaribouGF : GameFlow {
                 kv.Key.gameObject.GetComponent<FlockingAI>().Undies();
             kv.Key.position = kv.Value;
             kv.Key.eulerAngles = new Vector3(0,0,90);
+            kv.Key.gameObject.AddComponent<AutoWPAssigner>().upwardsOnly = true; ;
         }
         foreach (KeyValuePair<Transform, Vector2> kv in wolfStartingPositions)
             kv.Key.position = kv.Value;
