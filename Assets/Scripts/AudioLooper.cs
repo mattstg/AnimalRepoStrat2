@@ -74,7 +74,7 @@ public class AudioLooper {
             case LessonType.Duck:
                 return 36;
             case LessonType.Caribou:
-                return 10;
+                return 8;
         }
         return 0;
     }
