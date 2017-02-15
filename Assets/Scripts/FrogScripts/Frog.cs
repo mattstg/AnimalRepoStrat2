@@ -34,7 +34,7 @@ public class Frog : MonoBehaviour {
     float chanceToRepeatCall = .4f;
 
     //mating
-    Vector2 rangeOfKids = new Vector2(5, 10);
+    Vector2 rangeOfKids = new Vector2(4, 8);
     float mateCooldown = 12;
     float matMaxCooldown = 12;
 	Transform lastHeardRibbitRing;
@@ -350,18 +350,21 @@ public class Frog : MonoBehaviour {
 	private void MakeBaby()
     {
         mateCooldown = matMaxCooldown;
-        int numOfKids = (int)Random.Range(rangeOfKids.x, rangeOfKids.y);
-        for (int i = 0; i < numOfKids; i++)
+        if (GameObject.FindObjectOfType<FrogWS>().frogParent.childCount < 150)
         {
-            GameObject newFrog = Instantiate(Resources.Load("Prefabs/Tadpole")) as GameObject;
-            newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().tadpoleParent);
-            newFrog.transform.position = transform.position;
-            Frog.FrogInfo tempFi = new FrogInfo(frogInfo);
-            tempFi.genNumber = Mathf.Max(tempFi.genNumber,lastTouchedFrog.frogInfo.genNumber) + 1;
-            tempFi.isMale = MathHelper.Fiftyfifty();
-            tempFi.playerDescendant = tempFi.playerDescendant || lastTouchedFrog.frogInfo.playerDescendant;
-            newFrog.GetComponent<Tadpole>().BirthTadpole(tempFi);//playerDescendant = _playerDescendant || isPlayerDescendant;
-            newFrog.GetComponent<Tadpole>().enabled = true;
+            int numOfKids = (int)Random.Range(rangeOfKids.x, rangeOfKids.y);
+            for (int i = 0; i < numOfKids; i++)
+            {
+                GameObject newFrog = Instantiate(Resources.Load("Prefabs/Tadpole")) as GameObject;
+                newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().tadpoleParent);
+                newFrog.transform.position = transform.position;
+                Frog.FrogInfo tempFi = new FrogInfo(frogInfo);
+                tempFi.genNumber = Mathf.Max(tempFi.genNumber, lastTouchedFrog.frogInfo.genNumber) + 1;
+                tempFi.isMale = Random.Range(0f, 1f) > .45f;// MathHelper.Fiftyfifty();
+                tempFi.playerDescendant = tempFi.playerDescendant || lastTouchedFrog.frogInfo.playerDescendant;
+                newFrog.GetComponent<Tadpole>().BirthTadpole(tempFi);//playerDescendant = _playerDescendant || isPlayerDescendant;
+                newFrog.GetComponent<Tadpole>().enabled = true;
+            }
         }
     }
 

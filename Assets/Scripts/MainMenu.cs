@@ -16,14 +16,14 @@ public class MainMenu : MonoBehaviour {
             LOLSDK.Init("com.Pansimula.BidForLife");
             SDK_Initialized = true;
         }
-        LOLAudio.Instance.PlayAudio("OpenningSong.mp3", true);
+        LOLAudio.Instance.PlayAudio("IntroMusic.mp3", true);
         
     }
 
 	public void StartPressed()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("IntroScene");
-        LOLAudio.Instance.StopAudio("OpenningSong.mp3");
+        LOLAudio.Instance.StopAudio("IntroMusic.mp3");
     }
 
     public void MutePressed()

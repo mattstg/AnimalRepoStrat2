@@ -46,7 +46,10 @@ public class SnakeManager : MonoBehaviour {
     public void SnakeReachedEnd(Snake snake)
     {
         snakesReturned++;
-        totalPoints += snake.pointsEaten;
+        if(GameObject.FindObjectOfType<FrogWS>().frogParent.childCount < 110)
+            totalPoints += snake.pointsEaten;
+        else
+            totalPoints += snake.pointsEaten * 1.5f;
         averageFoodPoints = Mathf.Max(totalPoints / snakesReturned,3);
         //Debug.Log(string.Format("snake returned. point {0}, total pts {1}, total snakes {2}, score avrg {3}", snake.pointsEaten, totalPoints, snakesReturned, averageFoodPoints));
         bool resetSnake = true;
