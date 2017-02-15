@@ -196,7 +196,8 @@ public class BowerBird : MonoBehaviour {
 	}
 
 	public void Move(Vector2 dir){
-		body.AddForce (dir * BowerGV.BOWERSPEED * Time.deltaTime, ForceMode2D.Impulse);
+		if(body.velocity.magnitude < 10.0)
+			body.AddForce (dir * BowerGV.BOWERSPEED * Time.deltaTime, ForceMode2D.Impulse);
 		altitude = Mathf.Clamp (altitude + BowerGV.altitudePerSecond * Time.deltaTime, 0, 5);
 	}
 

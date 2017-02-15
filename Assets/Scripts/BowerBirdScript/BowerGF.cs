@@ -40,7 +40,7 @@ public class BowerGF : GameFlow {
 
 	public void GameFinished(BowerBird winner, float _score)
 	{
-		score = _score;
+		score = (int) _score;
 		if (winner.isPlayer) {
 			//player winner
 			winningText = "You have attracted the attention of the female! You win with a Bower score of ";
