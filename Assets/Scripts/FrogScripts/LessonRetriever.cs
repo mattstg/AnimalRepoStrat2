@@ -75,15 +75,13 @@ public class LessonRetriever  {
         switch (lessonNumber)
         {
             case 0:
-                return "this is the pre game";
+                return " In this game, you will play as a male spadefoot toad. Spadefoot toads live in arid places, and spend much of their time hibernating underground. When a heavy rainfall occurs, the toads emerge and seek out puddles of rainwater. When they find water, the male toads begin producing their mating calls. By the time the females arrive, there can be thousands of toads assembled around single pools of water. For one night, the toads engage in what is known as explosive breeding.";
             case 1:
-                return "This is the pre game 2";
+                return "Each male competes with the others to mate with as many females as possible. Speed is the most important factor here, because only the tadpoles who have matured by the time the puddle dries up will survive. Female spadefoot toads can lay clutches of thousands of eggs, but most will never become adult frogs. Instead of providing parental care, male spadefoot toads focus their energies on maximizing their mating. Suitable mating conditions may not come again for multiple years.";
             case 2:
-                return "this is the post game";
+                return "You have just found a group of fresh puddles following a rare desert thunderstorm. Many other toads have also arrived. But beware: the noisy toads have attracted some hungry predators! The more living descendants you have when the puddles dry up, the higher your score will be.";
             case 3:
-                return "this is the post game2";
-            case 4:
-                return "this is the post game3";
+                return "Spadefoot toads are considered an opportunistic r species. They have large amounts of offspring, but few survive. They have short life expectancy, and the young mature very quickly. They do not protect their offspring, but rather focus on having as many as possible. That way, it is very like that at least some of them will reach adulthood. A male spadefoot toad who does not take full advantage of the rare explosive breeding event is likely to have far fewer descendants than his rivals. ";
             default:
                 Debug.Log("Lesson out of bounds " + lessonNumber);
                 return "";
