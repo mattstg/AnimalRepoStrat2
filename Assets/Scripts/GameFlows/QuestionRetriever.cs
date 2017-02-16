@@ -161,9 +161,9 @@ public class QuestionRetriever : MonoBehaviour {
         Slot s5 = new Slot();
         s5.SetQuestion("How do animals pass along their genetic information?", "What is required to make young?");
         s5.SetAns(1, "Through hibernation", false);
-        s5.SetAns(1, "Through migration", false);
-        s5.SetAns(1, "Through reproduction", true);
-        s5.SetAns(1, "Through photosynthesis", false);
+        s5.SetAns(2, "Through migration", false);
+        s5.SetAns(3, "Through reproduction", true);
+        s5.SetAns(4, "Through photosynthesis", false);
 
         gm.AddSlot(s1);
         gm.AddSlot(s2);

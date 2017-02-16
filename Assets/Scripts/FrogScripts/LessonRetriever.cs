@@ -55,14 +55,16 @@ public class LessonRetriever  {
         switch(lessonNumber)
         {
         case 0: //1
-			return "Bid For Life is a game about reproductive strategies in the wild. All animal species engage in behaviors aimed at increasing their chances of parenting successful offspring.\nSome species tend to have many offspring and provide little or no parental care for their young. These species tend to have high infant mortality rates, but they often thrive due to their high birth rates. These species are known as r species, and include many fish and insects. They tend to be small, grow quickly, and live in unstable or dynamic environments.";
-		case 1://2
+            return "Bid For Life is a game about reproductive strategies in the wild. All animal species engage in behaviors aimed at increasing their chances of parenting successful offspring. Such as how many offspring they have, if they care for there young, mating rituals such as dances or alerting others to if there ready to reproduce. Animals have different combinations of these strategies that make them successful in there enviroments.";
+         case 1:
+            return "Some species tend to have many offspring and provide little or no parental care for their young. These species tend to have high infant mortality rates, but they often thrive due to their high birth rates. These species are known as r species, and include many fish and insects. They tend to be small, grow quickly, and live in unstable or dynamic environments.";
+		case 2://2
 			return "At the other extreme live animals that tend to have very few offspring, but which invest large amounts of energy into raising and protecting those offspring. These species are known as K species, and include animals such as elephants, bears, and humans. While these species tend to produce few young, the high degree of parental care makes it more likely that those young will survive. K species tend to be large, have low mortality rates, grow slowly, and spend longer periods of their lives dependent upon parents.";
-		case 2://3
+		case 3://3
 			return "In reality, r and K do not represent two categories of animals. Rather, r and K are the two extremes in a range of animal behaviors, and individual species can find themselves anywhere in that range. Keep in mind that r and K are just concepts people use to help describe and compare the many different reproductive strategies throughout the animal kingdom. Many animals fall somewhere in the middle, and some have traits from both extremes of the r-K range. ";
-		case 3://4
+		case 4://4
 			return "Many species of animals also engage in specific mating rituals and behaviors aimed at attracting mates. Typically, this is a show of desirable traits, such as healthy feathers, strength, a strong voice. Selecting a mate with those behaviors will mean your offspring will be more likely to have those desirable traits themselves. Other behaviours are  herding  or nesting behaviours, aimed to protect the young.";
-		case 4://outro1
+		case 5://outro1
 			return "Bid For Life is made up of five mini-games in which you will play as a member of five different animal species. Make sure you pay attention to the short lessons before and after each game, because you can boost your score by doing well on the quizzes! Have fun!";
         default:
             Debug.Log("Lesson out of bounds " + lessonNumber);
