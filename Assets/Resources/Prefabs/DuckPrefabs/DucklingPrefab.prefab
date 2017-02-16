@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da52700164eb1834faedf8df19f0f469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterSlowCoeff: 1
   currentWaypoint: {fileID: 0}
   test: 0
   isCorpse: 0
@@ -97,7 +98,7 @@ MonoBehaviour:
   head: {fileID: 0}
   headRotationSpeed: 20
   updateFrequency: 1
-  speedRange: {x: 45, y: 47}
+  speedRange: {x: 58, y: 60}
   rotationSpeedRange: {x: 9, y: 10}
   isCalf: 0
   isFish: 0
@@ -117,12 +118,12 @@ MonoBehaviour:
   leaderWeight: 1
   leaderInfluenceDistance: 0
   followsMother: 1
-  motherInfluenceDistance: 2
+  motherInfluenceDistance: 3
   mother: {fileID: 0}
   motherWeight: 1
   usesRandom: 1
-  randomWeight: 5
-  randomRange: 35
+  randomWeight: 4.2
+  randomRange: 32
   randVectUpdateFrequency: 50
   usesDirectionalInertia: 0
   inertiaWeight: 1
@@ -152,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxQuackStrength: 6
-  quackDecayRate: 0.3
+  quackDecayRate: 0.25
   quackStrength: 0
   isDead: 0
 --- !u!212 &212733511115470628
