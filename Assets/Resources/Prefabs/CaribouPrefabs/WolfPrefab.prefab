@@ -276,8 +276,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSprintCooldown: 15
   sprintCoolDownSpeed: 1
-  sprintTriggerDistance: 45
-  maxSpeedBoost: 700
+  sprintTriggerDistance: 35
+  maxSpeedBoost: 650
   speedBoostDecayRate: 60
 --- !u!114 &114703785759266646
 MonoBehaviour:
@@ -299,7 +299,7 @@ MonoBehaviour:
   head: {fileID: 1286030784081590}
   headRotationSpeed: 20
   updateFrequency: 2
-  speedRange: {x: 700, y: 700}
+  speedRange: {x: 690, y: 690}
   rotationSpeedRange: {x: 7, y: 9}
   isCalf: 0
   isFish: 0
@@ -311,7 +311,7 @@ MonoBehaviour:
   averagePositionWeight: 1
   neighbourDistance: 50
   repulsionDistance: 9
-  repulsionWeight: 20
+  repulsionWeight: 23
   usesWaypoints: 0
   waypointWeight: 5
   waypointReachedProximity: 40
