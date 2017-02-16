@@ -5,8 +5,8 @@ using UnityEngine; using LoLSDK;
 public class DuckEndZone : MonoBehaviour {
 
     float timeDuckInEndZone = 0;
-    float timeDuckInEndZoneToEndGame = 6;
-    float ducklingsSaved = 0;
+    float timeDuckInEndZoneToEndGame = 8;
+    public float ducklingsSaved = 0;
     bool duckInEndZone = false;
     bool finished = false;
 	// Update is called once per frame
