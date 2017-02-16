@@ -139,8 +139,8 @@ public class QuestionRetriever : MonoBehaviour {
         gm.titleText.text = "Salmon Run";
 
         Slot s1 = new Slot();
-        s1.SetQuestion("Which kind of reproductive extreme does the Salmon exhibit?", "Select if this trait is more of a reproductive trait for R or K extreme species");
-        s1.SetAns(1, "R-Species", true);
+        s1.SetQuestion("Which kind of reproductive extreme does the Salmon exhibit?", "Select if this trait is more of a reproductive trait for r or K extreme species");
+        s1.SetAns(1, "r-Species", true);
         s1.SetAns(2, "K-Species", false);
 
         Slot s2 = new Slot();
