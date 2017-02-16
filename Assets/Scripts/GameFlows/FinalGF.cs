@@ -7,8 +7,8 @@ public class FinalGF : GameFlow {
 
     protected override void StartFlow()
     {
-        introLessons = 2;
-        outroLessons = 3;
+        introLessons = 1;
+        outroLessons = 2;
         lessonType = LessonType.Post;
         nextSceneName = "NoneCauseThisEndsTheGame";
         stage = -1;
