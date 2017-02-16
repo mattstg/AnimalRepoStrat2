@@ -18,6 +18,8 @@ public class FrogGF : GameFlow {
 
 	protected override void StartFlow()
 	{
+        introLessons = 3;
+        outroLessons = 1;
         lessonType = LessonType.Frog;
 		nextSceneName = "FishScene";
 		stage = -1;
