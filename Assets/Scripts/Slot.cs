@@ -18,8 +18,11 @@ public class Slot  {
 		questionExplained = explaination;
 	}
 
-	public void SetAns(int _id, string _text, bool _isCorrect, string _popupText)
+	public void SetAns(int _id, string _text, bool _isCorrect, string _popupText = "")
 	{
+        if(_popupText == "")
+            _popupText = (_isCorrect) ? "Correct" : "Incorrect";
+
 		SlotInfo si = new SlotInfo (_id, _text, _isCorrect, _popupText);
 		if (slotInfoDict.ContainsKey (_id)) {
 			slotInfoDict [_id] = si;
