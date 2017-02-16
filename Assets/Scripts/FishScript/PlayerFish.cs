@@ -13,6 +13,7 @@ public class PlayerFish : Fish {
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.freezeRotation = true;
 		followAi = false;
+        moveSpeed = 1.2f;
 	}
 	
 	// Update is called once per frame
@@ -55,7 +56,7 @@ public class PlayerFish : Fish {
     {
         if (coli.gameObject.CompareTag("BoostZone"))
         {
-            moveSpeed = 1;
+            moveSpeed = 1.2f;
         }
         //if oosdgfa
     }
