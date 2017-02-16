@@ -349,15 +349,9 @@ public class QuestionRetriever : MonoBehaviour {
         s9.SetQuestion("The main clues by which organisms show their readiness to reproduce are", "How did animals in the games let others know they were ready to mate");
         s9.SetAns(1, "Color, shape, and size", false);
         s9.SetAns(2, "Mimicry, commensalism, and parasitism", false);
-        s9.SetAns(3, "Visual, auditory (sound), and olfactory (smell).", true);
+        s9.SetAns(3, "Visual, auditory, and olfactory.", true);
         s9.SetAns(4, "Both A and B are correct", false);
 
-        Slot s10 = new Slot();
-        s10.SetQuestion("The main clues by which organisms show their readiness to reproduce are", "How did animals in the games let others know they were ready to mate");
-        s10.SetAns(1, "Color, shape, and size", false);
-        s10.SetAns(2, "Mimicry, commensalism, and parasitism", false);
-        s10.SetAns(3, "Visual, auditory (sound), and olfactory (smell).", true);
-        s10.SetAns(4, "Both A and B are correct", false);
 
         gm.AddSlot(s1);
         gm.AddSlot(s2);
@@ -366,6 +360,5 @@ public class QuestionRetriever : MonoBehaviour {
         gm.AddSlot(s7);
         gm.AddSlot(s8);
         gm.AddSlot(s9);
-        gm.AddSlot(s10);
     }
 }

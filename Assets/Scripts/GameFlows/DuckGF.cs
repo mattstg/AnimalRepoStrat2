@@ -15,7 +15,7 @@ public class DuckGF : GameFlow {
         introLessons = 3;
         outroLessons = 1;
         lessonType = LessonType.Duck;
-        roundTimeToGetFullScore = 90;
+        roundTimeToGetFullScore = 150;
 		stage = -1;
 		nextStep = true;
 	}
