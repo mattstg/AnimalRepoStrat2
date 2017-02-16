@@ -326,39 +326,24 @@ public class QuestionRetriever : MonoBehaviour {
         s3.SetAns(2, "R-species", false);
         s3.SetAns(3, "Both or Independant behaviour", false);
 
-        Slot s4 = new Slot();
-        s4.SetQuestion("Opportunistic or explosive breeding?", "Select if this trait is more of a reproductive trait for R or K extreme species");
-        s4.SetAns(1, "K-species", false);
-        s4.SetAns(2, "R-species", true);
-        s4.SetAns(3, "Both or Independant behaviour", false);
-
-
         Slot s5 = new Slot();
-        s5.SetQuestion("Produce fewer offspring", "Select if this trait is more of a reproductive trait for R or K extreme species");
-        s5.SetAns(1, "K-species", true);
-        s5.SetAns(2, "R-species", false);
-        s5.SetAns(3, "Both or Independant behaviour", false);
-
-
-        Slot s6 = new Slot();
-        s6.SetQuestion("Larger average body size", "Select if this trait is more of a reproductive trait for R or K extreme species");
-        s6.SetAns(1, "K-species", true);
-        s6.SetAns(2, "R-species", false);
-        s6.SetAns(3, "Both or Independant behaviour", false);
+        s5.SetQuestion("Drawback of no parental care", "What negative comes from no parental care");
+        s5.SetAns(1, "Lower mortality rates", false);
+        s5.SetAns(2, "Higher mortality rates", true);
 
 
         Slot s7 = new Slot();
-        s7.SetQuestion("Courtship displays or dancing", "Select if this trait is more of a reproductive trait for R or K extreme species");
-        s7.SetAns(1, "K-species", false);
-        s7.SetAns(2, "R-species", false);
-        s7.SetAns(3, "Both or Independant behaviour", true);
+        s7.SetQuestion("Which species mentioned is opportunistic?", "Which ones mate during brief windows");
+        s7.SetAns(1, "Spade foot-toad", true);
+        s7.SetAns(2, "Wood duck", false);
+        s7.SetAns(3, "Baren ground caribou", false);
 
 
         Slot s8 = new Slot();
-        s8.SetQuestion("Nest building", "Select if this trait is more of a reproductive trait for R or K extreme species");
-        s8.SetAns(1, "K-species", false);
-        s8.SetAns(2, "R-species", false);
-        s8.SetAns(3, "Both or Independant behaviour", true);
+        s8.SetQuestion("Nest building is an example of what kind of mating strategy", "Which category does it fall under");
+        s8.SetAns(1, "Protecting young", true);
+        s8.SetAns(2, "Herding", false);
+        s8.SetAns(3, "Mating Ritual", false);
 
         Slot s9 = new Slot();
         s9.SetQuestion("The main clues by which organisms show their readiness to reproduce are", "How did animals in the games let others know they were ready to mate");
