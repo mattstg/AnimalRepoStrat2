@@ -172,9 +172,9 @@ public class LessonRetriever  {
         switch (lessonNumber)
         {
             case 0:
-                return "As you can see, many of these animals had different takes on reproduction strategies, but there isn’t one strategy better than the rest. As you saw, each animal has had a different take on how to ensure the continuation of it’s species. From the building nests, maturing quickly, or simply just having more kids than predators can eat. Now, a final test to prove what you’ve learnt.";
+                return "As you can see, many of these animals have different takes on reproduction strategies, but one strategy isn't better than the rest. Each animal has had a different take on how to ensure the continuation of its species. Whether it's building nests, performing dances, or running rivers, animals all have ways of of making a bid on life. Now, a final test to see what you've learned.";
             case 1:
-                return "This has been Bid for Life. I hope you enjoyed experiencing snippets of life from the viewpoint of animals, each who have different, but viable methods of surviving and reproducing in their environments. There are plenty more resources online if you wish to look up some of the more unique facts about these animals. Such as how the grizzly bears massively hunt the salmon leaving large piles of  fish that feed the trees in the forest, or the how the bower and other birds have unique dances.";
+                return "This has been Bid for Life. We hope you enjoyed experiencing snippets of life from the viewpoints of animals, each whom have different (but viable) methods of surviving and reproducing in their environments. There are plenty more resources online if you wish to look up some of the more obscure facts about these animals, such as how the grizzly bears hunt the salmon, leaving large piles of fish that feed the trees in the forest, or the how the bower and other birds have unique dances.";
             case 2:
                 return "Have a great day!";
             default:
