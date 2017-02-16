@@ -54,7 +54,7 @@ public class QuestionRetriever : MonoBehaviour {
     private void SetupIntroQuestions(GraphManager gm)
     {
         gm.gameObject.SetActive(true);
-        gm.titleText.text = "Animals with this trait tend to be on which extreme of common reproductive strategies";
+        gm.titleText.text = "Animals with this trait tend to be on which extreme of the r-K range";
 
         Slot s1 = new Slot();
         s1.SetQuestion("Big body size", "Select if this trait is more of a reproductive trait for R or K extreme species");
@@ -97,32 +97,32 @@ public class QuestionRetriever : MonoBehaviour {
     private void SetupFrogQuestions(GraphManager gm)
     {
         gm.gameObject.SetActive(true);
-        gm.titleText.text = "Frog Quiz";
+        gm.titleText.text = "Toad Quiz";
 
         Slot s1 = new Slot();
-        s1.SetQuestion("Does the Frog have more of a R or K extreme of a reproductive strategy?", "Select if this trait is more of a reproductive trait for R or K extreme species");
+        s1.SetQuestion("Does the toad have more of a R or K extreme of a reproductive strategy?", "Select if this trait is more of a reproductive trait for R or K extreme species");
         s1.SetAns(1, "R-Species", true);
         s1.SetAns(2, "K-Species", false);
 
         Slot s2 = new Slot();
-        s2.SetQuestion("Does the frog have a high or low mortality rate?", "Mortality rate is how often a member of the species will persih.");
+        s2.SetQuestion("Does the toad have a high or low mortality rate?", "Mortality rate is how often a member of the species will persih.");
         s2.SetAns(1, "High", true);
         s2.SetAns(2, "Low", false);
 
         Slot s3 = new Slot();
-        s3.SetQuestion("Do spadefoot frogs take care of their children?", "Do spadefoot frogs actively protect or nourish their young?");
+        s3.SetQuestion("Do spadefoot toads take care of their children?", "Do spadefoot toads actively protect or nourish their young?");
         s3.SetAns(1, "Yes", false);
         s3.SetAns(2, "No", true);
 
         Slot s4 = new Slot();
-        s4.SetQuestion("Male frogs will sing to let female frogs know that there is a good habitat to lay their eggs. Which type of reproductive readiness signal is this?", "");
+        s4.SetQuestion("Calling out that you found a good habitat for eggs is what type of reproductive readiness signal", "");
         s4.SetAns(1, "Visual", false);
         s4.SetAns(2, "Auditory", true);
         s4.SetAns(3, "Olfactory", false);
         s4.SetAns(4, "Courtship", false);
 
         Slot s5 = new Slot();
-        s5.SetQuestion("Is this frog an example of an opportunistic species?", "An opportunistic species reproduce during brief windows of time");
+        s5.SetQuestion("Is this toad an example of an opportunistic species?", "An opportunistic species reproduce during brief windows of time");
         s5.SetAns(1, "Yes", true);
         s5.SetAns(2, "No", false);
 
@@ -244,7 +244,7 @@ public class QuestionRetriever : MonoBehaviour {
         s3.SetQuestion("Does the Wood Duck produce few or many offspring?", "The game depicted a roughly normal batch");
         s3.SetAns(1, "less than a 2 or 3", false);
         s3.SetAns(2, "around a dozen", true);
-        s3.SetAns(3, "about as much as a frog", false);
+        s3.SetAns(3, "about as much as a toad", false);
 
         Slot s4 = new Slot();
         s4.SetQuestion("What level of parental investment does the Wood Duck show?", "Do they raise the young, abandon them, help them a little?");
