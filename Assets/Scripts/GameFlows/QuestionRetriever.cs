@@ -149,7 +149,7 @@ public class QuestionRetriever : MonoBehaviour {
         s2.SetAns(2, "No", true);
 
         Slot s3 = new Slot();
-        s3.SetQuestion("Do salmon preform mating dances?", "Do salmon dance to impress other salmon?");
+        s3.SetQuestion("Do salmon perform mating dances?", "Do salmon dance to impress other salmon?");
         s3.SetAns(1, "Yes", false);
         s3.SetAns(2, "No", true);
 
