@@ -362,9 +362,7 @@ public class QuestionRetriever : MonoBehaviour {
         gm.AddSlot(s1);
         gm.AddSlot(s2);
         gm.AddSlot(s3);
-        gm.AddSlot(s4);
         gm.AddSlot(s5);
-        gm.AddSlot(s6);
         gm.AddSlot(s7);
         gm.AddSlot(s8);
         gm.AddSlot(s9);
