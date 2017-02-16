@@ -188,7 +188,6 @@ public class GameFlow : MonoBehaviour {
     protected virtual void OpenTutorial()
 	{
         tutorial.SetActive(true);
-        Debug.Log("called");
         tutorial.GetComponent<UnityEngine.UI.Image>().sprite = TutorialRetriever.Instance.GetTutorialImage(lessonType, currentTut);
     }
 

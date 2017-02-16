@@ -66,7 +66,6 @@ public class DuckGF : GameFlow {
 
     public void GameFinished(float babyDucksSaved)
     {
-        Debug.Log("game finished: " + babyDucksSaved);
         nextStep = true;
     }
     

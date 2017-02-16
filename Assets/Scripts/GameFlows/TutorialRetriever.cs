@@ -28,7 +28,6 @@ public class TutorialRetriever  {
 
     public Sprite GetTutorialImage(LessonType lessonType, int _index)
     {
-        Debug.Log("Tutorial/" + lessonType + _index);
         return Resources.Load<Sprite>("Tutorial/" + lessonType + _index);
     }
 }
