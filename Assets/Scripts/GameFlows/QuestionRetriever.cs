@@ -197,10 +197,10 @@ public class QuestionRetriever : MonoBehaviour {
 
         Slot s3 = new Slot();
         s3.SetQuestion("Whats other strategy does the Bower Bird use to attract females?", "Other than dancing, what does she look for");
-        s3.SetAns(1, "By migrating south", false);
+        s3.SetAns(1, "Migrating south", false);
         s3.SetAns(2, "Building a Bower nest", true);
         s3.SetAns(3, "Finding fish in a nearby lake", false);
-        s3.SetAns(4, "By digging a deep hole", false);
+        s3.SetAns(4, "Digging a deep hole", false);
 
         Slot s4 = new Slot();
         s4.SetQuestion("The bower bird dancing is an example of ", "The bower dances at the nest to impress the female");
@@ -228,32 +228,32 @@ public class QuestionRetriever : MonoBehaviour {
         s0.SetAns(3, "Middle", true);
 
         Slot s1 = new Slot();
-        s1.SetQuestion("How does the mother Wood Duck protect its eggs?", "What behaviour best protected the eggs");
+        s1.SetQuestion("How does the mother wood duck protect its eggs?", "What behavior best protected the eggs");
         s1.SetAns(1, "Hiding them in the lake", false);
         s1.SetAns(2, "Hiding them in a nest high in a tree", true);
         s1.SetAns(3, "Herding them away from predators", false);
 
         Slot s2 = new Slot();
-        s2.SetQuestion("How does a mother Wood Duck help its ducklings after they have hatched?", "How did she help them reach water");
+        s2.SetQuestion("How does a mother wood duck help its ducklings after they have hatched?", "How did she help them reach water");
         s2.SetAns(1, "Courtship dance", false);
         s2.SetAns(2, "Mating call", false);
         s2.SetAns(3, "Herding them away from predators", true);
         s2.SetAns(4, "Teaching them to fly", false);
 
         Slot s3 = new Slot();
-        s3.SetQuestion("Does the Wood Duck produce few or many offspring?", "The game depicted a roughly normal batch");
-        s3.SetAns(1, "less than a 2 or 3", false);
-        s3.SetAns(2, "around a dozen", true);
-        s3.SetAns(3, "about as much as a toad", false);
+        s3.SetQuestion("Does the wood duck produce few or many offspring?", "The game depicted a roughly normal batch");
+        s3.SetAns(1, "Less than a 2 or 3", false);
+        s3.SetAns(2, "Around a dozen", true);
+        s3.SetAns(3, "About as many as a toad", false);
 
         Slot s4 = new Slot();
-        s4.SetQuestion("What level of parental investment does the Wood Duck show?", "Do they raise the young, abandon them, help them a little?");
+        s4.SetQuestion("What level of parental investment does the wood duck show?", "Do they raise the young, abandon them, help them a little?");
         s4.SetAns(1, "None", false);
-        s4.SetAns(2, "somewhere in the middle", true);
-        s4.SetAns(3, "alot", false);
+        s4.SetAns(2, "Somewhere in the middle", true);
+        s4.SetAns(3, "Alot", false);
 
         Slot s5 = new Slot();
-        s5.SetQuestion("Why does the Wood Duck build a nest high in the trees? ", "What benefit does nesting have?");
+        s5.SetQuestion("Why does the wood duck build a nest high in the trees? ", "What benefit does nesting have?");
         s5.SetAns(1, "To protect its eggs from predators", true);
         s5.SetAns(2, "To attract a mate", false);
         s5.SetAns(3, "To have somewhere to sleep", false);
@@ -272,13 +272,13 @@ public class QuestionRetriever : MonoBehaviour {
         gm.titleText.text = "Caribou Migration";
 
         Slot s0 = new Slot();
-        s0.SetQuestion("Usually how many calfs does a female Caribou have per year?", "How many babies does a female caribou have per year?");
+        s0.SetQuestion("Usually how many calfs does a female caribou have per year?", "How many babies does a female caribou have per year?");
         s0.SetAns(1, "One", true);
         s0.SetAns(2, "Five", false);
         s0.SetAns(3, "Fifty", false);
 
         Slot s1 = new Slot();
-        s1.SetQuestion("Which kind of reproductive extreme does the Caribou exhibit?", "Select if this trait is more of a reproductive trait for R or K extreme species");
+        s1.SetQuestion("Which kind of reproductive extreme does the caribou exhibit?", "Select if this trait is more of a reproductive trait for R or K extreme species");
         s1.SetAns(1, "R-species", false);
         s1.SetAns(2, "Middle", false);
         s1.SetAns(3, "K-species", true);
@@ -289,7 +289,7 @@ public class QuestionRetriever : MonoBehaviour {
         s2.SetAns(2, "False", true);
 
         Slot s4 = new Slot();
-        s4.SetQuestion("Behaviour preformed by the caribou to protect young", "The behaviour shown in game");
+        s4.SetQuestion("Behavior preformed by the caribou to protect young", "The behavior shown in game");
         s4.SetAns(1, "Courtship dance", false);
         s4.SetAns(2, "Mating Call", false);
         s4.SetAns(3, "Herding", true);
