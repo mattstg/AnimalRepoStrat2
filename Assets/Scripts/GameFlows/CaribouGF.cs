@@ -19,8 +19,8 @@ public class CaribouGF : GameFlow {
 
     protected override void StartFlow()
 	{
-        introLessons = 2;
-        outroLessons = 3;
+        introLessons = 3;
+        outroLessons = 2;
         lessonType = LessonType.Caribou;
         stage = -1;
 		nextStep = true;

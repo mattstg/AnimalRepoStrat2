@@ -16,8 +16,8 @@ public class BowerGF : GameFlow {
 
 	protected override void StartFlow()
 	{
-        introLessons = 2;
-        outroLessons = 3;
+        introLessons = 3;
+        outroLessons = 1;
         lessonType = LessonType.Bower;
         stage = -1;
 		nextStep = true;

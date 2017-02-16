@@ -7,8 +7,8 @@ public class IntroGF : GameFlow {
 
     protected override void StartFlow()
     {
-        introLessons = 2;
-        outroLessons = 3;
+        introLessons = 4;
+        outroLessons = 1;
         lessonType = LessonType.Intro;
         nextSceneName = "FrogScene";
         stage = -1;

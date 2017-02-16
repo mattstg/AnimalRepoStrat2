@@ -20,8 +20,8 @@ public class FishGF : GameFlow {
 
 	protected override void StartFlow()
 	{
-        introLessons = 2;
-        outroLessons = 3;
+        introLessons = 3;
+        outroLessons = 2;
         lessonType = LessonType.Fish;
         maxRoundTime = 210;
 		stage = -1;

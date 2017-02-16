@@ -12,8 +12,8 @@ public class DuckGF : GameFlow {
 
     protected override void StartFlow()
 	{
-        introLessons = 2;
-        outroLessons = 3;
+        introLessons = 3;
+        outroLessons = 1;
         lessonType = LessonType.Duck;
         roundTimeToGetFullScore = 90;
 		stage = -1;
