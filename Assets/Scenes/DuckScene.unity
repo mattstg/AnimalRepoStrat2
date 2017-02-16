@@ -747,6 +747,11 @@ Prefab:
       propertyPath: dirOfStream.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -1315,6 +1320,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dirOfStream.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -2194,6 +2204,11 @@ Prefab:
       propertyPath: dirOfStream.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -2585,6 +2600,11 @@ Prefab:
       propertyPath: dirOfStream.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -2844,6 +2864,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dirOfStream.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -3595,6 +3620,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dirOfStream.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -5139,6 +5169,11 @@ Prefab:
       propertyPath: dirOfStream.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -5515,6 +5550,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dirOfStream.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -6782,6 +6822,11 @@ Prefab:
       propertyPath: dirOfStream.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -7773,6 +7818,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dirOfStream.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -12444,6 +12494,11 @@ Prefab:
       propertyPath: dirOfStream.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -13348,6 +13403,11 @@ Prefab:
       propertyPath: dirOfStream.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -13580,6 +13640,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dirOfStream.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -13979,6 +14044,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dirOfStream.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -14914,6 +14984,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dirOfStream.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -15978,6 +16053,11 @@ Prefab:
       propertyPath: dirOfStream.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -16511,6 +16591,11 @@ Prefab:
       propertyPath: dirOfStream.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -16721,6 +16806,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dirOfStream.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -16947,6 +17037,11 @@ Prefab:
       propertyPath: dirOfStream.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -17016,6 +17111,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dirOfStream.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -18658,6 +18758,11 @@ Prefab:
       propertyPath: dirOfStream.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -19006,6 +19111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b154a407bdfc19c4cb2a15870ede75d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ducklingsSaved: 0
 --- !u!61 &1622275949
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19852,6 +19958,11 @@ Prefab:
       propertyPath: dirOfStream.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -20112,6 +20223,11 @@ Prefab:
         type: 2}
       propertyPath: m_Size.x
       value: 8.260247
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -22979,6 +23095,11 @@ Prefab:
       propertyPath: dirOfStream.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -23904,6 +24025,11 @@ Prefab:
       propertyPath: dirOfStream.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
   m_IsPrefabParent: 0
@@ -24177,6 +24303,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dirOfStream.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
@@ -24661,6 +24792,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dirOfStream.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114259917969191010, guid: 0b3a77c04fba38e41b969f7d65a28bf4,
+        type: 2}
+      propertyPath: forceOfStream
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3a77c04fba38e41b969f7d65a28bf4, type: 2}
