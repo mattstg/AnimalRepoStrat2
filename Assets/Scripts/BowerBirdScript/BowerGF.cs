@@ -9,6 +9,7 @@ public class BowerGF : GameFlow {
 	public GameObject bowerDirection;
 	public InputManager im;
     public GameObject bowerBirdsParent;
+    public Transform bowerArrow;
 	public string winningText = "";
 
 	float scoreFor100 = 24;
@@ -53,7 +54,8 @@ public class BowerGF : GameFlow {
 
     protected override void PostGame()
     {
-		roundTimerActive = false;
+        bowerArrow.gameObject.SetActive(false);
+        roundTimerActive = false;
         scoreText.gameObject.SetActive(false);
         im.enabled = false;
 		string t0 = winningText + score + "!";

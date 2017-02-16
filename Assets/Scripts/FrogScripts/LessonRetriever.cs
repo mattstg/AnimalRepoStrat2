@@ -63,7 +63,7 @@ public class LessonRetriever  {
 		case 3://3
 			return "In reality, r and K do not represent two categories of animals. Rather, r and K are the two extremes in a range of animal behaviors, and individual species can find themselves anywhere in that range. Keep in mind that r and K are just concepts people use to help describe and compare the many different reproductive strategies throughout the animal kingdom. Many animals fall somewhere in the middle, and some have traits from both extremes of the r-K range. ";
 		case 4://4
-			return "Many species of animals also engage in specific mating rituals and behaviors aimed at attracting mates. Typically, this is a show of desirable traits, such as healthy feathers, strength, a strong voice. Selecting a mate with those behaviors will mean your offspring will be more likely to have those desirable traits themselves. Other behaviours are  herding  or nesting behaviours, aimed to protect the young.";
+			return "Many species of animals also engage in specific mating rituals and behaviors aimed at attracting mates. Typically, this is a show of desirable traits, such as healthy feathers, strength, a strong voice. Selecting a mate with those behaviors will mean your offspring will be more likely to have those desirable traits themselves. Other behaviours include herding or nesting, aimed at protecting the young.";
 		case 5://outro1
 			return "Bid For Life is made up of five mini-games in which you will play as a member of five different animal species. Make sure you pay attention to the short lessons before and after each game, because you can boost your score by doing well on the quizzes! Have fun!";
         default:
@@ -80,11 +80,11 @@ public class LessonRetriever  {
             case 0:
                 return " In this game, you will play as a male spadefoot toad. Spadefoot toads live in arid places, and spend much of their time hibernating underground. When a heavy rainfall occurs, the toads emerge and seek out puddles of rainwater. When they find water, the male toads begin producing their mating calls. By the time the females arrive, there can be thousands of toads assembled around single pools of water. For one night, the toads engage in what is known as explosive breeding.";
             case 1:
-                return "Each male competes with the others to mate with as many females as possible. Speed is the most important factor here, because only the tadpoles who have matured by the time the puddle dries up will survive. Female spadefoot toads can lay clutches of thousands of eggs, but most will never become adult frogs. Instead of providing parental care, male spadefoot toads focus their energies on maximizing their mating. Suitable mating conditions may not come again for multiple years.";
+                return "Each male competes with the others to mate with as many females as possible. Speed is the most important factor here, because only the tadpoles who have matured by the time the puddle dries up will survive. Female spadefoot toads can lay clutches of thousands of eggs, but most will never become adult toads. Instead of providing parental care, male spadefoot toads focus their energies on maximizing their mating. Suitable mating conditions may not come again for multiple years.";
             case 2:
                 return "You have just found a group of fresh puddles following a rare desert thunderstorm. Many other toads have also arrived. But beware: the noisy toads have attracted some hungry predators! The more living descendants you have when the puddles dry up, the higher your score will be.";
             case 3:
-                return "Spadefoot toads are considered an opportunistic r species. They have large amounts of offspring, but few survive. They have short life expectancy, and the young mature very quickly. They do not protect their offspring, but rather focus on having as many as possible. That way, it is very like that at least some of them will reach adulthood. A male spadefoot toad who does not take full advantage of the rare explosive breeding event is likely to have far fewer descendants than his rivals. ";
+                return "Spadefoot toads are considered an opportunistic r species. They have large amounts of offspring, but few survive. They have short life expectancy, and the young mature very quickly. They do not protect their offspring, but rather focus on having as many as possible. That way, it is very likely that at least some of them will reach adulthood. A male spadefoot toad who does not take full advantage of the rare explosive breeding event is likely to have far fewer descendants than his rivals. ";
             default:
                 Debug.Log("Lesson out of bounds " + lessonNumber);
                 return "";
@@ -152,7 +152,7 @@ public class LessonRetriever  {
         switch (lessonNumber)
         {
             case 0:  //1
-			return "In this game, you will play as a female barren-ground caribou. Barren-ground caribou migrate each year from northern tundra in the summer to taiga forests to the south in winter. They travel in groups of up to fifty. They mate during their migration to the south, and females give birth to a single calf about seven months later.. Some caribou migrate further than any other land mammals, walking up to five-thousand kilometers in a single year! Calves tend to reach maturity at around two years old. Fewer than half make it that far. ";
+			return "In this game, you will play as a female barren-ground caribou. Barren-ground caribou migrate each year from northern tundra in the summer to taiga forests to the south in winter. They travel in groups of up to fifty. They mate during their migration to the south, and females give birth to a single calf about seven months later. Some caribou migrate further than any other land mammals, walking up to five-thousand kilometers in a single year! Calves tend to reach maturity at around two years old. Fewer than half make it that far. ";
             case 1: //2
 			return "The arctic wolf is the main predator of the barren-ground caribou. While wolves won’t usually attack the adults, they will target the young and the weak. The herd will try to keep the calves in the center, to shield them from the wolves, but in the chaos of a chase, calves sometimes fall through the cracks. Eventually, the caribou will always outrun the wolves, but not always without losses. Since caribou usually have only one calf a year, losing a child is a heavy blow, so it is very important to defend them from predators.";
             case 2://3
@@ -172,9 +172,9 @@ public class LessonRetriever  {
         switch (lessonNumber)
         {
             case 0:
-                return "As you can see, many of these animals had different takes on reproduction strategies, but there isn’t one strategy better than the rest. Each animal as you saw had a different take on how to ensure the continuation of it’s species. From the building nests, maturing quickly, or simply just having more kids than predators can eat.  Now, a final test to proven what you’ve learnt.";
+                return "As you can see, many of these animals had different takes on reproduction strategies, but there isn’t one strategy better than the rest. As you saw, each animal has had a different take on how to ensure the continuation of it’s species. From the building nests, maturing quickly, or simply just having more kids than predators can eat. Now, a final test to prove what you’ve learnt.";
             case 1:
-                return "This has been Bid for Life. I hope you enjoyed experiencing snippets of life from the viewpoint of animals, each who have different, but viable methods of  surviving and reproducing in their environments. There are plenty more resources online if you wish to look up some of the more unique facts about these animals. Such as how the grizzly bears massively hunt the salmon leaving large piles of  fish that feed the trees in the forest, or the how the bower and other birds have unique dances.";
+                return "This has been Bid for Life. I hope you enjoyed experiencing snippets of life from the viewpoint of animals, each who have different, but viable methods of surviving and reproducing in their environments. There are plenty more resources online if you wish to look up some of the more unique facts about these animals. Such as how the grizzly bears massively hunt the salmon leaving large piles of  fish that feed the trees in the forest, or the how the bower and other birds have unique dances.";
             case 2:
                 return "Have a great day!";
             default:

@@ -1301,6 +1301,7 @@ MonoBehaviour:
   bowerDirection: {fileID: 700632794}
   im: {fileID: 247273333}
   bowerBirdsParent: {fileID: 139930769}
+  bowerArrow: {fileID: 700632795}
   winningText: 
 --- !u!4 &247273332
 Transform:
