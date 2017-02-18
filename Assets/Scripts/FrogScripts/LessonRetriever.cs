@@ -54,18 +54,29 @@ public class LessonRetriever  {
     {
         switch(lessonNumber)
         {
-        case 0: //1
-            return "Bid For Life is a game about reproductive strategies in the wild. All animal species engage in behaviors aimed at increasing their chances of parenting successful offspring. Such as how many offspring they have, if they care for there young, mating rituals such as dances or alerting others to if there ready to reproduce. Animals have different combinations of these strategies that make them successful in there enviroments.";
-         case 1:
-            return "Some species tend to have many offspring and provide little or no parental care for their young. These species tend to have high infant mortality rates, but they often thrive due to their high birth rates. These species are known as r species, and include many fish and insects. They tend to be small, grow quickly, and live in unstable or dynamic environments.";
+		case 0: //1
+			return "<b>Bid For Life</b> is a game about <b>reproductive strategies in the wild</b>.\n\n" +
+				"All animal species use a variety of different behaviors in order to <b>increase their chances of parenting successful offspring</b>.\n\n" +
+				"Such strategies involve, for example, having very <b>few offspring</b> or having very <b>many</b>, and spending <b>a lot of time and energy</b> on caring for their young or else spending very <b>little</b>. Some species perform <b>mating rituals</b>, such as doing special <b>dances</b> or displaying <b>signals</b> when they are ready to reproduce.\n\n" +
+				"Different species use <b>different combinations of strategies</b> like these in order to achieve <b>reproductive success</b> within their environments.";
+		case 1:
+			return "Some species tend to have <b>many offspring</b> and provide <b>little</b> or <b>no parental care</b> for their young. These species tend to have <b>high infant mortality rates</b>, but they often thrive due to their <b>high birth rates</b>.\n\n" +
+				"These species are known as <b>r-species</b>, and include many <b>fish</b> and <b>insects</b>. They tend to be <b>small, grow quickly,</b> and live in <b>unstable</b> or <b>dynamic environments</b>.";
 		case 2://2
-			return "At the other extreme live animals that tend to have very few offspring, but which invest large amounts of energy into raising and protecting those offspring. These species are known as K species, and include animals such as elephants, bears, and humans. While these species tend to produce few young, the high degree of parental care makes it more likely that those young will survive. K species tend to be large, have low mortality rates, grow slowly, and spend longer periods of their lives dependent upon parents.";
+			return "At the other extreme live animals who tend to have <b>very few offspring</b>, but who <b>invest large amounts of energy</b> into <b>raising</b> and <b>protecting</b> those offspring.\n\n" +
+				"These species are known as <b>K-species</b>, and include animals such as <b>elephants, bears,</b> and <b>humans</b>. While these species tend to produce few young, the <b>high degree of parental care</b> makes it more likely that those young will <b>survive</b>.\n\n" +
+				"<b>K-species</b> tend to be <b>large,</b> have <b>low mortality rates, grow slowly,</b> and remain <b>dependent upon parents</b> for <b>longer periods</b>.";
 		case 3://3
-			return "In reality, r and K do not represent two categories of animals. Rather, r and K are the two extremes in a range of animal behaviors, and individual species can find themselves anywhere in that range. Keep in mind that r and K are just concepts people use to help describe and compare the many different reproductive strategies throughout the animal kingdom. Many animals fall somewhere in the middle, and some have traits from both extremes of the r-K range. ";
+			return "In reality, <b>r</b> and <b>K</b> do not represent two categories of animals. Rather, <b>r</b> and <b>K</b> are the <b>two extremes in a range of animal behaviors</b>, and individual species can find themselves anywhere in that range.\n\n" +
+				"Keep in mind that <b>r</b> and <b>K</b> are just <b>concepts</b> that people use to help <b>describe</b> and <b>compare</b> the many <b>different reproductive strategies</b> found throughout the animal kingdom. Many animals fall <b>somewhere in the middle</b>, and some have traits from <b>both extremes</b> of the <b>r–K</b> range.";
 		case 4://4
-			return "Many species of animals also engage in specific mating rituals and behaviors aimed at attracting mates. Typically, this is a show of desirable traits, such as healthy feathers, strength, a strong voice. Selecting a mate with those behaviors will mean your offspring will be more likely to have those desirable traits themselves. Other behaviours include herding or nesting, aimed at protecting the young.";
+			return "Many species of animals also engage in <b>specific behaviors</b> and <b>mating rituals</b> aimed at <b>attracting mates</b>.\n\n" +
+				"Typically, this is <b>a show of desirable traits</b>, such as healthy feathers, strength, a strong voice. Selecting a mate with those behaviors will <b>increase the probability</b> that <b>your offspring will have those same desirable traits themselves</b>, which would increase their chances of <b>survival</b> and <b>reproductive success</b>.\n\n" +
+				"Other behaviours include <b>herding</b> or <b>nesting</b>, aimed at <b>protecting the young</b>.";
 		case 5://outro1
-			return "Bid For Life is made up of five mini-games in which you will play as a member of five different animal species. Make sure you pay attention to the short lessons before and after each game, because you can boost your score by doing well on the quizzes! Have fun!";
+			return "<b>Bid For Life</b> is made up of <b>five mini-games</b> in which you will play as a member of <b>five different animal species</b>.\n\n" +
+				"Make sure you pay attention to the <b>short lessons</b> before and after each game, because you can <b>boost your score</b> by doing well on the <b>quizzes</b>!\n\n" +
+				"Have fun!";
         default:
             Debug.Log("Lesson out of bounds " + lessonNumber);
             return "";
@@ -84,7 +95,7 @@ public class LessonRetriever  {
             case 2:
                 return "You have just found a group of fresh puddles following a rare desert thunderstorm. Many other toads have also arrived. But beware: the noisy toads have attracted some hungry predators! The more living descendants you have when the puddles dry up, the higher your score will be.";
             case 3:
-                return "Spadefoot toads are considered an opportunistic r species. They have large amounts of offspring, but few survive. They have short life expectancy, and the young mature very quickly. They do not protect their offspring, but rather focus on having as many as possible. That way, it is very likely that at least some of them will reach adulthood. A male spadefoot toad who does not take full advantage of the rare explosive breeding event is likely to have far fewer descendants than his rivals. ";
+                return "Spadefoot toads are considered an opportunistic r-species. They have large amounts of offspring, but few survive. They have short life expectancy, and the young mature very quickly. They do not protect their offspring, but rather focus on having as many as possible. That way, it is very likely that at least some of them will reach adulthood. A male spadefoot toad who does not take full advantage of the rare explosive breeding event is likely to have far fewer descendants than his rivals. ";
             default:
                 Debug.Log("Lesson out of bounds " + lessonNumber);
                 return "";
@@ -116,7 +127,7 @@ public class LessonRetriever  {
         switch (lessonNumber)
         {
 		case 0: //L1
-			return " In this game you will play as a male bowerbird. Bowerbirds are considered a K species. They usually lay one egg, which takes about three weeks to hatch. The female raises her young for two months after they hatch. Some bowerbirds take up to eight years to mature. Bowerbirds are particularly famous for their mating rituals. Male bowerbirds create small structures made of twigs called bowers, and adorn them with decorations. These can include  pebbles, shells, feathers, flowers, and berries. ";
+			return " In this game you will play as a male bowerbird. Bowerbirds are considered a K-species. They usually lay one egg, which takes about three weeks to hatch. The female raises her young for two months after they hatch. Some bowerbirds take up to eight years to mature. Bowerbirds are particularly famous for their mating rituals. Male bowerbirds create small structures made of twigs called bowers, and adorn them with decorations. These can include  pebbles, shells, feathers, flowers, and berries. ";
 		case 1: //L2
 			return "Females who are interested in mating visit the bowers of multiple males, often returning to each one several times. Males  try especially hard to find blue decorations, since blue is the favorite color of most female bowerbirds. Unlike spadefoot toads and salmon, female bowerbirds are extremely selective in their mating. Since they have so few offspring, they must ensure that the children they do have are as healthy and strong as possible. Therefore, it pays off to find the most impressive male in the neighborhood for a mate.";
         case 2: //L3
@@ -136,7 +147,7 @@ public class LessonRetriever  {
             case 0: //intro1
 				return "In this game you will play as a female wood duck with ten day-old ducklings in your care. Wood ducks make their nests high up in trees, near large bodies of water. When wood duck hatchlings are a day old, they jump from the nest down to the forest floor (up to a twenty-meter drop!). The mother then leads her hatchlings to the nearest body of water.";
             case 1://intro2
-				return "This is the most dangerous time in the young ducklings’ lives, for they are easy targets for predators. The mother does not defend her offspring during the march, but she repeatedly calls them to her as she leads the way. Though wood ducks have more offspring than many K species, they have far fewer than salmon or toads, and about two thirds of them never reach adulthood. The mother duck provides moderate care for her young in the form of incubating the eggs, leading them to the water, and then raising them until they can fly.";
+				return "This is the most dangerous time in the young ducklings’ lives, for they are easy targets for predators. The mother does not defend her offspring during the march, but she repeatedly calls them to her as she leads the way. Though wood ducks have more offspring than many K-species, they have far fewer than salmon or toads, and about two thirds of them never reach adulthood. The mother duck provides moderate care for her young in the form of incubating the eggs, leading them to the water, and then raising them until they can fly.";
             case 2://into3
 				return "It is early spring, and your hatchlings have just jumped to the forest floor. There is a large lake nearby to the south, but beware: this forest is a home for red foxes, and they would have no trouble catching a duckling if they see one. Call your young to you when they wander, and head for the open waters! The more ducklings you can safely lead to the lake, the higher your score will be.";
             case 3://outro1
@@ -158,7 +169,7 @@ public class LessonRetriever  {
             case 2://3
 			return "It is early autumn, and your calf is four months old. Soon, the lakes will freeze over, and the herd will begin their seasonal mating.  Wolves are chasing your herd relentlessly to the south, and you must guide your calf to safety. The wolves cannot run for nearly as long as the caribou can, so your calf must only avoid them until the greater endurance of the herd prevails. The sooner your calf gets to safety, the higher your score will be!";
             case 3: //O1
-			return "Barren-ground caribou are considered a K species. The females spend a lot of time pregnant and have at most one calf a year. They invest a lot of energy into the survival of their young. Since it is far easier for a herd of caribou to protect a group of calves together than it is for an isolated mother and father to protect a single calf, it is beneficial for all the caribou to live and travel together as a herd. ";
+			return "Barren-ground caribou are considered a K-species. The females spend a lot of time pregnant and have at most one calf a year. They invest a lot of energy into the survival of their young. Since it is far easier for a herd of caribou to protect a group of calves together than it is for an isolated mother and father to protect a single calf, it is beneficial for all the caribou to live and travel together as a herd. ";
             case 4: //O2
 			return "With strength in numbers and speed on their side, barren-ground caribou successfully navigate between the winter feeding grounds in the south and the summer calving grounds in the north. A female can expect to have one calf that eventually reaches maturity every couple years, and that calf will make the awe-inspiring seasonal migration with its herd every year for the rest of its life.";
             default:
