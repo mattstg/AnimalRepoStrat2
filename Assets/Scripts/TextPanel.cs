@@ -13,7 +13,7 @@ public class TextPanel : MonoBehaviour {
     string completeText = "";
 	string activeText;
 	string closeMarkup;
-    public float lettersPerSecond = 5;
+    public float lettersPerSecond = 40f;
 	public int fontSize = 26;
     bool started = false;
     int curLetter;
@@ -59,7 +59,7 @@ public class TextPanel : MonoBehaviour {
 			&& text.rectTransform.sizeDelta.y == oldTextHeight)
             return;
 
-        timeBanked++;
+        timeBanked += Time.deltaTime;
 		if (curLetter < completeText.Length)
         {
             if (timeBanked >= 1 / lettersPerSecond)

@@ -145,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextButton: {fileID: 627325790}
   text: {fileID: 545349412}
-  lettersPerSecond: 8
+  lettersPerSecond: 40
   fontSize: 26
   dampTime: 3
   offset: 4
