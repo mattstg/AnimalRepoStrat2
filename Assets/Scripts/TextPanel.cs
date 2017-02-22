@@ -13,7 +13,7 @@ public class TextPanel : MonoBehaviour {
     string completeText = "";
 	string activeText;
 	string closeMarkup;
-    public float lettersPerSecond = 40f;
+    float lettersPerSecond = 50f;
 	public int fontSize = 26;
     bool started = false;
     int curLetter;
