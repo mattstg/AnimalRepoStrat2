@@ -89,7 +89,7 @@ public class LessonRetriever  {
         switch (lessonNumber)
         {
             case 0:
-                return "In this game, you will play as a male spadefoot toad. Spadefoot toads live in arid places, and spend much of their time hibernating underground. When a heavy rainfall occurs, the toads emerge and seek out puddles of rainwater. When they find water, the male toads begin producing their mating calls. By the time the females arrive, there can be thousands of toads assembled around single pools of water. For one night, the toads engage in what is known as explosive breeding.";
+                return "<b> Opportunistic Species </b> \n In this game, you will play as a male spadefoot toad. Spadefoot toads live in arid places, and spend much of their time hibernating underground. When a heavy rainfall occurs, the toads emerge and seek out puddles of rainwater. When they find water, the male toads begin producing their mating calls. By the time the females arrive, there can be thousands of toads assembled around single pools of water. For one night, the toads engage in what is known as explosive breeding.";
             case 1:
                 return "Each male competes with the others to mate with as many females as possible. Speed is the most important factor here, because only the tadpoles who have matured by the time the puddle dries up will survive. Female spadefoot toads can lay clutches of thousands of eggs, but most will never become adult toads. Instead of providing parental care, male spadefoot toads focus their energies on maximizing their mating. Suitable mating conditions may not come again for multiple years.";
             case 2:
