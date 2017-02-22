@@ -6,6 +6,7 @@ public class SnakeManager : MonoBehaviour {
 
     public enum cardinalDir { North, East, South, West }
     //consts
+    public bool playerIsTargetable = false;
     float averageFoodPoints;
     float totalPoints = 3;
     int snakesReturned = 1;
@@ -86,10 +87,11 @@ public class SnakeManager : MonoBehaviour {
 
     private void SetupSnake(Snake snake, cardinalDir headingDir)
     {
+        headingDir = cardinalDir.South;
         bool playerTargeted = Random.Range(0,1f) > .8f;
-        if (!player)
+        if (!player || !playerIsTargetable)
             playerTargeted = false;
-        Vector2 spawnBoundry = new Vector2(5f, 4f);
+        Vector2 spawnBoundry = new Vector2(3.5f, 2.6f);
         float snakeLength = 2;
         switch (headingDir)
         {

@@ -80,7 +80,8 @@ public class FrogGF : GameFlow {
 		Camera.main.gameObject.GetComponent<CameraFollow> ().SetZoom (2);
 		im.gameObject.SetActive (true);
 		playerFrog.CreateFrog (new Frog.FrogInfo(0,true, true),true);
-	}
+        GameObject.FindObjectOfType<SnakeManager>().playerIsTargetable = true;
+    }
 
 	public void GameFinished()
 	{
@@ -94,6 +95,7 @@ public class FrogGF : GameFlow {
         Camera.main.GetComponent<CameraFollow>().toFollow = null;
         Camera.main.transform.position = new Vector3(-.06f, 0, -10);
         Camera.main.orthographicSize = 2.9f;
+        GameObject.FindObjectOfType<SnakeManager>().playerIsTargetable = false;
     }
 
 	
