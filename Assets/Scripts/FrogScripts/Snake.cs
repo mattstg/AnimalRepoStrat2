@@ -8,7 +8,7 @@ public class Snake : MonoBehaviour {
     float frogPts = 1f;
     float tadpolePt = .5f;
     public float pointsEaten;
-    float snakeSpeed = .85f;
+    float snakeSpeed = .9f;
     public Vector2 snakeMoveDir = new Vector2(0, -1);
 
     public void Update()

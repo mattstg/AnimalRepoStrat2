@@ -27,7 +27,10 @@ public class FrogGF : GameFlow {
 		nextSceneName = "FishScene";
 		stage = -1;
 		nextStep = true;
-	}
+        foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().tadpoleParent)
+            t.GetComponent<Tadpole>().enabled = true;
+
+    }
 
 	public override void Update()
 	{
