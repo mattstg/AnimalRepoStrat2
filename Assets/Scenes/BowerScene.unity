@@ -1295,7 +1295,7 @@ MonoBehaviour:
   textPanel: {fileID: 682998174}
   scoreText: {fileID: 732080461}
   trackScoreAsTime: 0
-  maxRoundTime: 20
+  maxRoundTime: 180
   playerBB: {fileID: 2020526253}
   femaleBB: {fileID: 1428426548}
   bowerDirection: {fileID: 700632794}
