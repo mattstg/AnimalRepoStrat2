@@ -13,7 +13,7 @@ public class TextPanel : MonoBehaviour {
     string completeText = "";
 	string activeText;
 	string closeMarkup;
-    float lettersPerSecond = 300f;
+    float lettersPerSecond = 60f;
 	public int fontSize = 26;
     bool started = false;
     int curLetter;
@@ -60,9 +60,10 @@ public class TextPanel : MonoBehaviour {
             return;
 
         timeBanked += Time.deltaTime;
+
 		if (curLetter < completeText.Length)
         {
-            if (timeBanked >= 1 / lettersPerSecond)
+            while (timeBanked >= 1 / lettersPerSecond)
             {
 				while (new String(completeText[curLetter], 1) == "<")		// this section, and methods MarkupOpen/Close, handle markup with running text
 				{
