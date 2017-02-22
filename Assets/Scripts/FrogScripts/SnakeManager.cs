@@ -90,7 +90,7 @@ public class SnakeManager : MonoBehaviour {
         bool playerTargeted = Random.Range(0,1f) > .8f;
         if (!player)
             playerTargeted = false;
-        Vector2 spawnBoundry = new Vector2(6.2f, 4.8f);
+        Vector2 spawnBoundry = new Vector2(5f, 4f);
         float snakeLength = 2;
         switch (headingDir)
         {

@@ -40,7 +40,7 @@ public class Tadpole : MonoBehaviour {
 
         if (timeRemainingToGrow <= 0)
         {
-            if (GameObject.FindObjectOfType<FrogWS>().frogParent.childCount < 150)
+            if (GameObject.FindObjectOfType<FrogWS>().frogParent.childCount < FrogGF.maxFrogCount)
             {
                 GameObject newFrog = Instantiate(Resources.Load("Prefabs/Frog")) as GameObject;
                 newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().frogParent);

@@ -6,9 +6,9 @@ public class FrogCinematic : MonoBehaviour {
 
     enum FrogCinematicStage { None ,BecomingWet, BecomingArid }
 
-	int startingFrogs = 90;
-	Vector2 spawnBoundry = new Vector2(8,5);
-	float spawnOffsetRange = 2.5f;
+	int startingFrogs = 40;
+	Vector2 spawnBoundry = new Vector2(5,4);
+	//float spawnOffsetRange = 2.5f;
 
 	bool updateGroundTransformation = false;
 	bool groundIsMoistening = false;
@@ -119,7 +119,7 @@ public class FrogCinematic : MonoBehaviour {
 
 	private Vector2 GetRandomSpawnLoc()
 	{
-		float spawnOffset = Random.Range (0, spawnOffsetRange);
+		//float spawnOffset = Random.Range (0, spawnOffsetRange);
 		float spawnX;// = spawnBoundry.x * ((Random.Range(0f,1f) > .5f)?1:-1);
 		float spawnY;// = spawnBoundry.y * ((Random.Range(0f,1f) > .5f)?1:-1);
 		if (MathHelper.Fiftyfifty ()) {
@@ -129,7 +129,9 @@ public class FrogCinematic : MonoBehaviour {
 			spawnX = spawnBoundry.x * ((MathHelper.Fiftyfifty ())?1:-1);
 			spawnY = Random.Range(-spawnBoundry.y,spawnBoundry.y);
 		}
-		Vector2 spawnLoc = new Vector2 (spawnX + Mathf.Sign (spawnX) * spawnOffset, spawnY + Mathf.Sign (spawnY) * spawnOffset);
-		return spawnLoc;
+        //Vector2 spawnLoc = new Vector2 (spawnX + Mathf.Sign (spawnX) * spawnOffset, spawnY + Mathf.Sign (spawnY) * spawnOffset);
+        Vector2 spawnLoc = new Vector2(spawnX, spawnY);
+
+        return spawnLoc;
 	}
 }

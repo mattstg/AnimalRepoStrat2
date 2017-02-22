@@ -350,7 +350,7 @@ public class Frog : MonoBehaviour {
 	private void MakeBaby()
     {
         mateCooldown = matMaxCooldown;
-        if (GameObject.FindObjectOfType<FrogWS>().frogParent.childCount < 150)
+        if (GameObject.FindObjectOfType<FrogWS>().frogParent.childCount < FrogGF.maxFrogCount)
         {
             int numOfKids = (int)Random.Range(rangeOfKids.x, rangeOfKids.y);
             for (int i = 0; i < numOfKids; i++)

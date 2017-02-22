@@ -5,6 +5,8 @@ using LoLSDK;
 
 public class FrogGF : GameFlow {
 
+    public static readonly int maxFrogCount = 70;
+
 	public FrogCinematic frogCinematic;
 	//int stage = 0;
 	//bool nextStep = false;
@@ -14,7 +16,8 @@ public class FrogGF : GameFlow {
     bool secondCinematicStarted = false;
     int matureDescendants = 0;
 
-    int frogsForMaxScore = 90;
+    int frogsForMaxScore = 40;
+    
 
 	protected override void StartFlow()
 	{
@@ -71,7 +74,7 @@ public class FrogGF : GameFlow {
 		frogCinematic.StartWetlandCinematic ();
 		Camera.main.gameObject.GetComponent<CameraFollow> ().toFollow = playerFrog.transform;
         Camera.main.transform.localPosition = new Vector3(0, 0, -10);
-		Camera.main.gameObject.GetComponent<CameraFollow> ().SetZoom (3);
+		Camera.main.gameObject.GetComponent<CameraFollow> ().SetZoom (2);
 		im.gameObject.SetActive (true);
 		playerFrog.CreateFrog (new Frog.FrogInfo(0,true, true),true);
 	}
@@ -86,8 +89,8 @@ public class FrogGF : GameFlow {
                 matureDescendants++;
         }
         Camera.main.GetComponent<CameraFollow>().toFollow = null;
-        Camera.main.transform.position = new Vector3(0, 0, -10);
-        Camera.main.orthographicSize = 5;
+        Camera.main.transform.position = new Vector3(-.06f, 0, -10);
+        Camera.main.orthographicSize = 2.9f;
     }
 
 	
