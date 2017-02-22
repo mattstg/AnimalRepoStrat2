@@ -87,7 +87,6 @@ public class SnakeManager : MonoBehaviour {
 
     private void SetupSnake(Snake snake, cardinalDir headingDir)
     {
-        headingDir = cardinalDir.South;
         bool playerTargeted = Random.Range(0,1f) > .8f;
         if (!player || !playerIsTargetable)
             playerTargeted = false;
