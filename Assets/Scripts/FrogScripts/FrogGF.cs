@@ -16,7 +16,7 @@ public class FrogGF : GameFlow {
     bool secondCinematicStarted = false;
     int matureDescendants = 0;
 
-    int frogsForMaxScore = 40;
+    int frogsForMaxScore = 25;
     
 
 	protected override void StartFlow()
