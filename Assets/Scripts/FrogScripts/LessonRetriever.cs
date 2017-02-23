@@ -127,11 +127,11 @@ public class LessonRetriever  {
         switch (lessonNumber)
         {
 		case 0: //L1
-			return " In this game you will play as a <b>male bowerbird</b>. Bowerbirds are considered a <i>K</i>-species. They usually lay one egg, which takes about three weeks to hatch. The female then raises her young for about two months. Some bowerbirds take up to eight years to mature. Bowerbirds are particularly famous for their mating rituals. Male bowerbirds create small structures made of twigs called <i>bowers</i>, and adorn them with decorations. These can include pebbles, shells, feathers, flowers, and berries. ";
+			return "In this game you will play as a <b>male bowerbird</b>. Bowerbirds are considered a <i>K</i>-species. They usually lay one egg, which takes about three weeks to hatch. The female then raises her young for about two months. Some bowerbirds take up to eight years to mature. Bowerbirds are particularly famous for their mating rituals. Male bowerbirds create small structures made of twigs called <i>bowers</i>, and adorn them with decorations. These can include pebbles, shells, feathers, flowers, and berries. ";
 		case 1: //L2
 			return "Females who are interested in mating visit the bowers of multiple males, often returning to each one several times. Males try especially hard to find blue decorations, since blue is the favorite color of most female bowerbirds. Unlike spadefoot toads and salmon, female bowerbirds are extremely selective in their mating. Since they have so few offspring, they must ensure that the children they do have are as healthy and strong as possible. Therefore, it pays off to find the most impressive male in the neighborhood for a mate.";
         case 2: //L3
-			return "It is mating season, and you have just completed your twig bower. You’ve spotted a female in the area who seems to be interested in finding a mate. However, a few rival males in the area seem to have taken notice as well. Outperform your rivals by collecting the most impressive assortment of decorations for your bower!\n To get a high score, make sure the female bowerbird chooses you over the others. The faster she chooses you, the higher the score!";
+			return "It is mating season, and you have just completed your twig bower. You’ve spotted a female in the area who seems to be interested in finding a mate. However, a few rival males in the area seem to have taken notice as well. Outperform your rivals by collecting the most impressive assortment of decorations for your bower!\nTo get a high score, make sure the female bowerbird chooses you over the others. The faster she chooses you, the higher the score!";
         case 3: //outro1
 			return "Competition over female bowerbirds is fierce, and it is the main challenge males will face in their struggle to reproduce. Many of them fail to mate at all, unable to compete with their neighbors. While salmon are selected for mating by their ability to survive the run, male bowerbirds are selected for mating by their treasure-hunting and decorating skills. Since they have so few children, female bowerbirds must ensure that each one has a high chance of survival. Therefore, they select only the owners of the best bowers as mates.";
             default:
@@ -145,7 +145,7 @@ public class LessonRetriever  {
         switch (lessonNumber)
         {
             case 0: //intro1
-				return "In this game you will play as a <b>female wood duck</b> with ten newly hatched ducklings in your care. Wood ducks make their nests high up in trees, near large bodies of water. When wood duck hatchlings are a day old, they jump from the nest down to the forest floor (up to a twenty-meter drop!). The mother then leads her hatchlings to the nearest body of water.";
+				return "In this game you will play as a <b>female wood duck</b> with ten newly-hatched ducklings in your care. Wood ducks make their nests high up in trees, near large bodies of water. When wood duck hatchlings are a day old, they jump from the nest down to the forest floor (up to a twenty-meter drop!). The mother then leads her hatchlings to the nearest body of water.";
             case 1://intro2
 				return "This is the most dangerous time in the young ducklings’ lives, for they are easy targets for predators. The mother does not defend her offspring during the march, but she repeatedly calls them to her as she leads the way. Though wood ducks have more offspring than many <i>K</i>-species, they have far fewer than salmon or toads, and about two thirds of them never reach adulthood. The mother duck provides moderate care for her young in the form of incubating the eggs, leading the ducklings to the water, and then raising them until they can fly.";
             case 2://into3
@@ -183,7 +183,7 @@ public class LessonRetriever  {
         switch (lessonNumber)
         {
             case 0:
-                return "As you have seen, animals engage in all kinds of behaviors in their ongoing struggle to survive and reproduce. Whether it's building nests, performing dances, or running rivers, all animals have ways of making a bid on life. While each strategy has its own costs and benefits, no one stategy is better than than the others./n" + "Now, a final test to see what you've learned!";
+                return "As you have seen, animals engage in all kinds of behaviors in their ongoing struggle to survive and reproduce. Whether it's building nests, performing dances, or running rivers, all animals have ways of making a bid on life. While each strategy has its own costs and benefits, no one stategy is better than than the others./nNow, a final test to see what you've learned!";
             case 1:
                 return "This has been Bid for Life. We hope you enjoyed witnessing and using some strategies of survival and reproduction that exist in the vast animal kingdom!"; 
             case 2:
