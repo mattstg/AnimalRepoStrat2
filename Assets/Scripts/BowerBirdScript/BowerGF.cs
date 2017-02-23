@@ -10,7 +10,7 @@ public class BowerGF : GameFlow {
 	public InputManager im;
     public GameObject bowerBirdsParent;
     public Transform bowerArrow;
-	public string winningText = "Unfortunately none of the bower birds in this region has attracted the female and she has left to find greener pastures! Perhaps the next female will be less picky!";
+	public string winningText = "Unfortunately, none of the male bowerbirds in this region have attracted the female, and so she has left in search of other candidates! Perhaps the next female will be less picky!";
 	private bool someoneWon = false;
 	float scoreFor100 = 24;
 
@@ -45,10 +45,10 @@ public class BowerGF : GameFlow {
 		score = (int) _score;
 		if (winner.isPlayer) {
 			//player winner
-			winningText = "You have attracted the attention of the female! You win with a Bower score of ";
+			winningText = "You have attracted the attention of the female! You win with a bower score of " + score;
 		} else {
 			//enemy bower wins
-			winningText = "One of your rivals has attracted the attention of the female with a Bower score of ";
+			winningText = "One of your rivals has attracted the attention of the female! Your bower score of " + score + " was not high enough to outshine your competitors!";
 		}
 		nextStep = true;
 	}

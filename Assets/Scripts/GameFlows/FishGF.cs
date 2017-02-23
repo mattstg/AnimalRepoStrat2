@@ -40,7 +40,7 @@ public class FishGF : GameFlow {
         string toOut = "";
         if(gameForceEnded)
         {
-            toOut = "You did not make it up the stream in time for the migration, and because your bodies mutations, will not survive back in a life at sea, your descendency ends here";
+            toOut = "You did not make it to your spawning grounds in time for mating. Because your body has undergone a tranformation to survive in fresh water, you will not survive back in the salty sea. Your lineage ends here.";
         }
         else
         {

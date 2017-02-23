@@ -36,10 +36,10 @@ public class DuckGF : GameFlow {
         }
         else if (ducklingsSaved == 0)
         {
-            toOut = "Although you have made it to the river, none of your ducklings have, you will have to try again in the future and hope for a better outcome";
+            toOut = "Although you have made it to the lake, none of your ducklings have. You will have to try again next year and hope for a better outcome";
         }
         else
-            toOut = "You have made it in " + scoreText.TimeAsTimerString(roundTime) + " and with " + ducklingsSaved + " ducklings. The baby ducklings can now take care of themselves, searching for food and shelter";
+            toOut = "You have made it in " + scoreText.TimeAsTimerString(roundTime) + " with " + ducklingsSaved + " ducklings.";
 
         textPanel.gameObject.SetActive(true);
         textPanel.SetText(toOut);

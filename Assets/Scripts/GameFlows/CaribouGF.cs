@@ -53,9 +53,9 @@ public class CaribouGF : GameFlow {
 
         string toOut = "";
         if (gameForceEnded)
-            toOut = "Unfortunatly, you have ran out of time, and were unable to complete the migration run";
+            toOut = "Unfortunately, you have run out of time. You were unable to complete the migration run";
         else
-            toOut = "You completed the migration run in " + scoreText.TimeAsTimerString(roundTime);
+            toOut = "You and your calf escaped from the wolves in " + scoreText.TimeAsTimerString(roundTime);
         textPanel.gameObject.SetActive(true);
         textPanel.SetText(toOut);
         textPanel.StartWriting();
