@@ -179,7 +179,7 @@ public class GameFlow : MonoBehaviour {
 	public virtual void NextTutorialButtonPressed()
 	{
         currentTut++;
-        if (currentTut < 3)
+        if (currentTut < 4)
             tutorial.GetComponent<UnityEngine.UI.Image>().sprite = TutorialRetriever.Instance.GetTutorialImage(lessonType, currentTut);
         else
         {
