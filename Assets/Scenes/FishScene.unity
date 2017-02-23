@@ -15820,8 +15820,8 @@ MonoBehaviour:
   toFollow: {fileID: 1309052321}
   offset: {x: 0, y: 0, z: 0}
   useLimits: 1
-  limitBottomLeft: {x: 0, y: 1.72}
-  limitTopRight: {x: 29, y: 179}
+  limitBottomLeft: {x: 0, y: 0.5}
+  limitTopRight: {x: 24.5, y: 179}
   viewportMargin: 0.5
 --- !u!1001 &684440115
 Prefab:
