@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da52700164eb1834faedf8df19f0f469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animals: []
   waterSlowCoeff: 1
   currentWaypoint: {fileID: 0}
   test: 0
@@ -298,7 +299,7 @@ MonoBehaviour:
   turnsHead: 1
   head: {fileID: 1286030784081590}
   headRotationSpeed: 20
-  updateFrequency: 2
+  updateFrequency: 4
   speedRange: {x: 690, y: 690}
   rotationSpeedRange: {x: 7, y: 9}
   isCalf: 0
