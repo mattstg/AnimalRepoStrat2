@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef2c1b7c5ebcf34a9049400dfbe70e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomScale: {x: -0.2, y: 0.3}
+  randomScale: {x: -0.2, y: 0.2}
 --- !u!212 &212063684514691842
 SpriteRenderer:
   m_ObjectHideFlags: 1
