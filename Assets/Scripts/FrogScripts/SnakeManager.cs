@@ -29,13 +29,13 @@ public class SnakeManager : MonoBehaviour {
         averageFoodPoints = 0;
         totalPoints = 3;
         snakesReturned = 1;
-        player = GameObject.FindObjectOfType<FrogGF>().playerFrog.transform;
+        player = FrogGV.frogWS.frogGF.playerFrog.transform;
     }
 
     private void CreateSnake()
     {
         GameObject snakego = Instantiate(Resources.Load("Prefabs/Snake")) as GameObject;
-        snakego.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().snakeParent);
+        snakego.transform.SetParent(FrogGV.frogWS.snakeParent);
         Snake newSnake = snakego.GetComponent<Snake>();
         cardinalDir cardDir = (cardinalDir)(Random.Range(0, 4));
         SetupSnake(newSnake,cardDir);
@@ -46,7 +46,7 @@ public class SnakeManager : MonoBehaviour {
     public void SnakeReachedEnd(Snake snake)
     {
         snakesReturned++;
-        if(GameObject.FindObjectOfType<FrogWS>().frogParent.childCount < (FrogGF.maxFrogCount * .9f))
+        if (FrogGV.frogWS.frogParent.childCount < (FrogGF.maxFrogCount * .9f))
             totalPoints += snake.pointsEaten;
         else
             totalPoints += snake.pointsEaten * 2f;

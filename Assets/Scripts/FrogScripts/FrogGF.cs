@@ -27,7 +27,7 @@ public class FrogGF : GameFlow {
 		nextSceneName = "FishScene";
 		stage = -1;
 		nextStep = true;
-        foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().tadpoleParent)
+        foreach (Transform t in FrogGV.frogWS.tadpoleParent)
             t.GetComponent<Tadpole>().enabled = true;
 
     }
@@ -87,7 +87,7 @@ public class FrogGF : GameFlow {
 	{
 		nextStep = true;
         matureDescendants = 0;
-        foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().frogParent)
+        foreach (Transform t in FrogGV.frogWS.frogParent)
         {
             if (t.GetComponent<Frog>().isPlayerDescendant)
                 matureDescendants++;

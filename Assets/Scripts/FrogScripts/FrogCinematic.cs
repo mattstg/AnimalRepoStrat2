@@ -17,19 +17,15 @@ public class FrogCinematic : MonoBehaviour {
     FrogCinematicStage currentStage = FrogCinematicStage.None;
     bool evacuateAtEndOfCinematic = false;
 
-	List<Puddle> puddles = new List<Puddle>();
-	Transform puddleParent;
+    Puddle puddle;
 	SpriteRenderer aridBg;
 	SpriteRenderer wetBg;
 
 	public void Start()
 	{
-		puddleParent = GameObject.FindObjectOfType<FrogWS> ().puddleParent;
-		aridBg = GameObject.FindObjectOfType<FrogWS> ().aridBackground;
-		wetBg = GameObject.FindObjectOfType<FrogWS> ().moistBackground;
-		foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().puddleParent) {
-			puddles.Add (t.GetComponent<Puddle> ());
-		}
+        puddle = FrogGV.frogWS.puddle;
+		aridBg = FrogGV.frogWS.aridBackground;
+		wetBg  = FrogGV.frogWS.moistBackground;
 	}
 
 	public void StartFirstAridCinematic()
@@ -37,12 +33,11 @@ public class FrogCinematic : MonoBehaviour {
 		transformationCounter = 0;
         timeToTransformation = 5;
         currentStage = FrogCinematicStage.BecomingArid;
-        foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().frogParent)
+        foreach (Transform t in FrogGV.frogWS.frogParent)
 			Destroy (t.gameObject);
-		foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().tadpoleParent)
+		foreach (Transform t in FrogGV.frogWS.tadpoleParent)
 			Destroy (t.gameObject);
-        foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().puddleParent)
-            t.GetComponent<Puddle>().activeTadpoles = new List<Tadpole>();
+        puddle.activeTadpoles = new List<Tadpole>();
     }
 
     public void StartSecondAridCinematic()
@@ -60,7 +55,7 @@ public class FrogCinematic : MonoBehaviour {
         currentStage = FrogCinematicStage.BecomingWet;
         for (int i = 0; i <= startingFrogs; i++) {
 			GameObject newFrog = Instantiate(Resources.Load("Prefabs/Frog")) as GameObject;
-			newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().frogParent);
+			newFrog.transform.SetParent(FrogGV.frogWS.frogParent);
 			newFrog.transform.position = GetRandomSpawnLoc();
             Frog.FrogInfo fi = new Frog.FrogInfo(0, false, Random.Range(0f, 1f) > .5f);
 			newFrog.GetComponent<Frog>().CreateFrog(fi);
@@ -90,14 +85,12 @@ public class FrogCinematic : MonoBehaviour {
         Color moistColor = wetBg.color;
         moistColor.a = 1 - (transformationCounter / timeToTransformation);
         wetBg.color = moistColor;
-        foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().puddleParent)
-        {
-            t.localScale = Vector2.Lerp(t.GetComponent<Puddle>().originalSize, new Vector2(.01f, .01f), (transformationCounter / timeToTransformation));
-            t.GetComponent<Puddle>().carryingCapacity = (int)(( 1- (transformationCounter / timeToTransformation)) * t.GetComponent<Puddle>().originalCarryingCapacity);
-        }
+
+        puddle.transform.localScale = Vector2.Lerp(puddle.originalSize, new Vector2(.01f, .01f), (transformationCounter / timeToTransformation));
+        puddle.carryingCapacity = (int)(( 1- (transformationCounter / timeToTransformation)) * puddle.originalCarryingCapacity);
 
         if (evacuateAtEndOfCinematic && transformationCounter >= timeToTransformation)
-            foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().frogParent)
+            foreach (Transform t in FrogGV.frogWS.frogParent)
                 t.GetComponent<Frog>().leaveMap = true;
     }
 
@@ -107,11 +100,8 @@ public class FrogCinematic : MonoBehaviour {
         Color moistColor = wetBg.color;
         moistColor.a = (transformationCounter / timeToTransformation);
         wetBg.color = moistColor;
-        foreach (Transform t in GameObject.FindObjectOfType<FrogWS>().puddleParent)
-        {
-            t.localScale = Vector2.Lerp( new Vector2(.01f, .01f), t.GetComponent<Puddle>().originalSize, (transformationCounter / timeToTransformation));
-            t.GetComponent<Puddle>().carryingCapacity = (int)((transformationCounter / timeToTransformation) * t.GetComponent<Puddle>().originalCarryingCapacity);
-        }
+        puddle.transform.localScale = Vector2.Lerp( new Vector2(.01f, .01f), puddle.originalSize, (transformationCounter / timeToTransformation));
+        puddle.carryingCapacity = (int)((transformationCounter / timeToTransformation) * puddle.originalCarryingCapacity);
     }
 
 

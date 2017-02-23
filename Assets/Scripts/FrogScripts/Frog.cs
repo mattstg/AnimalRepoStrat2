@@ -29,6 +29,7 @@ public class Frog : MonoBehaviour {
 
     //calling state
 	public GameObject ribbitRing;
+    OpacityFade opactiyFade;
     float maxRange = 4.4f;
 	float rangeRateIncrease = 3f;
     float chanceToRepeatCall = .4f;
@@ -59,9 +60,10 @@ public class Frog : MonoBehaviour {
         if (pioneerFrog)
             mateCooldown = 0;
 		if (frogInfo.playerDescendant) {
-			FindObjectOfType<FrogGF> ().score++;
+			FrogGV.frogWS.frogGF.score++;
 		}
-        ribbitRing.GetComponent<OpacityFade>().SetPresentOpacity(0);
+        opactiyFade = ribbitRing.GetComponent<OpacityFade>();
+        opactiyFade.SetPresentOpacity(0);
     }
 	// Update is called once per frame
 	void Update () {
@@ -234,7 +236,7 @@ public class Frog : MonoBehaviour {
 		{
 			ribbitRing.transform.localScale = new Vector3 (1, 1, 1);
             ribbitRing.SetActive (false);
-            ribbitRing.GetComponent<OpacityFade>().SetPresentOpacity(1);
+            opactiyFade.SetPresentOpacity(1);
             if (!playerCntrl) {
 				if (Random.Range (0f, 1f) > chanceToRepeatCall) {
 					EnterCallingState (); //re-cycle the state
@@ -249,8 +251,7 @@ public class Frog : MonoBehaviour {
 		{
             ribbitRing.SetActive (true);
 			ribbitRing.transform.localScale = ribbitRing.transform.localScale + new Vector3 (1, 1) * rangeRateIncrease * Time.deltaTime;
-            ribbitRing.GetComponent<OpacityFade>().
-                SetPresentOpacity(1 - ribbitRing.GetComponent<OpacityFade>().GetIntegral(Mathf.Max(0, 3 * ribbitRing.transform.localScale.x / maxRange - 2)));
+            opactiyFade.SetPresentOpacity(1 - opactiyFade.GetIntegral(Mathf.Max(0, 3 * ribbitRing.transform.localScale.x / maxRange - 2)));
         }
     }
 
@@ -350,13 +351,13 @@ public class Frog : MonoBehaviour {
 	private void MakeBaby()
     {
         mateCooldown = matMaxCooldown;
-        if (GameObject.FindObjectOfType<FrogWS>().frogParent.childCount < FrogGF.maxFrogCount)
+        if (FrogGV.frogWS.frogParent.childCount < FrogGF.maxFrogCount)
         {
             int numOfKids = (int)Random.Range(rangeOfKids.x, rangeOfKids.y);
             for (int i = 0; i < numOfKids; i++)
             {
                 GameObject newFrog = Instantiate(Resources.Load("Prefabs/Tadpole")) as GameObject;
-                newFrog.transform.SetParent(GameObject.FindObjectOfType<FrogWS>().tadpoleParent);
+                newFrog.transform.SetParent(FrogGV.frogWS.tadpoleParent);
                 newFrog.transform.position = transform.position;
                 Frog.FrogInfo tempFi = new FrogInfo(frogInfo);
                 tempFi.genNumber = Mathf.Max(tempFi.genNumber, lastTouchedFrog.frogInfo.genNumber) + 1;

@@ -545,6 +545,12 @@ PolygonCollider2D:
       - {x: -1.24, y: 0.21}
       - {x: -1.1, y: 0.08}
       - {x: -1.12, y: -0.089999996}
+--- !u!114 &131156595 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114982663140004108, guid: 08118f3feb273f44ebbd688fed9919c2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1751085800}
+  m_Script: {fileID: 11500000, guid: 24584038e5ee0534aa7777dc3a473707, type: 3}
 --- !u!1 &143862654
 GameObject:
   m_ObjectHideFlags: 0
@@ -5252,10 +5258,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aridBackground: {fileID: 1632567983}
   moistBackground: {fileID: 1108398214}
-  puddleParent: {fileID: 779098055}
+  puddle: {fileID: 131156595}
   frogParent: {fileID: 1427037790}
   tadpoleParent: {fileID: 1178448901}
   snakeParent: {fileID: 849833046}
+  frogGF: {fileID: 1336928104}
 --- !u!4 &1336928103
 Transform:
   m_ObjectHideFlags: 0

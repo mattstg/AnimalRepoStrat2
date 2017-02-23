@@ -5,11 +5,8 @@ using LoLSDK;
 
 public class PlayerFrog : Frog {
 
-    private AudioSource audioSrc;
-
     public override void CreateFrog(FrogInfo _frogInfo, bool pioneerFrog = false)
     {
-        audioSrc = GetComponent<AudioSource>();
         base.CreateFrog(_frogInfo, pioneerFrog);
     }
 
@@ -35,7 +32,7 @@ public class PlayerFrog : Frog {
     public override void FrogEaten()
     {
         Frog frogFound = null;
-        foreach(Transform t in GameObject.FindObjectOfType<FrogWS>().frogParent)
+        foreach(Transform t in FrogGV.frogWS.frogParent)
         {
             Frog f = t.GetComponent<Frog>();
             if(f.isPlayerDescendant && f.isMale)
@@ -54,7 +51,7 @@ public class PlayerFrog : Frog {
         else
         {
             bool safetyCatch = true;
-			foreach(Transform t in GameObject.FindObjectOfType<FrogWS>().frogParent)
+			foreach(Transform t in FrogGV.frogWS.frogParent)
 			{
 				Frog f = t.GetComponent<Frog>();
 				if(f.isMale && !f.outtaBounds)
