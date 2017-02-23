@@ -20331,7 +20331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e43af8839bcb354d9858a344dce49c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuackCircle: {fileID: 1995407290}
+  QuackCircleObject: {fileID: 1995407290}
   foxParent: {fileID: 137737224}
   abilityBar: {fileID: 549522022}
   speed: 1.8

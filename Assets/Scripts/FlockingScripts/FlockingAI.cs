@@ -92,7 +92,13 @@ public class FlockingAI : MonoBehaviour
     public float predAverageHeadingWeight = 1f;
     public float predAveragePositionWeight = 1f;
 
-
+    //Type references
+    PredatorManager predatorManager;
+    FlockManager    flockManager;
+    CalfManager     calfManager;
+    Corpsemanager   corpseManager;
+    WaypointManager waypointManager;
+    LeaderManager   leaderManager;
     // Methods
 
     Vector2 V3toV2(Vector3 _vector3) //makes a Vector2 out of the x and y of a Vector3
@@ -109,10 +115,10 @@ public class FlockingAI : MonoBehaviour
         if (!rigidbody)
             rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.bodyType = RigidbodyType2D.Static;
-        GameObject.FindObjectOfType<FlockManager>().flock.Remove(this.gameObject);
+        flockManager.flock.Remove(this.gameObject);
         if (!isFish) {
-			GameObject.FindObjectOfType<CalfManager> ().calfTransforms.Remove (this.transform);
-			GameObject.FindObjectOfType<Corpsemanager> ().Corpses.Add (this.gameObject);
+            calfManager.calfTransforms.Remove (this.transform);
+            corpseManager.Corpses.Add (this.gameObject);
             if (name != "PlayerCalf")
                 gameObject.AddComponent<DecayCounter>();
             else
@@ -127,9 +133,9 @@ public class FlockingAI : MonoBehaviour
         if (!rigidbody)
             rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.bodyType = RigidbodyType2D.Dynamic;
-        GameObject.FindObjectOfType<FlockManager>().flock.Add(this.gameObject);
-        GameObject.FindObjectOfType<CalfManager>().calfTransforms.Add(this.transform);
-        GameObject.FindObjectOfType<Corpsemanager>().Corpses.Remove(this.gameObject);
+        flockManager.flock.Add(this.gameObject);
+        calfManager.calfTransforms.Add(this.transform);
+        corpseManager.Corpses.Remove(this.gameObject);
         gameObject.SetActive(true);
     }
 
@@ -150,10 +156,7 @@ public class FlockingAI : MonoBehaviour
         if (!isCorpse)
         {
             List<GameObject> animals = new List<GameObject>();
-            animals = GameObject.FindObjectOfType<FlockManager>().flock;
-
-
-
+            animals = flockManager.flock;
 
             Vector2 thisPos = V3toV2(this.transform.position);
 
@@ -186,7 +189,8 @@ public class FlockingAI : MonoBehaviour
                     animals.RemoveAt(i);
                     continue; //go to next iteration
                 }
-                if(_animal.GetComponent<FlockingAI>() && !_animal.GetComponent<FlockingAI>().enabled)
+                FlockingAI _animalFlockAi = _animal.GetComponent<FlockingAI>();
+                if (_animalFlockAi && !_animalFlockAi.enabled)
                 {
                     //Since some of them may be turned off, waiting on standby till a player gets close
                     continue;
@@ -206,7 +210,7 @@ public class FlockingAI : MonoBehaviour
 
                         vCenter += _animalsPos;
                         vHeading += _animalsForward;
-                        if(_animal.GetComponent<FlockingAI>())
+                        if(_animalFlockAi)
                             localGroupSize++;
 
                         if (isPredator && isPredOnStandby)
@@ -225,20 +229,17 @@ public class FlockingAI : MonoBehaviour
                         }
                         else
                         {
-                            if (_animal.GetComponent<FlockingAI>())
+                            if (_animalFlockAi)
                             {
-                                if (!(_animal.GetComponent<FlockingAI>().isCalf)) //predators don't get repelled by calves
+                                if (!(_animalFlockAi.isCalf)) //predators don't get repelled by calves
                                     if (dist < repulsionDistance)
                                         vRepel += (thisPos - _animalsPos);
                             }
 
                         }
 
-                        if (_animal.GetComponent<FlockingAI>())
-                        {
-                            FlockingAI _animalsAI = _animal.GetComponent<FlockingAI>(); //getting _animal's speed for calculating average local speed
-                            localGroupSpeed += _animalsAI.speed;
-                        }
+                        if (_animalFlockAi)
+                            localGroupSpeed += _animalFlockAi.speed;
                         
                     }
                 }
@@ -263,9 +264,9 @@ public class FlockingAI : MonoBehaviour
 					vWaypoint = currentWaypoint.transform.position - transform.position;
 					vWaypoint = vWaypoint.normalized;
 				}
-				else if (GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint] != null)
+				else if (waypointManager.waypointPositions[activeWaypoint] != null)
                 {
-                    vWaypoint = GameObject.FindObjectOfType<WaypointManager>().waypointPositions[activeWaypoint];
+                    vWaypoint = waypointManager.waypointPositions[activeWaypoint];
                     vWaypoint -= thisPos;
                     vWaypoint = vWaypoint.normalized; //now equals normalized vector towards active waypoint
                 }
@@ -274,7 +275,7 @@ public class FlockingAI : MonoBehaviour
             if (followsLeaders)
             {
                 List<Vector2> poslist = new List<Vector2>();
-                poslist = GameObject.FindObjectOfType<LeaderManager>().leaders;
+                poslist = leaderManager.leaders;
                 float closestLeaderDistance = 1000;
                 Vector2 closestLeaderPos = Vector2.zero;
                 if (poslist.Count != 0)
@@ -343,7 +344,7 @@ public class FlockingAI : MonoBehaviour
             if (fleesFromPredators)
             {
                 List<Vector2> predPositions = new List<Vector2>();
-                predPositions = GameObject.FindObjectOfType<PredatorManager>().predatorPositions;
+                predPositions = predatorManager.predatorPositions;
                 float closestPredDistance = 1000;
                 Vector2 closestPredPos = Vector2.zero;
                 if (predPositions.Count != 0)
@@ -372,8 +373,8 @@ public class FlockingAI : MonoBehaviour
                 //List<Vector2> predators = new List<Vector2>();
                 //predators = GameObject.FindObjectOfType<PredatorManager>().predatorPositions;
                 List<Transform> predtransforms = new List<Transform>();
-                predtransforms = GameObject.FindObjectOfType<PredatorManager>().predatorTransforms;
-                List<Transform> calfTrans = GameObject.FindObjectOfType<CalfManager>().calfTransforms;
+                predtransforms = predatorManager.predatorTransforms;
+                List<Transform> calfTrans = calfManager.calfTransforms;
                 float closestCalfDistance = 1000;
                 Vector2 closestCalfPos = Vector2.zero;
                 if (calfTrans.Count != 0)
@@ -427,7 +428,7 @@ public class FlockingAI : MonoBehaviour
             {
                 float closestCorpseDistance = 1000;
                 Vector2 closestCorpsePos = Vector2.zero;
-                List<GameObject> corpses = GameObject.FindObjectOfType<Corpsemanager>().Corpses;
+                List<GameObject> corpses = corpseManager.Corpses;
                 if (corpses.Count != 0)
                 {
                     foreach (GameObject _corpse in corpses)
@@ -507,9 +508,17 @@ public class FlockingAI : MonoBehaviour
 
     void Start()
     {
+        //will return null if not applicable
+        predatorManager = GameObject.FindObjectOfType<PredatorManager>();
+        flockManager    = GameObject.FindObjectOfType<FlockManager>();
+        calfManager     = GameObject.FindObjectOfType<CalfManager>();
+        corpseManager   = GameObject.FindObjectOfType<Corpsemanager>();
+        waypointManager = GameObject.FindObjectOfType<WaypointManager>();
+        leaderManager   = GameObject.FindObjectOfType<LeaderManager>();
+
         if (!isPredator)
         {
-            GameObject.FindObjectOfType<FlockManager>().flock.Add(this.gameObject); // adds this animal to FlockManager's flock list
+            flockManager.flock.Add(this.gameObject); // adds this animal to FlockManager's flock list
 
         }
 
@@ -554,7 +563,7 @@ public class FlockingAI : MonoBehaviour
 
         if (!finishedWaypoints && usesWaypoints)
         {
-            numOfWP = GameObject.FindObjectOfType<WaypointManager>().waypointPositions.Count;
+            numOfWP = waypointManager.waypointPositions.Count;
             finishedWaypoints = true;
         }
 
@@ -562,7 +571,7 @@ public class FlockingAI : MonoBehaviour
         if (usesWaypoints)
         {
 				if (usesWaypoints && currentWaypoint == null) {
-					Vector2 way = GameObject.FindObjectOfType<WaypointManager> ().waypointPositions [activeWaypoint];
+					Vector2 way = waypointManager.waypointPositions [activeWaypoint];
 					float dist = Vector2.Distance (way, V3toV2 (this.transform.position));
 					if (dist <= waypointReachedProximity) {
 						if (activeWaypoint + 1 < numOfWP)

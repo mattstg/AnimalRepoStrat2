@@ -19,7 +19,6 @@ public class LeaderManager : MonoBehaviour
         
         foreach (Transform t in this.transform) 
 		{
-             
 			leaders.Add (t.position);
 			leaderTrans.Add (t);
 		}
@@ -32,17 +31,11 @@ public class LeaderManager : MonoBehaviour
     {
         if (Random.Range(0, posUpdateFrequency) == 0)
         {
-			
             for (int i = 0; i < numOfLeaders; i++)
             {
-
 				leaders [i] = leaderTrans [i].position;
             }
-
-
         }  
-
-
     }
 
     

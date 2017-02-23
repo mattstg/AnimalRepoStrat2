@@ -14,9 +14,14 @@ public class Calf : MonoBehaviour {
     public float currentSpeedBoost = 0f;
     public float speedBoostDecayRate = 8f;
 
+    PredatorManager predatorManager;
+    FlockingAI flockAi;
+
     // Use this for initialization
     void Start () {
-        baseSpeed = gameObject.GetComponent<FlockingAI>().speedRange.y;
+        flockAi = gameObject.GetComponent<FlockingAI>();
+        baseSpeed = flockAi.speedRange.y;
+        predatorManager = GameObject.FindObjectOfType<PredatorManager>();
     }
 	
 	// Update is called once per frame
@@ -25,7 +30,7 @@ public class Calf : MonoBehaviour {
         {
             if (sprintCoolDown == 0)
             {
-                List<Transform> wolfTrans = GameObject.FindObjectOfType<PredatorManager>().predatorTransforms;
+                List<Transform> wolfTrans = predatorManager.predatorTransforms;
                 float closestWolfDistance = 1000;
                 if (wolfTrans.Count != 0)
                 {
@@ -68,11 +73,11 @@ public class Calf : MonoBehaviour {
         else if (currentSpeedBoost <= 0)
             currentSpeedBoost = 0;
 
-        gameObject.GetComponent<FlockingAI>().speed = baseSpeed + currentSpeedBoost;
+        flockAi.speed = baseSpeed + currentSpeedBoost;
 
-        if (gameObject.GetComponent<FlockingAI>().test)
+        if (flockAi.test)
         {
-            Debug.Log(gameObject.GetComponent<FlockingAI>().speed + "=" + baseSpeed + "+" + currentSpeedBoost);
+            Debug.Log(flockAi.speed + "=" + baseSpeed + "+" + currentSpeedBoost);
         }
     }
 }

@@ -10,14 +10,18 @@ public class Duckling : MonoBehaviour {
 	public bool isDead = false;
     // Update is called once per frame
 
+    DucklingManager ducklingManager;
+
     void Start()
     {
-        GameObject.FindObjectOfType<DucklingManager>().Ducklings.Add(this.gameObject);
+        ducklingManager = GameObject.FindObjectOfType<DucklingManager>();
+        ducklingManager.Ducklings.Add(this.gameObject);
     }
+
     void Update () {
 		if(isDead)
         {
-            GameObject.FindObjectOfType<DucklingManager>().Ducklings.Remove(this.gameObject);
+            ducklingManager.Ducklings.Remove(this.gameObject);
         }
         if (quackStrength > 1)
         {

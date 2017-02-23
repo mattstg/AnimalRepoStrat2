@@ -4,7 +4,7 @@ using UnityEngine; using LoLSDK;
 
 public class PlayerDuck : MonoBehaviour {
 
-    public GameObject QuackCircle;
+    public GameObject QuackCircleObject;
     public Transform foxParent;
     public AbilityBar abilityBar;
     public float speed = 5f;
@@ -17,6 +17,10 @@ public class PlayerDuck : MonoBehaviour {
     AudioSource source;
     AudioClip quack;
 
+    OpacityFade opacityFade;
+    QuackCircle quackCircle;
+    DucklingManager ducklingManager;
+
 
     public void MousePressed(Vector3 loc)
     {
@@ -28,9 +32,9 @@ public class PlayerDuck : MonoBehaviour {
         if (quackCoolDown == 0)
         {
             //QuackCircle.GetComponent<QuackCircle>().currentAlpha = QuackCircle.GetComponent<QuackCircle>().maxAlpha;
-            QuackCircle.GetComponent<OpacityFade>().SetPresentOpacity(QuackCircle.GetComponent<QuackCircle>().maxAlpha);
-            QuackCircle.GetComponent<OpacityFade>().SetTargetOpacity(0, QuackCircle.GetComponent<QuackCircle>().circleVisibleLife);
-            foreach (GameObject duckling in GameObject.FindObjectOfType<DucklingManager>().Ducklings)
+            opacityFade.SetPresentOpacity(quackCircle.maxAlpha);
+            opacityFade.SetTargetOpacity(0, quackCircle.circleVisibleLife);
+            foreach (GameObject duckling in ducklingManager.Ducklings)
             {
                 if (!duckling.GetComponent<Duckling>().isDead)
                 {
@@ -67,7 +71,10 @@ public class PlayerDuck : MonoBehaviour {
         targetPos = transform.position;
         source = GetComponent<AudioSource>();
         quack =(AudioClip)Resources.Load("sounds/duckCall.mp3");
-        QuackCircle.GetComponent<OpacityFade>().SetPresentOpacity(0);
+        opacityFade = QuackCircleObject.GetComponent<OpacityFade>();
+        opacityFade.SetPresentOpacity(0);
+        quackCircle = QuackCircleObject.GetComponent<QuackCircle>();
+        ducklingManager = GameObject.FindObjectOfType<DucklingManager>();
     }
 	
 	// Update is called once per frame
