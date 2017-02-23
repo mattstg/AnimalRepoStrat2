@@ -13,7 +13,6 @@ public class FishGF : GameFlow {
 	public Vector3 lastCheckpt;
 	public bool isFirstCheckpoint = true;
 	public PlayerFish playerFish;
-    public GameObject miniMap;
 	public GameObject salmonManager;
 
     float timeScore100 = 150;

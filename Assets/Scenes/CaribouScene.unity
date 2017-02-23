@@ -1403,7 +1403,6 @@ GameObject:
   m_Component:
   - component: {fileID: 95950433}
   - component: {fileID: 95950432}
-  - component: {fileID: 95950435}
   - component: {fileID: 95950434}
   - component: {fileID: 95950436}
   m_Layer: 0
@@ -1470,20 +1469,6 @@ MonoBehaviour:
   clickableObj: {fileID: 435775773}
   clickableSize: {x: 2, y: 2}
   playerCaribou: {fileID: 435775773}
---- !u!61 &95950435
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 95950431}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 750}
-  serializedVersion: 2
-  m_Size: {x: 300, y: 1500}
 --- !u!114 &95950436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1501,6 +1486,8 @@ MonoBehaviour:
   - {fileID: 1689321765}
   - {fileID: 2008821218}
   - {fileID: 567344549}
+  - {fileID: 1519616642}
+  - {fileID: 1910840224}
   lastGrid: {x: -10, y: -10}
 --- !u!4 &98899598 stripped
 Transform:

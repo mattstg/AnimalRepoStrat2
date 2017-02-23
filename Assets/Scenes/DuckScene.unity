@@ -8054,7 +8054,7 @@ GameObject:
   - component: {fileID: 770101999}
   - component: {fileID: 770101998}
   m_Layer: 0
-  m_Name: WaterTile (1)
+  m_Name: WaterTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10348,7 +10348,7 @@ GameObject:
   - component: {fileID: 943330778}
   - component: {fileID: 943330777}
   m_Layer: 0
-  m_Name: WaterTile (6)
+  m_Name: WaterTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11107,7 +11107,7 @@ GameObject:
   - component: {fileID: 989825409}
   - component: {fileID: 989825408}
   m_Layer: 0
-  m_Name: WaterTile (5)
+  m_Name: WaterTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12364,7 +12364,7 @@ GameObject:
   - component: {fileID: 1105473781}
   - component: {fileID: 1105473780}
   m_Layer: 0
-  m_Name: WaterTile (3)
+  m_Name: WaterTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15297,7 +15297,7 @@ GameObject:
   - component: {fileID: 1384359774}
   - component: {fileID: 1384359773}
   m_Layer: 0
-  m_Name: WaterTile (4)
+  m_Name: WaterTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19523,6 +19523,7 @@ GameObject:
   - component: {fileID: 1666415357}
   - component: {fileID: 1666415356}
   - component: {fileID: 1666415359}
+  - component: {fileID: 1666415358}
   m_Layer: 0
   m_Name: MainScripts
   m_TagString: Untagged
@@ -19566,6 +19567,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1666415358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1666415355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d3421f43917394b8b7d0bea7b56184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSize: 10
+  rockParent: {fileID: 119106272}
+  fernParent: {fileID: 0}
+  treeParent: {fileID: 0}
+  waterParents:
+  - {fileID: 843846117}
+  - {fileID: 444299129}
+  rockPartialDisable: 0
 --- !u!61 &1666415359
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20859,7 +20879,7 @@ GameObject:
   - component: {fileID: 1796473484}
   - component: {fileID: 1796473483}
   m_Layer: 0
-  m_Name: WaterTile (2)
+  m_Name: WaterTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21691,7 +21711,7 @@ GameObject:
   - component: {fileID: 1889228842}
   - component: {fileID: 1889228841}
   m_Layer: 0
-  m_Name: WaterTile (8)
+  m_Name: WaterTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

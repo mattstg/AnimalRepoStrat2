@@ -15,7 +15,8 @@ public class PlayerTreeScript : MonoBehaviour {
         CircleCollider2D cc2d = treeProxActivator.AddComponent<CircleCollider2D>();
         cc2d.radius = activationRadius;
         cc2d.isTrigger = true;
-        treeProxActivator.AddComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        treeProxActivator.AddComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        treeProxActivator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         treeProxActivator.AddComponent<TreeRevealer>();
         treeProxActivator.GetComponent<TreeRevealer>().fadeDuration = fadeDuration;
         Destroy(this);

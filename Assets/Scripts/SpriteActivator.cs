@@ -15,7 +15,7 @@ public class SpriteActivator : MonoBehaviour {
 
 	float updateTimer = 3;
 	float curUpdate = 0;
-	public Vector2 lastGrid = new Vector2(-10,-10);
+	Vector2 lastGrid = new Vector2(-10,-10);
 	//public Transform waterParent;
 
     public void Start()

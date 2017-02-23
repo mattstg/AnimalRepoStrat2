@@ -14,7 +14,8 @@ public class FlockAIProxActivator : MonoBehaviour {
         BoxCollider2D bc2d = flockAiProxActivator.AddComponent<BoxCollider2D>();
         bc2d.size = size;
         bc2d.isTrigger = true;
-        flockAiProxActivator.AddComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        flockAiProxActivator.AddComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        flockAiProxActivator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         flockAiProxActivator.AddComponent<FlockAiProxHandler>();
         Destroy(this);
     }
