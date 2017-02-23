@@ -38,7 +38,7 @@ public class PlayerCaribou : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        GameObject.FindObjectOfType<FlockManager>().flock.Add(this.gameObject);
+        GameObject.FindObjectOfType<FlockManager>().flock.Add(GetComponent<FlockingAI>());
         targetPos = transform.position;
         source = GetComponent<AudioSource>();
         

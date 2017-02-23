@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class FlockingAI : MonoBehaviour
 {
+    public List<FlockingAI> animals = new List<FlockingAI>();
 
     public float waterSlowCoeff = 1f;
 
@@ -115,7 +116,7 @@ public class FlockingAI : MonoBehaviour
         if (!rigidbody)
             rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.bodyType = RigidbodyType2D.Static;
-        flockManager.flock.Remove(this.gameObject);
+        flockManager.flock.Remove(GetComponent<FlockingAI>());
         if (!isFish) {
             calfManager.calfTransforms.Remove (this.transform);
             corpseManager.Corpses.Add (this.gameObject);
@@ -133,7 +134,7 @@ public class FlockingAI : MonoBehaviour
         if (!rigidbody)
             rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.bodyType = RigidbodyType2D.Dynamic;
-        flockManager.flock.Add(this.gameObject);
+        flockManager.flock.Add(GetComponent<FlockingAI>());
         calfManager.calfTransforms.Add(this.transform);
         corpseManager.Corpses.Remove(this.gameObject);
         gameObject.SetActive(true);
@@ -155,8 +156,7 @@ public class FlockingAI : MonoBehaviour
     {
         if (!isCorpse)
         {
-            List<GameObject> animals = new List<GameObject>();
-            animals = flockManager.flock;
+            
 
             Vector2 thisPos = V3toV2(this.transform.position);
 
@@ -183,22 +183,22 @@ public class FlockingAI : MonoBehaviour
 
             for(int i = animals.Count - 1; i >= 0; i--)
             {
-                GameObject _animal = animals[i];
+                FlockingAI _animal = animals[i];
                 if(!_animal) //if the animal is null
                 {
                     animals.RemoveAt(i);
                     continue; //go to next iteration
                 }
-                FlockingAI _animalFlockAi = _animal.GetComponent<FlockingAI>();
-                if (_animalFlockAi && !_animalFlockAi.enabled)
+                
+                if (_animal && !_animal.enabled)
                 {
                     //Since some of them may be turned off, waiting on standby till a player gets close
                     continue;
                 }
 
-                if (_animal != this.gameObject)
+                if (_animal != this.transform)
                 {
-                    dist = Vector2.Distance(_animal.transform.position, this.transform.position);
+                    dist = MathHelper.ApproxDist(_animal.transform.position, this.transform.position);
                     if (dist <= neighbourDistance)
                     {
                         Vector2 _animalsForward = Vector2.zero;
@@ -210,7 +210,7 @@ public class FlockingAI : MonoBehaviour
 
                         vCenter += _animalsPos;
                         vHeading += _animalsForward;
-                        if(_animalFlockAi)
+                        if(_animal)
                             localGroupSize++;
 
                         if (isPredator && isPredOnStandby)
@@ -229,17 +229,17 @@ public class FlockingAI : MonoBehaviour
                         }
                         else
                         {
-                            if (_animalFlockAi)
+                            if (_animal)
                             {
-                                if (!(_animalFlockAi.isCalf)) //predators don't get repelled by calves
+                                if (!(_animal.isCalf)) //predators don't get repelled by calves
                                     if (dist < repulsionDistance)
                                         vRepel += (thisPos - _animalsPos);
                             }
 
                         }
 
-                        if (_animalFlockAi)
-                            localGroupSpeed += _animalFlockAi.speed;
+                        if (_animal)
+                            localGroupSpeed += _animal.speed;
                         
                     }
                 }
@@ -282,7 +282,7 @@ public class FlockingAI : MonoBehaviour
                 {
                     foreach (Vector2 _leader in poslist)
                     {
-                        float distanceFromLeader = Vector2.Distance(_leader, thisPos);
+                        float distanceFromLeader = MathHelper.ApproxDist(_leader, thisPos);
                         if (distanceFromLeader < closestLeaderDistance)
                         {
                             closestLeaderDistance = distanceFromLeader;
@@ -302,7 +302,7 @@ public class FlockingAI : MonoBehaviour
 
             if (followsMother)
             {
-                float distToMom = Vector3.Distance(mother.transform.position, this.transform.position);
+                float distToMom = MathHelper.ApproxDist(mother.transform.position, this.transform.position);
                 Vector2 v = (V3toV2(mother.transform.position) - V3toV2(this.transform.position));
                 Vector2 vNormalized = v.normalized;
                 vMother = v.normalized;
@@ -351,7 +351,7 @@ public class FlockingAI : MonoBehaviour
                 {
                     foreach (Vector2 _predPosition in predPositions)
                     {
-                        float distanceFromPred = Vector2.Distance(_predPosition, thisPos);
+                        float distanceFromPred = MathHelper.ApproxDist(_predPosition, thisPos);
                         if (distanceFromPred < predFleeDistance)
                         {
                             closestPredDistance = distanceFromPred;
@@ -382,7 +382,7 @@ public class FlockingAI : MonoBehaviour
                     foreach (Transform _calfTrans in calfTrans)
                     {
                         Vector2 _calfPos = V3toV2(_calfTrans.position);
-                        float distanceFromCalf = Vector2.Distance(_calfPos, thisPos);
+                        float distanceFromCalf = MathHelper.ApproxDist(_calfPos, thisPos);
                         if (distanceFromCalf < closestCalfDistance)
                         {
                             closestCalfDistance = distanceFromCalf;
@@ -403,7 +403,7 @@ public class FlockingAI : MonoBehaviour
                     {
                         float distance;
                         Vector2 predatorPos = V3toV2(_predatorTrans.position);
-                        distance = Vector2.Distance(predatorPos, thisPos);
+                        distance = MathHelper.ApproxDist(predatorPos, thisPos);
                         if (distance <= predNeighborhoodSize)
                         {
                             Vector2 _predsForward = V3toV2(_predatorTrans.right);  // right because unity 2d is stupid
@@ -434,7 +434,7 @@ public class FlockingAI : MonoBehaviour
                     foreach (GameObject _corpse in corpses)
                     {
                         Vector2 corpsePos = V3toV2(_corpse.transform.position);
-                        float distanceFromCorpse = Vector2.Distance(corpsePos, thisPos);
+                        float distanceFromCorpse = MathHelper.ApproxDist(corpsePos, thisPos);
                         if (distanceFromCorpse < closestCorpseDistance)
                         {
                             closestCorpseDistance = distanceFromCorpse;
@@ -504,23 +504,28 @@ public class FlockingAI : MonoBehaviour
         }
     }
 
-
+    void Awake()
+    {
+        
+    }
 
     void Start()
     {
         //will return null if not applicable
         predatorManager = GameObject.FindObjectOfType<PredatorManager>();
-        flockManager    = GameObject.FindObjectOfType<FlockManager>();
-        calfManager     = GameObject.FindObjectOfType<CalfManager>();
-        corpseManager   = GameObject.FindObjectOfType<Corpsemanager>();
+        flockManager = GameObject.FindObjectOfType<FlockManager>();
+        calfManager = GameObject.FindObjectOfType<CalfManager>();
+        corpseManager = GameObject.FindObjectOfType<Corpsemanager>();
         waypointManager = GameObject.FindObjectOfType<WaypointManager>();
-        leaderManager   = GameObject.FindObjectOfType<LeaderManager>();
-
+        leaderManager = GameObject.FindObjectOfType<LeaderManager>();
         if (!isPredator)
-        {
-            flockManager.flock.Add(this.gameObject); // adds this animal to FlockManager's flock list
-
+        {   
+            flockManager.flock.Add(GetComponent<FlockingAI>()); // adds this animal to FlockManager's flock list
+            
         }
+
+        animals = flockManager.flock;
+        
 
         rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
         speed = Random.Range(speedRange.x, speedRange.y);
@@ -572,7 +577,7 @@ public class FlockingAI : MonoBehaviour
         {
 				if (usesWaypoints && currentWaypoint == null) {
 					Vector2 way = waypointManager.waypointPositions [activeWaypoint];
-					float dist = Vector2.Distance (way, V3toV2 (this.transform.position));
+					float dist = MathHelper.ApproxDist(way, transform.position);
 					if (dist <= waypointReachedProximity) {
 						if (activeWaypoint + 1 < numOfWP)
 							activeWaypoint++;
@@ -585,7 +590,7 @@ public class FlockingAI : MonoBehaviour
 					Vector3 pos = currentWaypoint.transform.position;
 
 					//Vector2 waypointCoords = ;
-				float dist = Vector3.Distance (pos, this.transform.position);
+				float dist = MathHelper.ApproxDist(pos, this.transform.position);
 					if (dist <= 1.25f) {
 					if (currentWaypoint.hasNext ()) {
 						currentWaypoint = currentWaypoint.getNextWaypoint ().GetComponent<waypointScript> ();

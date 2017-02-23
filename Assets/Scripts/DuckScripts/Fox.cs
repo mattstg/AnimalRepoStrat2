@@ -118,7 +118,7 @@ public class Fox : MonoBehaviour {
 			idleWaitTime = 3;
             duckling.isDead = true;
             ducklingManager.Ducklings.Remove(duckling);
-            flockManager.flock.Remove(caughtYoung.gameObject);
+            flockManager.flock.Remove(caughtYoung.GetComponent<FlockingAI>());
             Destroy (caughtYoung.GetComponent<CircleCollider2D> ());
 			Destroy (caughtYoung.GetComponent<Rigidbody2D> ());
 			Destroy (caughtYoung.GetComponent<Duckling> ());
