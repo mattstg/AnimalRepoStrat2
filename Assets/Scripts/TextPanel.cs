@@ -63,7 +63,7 @@ public class TextPanel : MonoBehaviour {
 
 		if (curLetter < completeText.Length)
         {
-            while (timeBanked >= 1 / lettersPerSecond)
+            while (timeBanked >= 1 / lettersPerSecond && curLetter < completeText.Length)
             {
 				while (new String(completeText[curLetter], 1) == "<")		// this section, and methods MarkupOpen/Close, handle markup with running text
 				{
