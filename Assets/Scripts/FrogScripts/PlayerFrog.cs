@@ -7,6 +7,7 @@ public class PlayerFrog : Frog {
 
     public override void CreateFrog(FrogInfo _frogInfo, bool pioneerFrog = false)
     {
+        Debug.Log("created");
         base.CreateFrog(_frogInfo, pioneerFrog);
     }
 
@@ -46,7 +47,7 @@ public class PlayerFrog : Frog {
         {
             EnterIdleState();
             transform.position = frogFound.transform.position;
-            Destroy(frogFound.gameObject);            
+            frogFound.FrogEaten();
         }
         else
         {

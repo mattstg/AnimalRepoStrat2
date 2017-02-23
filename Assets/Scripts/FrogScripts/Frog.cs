@@ -14,10 +14,9 @@ public class Frog : MonoBehaviour {
     public FrogState currentFrogState;
 
     public bool inPuddle = false;
-    Frog lastTouchedFrog;
     //Frog jump stuff
     Vector2 goalPos;
-    float frogSpeed = 1;
+    float frogSpeed = .7f;
     public bool outtaBounds = false;
 	public bool playerCntrl = false;
 	public bool isPlayerDescendant { get { return frogInfo.playerDescendant; }  }
@@ -38,9 +37,7 @@ public class Frog : MonoBehaviour {
     Vector2 rangeOfKids = new Vector2(4, 8);
     float mateCooldown = 12;
     float matMaxCooldown = 12;
-	Transform lastHeardRibbitRing;
-	float lastHeardRibbitCooldown = 3;
-	float lastHeardRibbitCooldownMax = 3;
+    bool firstCall = true;
 
     public float publicGenNum;
     public bool publicIsPlayer;
@@ -55,8 +52,10 @@ public class Frog : MonoBehaviour {
             SpriteRenderer renderer;
             renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
             renderer.color = new Color(0f, .63f, 0f, 1f); 
-            frogSpeed /= 2;
+            frogSpeed *= .8f;
+            
 		}
+        FrogGV.AddFrogToMasterList(this,isMale);
         if (pioneerFrog)
             mateCooldown = 0;
 		if (frogInfo.playerDescendant) {
@@ -69,9 +68,6 @@ public class Frog : MonoBehaviour {
 	void Update () {
 
         mateCooldown -= Time.deltaTime;
-		lastHeardRibbitCooldown -= Time.deltaTime;
-		if (lastHeardRibbitCooldown <= 0)
-			lastHeardRibbitRing = null;
 
 		switch(currentFrogState)
         {
@@ -128,8 +124,12 @@ public class Frog : MonoBehaviour {
             return;
         }
 
+        if ((transform.position.x >= FrogGV.mapBounds.x || transform.position.x <= -1f * FrogGV.mapBounds.x) || (transform.position.y >= FrogGV.mapBounds.y || transform.position.y <= -1f * FrogGV.mapBounds.y))
+            outtaBounds = true;
+        else
+            outtaBounds = false;
 
-        if(outtaBounds)
+        if (outtaBounds)
         {
             float angToCenter = MathHelper.AngleBetweenPoints(transform.position, new Vector2());
             JumpTowardsAngle(angToCenter);
@@ -142,22 +142,28 @@ public class Frog : MonoBehaviour {
 			return;
 		}
 
-        if(lastTouchedFrog != null)
+        if(!isMale && mateCooldown <= 0) //female rdy to mate has landed
         {
-            if(inPuddle && !isMale && lastTouchedFrog.isMale && mateCooldown <= 0)
-            {//as a female, landed on a frog in a puddle, baby time
-                MakeBaby();
-                EnterIdleState();
-                currentIdleWaitTime = 5; //force wait after having a kid
-            }
-            else
-            {//Landed on a frog, hop away to new location
-               // if(lastTouchedFrog.playerCntrl)
-                  //  Debug.Log(string.Format("inpuddle {0}, ismale {1}, isTouchingMaleFrog{2}, mateCooldown{3}", inPuddle, isMale, lastTouchedFrog.isMale, mateCooldown));
-                EnterRandomJump();
+            bool inWater = InPuddle();
+            if (inWater)
+            {
+                Frog father = FrogGV.FemaleCanMate(transform.position);
+                if (father)
+                {
+                    MakeBaby(father);
+                    EnterIdleState();
+                    currentIdleWaitTime = 5; //force wait after having a kid
+                }
             }
         }
-        else if(inPuddle && isMale && Random.Range(0,1f) >= .33f)
+        else
+        {//Landed on a frog, hop away to new location
+           // if(lastTouchedFrog.playerCntrl)
+              //  Debug.Log(string.Format("inpuddle {0}, ismale {1}, isTouchingMaleFrog{2}, mateCooldown{3}", inPuddle, isMale, lastTouchedFrog.isMale, mateCooldown));
+            EnterRandomJump();
+        }
+
+        if(isMale && Random.Range(0,1f) >= .5f)
         {
             //landed in puddle, try ribbiting to attract mate
             EnterCallingState();
@@ -237,6 +243,7 @@ public class Frog : MonoBehaviour {
 			ribbitRing.transform.localScale = new Vector3 (1, 1, 1);
             ribbitRing.SetActive (false);
             opactiyFade.SetPresentOpacity(1);
+            firstCall = true;
             if (!playerCntrl) {
 				if (Random.Range (0f, 1f) > chanceToRepeatCall) {
 					EnterCallingState (); //re-cycle the state
@@ -249,6 +256,11 @@ public class Frog : MonoBehaviour {
 		}
 		else
 		{
+            if(firstCall)
+            {
+                firstCall = false;
+                FrogGV.RibbitAtLoc(transform.position);
+            }
             ribbitRing.SetActive (true);
 			ribbitRing.transform.localScale = ribbitRing.transform.localScale + new Vector3 (1, 1) * rangeRateIncrease * Time.deltaTime;
             opactiyFade.SetPresentOpacity(1 - opactiyFade.GetIntegral(Mathf.Max(0, 3 * ribbitRing.transform.localScale.x / maxRange - 2)));
@@ -259,6 +271,7 @@ public class Frog : MonoBehaviour {
     {
         ribbitRing.transform.localScale = new Vector3(1, 1, 1);
         ribbitRing.SetActive(false);
+        firstCall = true;
     }
 
     private void JumpTowardsGoal()
@@ -270,7 +283,15 @@ public class Frog : MonoBehaviour {
             currentFrogState = FrogState.landedJump;
     }
 
-    public void OnCollisionEnter2D(Collision2D coli)
+    private bool InPuddle()
+    {
+       RaycastHit2D rch = Physics2D.Raycast(transform.position, new Vector2(1f, 0), .1f, FrogGV.pond_layer_mask);
+        if (rch)
+            return true;
+        return false;
+    }
+
+    /*public void OnCollisionEnter2D(Collision2D coli)
     {
         ResolveCollision(coli.collider,true);
     }
@@ -292,52 +313,20 @@ public class Frog : MonoBehaviour {
     public void ResolveCollision(Collider2D coli, bool entering)
     {
         GameObject otherObj = coli.gameObject;
-        if(otherObj.GetComponent<Frog>())
-        {
-            Frog otherFrog = otherObj.GetComponent<Frog>();
-            if (entering)
-            {
-                lastTouchedFrog = otherFrog;
-            }
-            else if(lastTouchedFrog == otherFrog)
-            {
-                lastTouchedFrog = null;
-            }
-        }
-        else if(otherObj.GetComponent<Puddle>())
+        if(otherObj.GetComponent<Puddle>())
         {
             inPuddle = entering;
-        }
-        else if(otherObj.CompareTag("RibbitRing"))
-        {
-			if (entering) {
-				//Debug.Log ("enetering ");
-				HeardARibbit (otherObj.transform);
-			}
-			else
-            {
-                if (otherObj.transform == lastHeardRibbitRing)
-                {
-                    lastHeardRibbitRing = null;
-                }
-				//Debug.Log ("eaving");
-			}
         }
         else if(otherObj.name == "Boundry")
         {
             outtaBounds = !entering;
         }
-    }
+    }*/
 
-    private void HeardARibbit(Transform ribbitLoc)
+    public void HeardARibbit(Vector2 loc)
     {
-		if (ribbitLoc != transform && mateCooldown <= 0 && !isMale && lastHeardRibbitRing != ribbitLoc)
-        {
-			lastHeardRibbitRing = ribbitLoc;
-			lastHeardRibbitCooldown = lastHeardRibbitCooldownMax;
-//            float angToCenter = MathHelper.AngleBetweenPoints(transform.position, ribbitLoc.position);
-            JumpTowardsGoal(ribbitLoc.position);
-        }
+		if (mateCooldown <= 0 && !isMale)
+            JumpTowardsGoal(loc);
     }
 
 
@@ -348,7 +337,7 @@ public class Frog : MonoBehaviour {
         goalPos = MathHelper.V3toV2(transform.position) + goalOffset * frogSpeed;
     }
 
-	private void MakeBaby()
+	private void MakeBaby(Frog father)
     {
         mateCooldown = matMaxCooldown;
         if (FrogGV.frogWS.frogParent.childCount < FrogGF.maxFrogCount)
@@ -360,9 +349,9 @@ public class Frog : MonoBehaviour {
                 newFrog.transform.SetParent(FrogGV.frogWS.tadpoleParent);
                 newFrog.transform.position = transform.position;
                 Frog.FrogInfo tempFi = new FrogInfo(frogInfo);
-                tempFi.genNumber = Mathf.Max(tempFi.genNumber, lastTouchedFrog.frogInfo.genNumber) + 1;
+                tempFi.genNumber = Mathf.Max(tempFi.genNumber, father.frogInfo.genNumber) + 1;
                 tempFi.isMale = Random.Range(0f, 1f) > .45f;// MathHelper.Fiftyfifty();
-                tempFi.playerDescendant = tempFi.playerDescendant || lastTouchedFrog.frogInfo.playerDescendant;
+                tempFi.playerDescendant = tempFi.playerDescendant || father.frogInfo.playerDescendant;
                 newFrog.GetComponent<Tadpole>().BirthTadpole(tempFi);//playerDescendant = _playerDescendant || isPlayerDescendant;
                 newFrog.GetComponent<Tadpole>().enabled = true;
             }
@@ -371,9 +360,9 @@ public class Frog : MonoBehaviour {
 
     public virtual void FrogEaten()
     {
-		if (frogInfo.playerDescendant) {
+		if (frogInfo.playerDescendant)
 			FindObjectOfType<FrogGF> ().score--;
-		}
+        FrogGV.RemoveFrogFromMasterList(this,isMale);
         Destroy(this.gameObject);
     }
 

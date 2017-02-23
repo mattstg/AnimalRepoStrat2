@@ -5,7 +5,7 @@ using LoLSDK;
 
 public class FrogGF : GameFlow {
 
-    public static readonly int maxFrogCount = 70;
+    public static readonly int maxFrogCount = 75;
 
 	public FrogCinematic frogCinematic;
 	//int stage = 0;
@@ -52,6 +52,7 @@ public class FrogGF : GameFlow {
     protected override void PostGame()
     {
         playerFrog.gameObject.SetActive(false);
+        FrogGV.RemoveFrogFromMasterList(playerFrog, true);
         im.enabled = false;
         float scorePerc = Mathf.Min((float)matureDescendants / (float)frogsForMaxScore, 1);
         string t0 = "The puddle has evaporated, and the land has returned to its usual arid state. You are now the proud ancestor of " + matureDescendants + " descendants ";

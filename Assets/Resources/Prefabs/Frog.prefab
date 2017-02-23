@@ -182,7 +182,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4706918712901016}
   - component: {fileID: 212907387199827760}
-  - component: {fileID: 58596520004281868}
   - component: {fileID: 114128737748594954}
   m_Layer: 0
   m_Name: RibbitRing
@@ -483,20 +482,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58596520004281868
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650867780666906}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
 --- !u!58 &58804253049904554
 CircleCollider2D:
   m_ObjectHideFlags: 1
