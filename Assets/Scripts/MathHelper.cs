@@ -28,4 +28,22 @@ public class MathHelper  {
 	{
 		return (Random.Range (0f, 1f) > .5f);
 	}
+
+    public static float ApproxDist(Vector3 pos1, Vector3 pos2)
+    {
+        
+        float deltaX = Mathf.Abs(pos1.x - pos2.x);
+        float deltaY = Mathf.Abs(pos1.y - pos2.y);
+        float dist = 0;
+        if(deltaY >= deltaX)
+        {
+            dist = (0.41f * deltaX) + (0.94f * deltaY);
+        }
+        else if(deltaX > deltaY)
+        {
+            dist = (0.41f * deltaY) + (0.94f * deltaX);
+        }
+        return (dist);
+    }
+
 }
