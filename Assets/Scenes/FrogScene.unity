@@ -1087,8 +1087,8 @@ MonoBehaviour:
   toFollow: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
   useLimits: 1
-  limitBottomLeft: {x: -3.9, y: -3.2}
-  limitTopRight: {x: 3.8, y: 3.2}
+  limitBottomLeft: {x: -4.7, y: -3.9}
+  limitTopRight: {x: 4.5, y: 3.9}
   viewportMargin: 0.5
 --- !u!1 &435157683
 GameObject:
