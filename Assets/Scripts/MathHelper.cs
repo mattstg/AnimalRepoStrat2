@@ -46,4 +46,18 @@ public class MathHelper  {
         return (dist);
     }
 
+    public static float ApproxDist(Vector2 _pos1, Vector3 _pos2)
+    {
+        return (ApproxDist(new Vector3(_pos1.x, _pos1.y, 0), _pos2));
+    }
+
+    public static float ApproxDist(Vector3 _pos1, Vector2 _pos2)
+    {
+        return (ApproxDist(_pos1, new Vector3(_pos2.x, _pos2.y, 0)));
+    }
+
+    public static float ApproxDist(Vector2 _pos1, Vector2 _pos2)
+    {
+        return (ApproxDist(new Vector3(_pos1.x, _pos1.y, 0), new Vector3(_pos2.x, _pos2.y, 0)));
+    }
 }
