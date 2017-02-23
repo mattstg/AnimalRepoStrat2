@@ -33,7 +33,7 @@ public class FishGF : GameFlow {
 
 	protected override void PostGame()
 	{
-        ToggleMinimap(false);
+        //ToggleMinimap(false);
         im.enabled = false;
         playerFish.enabled = false;
         roundTimerActive = false;
@@ -68,7 +68,7 @@ public class FishGF : GameFlow {
 
     public void ToggleMinimap(bool setActive)
     {
-        miniMap.SetActive(setActive);
+        //miniMap.SetActive(setActive);
     }
 
 	public void GameFinished()
