@@ -34,14 +34,14 @@ public class PlayerDuck : MonoBehaviour {
             //QuackCircle.GetComponent<QuackCircle>().currentAlpha = QuackCircle.GetComponent<QuackCircle>().maxAlpha;
             opacityFade.SetPresentOpacity(quackCircle.maxAlpha);
             opacityFade.SetTargetOpacity(0, quackCircle.circleVisibleLife);
-            foreach (GameObject duckling in ducklingManager.Ducklings)
+            foreach (Duckling duckling in ducklingManager.Ducklings)
             {
-                if (!duckling.GetComponent<Duckling>().isDead)
+                if (!duckling.isDead)
                 {
                     float dist = Vector3.Distance(transform.position, duckling.transform.position);
                     if (dist <= quackRadius)
                     {
-                        duckling.GetComponent<Duckling>().quackStrength = duckling.GetComponent<Duckling>().maxQuackStrength;
+                        duckling.quackStrength = duckling.maxQuackStrength;
                     }
                 }
             }

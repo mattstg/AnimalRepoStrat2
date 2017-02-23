@@ -10,7 +10,7 @@ public class BowerGF : GameFlow {
 	public InputManager im;
     public GameObject bowerBirdsParent;
     public Transform bowerArrow;
-	public string winningText = "Unfortunately, none of the male bowerbirds in this region have attracted the female, and so she has left in search of other candidates! Perhaps the next female will be less picky!";
+	string winningText = "Unfortunately, none of the male bowerbirds in this region have attracted the female, and so she has left in search of other candidates! Perhaps the next female will be less picky!";
 	private bool someoneWon = false;
 	float scoreFor100 = 24;
 

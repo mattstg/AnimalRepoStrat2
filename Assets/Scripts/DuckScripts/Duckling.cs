@@ -15,13 +15,13 @@ public class Duckling : MonoBehaviour {
     void Start()
     {
         ducklingManager = GameObject.FindObjectOfType<DucklingManager>();
-        ducklingManager.Ducklings.Add(this.gameObject);
+        ducklingManager.Ducklings.Add(this);
     }
 
     void Update () {
 		if(isDead)
         {
-            ducklingManager.Ducklings.Remove(this.gameObject);
+            ducklingManager.Ducklings.Remove(this);
         }
         if (quackStrength > 1)
         {

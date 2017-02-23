@@ -7,7 +7,7 @@ public class Bear : MonoBehaviour {
 	enum BearState{Hunting,Eating,Retrieving,Returning}
 
 	BearState curState = BearState.Eating;
-	List<Transform> bearSwipes;
+	List<SpriteRenderer> bearSwipes;
 	List<Fish> fishInRange = new List<Fish> ();
 	public Transform swipeParent;
 	float maxTimeToAct = 1.25f;
@@ -26,9 +26,9 @@ public class Bear : MonoBehaviour {
 	void Awake() {
         originalPos = transform.position;
         originalRot = transform.eulerAngles;
-		bearSwipes = new List<Transform> ();
+		bearSwipes = new List<SpriteRenderer> ();
 		foreach (Transform t in swipeParent) {
-			bearSwipes.Add (t);
+			bearSwipes.Add (t.GetComponent< SpriteRenderer>());
 			t.gameObject.SetActive (false);
 		}
 	}
@@ -39,7 +39,7 @@ public class Bear : MonoBehaviour {
 
         if (curState == BearState.Hunting)
         {
-            SetSwipeAlpha(bearSwipes[curSwipeIndex].GetComponent<SpriteRenderer>(), curTimeToAct / maxTimeToAct);
+            SetSwipeAlpha(bearSwipes[curSwipeIndex], curTimeToAct / maxTimeToAct);
             if (curTimeToAct >= maxTimeToAct)
                 Swipes();
         }
@@ -69,9 +69,10 @@ public class Bear : MonoBehaviour {
             {
                 transform.position = originalPos;
                 //transform.eulerAngles = originalRot;
-		float targetRot = transform.eulerAngles.z + GetMinimalRotation(transform.eulerAngles.z, originalRot.z);
+		        float targetRot = transform.eulerAngles.z + GetMinimalRotation(transform.eulerAngles.z, originalRot.z);
                 transform.eulerAngles = Vector3.SmoothDamp(transform.eulerAngles, new Vector3(0, 0, targetRot), ref rotVelocity, rotDampTime);
-				if (eatingFish != null) {
+				if (eatingFish != null)
+                {
 					eatingFish.position = bearMouth.position;
 					eatingFish.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
 				}
@@ -117,8 +118,8 @@ public class Bear : MonoBehaviour {
 
 	private void TurnOffAllTrigger()
 	{
-		foreach (Transform t in bearSwipes)
-			t.gameObject.SetActive (false);
+		foreach (SpriteRenderer sr in bearSwipes)
+			sr.gameObject.SetActive (false);
 	}
 
 	private void BeginSwipe()
@@ -128,7 +129,7 @@ public class Bear : MonoBehaviour {
 		curSwipeIndex++;
 		curSwipeIndex %= bearSwipes.Count;
 		bearSwipes [curSwipeIndex].gameObject.SetActive (true);
-		SetSwipeAlpha (bearSwipes [curSwipeIndex].GetComponent<SpriteRenderer> (), 0);
+		SetSwipeAlpha (bearSwipes [curSwipeIndex], 0);
 	}
 
 	private void Swipes()
@@ -158,14 +159,6 @@ public class Bear : MonoBehaviour {
     }
 
 
-	private void ConsumeFish()
-	{
-/*		if (fishInRange [0].gameObject.GetComponent<PlayerFish> ()) 
-		{
-			GameObject.FindObjectOfType<FishGF>().PlayerDied();
-		}*/
-	}
-
 	private void MoveTowardsGoal(Vector2 goal)
 	{
 		float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goal);
@@ -194,7 +187,7 @@ public class Bear : MonoBehaviour {
 	public void OnTriggerEnter2D(Collider2D coli)
 	{
 		Fish fish = coli.GetComponent<Fish> ();
-		if (fish && !fishInRange.Contains(fish)) {
+		if (fish && !fishInRange.Contains(fish) && !fish.isBeingEaten) {
 			fishInRange.Add (fish);
 		}
 	}

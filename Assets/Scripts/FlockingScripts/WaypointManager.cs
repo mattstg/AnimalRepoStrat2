@@ -12,11 +12,7 @@ public class WaypointManager : MonoBehaviour
 	{
 	
 		foreach(Transform t in GetComponentsInChildren<Transform>())
-			{
-			
 			waypointPositions.Add (t.position);
-			//Debug.Log (position.x + " " + position.y);
-			}
 		//waypointPositions.AddRange(Get
 
 	}

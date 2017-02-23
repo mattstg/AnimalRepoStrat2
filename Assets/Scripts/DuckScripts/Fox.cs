@@ -26,9 +26,11 @@ public class Fox : MonoBehaviour {
     readonly float GVateYoungCooldownMax = 3;
     float ateYoungCooldown = 3;
 
+    DucklingManager ducklingManager;
+    FlockManager flockManager;
 
-	// Use this for initialization
-	void Awake()
+    // Use this for initialization
+    void Awake()
 	{
 		goalPos = patrolOrigin = transform.position;
 		waypoints = new List<Vector2> ();
@@ -37,8 +39,9 @@ public class Fox : MonoBehaviour {
 				waypoints.Add (t.position);
 				//Destroy (t.gameObject);
 			}
-		
-	}
+        ducklingManager = GameObject.FindObjectOfType<DucklingManager>();
+        flockManager = GameObject.FindObjectOfType<FlockManager>();
+    }
 
 	
 	// Update is called once per frame
@@ -108,13 +111,14 @@ public class Fox : MonoBehaviour {
 
 	public void OnCollisionEnter2D(Collision2D coli)
 	{
-		if (coli.gameObject.GetComponent<Duckling> () && !caughtYoung) {
+        Duckling duckling = coli.gameObject.GetComponent<Duckling>();
+        if (duckling != null && !caughtYoung) {
 			caughtYoung = coli.gameObject.transform;
 			chaseTarget = null;
 			idleWaitTime = 3;
-			caughtYoung.GetComponent<Duckling> ().isDead = true;
-            GameObject.FindObjectOfType<DucklingManager>().Ducklings.Remove(caughtYoung.gameObject);
-            GameObject.FindObjectOfType<FlockManager>().flock.Remove(caughtYoung.gameObject);
+            duckling.isDead = true;
+            ducklingManager.Ducklings.Remove(duckling);
+            flockManager.flock.Remove(caughtYoung.gameObject);
             Destroy (caughtYoung.GetComponent<CircleCollider2D> ());
 			Destroy (caughtYoung.GetComponent<Rigidbody2D> ());
 			Destroy (caughtYoung.GetComponent<Duckling> ());
