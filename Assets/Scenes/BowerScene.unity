@@ -1303,7 +1303,6 @@ MonoBehaviour:
   bowerBirdsParent: {fileID: 139930769}
   bowerArrow: {fileID: 700632795}
   winningText: 
-  maxRoundTime: 180
 --- !u!4 &247273332
 Transform:
   m_ObjectHideFlags: 0
@@ -2608,6 +2607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2020526253}
+  cam: {fileID: 1618183114}
 --- !u!114 &700632797
 MonoBehaviour:
   m_ObjectHideFlags: 0
