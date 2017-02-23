@@ -17,7 +17,7 @@ public class FinalGF : GameFlow {
 
     public override void Update()
     {
-        audioLooper.Update();
+        //audioLooper.Update();
         if (nextStep)
         {
             nextStep = false;
@@ -25,7 +25,7 @@ public class FinalGF : GameFlow {
             switch (stage)
             {
                 case 0:
-                    StartMusic();
+                    //StartMusic();
                     DisplayLesson();
                     break;
                 case 1:

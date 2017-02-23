@@ -17,7 +17,8 @@ public class IntroGF : GameFlow {
 
     public override void Update()
     {
-        audioLooper.Update();
+        //if(audioLooper != null)
+         //   audioLooper.Update();
         if (nextStep)
         {
             nextStep = false;
