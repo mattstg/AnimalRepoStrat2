@@ -21,7 +21,7 @@ public class bowerDirection : MonoBehaviour {
         Vector3 bowerPos = cam.GetComponent<Camera>().WorldToViewportPoint(player.bower.transform.position);
         Vector3 arrowPos = cam.GetComponent<Camera>().ScreenToViewportPoint(transform.position);
         Vector3 dirVector = bowerPos - arrowPos;
-        Debug.Log(player.bower.transform.position + ", " + transform.position + ", " + bowerPos + ", " + arrowPos + ", " + dirVector);
+//      Debug.Log(player.bower.transform.position + ", " + transform.position + ", " + bowerPos + ", " + arrowPos + ", " + dirVector);
 
 //      Vector3 dirVector = player.bower.transform.position - player.transform.position;
 
