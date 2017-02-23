@@ -10,10 +10,9 @@ public class BowerGF : GameFlow {
 	public InputManager im;
     public GameObject bowerBirdsParent;
     public Transform bowerArrow;
-	public string winningText = "";
-
+	public string winningText = "Unfortunately none of the bower birds in this region has attracted the female and she has left to find greener pastures! Perhaps the next female will be less picky!";
+	private bool someoneWon = false;
 	float scoreFor100 = 24;
-
 
 	protected override void StartFlow()
 	{
@@ -22,6 +21,7 @@ public class BowerGF : GameFlow {
         lessonType = LessonType.Bower;
         stage = -1;
 		nextStep = true;
+		maxRoundTime = 150;
 	}
 
 	protected override void StartGame()
@@ -41,6 +41,7 @@ public class BowerGF : GameFlow {
 
 	public void GameFinished(BowerBird winner, float _score)
 	{
+		someoneWon = true;
 		score = (int) _score;
 		if (winner.isPlayer) {
 			//player winner
@@ -58,7 +59,10 @@ public class BowerGF : GameFlow {
         roundTimerActive = false;
         scoreText.gameObject.SetActive(false);
         im.enabled = false;
-		string t0 = winningText + score + "!";
+		string t0 = winningText;
+		if (someoneWon) {
+			t0 = winningText + score + "!";
+		}
         textPanel.gameObject.SetActive(true);
         textPanel.SetText(t0);
         textPanel.StartWriting();

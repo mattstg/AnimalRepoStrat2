@@ -4,6 +4,7 @@ using UnityEngine; using LoLSDK;
 
 public class FemaleBowerBird : BowerBird {
 	public BowerListManager linkToBowers;
+	private bool hasAlreadyWon = false;
 	private Bower nextBower;
 	private float[] bowerRating;
 	private float evaluationTime = 0;
@@ -44,8 +45,9 @@ public class FemaleBowerBird : BowerBird {
 			bowerRating[linkToBowers.i] = currentBower.returnRating ();
 			highestRating.x = (highestRating.x < bowerRating [linkToBowers.i]) ? bowerRating[linkToBowers.i] : highestRating.x;
 			highestRating.y = (highestRating.x < bowerRating [linkToBowers.i]) ? linkToBowers.i : highestRating.y;
-			if (bowerRating [linkToBowers.i] > BowerGV.pointsToWIN) {
+			if (bowerRating [linkToBowers.i] > BowerGV.pointsToWIN && !hasAlreadyWon) {
 				//WIN GAME
+				hasAlreadyWon = true;
 				BowerGF gameMan = GameObject.FindObjectOfType<BowerGF>();
 				gameMan.GameFinished (currentBower.owner,highestRating.x);
 			}

@@ -606,7 +606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &139930770
 Transform:
   m_ObjectHideFlags: 0
@@ -1303,6 +1303,7 @@ MonoBehaviour:
   bowerBirdsParent: {fileID: 139930769}
   bowerArrow: {fileID: 700632795}
   winningText: 
+  maxRoundTime: 180
 --- !u!4 &247273332
 Transform:
   m_ObjectHideFlags: 0
