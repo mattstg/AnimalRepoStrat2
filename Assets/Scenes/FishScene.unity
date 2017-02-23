@@ -6550,26 +6550,26 @@ Transform:
   - {fileID: 627081737}
   - {fileID: 658732990}
   - {fileID: 738867342}
+  - {fileID: 803584142}
   - {fileID: 164291387}
   - {fileID: 43370395}
-  - {fileID: 803584142}
   - {fileID: 759987719}
-  - {fileID: 1107671221}
   - {fileID: 729554714}
   - {fileID: 311418958}
   - {fileID: 844990662}
   - {fileID: 1557165926}
+  - {fileID: 1107671221}
   - {fileID: 659919464}
   - {fileID: 7808947}
   - {fileID: 1948297660}
   - {fileID: 563934463}
-  - {fileID: 875778701}
   - {fileID: 212591024}
   - {fileID: 1953926575}
   - {fileID: 1437760725}
   - {fileID: 1265422043}
   - {fileID: 538642377}
   - {fileID: 1737386182}
+  - {fileID: 875778701}
   - {fileID: 496475715}
   - {fileID: 2140945305}
   - {fileID: 2106773953}
@@ -15696,8 +15696,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -709398713
-  m_SortingOrder: 0
+  m_SortingLayerID: -1324956185
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1d866bd89a917684189bedd293e8b508, type: 3}
   m_Color: {r: 0.2209667, g: 0.33474806, b: 0.44852942, a: 1}
   m_FlipX: 0
