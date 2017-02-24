@@ -56,27 +56,27 @@ public class LessonRetriever
         switch (lessonNumber)
         {
             case 0: //1
-                return "<b>Bid For Life</b> is a game about <b>reproductive strategies in the wild</b>.\n\n" +
-                    "All animal species use a variety of behaviors in order to <b>increase their chances of parenting successful offspring</b>.\n\n" +
-                    "Such strategies involve, for example, having very <b>few offspring</b> and spending <b>a lot of time and energy</b> on caring for those offspring, or having very <b>many</b> offspring while spending <b>little or no energy</b> caring for them. Some species perform <b>mating rituals</b>, such as <b>dancing</b>, <b>sparring</b>, or displaying <b>reproductive readiness signals</b>.\n\n" +
-                    "Different species use <b>different combinations of strategies</b> like these in order to achieve <b>reproductive success</b> within their environments.";
+                return "<i>Bid For Life</i> is a game about <i>reproductive strategies in the wild</i>.\n\n" +
+                    "All animal species use a variety of behaviors in order to increase their chances of parenting successful offspring.\n\n" +
+                    "Such strategies involve, for example, having very few offspring and spending a lot of time and energy on caring for those offspring, or having very many offspring while spending little or no energy caring for them. Some species perform mating rituals, such as dancing, sparring, or displaying reproductive readiness signals.\n\n" +
+                    "Different species use different combinations of strategies like these in order to achieve reproductive success within their environments.";
             case 1:
-                return "Some species tend to have <b>many offspring</b> and provide <b>little</b> or <b>no parental care</b> for their young. These species tend to have <b>high infant mortality rates</b>, but they often thrive due to their <b>high birth rates</b>.\n\n" +
-                    "These species are known as <b><i>r</i>-species</b>, and include many <b>fish</b> and <b>insects</b>. They tend to be <b>small, grow quickly,</b> and live in <b>unstable</b> or <b>dynamic environments</b>.";
+                return "Some species tend to have many offspring and provide little or no parental care for their young. These species tend to have high infant mortality rates, but they often thrive due to their high birth rates.\n\n" +
+                    "These species are known as <i>r</i>-species, and include many fish and insects. They tend to be small, grow quickly, and live in unstable or dynamic environments.";
             case 2://2
-                return "At the other extreme live animals who tend to have <b>very few offspring</b>, but who <b>invest large amounts of energy</b> into <b>raising</b> and <b>protecting</b> those offspring.\n\n" +
-                    "These species are known as <b><i>K</i>-species</b>, and include animals such as <b>elephants, bears,</b> and <b>humans</b>. While these species tend to produce few young, their <b>high degree of parental care</b> makes it more likely that those young will <b>survive</b>.\n\n" +
-                    "<b><i>K</i>-species</b> tend to be <b>large,</b> have <b>low mortality rates, grow slowly,</b> and remain <b>dependent upon parents</b> for <b>longer periods</b>.";
+                return "At the other extreme live animals who tend to have very few offspring, but who invest large amounts of energy into raising and protecting those offspring.\n\n" +
+                    "These species are known as <i>K</i>-species, and include animals such as elephants, bears, and humans. While these species tend to produce few young, their high degree of parental care makes it more likely that those young will survive.\n\n" +
+                    "<i>K</i>-species tend to be large, have low mortality rates, grow slowly, and remain dependent upon parents for longer periods.";
             case 3://3
-                return "In reality, <b><i>r</i></b> and <b><i>K</i></b> do not represent two categories of animals. Rather, <b><i>r</i></b> and <b><i>K</i></b> are the <b>two extremes in a range of animal behaviors</b>, and individual species can find themselves anywhere in that range.\n\n" +
-                    "Keep in mind that <b><i>r</i></b> and <b><i>K</i></b> are just <b>concepts</b> that people use to help <b>describe</b> and <b>compare</b> the many <b>different reproductive strategies</b> found throughout the animal kingdom. Many animals fall <b>somewhere in the middle</b>, and some have traits from <b>both extremes</b> of the <b><i>r</i>–<i>K</i></b> range.";
+                return "In reality, <i>r</i> and <i>K</i> do not represent two categories of animals. Rather, <i>r</i> and <i>K</i> are the two extremes in a range of animal behaviors, and individual species can find themselves anywhere in that range.\n\n" +
+                    "Keep in mind that <i>r</i> and <i>K</i> are just concepts that people use to help describe and compare the many different reproductive strategies found throughout the animal kingdom. Many animals fall somewhere in the middle, and some have traits from both extremes of the <i>r</i>–<i>K</i> range.";
             case 4://4
-                return "Many species of animals also engage in <b>specific behaviors</b> and <b>mating rituals</b> aimed at <b>attracting mates</b>.\n\n" +
-                    "Typically, these rituals are <b>a show of desirable traits</b>, such as healthy feathers, strength, or a strong voice. Selecting a mate with those qualities will <b>increase the probability</b> that <b>an animal's offspring will have those same desirable traits themselves</b>, giving those offspring a high chance of <b>survival</b> and <b>reproductive success</b>.\n\n" +
-                    "Other behaviors, such as <b>herding</b> or <b>nesting</b>, are aimed at <b>protecting the young</b>.";
+                return "Many species of animals also engage in specific behaviors and mating rituals aimed at attracting mates.\n\n" +
+                    "Typically, these rituals are a show of desirable traits, such as healthy feathers, strength, or a strong voice. Selecting a mate with those qualities will increase the probability that an animal's offspring will have those same desirable traits themselves, giving those offspring a high chance of survival and reproductive success.\n\n" +
+                    "Other behaviors, such as herding or nesting, are aimed at protecting the young.";
             case 5://outro1
-                return "<b>Bid For Life</b> is made up of <b>five mini-games</b> in which you will play as a member of <b>five different animal species</b>.\n\n" +
-                    "Make sure you pay attention to the <b>short lessons</b> before and after each game, because you can <b>boost your score</b> by doing well on the <b>quizzes</b>!\n\n" +
+                return "<i>Bid For Life</i> is made up of five mini-games in which you will play as a member of five different animal species.\n\n" +
+                    "Make sure you pay attention to the short lessons before and after each game, because you can boost your score by doing well on the quizzes!\n\n" +
                     "Have fun!";
             default:
                 Debug.Log("Lesson out of bounds " + lessonNumber);
@@ -90,10 +90,10 @@ public class LessonRetriever
         switch (lessonNumber)
         {
             case 0:
-                return "In this game, you will play as a <b>male spadefoot toad</b>.\n\n" +
+                return "In this game, you will play as a <i>male spadefoot toad</i>.\n\n" +
                     "Spadefoot toads live in arid places, and spend much of their time hibernating underground. When a heavy rainfall occurs, the toads emerge and seek out puddles of rainwater.\n\n" +
                     "When they find water, the male toads begin producing their mating calls. By the time the females arrive, there can be thousands of toads assembled around single pools of water.\n\n" +
-                    "For one single night, the toads engage in what is known as <b>explosive breeding</b>.";
+                    "For one single night, the toads engage in what is known as <i>explosive breeding</i>.";
             case 1:
                 return "Each male competes with the others to mate with as many females as possible.\n\n" +
                     "Speed is the most important factor here, because only the tadpoles who have matured by the time the puddle dries up will survive. Female spadefoot toads can lay clutches of thousands of eggs, but most will never become adult toads.\n\n" +
@@ -103,7 +103,7 @@ public class LessonRetriever
                     "But beware: the noisy toads have attracted some hungry predators!\n\n" +
                     "The more living descendants you have when the puddle dries up, the higher your score will be.";
             case 3:
-                return "Spadefoot toads are considered an <b>opportunistic <i>r</i>-species</b>.\n\n" +
+                return "Spadefoot toads are considered an <i>opportunistic r-species</i>.\n\n" +
                     "They have large amounts of offspring, but few survive. They have short life expectancy, and their young mature very quickly. They do not protect their offspring, but rather focus on having as many as possible. That way, it is very likely that at least some of them will reach adulthood.\n\n" +
                     "A male spadefoot toad who does not take full advantage of the rare explosive breeding event is likely to have far fewer descendants than his rivals.";
             default:
@@ -117,9 +117,9 @@ public class LessonRetriever
         switch (lessonNumber)
         {
             case 0: //intro1
-                return "In this game, you will play as a <b>pacific salmon</b>.\n\n" +
+                return "In this game, you will play as a <i>pacific salmon</i>.\n\n" +
                     "Salmon are hatched in freshwater rivers, but they eventually make their way out to the saltwater ocean, where they will spend most of their lives.\n\n" +
-                    "Once they reach sexual maturity, they engage in one of nature’s spectacular events: the <b>salmon run</b>. Each year, millions of salmon return to the rivers where they were born, and swim hundreds of kilometers upstream to the pools where they spawned.\n\n" +
+                    "Once they reach sexual maturity, they engage in one of nature’s spectacular events: the <i>salmon run</i>. Each year, millions of salmon return to the rivers where they were born, and swim hundreds of kilometers upstream to the pools where they spawned.\n\n" +
                     "Along the way, many are caught by predators (especially grizzly bears).";
             case 1://intro2
                 return "The pacific salmon that succeed in making it to their spawning grounds mate there for the only time in their lives.\n\n" +
@@ -147,9 +147,9 @@ public class LessonRetriever
         switch (lessonNumber)
         {
             case 0: //L1
-                return "In this game you will play as a <b>male bowerbird</b>.\n\n" +
+                return "In this game you will play as a <i>male bowerbird</i>.\n\n" +
                     "Bowerbirds are considered a <i>K</i>-species. They usually lay one egg, which takes about three weeks to hatch. The female then raises her young for about two months. Some bowerbirds take up to eight years to mature.\n\n" +
-                    "Bowerbirds are particularly famous for their mating rituals. Male bowerbirds create small structures made of twigs called <b>bowers</b>, and adorn them with decorations. These can include pebbles, shells, feathers, flowers, and berries. ";
+                    "Bowerbirds are particularly famous for their mating rituals. Male bowerbirds create small structures made of twigs called <i>bowers</i>, and adorn them with decorations. These can include pebbles, shells, feathers, flowers, and berries. ";
             case 1: //L2
                 return "Females who are interested in mating visit the bowers of multiple males, often returning to each one several times.\n\n" +
                     "Males try especially hard to find blue decorations, since blue is the favorite color of most female bowerbirds.\n\n" +
@@ -174,7 +174,7 @@ public class LessonRetriever
         switch (lessonNumber)
         {
             case 0: //intro1
-                return "In this game you will play as a <b>female wood duck</b> with ten newly-hatched ducklings in your care.\n\n" +
+                return "In this game you will play as a <i>female wood duck</i> with ten newly-hatched ducklings in your care.\n\n" +
                     "Wood ducks make their nests high up in trees, near large bodies of water. When wood duck hatchlings are a day old, they jump from the nest down to the forest floor (up to a twenty-meter drop!).\n\n" +
                     "The mother then leads her hatchlings to the nearest body of water.";
             case 1://intro2
@@ -201,7 +201,7 @@ public class LessonRetriever
         switch (lessonNumber)
         {
             case 0:  //1
-                return "In this game, you will play as a <b>female barren-ground caribou</b>.\n\n" +
+                return "In this game, you will play as a <i>female barren-ground caribou</i>.\n\n" +
                     "Barren-ground caribou migrate each year from northern tundra in the summer to taiga forests to the south in winter. They travel in groups of up to fifty. They mate during their migration to the south, and females give birth to a single calf about seven months later.\n\n" +
                     "Some caribou migrate further than any other land mammal, walking up to five-thousand kilometers in a single year!\n\n" +
                     "Calves tend to reach maturity at around two years old. Fewer than half make it that far.";
@@ -234,7 +234,7 @@ public class LessonRetriever
                     "Whether it's building nests, performing dances, or running rivers, all animals have ways of making a bid on life. While each strategy has its own costs and benefits, no one stategy is better than than the others.\n\n" +
                     "Now, a final test to see what you've learned!";
             case 1:
-                return "This has been <b>Bid for Life</b>. We hope you have enjoyed witnessing and using a few of the many strategies of survival and reproduction that exist in the vast animal kingdom!";
+                return "This has been <i>Bid for Life</i>. We hope you have enjoyed witnessing and using a few of the many strategies of survival and reproduction that exist in the vast animal kingdom!";
             case 2:
                 return "Have a great day!";
             default:

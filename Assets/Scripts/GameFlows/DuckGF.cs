@@ -32,16 +32,16 @@ public class DuckGF : GameFlow {
         string toOut = "";
         if (gameForceEnded && ducklingsSaved == 0)
         {
-            toOut = "You have <b>run out of time</b>.\n\n" +
+            toOut = "You have run out of time.\n\n" +
                 "With night approaching, predators will be more abundant and active. It is unlikely that you or your young will survive.";
         }
         else if (ducklingsSaved == 0)
         {
-            toOut = "Although you have made it to the lake, <b>none of your ducklings succeeded in making it that far</b>.\n\n" +
+            toOut = "Although you have made it to the lake, none of your ducklings succeeded in making it that far.\n\n" +
                 "You will have to try again next year, and hope for a better outcome.";
         }
         else
-            toOut = "You <b>successfully made it to the lake</b> in <b>" + scoreText.TimeAsTimerString(roundTime) + "</b> with <b>" + ducklingsSaved + " ducklings</b>!";
+            toOut = "You successfully made it to the lake in " + scoreText.TimeAsTimerString(roundTime) + " with " + ducklingsSaved + " ducklings!";
 
         textPanel.gameObject.SetActive(true);
         textPanel.SetText(toOut);
