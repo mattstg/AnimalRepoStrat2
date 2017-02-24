@@ -5,6 +5,10 @@ using System.Collections.Generic;
 public class FlockingAI : MonoBehaviour
 {
     public List<FlockingAI> animals = new List<FlockingAI>();
+    List<Transform> leaderPoslist = new List<Transform>();
+    List<Transform> predPositions = new List<Transform>();
+    List<Transform> calfTrans = new List<Transform>();
+    List<GameObject> corpses = new List<GameObject>();
 
     public float waterSlowCoeff = 1f;
 
@@ -274,19 +278,19 @@ public class FlockingAI : MonoBehaviour
 
             if (followsLeaders)
             {
-                List<Vector2> poslist = new List<Vector2>();
-                poslist = leaderManager.leaders;
+                
+                
                 float closestLeaderDistance = 1000;
                 Vector2 closestLeaderPos = Vector2.zero;
-                if (poslist.Count != 0)
+                if (leaderPoslist.Count != 0)
                 {
-                    foreach (Vector2 _leader in poslist)
+                    foreach (Transform _leader in leaderPoslist)
                     {
-                        float distanceFromLeader = MathHelper.ApproxDist(_leader, thisPos);
+                        float distanceFromLeader = MathHelper.ApproxDist(_leader.position, thisPos);
                         if (distanceFromLeader < closestLeaderDistance)
                         {
                             closestLeaderDistance = distanceFromLeader;
-                            closestLeaderPos = _leader;
+                            closestLeaderPos = _leader.position;
                         }
                     }
 
@@ -343,19 +347,19 @@ public class FlockingAI : MonoBehaviour
 
             if (fleesFromPredators)
             {
-                List<Vector2> predPositions = new List<Vector2>();
-                predPositions = predatorManager.predatorPositions;
+                
+                
                 float closestPredDistance = 1000;
                 Vector2 closestPredPos = Vector2.zero;
                 if (predPositions.Count != 0)
                 {
-                    foreach (Vector2 _predPosition in predPositions)
+                    foreach (Transform _predPosition in predPositions)
                     {
-                        float distanceFromPred = MathHelper.ApproxDist(_predPosition, thisPos);
+                        float distanceFromPred = MathHelper.ApproxDist(_predPosition.position, thisPos);
                         if (distanceFromPred < predFleeDistance)
                         {
                             closestPredDistance = distanceFromPred;
-                            closestPredPos = _predPosition;
+                            closestPredPos = _predPosition.position;
                         }
                     }
 
@@ -370,11 +374,8 @@ public class FlockingAI : MonoBehaviour
 
             if (isPredator)
             {
-                //List<Vector2> predators = new List<Vector2>();
-                //predators = GameObject.FindObjectOfType<PredatorManager>().predatorPositions;
-                List<Transform> predtransforms = new List<Transform>();
-                predtransforms = predatorManager.predatorTransforms;
-                List<Transform> calfTrans = calfManager.calfTransforms;
+                
+                 
                 float closestCalfDistance = 1000;
                 Vector2 closestCalfPos = Vector2.zero;
                 if (calfTrans.Count != 0)
@@ -397,7 +398,7 @@ public class FlockingAI : MonoBehaviour
                         vHunt = vNormalized;//now equals normalized vector towards all influencing leaders
                     }
                 }
-                foreach (Transform _predatorTrans in predtransforms)
+                foreach (Transform _predatorTrans in predPositions)
                 {
                     if (_predatorTrans != this.transform)
                     {
@@ -428,7 +429,6 @@ public class FlockingAI : MonoBehaviour
             {
                 float closestCorpseDistance = 1000;
                 Vector2 closestCorpsePos = Vector2.zero;
-                List<GameObject> corpses = corpseManager.Corpses;
                 if (corpses.Count != 0)
                 {
                     foreach (GameObject _corpse in corpses)
@@ -504,10 +504,7 @@ public class FlockingAI : MonoBehaviour
         }
     }
 
-    void Awake()
-    {
-        
-    }
+    
 
     void Start()
     {
@@ -525,7 +522,11 @@ public class FlockingAI : MonoBehaviour
         }
 
         animals = flockManager.flock;
-        
+        leaderPoslist = leaderManager.leaderTrans;
+        predPositions = predatorManager.predatorTransforms;
+        calfTrans = calfManager.calfTransforms;
+        corpses = corpseManager.Corpses;
+
 
         rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
         speed = Random.Range(speedRange.x, speedRange.y);
