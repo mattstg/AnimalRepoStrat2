@@ -7,7 +7,7 @@ public class FrogCinematic : MonoBehaviour {
     enum FrogCinematicStage { None ,BecomingWet, BecomingArid }
 
 	int startingFrogs = 40;
-	Vector2 spawnBoundry = new Vector2(5,4);
+	Vector2 spawnBoundry = new Vector2(6,4);
 	//float spawnOffsetRange = 2.5f;
 
 	bool updateGroundTransformation = false;
