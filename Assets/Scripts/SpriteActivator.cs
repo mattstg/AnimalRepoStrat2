@@ -14,7 +14,7 @@ public class SpriteActivator : MonoBehaviour {
 	public bool rockPartialDisable = false;
 
 	float updateTimer = 3;
-	float curUpdate = 0;
+	float curUpdate = 2.5f;
 	Vector2 lastGrid = new Vector2(-10,-10);
 	//public Transform waterParent;
 
