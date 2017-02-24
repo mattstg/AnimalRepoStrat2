@@ -22,7 +22,7 @@ public class FishGF : GameFlow {
         introLessons = 3;
         outroLessons = 2;
         lessonType = LessonType.Fish;
-        maxRoundTime = 180;
+        maxRoundTime = 165;
 		stage = -1;
 		nextStep = true;
         roundTimeToGetFullScore = 130;

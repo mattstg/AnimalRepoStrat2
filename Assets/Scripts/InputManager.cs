@@ -11,9 +11,13 @@ public class InputManager : MonoBehaviour {
     public void Update()
     {
       
-        if(Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+        if(Input.GetMouseButtonDown(0))
         {
-            _MouseClicked();
+            _MouseClicked(Input.mousePosition);
+        }
+        else if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            _MouseClicked(Input.GetTouch(0).position);
         }
 
     }
@@ -22,9 +26,9 @@ public class InputManager : MonoBehaviour {
 		MouseOver (Camera.main.ScreenToWorldPoint(Input.mousePosition));
 	}
 
-	private void _MouseClicked()
+	private void _MouseClicked(Vector2 clickPos)
 	{
-		Vector2 clickedPos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+		Vector2 clickedPos = Camera.main.ScreenToWorldPoint (clickPos);
 
 		if (clickableObj) {
 			bool inrange = true;

@@ -12,7 +12,11 @@ public class FishEndZone : MonoBehaviour {
     public void OnCollision2DEnter(Collision2D coli)
     {
         if (coli.gameObject.GetComponent<PlayerFish>())
+        {
             GameObject.FindObjectOfType<FishGF>().nextStep = true;
+            Destroy(this);
+        }
+        
         //coli.gameObject.GetComponent<PlayerFish>().
     }
 }
