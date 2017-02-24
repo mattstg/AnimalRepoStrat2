@@ -7,7 +7,6 @@ public class PlayerFrog : Frog {
 
     public override void CreateFrog(FrogInfo _frogInfo, bool pioneerFrog = false)
     {
-        Debug.Log("created");
         base.CreateFrog(_frogInfo, pioneerFrog);
     }
 
