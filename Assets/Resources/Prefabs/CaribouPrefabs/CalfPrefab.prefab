@@ -111,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1763420245976860}
   m_LocalRotation: {x: -0, y: -0, z: 0.7389002, w: 0.6738149}
-  m_LocalPosition: {x: 36.352108, y: 28.530579, z: 0}
+  m_LocalPosition: {x: 15.6, y: 33.3, z: 0}
   m_LocalScale: {x: 0.70000046, y: 0.70000046, z: 1}
   m_Children:
   - {fileID: 4735992022202558}
@@ -164,8 +164,8 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 4, y: 1.2}
+  m_Offset: {x: 0.009076326, y: 0.0032869922}
+  m_Size: {x: 2.452932, y: 0.7560562}
   m_Direction: 1
 --- !u!114 &114112106456499688
 MonoBehaviour:
@@ -181,10 +181,10 @@ MonoBehaviour:
   isPlayerCalf: 0
   maxSprintCooldown: 15
   sprintCoolDownSpeed: 1
-  sprintTriggerDistance: 25
-  maxSpeedBoost: 600
+  sprintTriggerDistance: 16
+  maxSpeedBoost: 400
   currentSpeedBoost: 0
-  speedBoostDecayRate: 50
+  speedBoostDecayRate: 70
 --- !u!114 &114834904434604160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,38 +201,40 @@ MonoBehaviour:
   currentWaypoint: {fileID: 0}
   test: 0
   isCorpse: 0
+  activeWaypoint: 1
   speed: 0
   turnsHead: 1
   head: {fileID: 1858675436165042}
   headRotationSpeed: 20
-  updateFrequency: 4
-  speedRange: {x: 820, y: 830}
+  updateFrequency: 1
+  speedRange: {x: 810, y: 820}
   rotationSpeedRange: {x: 8, y: 10}
   isCalf: 1
   isFish: 0
   isDuckling: 0
   fleesFromPredators: 1
-  predFleeDistance: 20
-  fleeWeight: 45
+  predFleeDistance: 14
+  fleeWeight: 20
   averageHeadingWeight: 4
-  averagePositionWeight: 8
+  averagePositionWeight: 9
   neighbourDistance: 10
   repulsionDistance: 2
   repulsionWeight: 2
-  usesWaypoints: 0
-  waypointWeight: 1
-  waypointReachedProximity: 45
+  usesWaypoints: 1
+  waypointWeight: 3
+  waypointReachedProximity: 40
   followsLeaders: 1
-  leaderWeight: 2
+  leaderWeight: 3
+  leaderDirWeight: 3
   leaderInfluenceDistance: 50
   followsMother: 1
   motherInfluenceDistance: 30
   mother: {fileID: 0}
   motherWeight: 10
   usesRandom: 1
-  randomWeight: 3
-  randomRange: 10
-  randVectUpdateFrequency: 200
+  randomWeight: 1.2
+  randomRange: 7
+  randVectUpdateFrequency: 300
   usesDirectionalInertia: 0
   inertiaWeight: 3
   randomizesSpeed: 0

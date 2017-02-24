@@ -28,11 +28,11 @@ public class LakeEffector : MonoBehaviour {
     {
         if (go.GetComponent<PlayerCaribou>())
         {
-            go.GetComponent<PlayerCaribou>().speed = (entering) ? 5 : 12;
+            go.GetComponent<PlayerCaribou>().speed = (entering) ? 8 : 12;
         }
         else if (go.GetComponent <FlockingAI>())
         {
-            go.GetComponent<FlockingAI>().waterSlowCoeff = (entering) ? .3f : 1f;
+            go.GetComponent<FlockingAI>().waterSlowCoeff = (entering) ? .67f : 1f;
         }
     }
 }

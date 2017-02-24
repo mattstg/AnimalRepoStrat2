@@ -131,14 +131,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1885383847807388}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 46.82757, y: 27.501709, z: -0.125}
+  m_LocalRotation: {x: -0, y: -0, z: 0.8524357, w: 0.52283204}
+  m_LocalPosition: {x: 5.0502014, y: 142.6399, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4154955641028854}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 116.955}
 --- !u!4 &4291759180836120
 Transform:
   m_ObjectHideFlags: 1
@@ -224,8 +224,8 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 5.2, y: 1.2}
+  m_Offset: {x: -0.09922074, y: 0.012013845}
+  m_Size: {x: 3.492181, y: 0.88248014}
   m_Direction: 1
 --- !u!82 &82446335193718410
 AudioSource:
@@ -323,6 +323,7 @@ MonoBehaviour:
   currentWaypoint: {fileID: 0}
   test: 0
   isCorpse: 0
+  activeWaypoint: 1
   speed: 0
   turnsHead: 1
   head: {fileID: 1296992225907802}
@@ -346,14 +347,15 @@ MonoBehaviour:
   waypointReachedProximity: 30
   followsLeaders: 0
   leaderWeight: 1
+  leaderDirWeight: 1
   leaderInfluenceDistance: 0
   followsMother: 0
   motherInfluenceDistance: 40
   mother: {fileID: 0}
   motherWeight: 1
   usesRandom: 1
-  randomWeight: 1
-  randomRange: 5
+  randomWeight: 0.5
+  randomRange: 4
   randVectUpdateFrequency: 500
   usesDirectionalInertia: 1
   inertiaWeight: 4

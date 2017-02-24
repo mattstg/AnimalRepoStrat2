@@ -274,11 +274,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f7ae2ccb1dc08c4ea4fcf719815659f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSprintCooldown: 15
+  maxSprintCooldown: 12
   sprintCoolDownSpeed: 1
-  sprintTriggerDistance: 35
-  maxSpeedBoost: 650
-  speedBoostDecayRate: 60
+  sprintTriggerDistance: 20
+  maxSpeedBoost: 500
+  speedBoostDecayRate: 70
 --- !u!114 &114703785759266646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -295,13 +295,14 @@ MonoBehaviour:
   currentWaypoint: {fileID: 0}
   test: 0
   isCorpse: 0
+  activeWaypoint: 1
   speed: 0
   turnsHead: 1
   head: {fileID: 1286030784081590}
-  headRotationSpeed: 20
+  headRotationSpeed: 10
   updateFrequency: 4
-  speedRange: {x: 690, y: 690}
-  rotationSpeedRange: {x: 7, y: 9}
+  speedRange: {x: 720, y: 720}
+  rotationSpeedRange: {x: 6, y: 7}
   isCalf: 0
   isFish: 0
   isDuckling: 0
@@ -318,6 +319,7 @@ MonoBehaviour:
   waypointReachedProximity: 40
   followsLeaders: 0
   leaderWeight: 1
+  leaderDirWeight: 1
   leaderInfluenceDistance: 0
   followsMother: 0
   motherInfluenceDistance: 40
@@ -333,8 +335,8 @@ MonoBehaviour:
   randomizesRotationSpeed: 0
   speedNormalizing: 0
   isPredator: 1
-  huntRange: 50
-  huntWeight: 15
+  huntRange: 40
+  huntWeight: 13
   scavenges: 1
   scavengeDistance: 30
   scavengeWeight: 18

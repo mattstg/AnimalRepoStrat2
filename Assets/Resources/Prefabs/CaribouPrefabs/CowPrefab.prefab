@@ -184,14 +184,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1948676284348282}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7268619, w: 0.68678373}
-  m_LocalPosition: {x: 42.151035, y: 27.408142, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7221992, w: 0.69168514}
+  m_LocalPosition: {x: 25.90501, y: 63.59665, z: 0}
   m_LocalScale: {x: 0.90000045, y: 0.90000045, z: 1}
   m_Children:
   - {fileID: 4898302123043380}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 93.248}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 92.47301}
 --- !u!50 &50091142890193854
 Rigidbody2D:
   serializedVersion: 4
@@ -223,8 +223,8 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 4, y: 1.2}
+  m_Offset: {x: -0.22236574, y: 0.028507132}
+  m_Size: {x: 2.9431238, y: 0.92068803}
   m_Direction: 1
 --- !u!114 &114594474429612702
 MonoBehaviour:
@@ -242,37 +242,39 @@ MonoBehaviour:
   currentWaypoint: {fileID: 0}
   test: 0
   isCorpse: 0
+  activeWaypoint: 1
   speed: 0
   turnsHead: 1
   head: {fileID: 1880510081260924}
   headRotationSpeed: 40
-  updateFrequency: 4
+  updateFrequency: 2
   speedRange: {x: 820, y: 830}
   rotationSpeedRange: {x: 8, y: 10}
   isCalf: 0
   isFish: 0
   isDuckling: 0
   fleesFromPredators: 1
-  predFleeDistance: 20
-  fleeWeight: 8
-  averageHeadingWeight: 6
+  predFleeDistance: 8
+  fleeWeight: 2.5
+  averageHeadingWeight: 4
   averagePositionWeight: 2
-  neighbourDistance: 15
-  repulsionDistance: 6
-  repulsionWeight: 7
+  neighbourDistance: 11
+  repulsionDistance: 8
+  repulsionWeight: 6
   usesWaypoints: 1
-  waypointWeight: 4
+  waypointWeight: 7
   waypointReachedProximity: 40
   followsLeaders: 1
-  leaderWeight: 6
-  leaderInfluenceDistance: 50
+  leaderWeight: 4
+  leaderDirWeight: 5
+  leaderInfluenceDistance: 60
   followsMother: 0
   motherInfluenceDistance: 40
   mother: {fileID: 0}
   motherWeight: 1
   usesRandom: 1
-  randomWeight: 4
-  randomRange: 6
+  randomWeight: 3.2
+  randomRange: 12
   randVectUpdateFrequency: 500
   usesDirectionalInertia: 1
   inertiaWeight: 3

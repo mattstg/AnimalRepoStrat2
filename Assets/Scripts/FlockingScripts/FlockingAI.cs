@@ -62,6 +62,7 @@ public class FlockingAI : MonoBehaviour
 
     public bool followsLeaders = false;
     public float leaderWeight = 1f; //multiplier for strength of leader influence
+    public float leaderDirWeight = 1f;
     public float leaderInfluenceDistance;
 
     public bool followsMother = false;
@@ -179,6 +180,7 @@ public class FlockingAI : MonoBehaviour
             Vector2 vPredCenter = Vector2.zero;
             Vector2 vPredHeading = Vector2.zero;
             Vector2 vPredRepel = Vector2.zero;
+            Vector2 leaderDir = Vector2.zero;
 
 
 
@@ -284,6 +286,7 @@ public class FlockingAI : MonoBehaviour
                 
                 float closestLeaderDistance = 1000;
                 Vector2 closestLeaderPos = Vector2.zero;
+                Vector2 _leaderDir = Vector2.zero;
                 if (leaderPoslist.Count != 0)
                 {
                     foreach (Transform _leader in leaderPoslist)
@@ -293,6 +296,7 @@ public class FlockingAI : MonoBehaviour
                         {
                             closestLeaderDistance = distanceFromLeader;
                             closestLeaderPos = _leader.position;
+                            _leaderDir = _leader.right;
                         }
                     }
 
@@ -300,6 +304,8 @@ public class FlockingAI : MonoBehaviour
                     {
                         Vector2 v = closestLeaderPos - V3toV2(this.transform.position);
                         Vector2 vNormalized = v.normalized;
+                        Vector2 temp = _leaderDir.normalized;
+                        leaderDir = temp; 
                         vLeader = vNormalized;//now equals normalized vector towards all influencing leaders
                     }
 
@@ -475,7 +481,8 @@ public class FlockingAI : MonoBehaviour
                 + (vPredRepel * interPredatorRepelWeight)
                 + (vPredHeading * predAverageHeadingWeight)
                 + (vPredCenter * predAveragePositionWeight)
-                + (vScavenge * scavengeWeight));
+                + (vScavenge * scavengeWeight)
+                + (leaderDir * leaderDirWeight));
 
 
             direction = direction.normalized;
