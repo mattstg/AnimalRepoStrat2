@@ -55,7 +55,8 @@ public class FrogGF : GameFlow {
         FrogGV.RemoveFrogFromMasterList(playerFrog, true);
         im.enabled = false;
         float scorePerc = Mathf.Min((float)matureDescendants / (float)frogsForMaxScore, 1);
-        string t0 = "The puddle has evaporated, and the land has returned to its usual arid state. You are now the proud ancestor of " + matureDescendants + " descendants ";
+        string t0 = "The puddle has evaporated, and the land has returned to its usual arid state.\n\n" +
+            "You are now the <b>proud ancestor</b> of <b>" + matureDescendants + " descendants</b>!";
         textPanel.gameObject.SetActive(true);
         textPanel.SetText(t0);// + t1 + t2 + t3 + t4);
         textPanel.StartWriting();
