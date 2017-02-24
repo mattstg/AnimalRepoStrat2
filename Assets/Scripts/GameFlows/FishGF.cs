@@ -15,6 +15,8 @@ public class FishGF : GameFlow {
 	public PlayerFish playerFish;
 	public GameObject salmonManager;
 
+    int checkpointsPassed = 0;
+
 	protected override void StartFlow()
 	{
         introLessons = 3;
@@ -48,7 +50,8 @@ public class FishGF : GameFlow {
 		textPanel.gameObject.SetActive (true);
 		textPanel.SetText (toOut);
 		textPanel.StartWriting ();
-        float scorePerc = GetTimedRoundScore();
+        float scorePerc = Mathf.Max(GetTimedRoundScore(), (checkpointsPassed * .33f));
+        scorePerc = Mathf.Clamp(scorePerc, 0, 1);
         scoreText.gameObject.SetActive(false);
         ProgressTracker.Instance.SetRoundScore(scorePerc, 1);
         ProgressTracker.Instance.SubmitProgress(2);
@@ -74,7 +77,8 @@ public class FishGF : GameFlow {
 	{
 		lastCheckpt = checkPt;	
 		isFirstCheckpoint = false;
-	}
+        checkpointsPassed++;
+    }
 
 	public void PlayerDied(PlayerFish playerFish)
 	{

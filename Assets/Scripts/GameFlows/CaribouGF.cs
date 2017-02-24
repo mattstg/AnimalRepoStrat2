@@ -25,7 +25,7 @@ public class CaribouGF : GameFlow {
         lessonType = LessonType.Caribou;
         stage = -1;
 		nextStep = true;
-        roundTimeToGetFullScore = 165;
+        roundTimeToGetFullScore = 180;
         playerTransform.gameObject.SetActive(false);
         SaveCheckpoint(playerTransform.position);
         //
@@ -55,8 +55,7 @@ public class CaribouGF : GameFlow {
         playerTransform.GetComponent<PlayerCaribou>().abilityBar.gameObject.SetActive(false);
 		//nextStep = true;
         scoreText.gameObject.SetActive(false);
-        float _score = GetTimedRoundScore();//checkpointsPassed
-        _score = Mathf.Max(_score, (checkpointsPassed - 1) * .15f);
+        float _score = Mathf.Max(GetTimedRoundScore(), (checkpointsPassed - 1) * .15f); //checkpointsPassed
         _score = Mathf.Clamp(_score, 0, 1);
 
         ProgressTracker.Instance.SetRoundScore(_score, 4);

@@ -13,7 +13,7 @@ public class BowerGV {
 	public static readonly float MaxScaleGrowthFromAlt = 1.5f;
 	public static readonly float bowerInstepctionTime = 6;
 
-	public static readonly float pointsToWIN = 10;
+	public static readonly float pointsToWIN = 9;
 	public BowerGV(){
 
 	}

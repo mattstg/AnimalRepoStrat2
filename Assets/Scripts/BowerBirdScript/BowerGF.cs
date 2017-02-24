@@ -13,7 +13,7 @@ public class BowerGF : GameFlow {
 	string winningText = "Unfortunately, none of the male bowerbirds in this region have attracted the female, and so she has left in search of other candidates!\n\n" +
         "Perhaps the next female will be less picky!";
 	private bool someoneWon = false;
-	float scoreFor100 = 10;
+	float scoreFor100 = 9;
     bool playerWon = false;
 
 	protected override void StartFlow()

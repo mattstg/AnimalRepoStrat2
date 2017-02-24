@@ -29,7 +29,7 @@ public class DuckGF : GameFlow {
         int ducklingsSaved = (int)GameObject.FindObjectOfType<DuckEndZone>().ducklingsSaved;
         GameObject.FindObjectOfType<DuckEndZone>().finished = true;
         float timeScore = GetTimedRoundScore();
-        float scorePerc = ((float)ducklingsSaved/10f) * timeScore;
+        float scorePerc = (((float)ducklingsSaved/10f) + timeScore)/2;
         string toOut = "";
         if (gameForceEnded && ducklingsSaved == 0)
         {
