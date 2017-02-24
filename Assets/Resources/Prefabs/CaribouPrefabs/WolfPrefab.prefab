@@ -301,7 +301,7 @@ MonoBehaviour:
   head: {fileID: 1286030784081590}
   headRotationSpeed: 10
   updateFrequency: 4
-  speedRange: {x: 720, y: 720}
+  speedRange: {x: 735, y: 735}
   rotationSpeedRange: {x: 6, y: 7}
   isCalf: 0
   isFish: 0
