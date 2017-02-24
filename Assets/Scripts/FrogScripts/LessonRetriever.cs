@@ -103,7 +103,7 @@ public class LessonRetriever
                     "But beware: the noisy toads have attracted some hungry predators!\n\n" +
                     "The more living descendants you have when the puddle dries up, the higher your score will be.";
             case 3:
-                return "Spadefoot toads are considered an opportunistic <i>r</i>-species.\n\n" +
+                return "Spadefoot toads are considered an <b>opportunistic <i>r</i>-species</b>.\n\n" +
                     "They have large amounts of offspring, but few survive. They have short life expectancy, and their young mature very quickly. They do not protect their offspring, but rather focus on having as many as possible. That way, it is very likely that at least some of them will reach adulthood.\n\n" +
                     "A male spadefoot toad who does not take full advantage of the rare explosive breeding event is likely to have far fewer descendants than his rivals.";
             default:
@@ -119,7 +119,7 @@ public class LessonRetriever
             case 0: //intro1
                 return "In this game, you will play as a <b>pacific salmon</b>.\n\n" +
                     "Salmon are hatched in freshwater rivers, but they eventually make their way out to the saltwater ocean, where they will spend most of their lives.\n\n" +
-                    "Once they reach sexual maturity, they engage in one of nature’s spectacular events: the <i>salmon run</i>. Each year, millions of salmon return to the rivers where they were born, and swim hundreds of kilometers upstream to the pools where they spawned.\n\n" +
+                    "Once they reach sexual maturity, they engage in one of nature’s spectacular events: the <b>salmon run</b>. Each year, millions of salmon return to the rivers where they were born, and swim hundreds of kilometers upstream to the pools where they spawned.\n\n" +
                     "Along the way, many are caught by predators (especially grizzly bears).";
             case 1://intro2
                 return "The pacific salmon that succeed in making it to their spawning grounds mate there for the only time in their lives.\n\n" +
@@ -149,16 +149,16 @@ public class LessonRetriever
             case 0: //L1
                 return "In this game you will play as a <b>male bowerbird</b>.\n\n" +
                     "Bowerbirds are considered a <i>K</i>-species. They usually lay one egg, which takes about three weeks to hatch. The female then raises her young for about two months. Some bowerbirds take up to eight years to mature.\n\n" +
-                    "Bowerbirds are particularly famous for their mating rituals. Male bowerbirds create small structures made of twigs called <i>bowers</i>, and adorn them with decorations. These can include pebbles, shells, feathers, flowers, and berries. ";
+                    "Bowerbirds are particularly famous for their mating rituals. Male bowerbirds create small structures made of twigs called <b>bowers</b>, and adorn them with decorations. These can include pebbles, shells, feathers, flowers, and berries. ";
             case 1: //L2
                 return "Females who are interested in mating visit the bowers of multiple males, often returning to each one several times.\n\n" +
                     "Males try especially hard to find blue decorations, since blue is the favorite color of most female bowerbirds.\n\n" +
                     "Unlike spadefoot toads and salmon, female bowerbirds are extremely selective in their mating. Since they have so few offspring, they must ensure that the children they do have are as healthy and strong as possible. Therefore, it pays off to find the most impressive male in the neighborhood for a mate.";
             case 2: //L3
                 return "It is mating season, and you have just completed your twig bower.\n\n" +
-                    "You’ve spotted a female in the area who seems to be interested in finding a mate. However, a few rival males in the area seem to have taken notice as well.\n\n" +
-                    "Outperform your rivals by collecting the most impressive assortment of decorations for your bower!\n\n" +
-                    "To get a high score, make sure the female bowerbird chooses you over the others. The faster she chooses you, the higher the score!";
+                    "You’ve spotted a female in the area who seems to be interested in finding a mate. However, a few rival males in the area seem to have taken notice as well. Outperform your rivals by collecting the most impressive assortment of decorations for your bower!\n\n" +
+                    "For you to win, the female bowerbird must choose you over the others. She will only choose you if your bower impresses her enough when she visits.\n\n" +
+                    "Be sure not to waste time, because she'll soon leave if none of the bowers impress her enough.";
             case 3: //outro1
                 return "Competition over female bowerbirds is fierce, and it is the main challenge males will face in their struggle to reproduce. Many of them fail to mate at all, unable to compete with their neighbors.\n\n" +
                     "While salmon are selected for mating by their ability to survive the run, male bowerbirds are selected for mating by their treasure-hunting and decorating skills.\n\n" +
