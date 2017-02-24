@@ -13,8 +13,6 @@ public class WaterfallZone : MonoBehaviour {
 			currentFish.jumpTo (jumpToPoint.transform.position);
             if(savesCheckpoint && coli.GetComponent<PlayerFish>())
 			    GameObject.FindObjectOfType<FishGF> ().ReachedCheckpoint (jumpToPoint.transform.position);
-            if (circuitConnectingWaterfall && coli.GetComponent<PlayerFish>())
-                GameObject.FindObjectOfType<FishGF>().ToggleMinimap(false);
 
         }
 	}

@@ -142,7 +142,8 @@ public class Bear : MonoBehaviour {
 			eatingFish = fishInRange [0].transform;
 			fishInRange [0].isBeingEaten = true;
 			
-			if (fishInRange [0].gameObject.GetComponent<PlayerFish> ()) {
+			if (fishInRange [0].gameObject.GetComponent<PlayerFish> ())
+            {
                 fishInRange[0].gameObject.GetComponent<PlayerFish>().SetPlayerEnabled(false);
                 //player dies, restart at checkpoint
             }

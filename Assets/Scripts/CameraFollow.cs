@@ -12,6 +12,12 @@ public class CameraFollow : MonoBehaviour {
     public Vector2 limitBottomLeft;
     public Vector2 limitTopRight;
     public float viewportMargin = 0.5f;
+    Camera cam;
+
+    public void Awake()
+    {
+        cam = GetComponent<Camera>();
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -19,8 +25,8 @@ public class CameraFollow : MonoBehaviour {
             //transform.position = new Vector3(toFollow.position.x + offset.x, toFollow.position.y + offset.y, -10);
 
             Vector3 target = GetTarget();
-            Vector3 point = GetComponent<Camera>().WorldToViewportPoint(target);
-            Vector3 delta = target - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z));
+            Vector3 point = cam.WorldToViewportPoint(target);
+            Vector3 delta = target - cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z));
             Vector3 destination = transform.position + delta;
             transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
         }
@@ -32,9 +38,9 @@ public class CameraFollow : MonoBehaviour {
 
         if (useLimits)
         {
-            Vector3 vpTarget = GetComponent<Camera>().WorldToViewportPoint(target);
-            Vector3 vpTopRight = GetComponent<Camera>().WorldToViewportPoint(limitTopRight);
-            Vector3 vpBottomLeft = GetComponent<Camera>().WorldToViewportPoint(limitBottomLeft);
+            Vector3 vpTarget     = cam.WorldToViewportPoint(target);
+            Vector3 vpTopRight   = cam.WorldToViewportPoint(limitTopRight);
+            Vector3 vpBottomLeft = cam.WorldToViewportPoint(limitBottomLeft);
 
             bool overrule = false;
            
@@ -61,7 +67,7 @@ public class CameraFollow : MonoBehaviour {
 
             if (overrule)
             {
-                target = GetComponent<Camera>().ViewportToWorldPoint(vpTarget);
+                target = cam.ViewportToWorldPoint(vpTarget);
                 target.z = -10;
             }
         }
@@ -70,6 +76,6 @@ public class CameraFollow : MonoBehaviour {
 
 	public void SetZoom(float z)
 	{
-		GetComponent<Camera> ().orthographicSize = z;
+        cam.orthographicSize = z;
 	}
 }

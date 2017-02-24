@@ -15,17 +15,15 @@ public class FishGF : GameFlow {
 	public PlayerFish playerFish;
 	public GameObject salmonManager;
 
-    float timeScore100 = 150;
-
 	protected override void StartFlow()
 	{
         introLessons = 3;
         outroLessons = 2;
         lessonType = LessonType.Fish;
-        maxRoundTime = 210;
+        maxRoundTime = 180;
 		stage = -1;
 		nextStep = true;
-        roundTimeToGetFullScore = 150;
+        roundTimeToGetFullScore = 130;
         if (nextStep)
 			playerFish.gameObject.SetActive (false);
 	}
@@ -57,7 +55,6 @@ public class FishGF : GameFlow {
 
 	protected override void StartGame()
 	{
-        ToggleMinimap(true);
         scoreText.gameObject.SetActive(true);
         playerFish.gameObject.SetActive (true);
 		roundTimerActive = true;
@@ -65,14 +62,8 @@ public class FishGF : GameFlow {
 		im.gameObject.SetActive (true);
 	}
 
-    public void ToggleMinimap(bool setActive)
-    {
-        //miniMap.SetActive(setActive);
-    }
-
 	public void GameFinished()
 	{
-        ToggleMinimap(false);
         nextStep = true;
 	}
 
@@ -87,6 +78,7 @@ public class FishGF : GameFlow {
 	{
 		destroyAllFish ();
 		playerFish.transform.position = lastCheckpt;
+        playerFish.isBeingEaten = false;
         playerFish.SetPlayerEnabled(true);
 		//need to spawn a bunch of fish at base of waterfall
 		if (!isFirstCheckpoint) {

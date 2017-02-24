@@ -13,7 +13,7 @@ public class PlayerFish : Fish {
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.freezeRotation = true;
 		followAi = false;
-        moveSpeed = 1.2f;
+        moveSpeed = 1.3f;
 	}
 	
 	// Update is called once per frame

@@ -10,7 +10,7 @@ public class BowerBird : MonoBehaviour {
 	public Rigidbody2D body;
 	public Vector2 desiredPos;
 	public bool isMoving = false;
-	public Vector2 startScale; //DONT FUCKIN CHANGE THIS EVER
+	public Vector2 startScale; //DONT FUCKIN CHANGE THIS EVER -- wonder what the story behind that is
 		
 	public float altitude = 0;
 	public float idleTime = 0;
@@ -224,7 +224,7 @@ public class BowerBird : MonoBehaviour {
 	public void IdleBoredom(float timeIdle){
 		if (canGetBored) {
 			if (!isHolding) {
-				if (timeIdle > 12) {
+				if (timeIdle > 5) {
 					SeekRandomItem ();
 					idleTime = 0;
 					autoPickup = true;
