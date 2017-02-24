@@ -30,6 +30,7 @@ public class DuckEndZone : MonoBehaviour {
         }
         else if(coli.gameObject.GetComponent<Duckling>())
         {
+            Debug.Log("duckling saved");
             ducklingsSaved++;
         }
     }
@@ -42,7 +43,7 @@ public class DuckEndZone : MonoBehaviour {
         }
         else if (coli.gameObject.GetComponent<Duckling>())
         {
-
+            ducklingsSaved--;
         }
     }
 }

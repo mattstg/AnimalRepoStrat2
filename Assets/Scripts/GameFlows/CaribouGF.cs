@@ -16,6 +16,7 @@ public class CaribouGF : GameFlow {
     Dictionary<Transform, Vector2> wolfStartingPositions;
     Dictionary<FlockingAI, CaribouSave> caribouSaves;
     Vector2 lastCheckpoint;
+    int checkpointsPassed;
 
     protected override void StartFlow()
 	{
@@ -43,12 +44,22 @@ public class CaribouGF : GameFlow {
 
 
 	protected override void PostGame(){
-        playerTransform.GetComponent<PlayerCaribou>().abilityBar.gameObject.SetActive(false);
-        roundTimerActive = false;
-		//nextStep = true;
-        scoreText.gameObject.SetActive(true);
+
+
         im.enabled = false;
-        ProgressTracker.Instance.SetRoundScore(GetTimedRoundScore(), 4);
+        roundTimerActive = false;
+        playerTransform.gameObject.SetActive(false);
+        foreach (Transform t in allParentTransforms)
+            t.gameObject.SetActive(false);
+
+        playerTransform.GetComponent<PlayerCaribou>().abilityBar.gameObject.SetActive(false);
+		//nextStep = true;
+        scoreText.gameObject.SetActive(false);
+        float _score = GetTimedRoundScore();//checkpointsPassed
+        _score = Mathf.Max(_score, (checkpointsPassed - 1) * .15f);
+        _score = Mathf.Clamp(_score, 0, 1);
+
+        ProgressTracker.Instance.SetRoundScore(_score, 4);
         ProgressTracker.Instance.SubmitProgress(8);
 
         string toOut = "";
@@ -67,8 +78,8 @@ public class CaribouGF : GameFlow {
 	{
         playerTransform.GetComponent<PlayerCaribou>().abilityBar.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(true);
-        im.gameObject.SetActive (true);
-		roundTimerActive = true;
+        im.enabled = true;
+        roundTimerActive = true;
         playerTransform.gameObject.SetActive(true);
         foreach(Transform t in allParentTransforms)
             t.gameObject.SetActive(true);
@@ -92,6 +103,7 @@ public class CaribouGF : GameFlow {
                     CaribouSave cs = new CaribouSave(t.position, fa.activeWaypoint);
                     caribouSaves.Add(fa, cs);
                 }
+        checkpointsPassed++;
     }
 
     public void LoadCheckpoint()

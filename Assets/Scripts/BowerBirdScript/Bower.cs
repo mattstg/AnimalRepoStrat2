@@ -61,6 +61,7 @@ public class Bower : MonoBehaviour {
 		}
 
 		collectionRating = value + (colors[0] * 2);
+        collectionRating = (collectionRating / 2) + .5f ; //there worth half now, less gap, rounds it
 		/*
 		int totalItems = collection.Count;
 		//float bonusSetScore = 1;

@@ -13,7 +13,8 @@ public class BowerGF : GameFlow {
 	string winningText = "Unfortunately, none of the male bowerbirds in this region have attracted the female, and so she has left in search of other candidates!\n\n" +
         "Perhaps the next female will be less picky!";
 	private bool someoneWon = false;
-	float scoreFor100 = 21;
+	float scoreFor100 = 10;
+    bool playerWon = false;
 
 	protected override void StartFlow()
 	{
@@ -45,8 +46,9 @@ public class BowerGF : GameFlow {
 		someoneWon = true;
 		score = (int) _score;
 		if (winner.isPlayer) {
-			//player winner
-			winningText = "You win! You successfully attracted the attention of the female bowerbird!\n\n" +
+            //player winner
+            playerWon = true;
+            winningText = "You win! You successfully attracted the attention of the female bowerbird!\n\n" +
                 "Now you have found a mate, and soon she will use your bower as a home in which to raise your offspring.";
 		} else {
 			//enemy bower wins
@@ -76,6 +78,8 @@ public class BowerGF : GameFlow {
         textPanel.SetText(t0);
         textPanel.StartWriting();
         float scorePerc = Mathf.Min(1, score / scoreFor100);
+        if (!playerWon)
+            scorePerc = Mathf.Max(scorePerc, .9f);
         ProgressTracker.Instance.SetRoundScore(scorePerc, 2);
         ProgressTracker.Instance.SubmitProgress(4);
     }

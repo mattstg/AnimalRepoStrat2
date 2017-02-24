@@ -5381,7 +5381,7 @@ MonoBehaviour:
   textPanel: {fileID: 1318145790}
   scoreText: {fileID: 625164604}
   trackScoreAsTime: 0
-  maxRoundTime: 180
+  maxRoundTime: 160
   frogCinematic: {fileID: 1336928105}
   playerFrog: {fileID: 1587365128}
   im: {fileID: 1921402803}
