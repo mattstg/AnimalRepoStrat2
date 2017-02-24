@@ -24,7 +24,7 @@ public class CaribouGF : GameFlow {
         lessonType = LessonType.Caribou;
         stage = -1;
 		nextStep = true;
-        roundTimeToGetFullScore = 210;
+        roundTimeToGetFullScore = 165;
         playerTransform.gameObject.SetActive(false);
         SaveCheckpoint(playerTransform.position);
         //

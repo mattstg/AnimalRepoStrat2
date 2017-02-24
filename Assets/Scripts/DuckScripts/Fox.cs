@@ -28,6 +28,7 @@ public class Fox : MonoBehaviour {
 
     DucklingManager ducklingManager;
     FlockManager flockManager;
+    Rigidbody2D rb2d;
 
     // Use this for initialization
     void Awake()
@@ -41,6 +42,7 @@ public class Fox : MonoBehaviour {
 			}
         ducklingManager = GameObject.FindObjectOfType<DucklingManager>();
         flockManager = GameObject.FindObjectOfType<FlockManager>();
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
 
 	
@@ -163,8 +165,8 @@ public class Fox : MonoBehaviour {
 		float speed = foxCurrentSpeed;
 		if (distanceToGoal < foxCurrentSpeed * Time.deltaTime)
 			speed = distanceToGoal;
-		//GetComponent<Rigidbody2D> ().AddRelativeForce (goalDir.normalized * foxCurrentSpeed * Time.deltaTime,ForceMode2D.Impulse);
-		GetComponent<Rigidbody2D> ().velocity = goalDir.normalized * speed;
+        //GetComponent<Rigidbody2D> ().AddRelativeForce (goalDir.normalized * foxCurrentSpeed * Time.deltaTime,ForceMode2D.Impulse);
+        rb2d.velocity = goalDir.normalized * speed;
 		//transform.position = Vector2.MoveTowards(transform.position, goalPos, foxCurrentSpeed * Time.deltaTime);
 	}
 }
