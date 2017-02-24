@@ -13,7 +13,7 @@ public class BowerGF : GameFlow {
 	string winningText = "Unfortunately, none of the male bowerbirds in this region have attracted the female, and so <b>she has left in search of other candidates</b>!\n\n" +
         "Perhaps the next female will be less picky!";
 	private bool someoneWon = false;
-	float scoreFor100 = 24;
+	float scoreFor100 = 21;
 
 	protected override void StartFlow()
 	{
@@ -47,24 +47,30 @@ public class BowerGF : GameFlow {
 		if (winner.isPlayer) {
 			//player winner
 			winningText = "You have attracted the attention of the female!\n\n" +
-                "<b>You win</b> with a <b>bower score</b> of <b>" + score + "</b>!";
+                "<b>You win</b> She will use the nest as her home to raise the young";
 		} else {
 			//enemy bower wins
 			winningText = "One of your rivals has attracted the attention of the female!\n\n" +
-                "Your <b>bower score</b> of <b>" + score + "</b> was <b>not high enough</b> to outshine your competitors!";
+                "Someone else impressed her with thier nest before you could";
 		}
 		nextStep = true;
 	}
 
     protected override void PostGame()
     {
+        bowerBirdsParent.SetActive(false);
+        scoreText.gameObject.SetActive(false);
+        playerBB.gameObject.SetActive(false);
         bowerArrow.gameObject.SetActive(false);
         roundTimerActive = false;
+        safeGameTime = 0;
+        roundTime = 0;
+
         scoreText.gameObject.SetActive(false);
         im.enabled = false;
 		string t0 = winningText;
 		if (someoneWon) {
-			t0 = winningText + score + "!";
+			t0 = winningText;
 		}
         textPanel.gameObject.SetActive(true);
         textPanel.SetText(t0);

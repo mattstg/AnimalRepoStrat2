@@ -6,7 +6,7 @@ public class GameFlow : MonoBehaviour {
 
 	public bool nextStep = false;
 	public bool canTimeOut = true;
-	private float safeGameTime = 0;
+	protected float safeGameTime = 0;
 
 	public string nextSceneName = "";
     public GameObject tutorial;
