@@ -37,13 +37,13 @@ public class FishGF : GameFlow {
         string toOut = "";
         if(gameForceEnded)
         {
-            toOut = "You have <b>run out of time</b>. You did not make it to your spawning grounds in time for mating.\n\n" +
+            toOut = "You have run out of time. You did not make it to your spawning grounds in time for mating.\n\n" +
                 "Because your body has undergone a tranformation to survive in fresh water, you will not survive back in the salty sea.\n\n" +
-                "<b>Your lineage ends here</b>.";
+                "Your lineage ends here.";
         }
         else
         {
-            toOut = "You have <b>successfully made it to the spawning grounds</b> in <b>" + scoreText.TimeAsTimerString(roundTime) + "</b>!";
+            toOut = "You successfully made it to the spawning grounds in " + scoreText.TimeAsTimerString(roundTime) + "!";
         }
 		textPanel.gameObject.SetActive (true);
 		textPanel.SetText (toOut);
