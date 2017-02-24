@@ -518,14 +518,18 @@ public class FlockingAI : MonoBehaviour
         if (!isPredator)
         {   
             flockManager.flock.Add(GetComponent<FlockingAI>()); // adds this animal to FlockManager's flock list
-            
         }
 
-        animals = flockManager.flock;
-        leaderPoslist = leaderManager.leaderTrans;
-        predPositions = predatorManager.predatorTransforms;
-        calfTrans = calfManager.calfTransforms;
-        corpses = corpseManager.Corpses;
+        if(flockManager)
+            animals = flockManager.flock;
+        if(leaderManager)
+            leaderPoslist = leaderManager.leaderTrans;
+        if(predatorManager)
+            predPositions = predatorManager.predatorTransforms;
+        if(calfManager)
+            calfTrans = calfManager.calfTransforms;
+        if(corpseManager)
+            corpses = corpseManager.Corpses;
 
 
         rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
