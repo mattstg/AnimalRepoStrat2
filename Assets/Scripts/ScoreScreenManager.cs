@@ -51,7 +51,10 @@ public class ScoreScreenManager : MonoBehaviour {
             }
             if (truncate)
             {
-                t.GetComponent<Text>().text = string.Format("{0:0.##}", _value);
+                float helper = _value * 100;
+                int cutter = (int)helper;
+                float backTo = cutter / 100f;
+                t.GetComponent<Text>().text = string.Format("{0:0.##}", backTo);
             }
             else
                 t.GetComponent<Text>().text = ((int)_value).ToString();
