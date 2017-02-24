@@ -95,7 +95,7 @@ public class GraphManager : MonoBehaviour {
             if (roundNumber != -1)
             {
                 int progressNumber = roundNumber * 2 + 1;
-                ProgressTracker.Instance.SetRoundMult((float)totalScore / (float)tries, GetRoundNumber(), tries);
+                ProgressTracker.Instance.SetRoundMult((float)totalScore / (float)tries, GetRoundNumber(), tries - 1);
                 ProgressTracker.Instance.SubmitProgress(progressNumber);
             }
 			gameflow.AnsweredGraphCorrectly ();

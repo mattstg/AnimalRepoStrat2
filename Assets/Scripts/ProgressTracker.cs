@@ -56,7 +56,7 @@ public class ProgressTracker {
 	{
         //float _scooore = score;
         score = Mathf.Clamp(score - (tries * lossPerQuizAttempt), 0,1);
-        //Debug.Log("score: " + _scooore + " for round: " + round + " took " + tries + " tries, resulting in: " + score);
+        //Debug.Log("raw score: " + _scooore + " for round: " + round + " took " + tries + " tries, resulting in final score: " + score);
         roundMult [round] = score;
 	}
 
