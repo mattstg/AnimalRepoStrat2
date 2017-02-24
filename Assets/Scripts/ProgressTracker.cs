@@ -43,7 +43,7 @@ public class ProgressTracker {
 
     public float GetMultScore(LessonType lesson)
     {
-        return 1 + roundScores[(int)lesson]*roundMultMax;
+        return 1 + roundMult[(int)lesson]*roundMultMax;
     }
 
 
@@ -54,8 +54,10 @@ public class ProgressTracker {
 
 	public void SetRoundMult(float score, int round, int tries)
 	{
+        //float _scooore = score;
         score = Mathf.Clamp(score - (tries * lossPerQuizAttempt), 0,1);
-		roundMult [round] = score;
+        //Debug.Log("score: " + _scooore + " for round: " + round + " took " + tries + " tries, resulting in: " + score);
+        roundMult [round] = score;
 	}
 
 	public void SubmitProgress(int progressNumber)
