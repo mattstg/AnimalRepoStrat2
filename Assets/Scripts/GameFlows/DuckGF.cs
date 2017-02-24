@@ -27,6 +27,7 @@ public class DuckGF : GameFlow {
         roundTimerActive = false;
         im.enabled = false;
         int ducklingsSaved = (int)GameObject.FindObjectOfType<DuckEndZone>().ducklingsSaved;
+        GameObject.FindObjectOfType<DuckEndZone>().finished = true;
         float timeScore = GetTimedRoundScore();
         float scorePerc = ((float)ducklingsSaved/10f) * timeScore;
         string toOut = "";

@@ -7,8 +7,8 @@ public class DuckEndZone : MonoBehaviour {
     float timeDuckInEndZone = 0;
     float timeDuckInEndZoneToEndGame = 8;
     public float ducklingsSaved = 0;
-    bool duckInEndZone = false;
-    bool finished = false;
+    public bool duckInEndZone = false;
+    public bool finished = false;
 	// Update is called once per frame
 	void Update () {
 		if(!finished && duckInEndZone)
