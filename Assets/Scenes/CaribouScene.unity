@@ -1446,7 +1446,7 @@ MonoBehaviour:
   textPanel: {fileID: 1202683640}
   scoreText: {fileID: 626417871}
   trackScoreAsTime: 1
-  maxRoundTime: 180
+  maxRoundTime: 240
   im: {fileID: 95950434}
   tutorialImage: {fileID: 1202683638}
   playerTransform: {fileID: 435775776}
