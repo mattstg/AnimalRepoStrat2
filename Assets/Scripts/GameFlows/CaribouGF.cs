@@ -14,7 +14,7 @@ public class CaribouGF : GameFlow {
     public List<Transform> allParentTransforms; //bull, wolves, reindeers calves, leaders
 
     Dictionary<Transform, Vector2> wolfStartingPositions;
-    Dictionary<Transform, Vector2> savedPosition;
+    Dictionary<FlockingAI, CaribouSave> caribouSaves;
     Vector2 lastCheckpoint;
 
     protected override void StartFlow()
@@ -83,24 +83,27 @@ public class CaribouGF : GameFlow {
     public void SaveCheckpoint(Vector2 checkpointPos)
     {
         lastCheckpoint = checkpointPos;
-        savedPosition = new Dictionary<Transform, Vector2>();
+        caribouSaves = new Dictionary<FlockingAI, CaribouSave>();
         foreach (Transform parentTransform in allParentTransforms)
             if (parentTransform.name != "WolfManager")
                 foreach (Transform t in parentTransform)
                 {
-                    savedPosition.Add(t, t.position);
+                    FlockingAI fa = t.GetComponent<FlockingAI>();
+                    CaribouSave cs = new CaribouSave(t.position, fa.activeWaypoint);
+                    caribouSaves.Add(fa, cs);
                 }
     }
 
     public void LoadCheckpoint()
     {
-        foreach (KeyValuePair<Transform, Vector2> kv in savedPosition)
+        foreach (KeyValuePair<FlockingAI, CaribouSave> kv in caribouSaves)
         {
             if (!kv.Key.gameObject.activeInHierarchy)
-                kv.Key.gameObject.GetComponent<FlockingAI>().Undies();
-            kv.Key.position = kv.Value;
-            kv.Key.eulerAngles = new Vector3(0,0,90);
-            kv.Key.gameObject.AddComponent<AutoWPAssigner>().upwardsOnly = true; ;
+                kv.Key.Undies();
+            kv.Key.transform.position = kv.Value.pos;
+            kv.Key.activeWaypoint = kv.Value.curWaypointIndex;
+            kv.Key.transform.eulerAngles = new Vector3(0,0,90);
+            //kv.Key.gameObject.AddComponent<AutoWPAssigner>().upwardsOnly = true; ;
         }
         foreach (KeyValuePair<Transform, Vector2> kv in wolfStartingPositions)
             kv.Key.position = kv.Value;
@@ -109,3 +112,15 @@ public class CaribouGF : GameFlow {
         playerCalf.GetComponent<FlockingAI>().Undies();
     }
 }
+
+class CaribouSave
+{
+    public Vector2 pos;
+    public int curWaypointIndex;
+    public CaribouSave(Vector2 _pos, int _curWaypointIndex)
+    {
+        pos = _pos;
+        curWaypointIndex = _curWaypointIndex;
+    }
+}
+

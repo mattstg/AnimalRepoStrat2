@@ -20,7 +20,8 @@ public class FlockingAI : MonoBehaviour
 
     public bool isCorpse = false;
     Rigidbody2D rigidbody;
-    int activeWaypoint = 1;
+    [HideInInspector]
+    public int activeWaypoint = 1;
     public float speed;
     float rotationSpeed;
     
@@ -264,7 +265,8 @@ public class FlockingAI : MonoBehaviour
 
             if (usesWaypoints)
             {
-				if (currentWaypoint != null) {
+				if (currentWaypoint != null)
+                {
 					vWaypoint = currentWaypoint.transform.position - transform.position;
 					vWaypoint = vWaypoint.normalized;
 				}
@@ -580,54 +582,52 @@ public class FlockingAI : MonoBehaviour
 
         if (usesWaypoints)
         {
-				if (usesWaypoints && currentWaypoint == null) {
-					Vector2 way = waypointManager.waypointPositions [activeWaypoint];
-					float dist = MathHelper.ApproxDist(way, transform.position);
-					if (dist <= waypointReachedProximity) {
+
+		    if (usesWaypoints && currentWaypoint == null)
+            {
+                Vector2 way = waypointManager.waypointPositions [activeWaypoint];
+				float dist = MathHelper.ApproxDist(way, transform.position);
+				if (dist <= waypointReachedProximity)
+                {
 						if (activeWaypoint + 1 < numOfWP)
 							activeWaypoint++;
 						else
 							usesWaypoints = false;
-
-
-					}
-				} else {
-					Vector3 pos = currentWaypoint.transform.position;
-
-					//Vector2 waypointCoords = ;
+				}
+			}
+            else
+            {
+			    Vector3 pos = currentWaypoint.transform.position;
 				float dist = MathHelper.ApproxDist(pos, this.transform.position);
-					if (dist <= 1.25f) {
-					if (currentWaypoint.hasNext ()) {
+				if (dist <= 1.25f)
+                {
+					if (currentWaypoint.hasNext ())
+                    {
 						currentWaypoint = currentWaypoint.getNextWaypoint ().GetComponent<waypointScript> ();
 						ApplyRules ();
-					} else {
+					}
+                    else
+                    {
 						usesWaypoints = false;
 					}
-					}
 				}
-            }
-        
-
-                if (!(isDuckling && gameObject.GetComponent<Duckling>() == null))
-                {
-                    if (Random.Range(0, updateFrequency) == 0)    //1 chance per <updateFrequency> each update that rules will be applied 
-                    {
-                        ApplyRules();
-                    }
-
-                    Vector2 thisFacingDir = V3toV2(this.transform.right);
-
-				if (!(isPredator && isPredOnStandby) && !isFish)
-                    {
-                        rigidbody.AddForce(thisFacingDir * speed * waterSlowCoeff * Time.deltaTime);
-                        
-                    }
-
-                }
-
-            }
-
+			}
         }
+        
+        if (!(isDuckling && gameObject.GetComponent<Duckling>() == null))
+        {
+            if (Random.Range(0, updateFrequency) == 0)    //1 chance per <updateFrequency> each update that rules will be applied 
+            {
+                ApplyRules();
+            }
+            Vector2 thisFacingDir = V3toV2(this.transform.right);
+            if (!(isPredator && isPredOnStandby) && !isFish)
+            {
+                rigidbody.AddForce(thisFacingDir * speed * waterSlowCoeff * Time.deltaTime);
+            }
+         }
+    }
+}
 
     
         
