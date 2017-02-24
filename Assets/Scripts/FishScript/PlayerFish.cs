@@ -7,6 +7,7 @@ public class PlayerFish : Fish {
     bool playerEnabled = true;
     InputManager inputManager;
     Rigidbody2D rb2d;
+    bool triggeredEndGame = false;
     // Use this for initialization
     void  Start () {
         inputManager = GetComponentInChildren<InputManager>();
@@ -44,10 +45,11 @@ public class PlayerFish : Fish {
         {
             moveSpeed = 2f;
         }
-        if (coli.gameObject.name == "EndZone")
+        if (!triggeredEndGame && coli.gameObject.name == "EndZone")
         {
             GameObject.FindObjectOfType<FishGF>().nextStep = true;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 1);
+            triggeredEndGame = true;
         }
         //if oosdgfa
     }
@@ -56,7 +58,7 @@ public class PlayerFish : Fish {
     {
         if (coli.gameObject.CompareTag("BoostZone"))
         {
-            moveSpeed = 1.2f;
+            moveSpeed = 1.3f;
         }
         //if oosdgfa
     }
