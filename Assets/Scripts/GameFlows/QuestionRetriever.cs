@@ -285,17 +285,17 @@ public class QuestionRetriever : MonoBehaviour {
         
 
         Slot s1 = new Slot();
-        s1.SetQuestion("Select which side of the <i>r</i>-<i>K</i> range the trait of <b>producing many offspring<.b> is most associated with", "Choose whichever side of the <i>r</i>-<i>K</i> range of reproductive behavior you think best represents this trait");
+        s1.SetQuestion("Select which side of the <i>r</i>-<i>K</i> range the trait of <i>producing many offspring</i> is most associated with", "Choose whichever side of the <i>r</i>-<i>K</i> range of reproductive behavior you think best represents this trait");
         s1.SetAns(1, "<i>r</i>", true);
         s1.SetAns(2, "<i>K</i>", false);
 
         Slot s2 = new Slot();
-        s2.SetQuestion("Select which side of the <i>r</i>-<i>K</i> range the trait of <b>slow maturation,/b> is most associated with", "Choose whichever side of the <i>r</i>-<i>K</i> range of reproductive behavior you think best represents this trait");
+        s2.SetQuestion("Select which side of the <i>r</i>-<i>K</i> range the trait of <i>slow maturation</i> is most associated with", "Choose whichever side of the <i>r</i>-<i>K</i> range of reproductive behavior you think best represents this trait");
         s2.SetAns(1, "<i>r</i>", false);
         s2.SetAns(2, "<i>K</i>", true);
 
         Slot s3 = new Slot();
-        s3.SetQuestion("Select which side of the <i>r</i>-<i>K</i> range the trait of <b>high degree of parental care</b> is most associated with", "Choose whichever side of the <i>r</i>-<i>K</i> range of reproductive behavior you think best represents this trait");
+        s3.SetQuestion("Select which side of the <i>r</i>-<i>K</i> range the trait of <i>high degree of parental care</i> is most associated with", "Choose whichever side of the <i>r</i>-<i>K</i> range of reproductive behavior you think best represents this trait");
         s3.SetAns(1, "<i>r</i>", false);
         s3.SetAns(2, "<i>K</i>", true);
 
