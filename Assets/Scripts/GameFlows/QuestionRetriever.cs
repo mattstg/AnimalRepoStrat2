@@ -77,21 +77,15 @@ public class QuestionRetriever : MonoBehaviour {
         s4.SetAns(2, "<i>K</i>", false);
 
         Slot s5 = new Slot();
-        s5.SetQuestion("High dependence on parents", "Choose whichever side of the <i>r</i>-<i>K</i> range of reproductive behavior you think best represents this trait");
-        s5.SetAns(1, "<i>r</i>", false);
-        s5.SetAns(2, "<i>K</i>", true);
-
-        Slot s6 = new Slot();
-        s6.SetQuestion("Low dependence on parents", "Choose whichever side of the <i>r</i>-<i>K</i> range of reproductive behavior you think best represents this trait");
-        s6.SetAns(1, "<i>r</i>", true);
-        s6.SetAns(2, "<i>K</i>", false);
+        s5.SetQuestion("Low dependence on parents", "Choose whichever side of the <i>r</i>-<i>K</i> range of reproductive behavior you think best represents this trait");
+        s5.SetAns(1, "<i>r</i>", true);
+        s5.SetAns(2, "<i>K</i>", false);
 
         gm.AddSlot(s1);
         gm.AddSlot(s2);
         gm.AddSlot(s3);
         gm.AddSlot(s4);
         gm.AddSlot(s5);
-        gm.AddSlot(s6);
     }
 
     private void SetupFrogQuestions(GraphManager gm)
@@ -267,7 +261,7 @@ public class QuestionRetriever : MonoBehaviour {
         Slot s4 = new Slot();
         s4.SetQuestion("Why do barren-ground caribou migrate great distances each year?", "What motivates barren-ground caribou to spend so much energy walking back and forth between the tundra and the taiga?");
         s4.SetAns(1, "To search for other herds of caribou", false);
-        s4.SetAns(2, "Because they are continuously chased by predators", false);
+        s4.SetAns(2, "Because they are always running from predators", false);
         s4.SetAns(3, "Because of seasonal changes to the environment", true);
         s4.SetAns(4, "Because they are bored", false);
 
