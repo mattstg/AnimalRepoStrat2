@@ -8,6 +8,7 @@ public class TextPanel : MonoBehaviour {
 
 	GameFlow gameflow;
 	public Button nextButton;
+    RectTransform rectTransform;
 
     public Text text;
     string completeText = "";
@@ -30,6 +31,7 @@ public class TextPanel : MonoBehaviour {
     public void Awake()
     {
         gameflow = GameObject.FindObjectOfType<GameFlow>();
+        rectTransform = gameObject.GetComponent<RectTransform>();
     }
 
     public void SetText(string _completeText)
@@ -55,7 +57,7 @@ public class TextPanel : MonoBehaviour {
 		if (!started && velocity < .5f && velocity > -.5
 			&& targetPos < (text.rectTransform.anchoredPosition.y + 1)
 			&& targetPos > (text.rectTransform.anchoredPosition.y - 1)
-			&& gameObject.GetComponent<RectTransform> ().rect.height == oldPanelHeight
+			&& rectTransform.rect.height == oldPanelHeight
 			&& text.rectTransform.sizeDelta.y == oldTextHeight)
             return;
 
@@ -98,7 +100,7 @@ public class TextPanel : MonoBehaviour {
 
 	public void SetTextPosition()
 	{
-		float panelHeight = gameObject.GetComponent<RectTransform> ().rect.height;
+		float panelHeight = rectTransform.rect.height;
 		float textHeight = text.rectTransform.sizeDelta.y;
 		float topMargin = panelHeight - margin;
 		float bottomMargin = margin;		//preventing overlap with button
@@ -123,7 +125,7 @@ public class TextPanel : MonoBehaviour {
 
 	public void InitTextPosition()
 	{
-		float panelHeight = gameObject.GetComponent<RectTransform> ().rect.height;
+		float panelHeight = rectTransform.rect.height;
 		float topMargin = panelHeight - margin;
 		float bottomMargin = margin;
 		targetPos = 20 - (((topMargin - bottomMargin) / 2) + margin) + offset;
