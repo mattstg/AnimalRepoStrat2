@@ -181,10 +181,10 @@ public class QuestionRetriever : MonoBehaviour {
 
         Slot s3 = new Slot();
         s3.SetQuestion("Some male birds perform elaborate dances to attract females. Why do females of these species try to choose the best dancers?", "Why is it beneficial for females to favor better dancers for mates?");
-        s3.SetAns(1, "The best dancers tend to be good at protecting eggs", false);
-        s3.SetAns(2, "The best dancers tend to be good at frightening predators", false);
-        s3.SetAns(3, "The best dancers tend to know the best sources of food", false);
-        s3.SetAns(4, "The best dancers tend to pass on favorable traits to their young", true);
+        s3.SetAns(1, "They tend to be good at protecting eggs", false);
+        s3.SetAns(2, "They tend to be good at frightening predators", false);
+        s3.SetAns(3, "They tend to know the best sources of food", false);
+        s3.SetAns(4, "They tend to pass on favorable traits to their young", true);
 
         gm.AddSlot(s0);
         gm.AddSlot(s1);
