@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b101c643f848314a8f5b8161640e7cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasManger: {fileID: 0}
   grid: {fileID: 224909828817644250}
   gridButton: {fileID: 114409733126211388}
   titleText: {fileID: 114428905649665954}

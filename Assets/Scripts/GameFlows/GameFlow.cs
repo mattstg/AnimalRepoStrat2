@@ -9,7 +9,7 @@ public class GameFlow : MonoBehaviour {
 	protected float safeGameTime = 0;
 
 	public string nextSceneName = "";
-    public GameObject tutorial;
+    public Tutorial tutorial;
 	public GraphManager graphManager;
 	public TextPanel textPanel;
 	public ScoreText scoreText;
@@ -180,18 +180,20 @@ public class GameFlow : MonoBehaviour {
 	{
         currentTut++;
         if (currentTut < 4)
-            tutorial.GetComponent<UnityEngine.UI.Image>().sprite = TutorialRetriever.Instance.GetTutorialImage(lessonType, currentTut);
+            //tutorial.GetComponent<UnityEngine.UI.Image>().sprite = TutorialRetriever.Instance.GetTutorialImage(lessonType, currentTut);
+            tutorial.DisplayTutorialImage(lessonType, currentTut);
         else
         {
-            tutorial.SetActive(false);
+            tutorial.gameObject.SetActive(false);
             nextStep = true;
         }
     }
 
     protected virtual void OpenTutorial()
 	{
-        tutorial.SetActive(true);
-        tutorial.GetComponent<UnityEngine.UI.Image>().sprite = TutorialRetriever.Instance.GetTutorialImage(lessonType, currentTut);
+        tutorial.gameObject.SetActive(true);
+        //tutorial.GetComponent<UnityEngine.UI.Image>().sprite = TutorialRetriever.Instance.GetTutorialImage(lessonType, currentTut);
+        tutorial.DisplayTutorialImage(lessonType, currentTut);
     }
 
     public void ForceNextStep() //only to be used by button to skip game
