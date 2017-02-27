@@ -180,8 +180,11 @@ public class GameFlow : MonoBehaviour {
 	{
         currentTut++;
         if (currentTut < 4)
-            //tutorial.GetComponent<UnityEngine.UI.Image>().sprite = TutorialRetriever.Instance.GetTutorialImage(lessonType, currentTut);
+        {
             tutorial.DisplayTutorialImage(lessonType, currentTut);
+            if (currentTut == 3)
+                tutorial.SetButtonText("Begin!");
+        }
         else
         {
             tutorial.gameObject.SetActive(false);
@@ -192,7 +195,6 @@ public class GameFlow : MonoBehaviour {
     protected virtual void OpenTutorial()
 	{
         tutorial.gameObject.SetActive(true);
-        //tutorial.GetComponent<UnityEngine.UI.Image>().sprite = TutorialRetriever.Instance.GetTutorialImage(lessonType, currentTut);
         tutorial.DisplayTutorialImage(lessonType, currentTut);
     }
 

@@ -8,6 +8,7 @@ public class Tutorial : MonoBehaviour {
 
     GameFlow gameFlow;
     public Image image;
+    public Text buttonText;
 
     void Awake()
     {
@@ -22,5 +23,10 @@ public class Tutorial : MonoBehaviour {
     public void DisplayTutorialImage(LessonType lessonType, int currentTut)
     {
         image.sprite = TutorialRetriever.Instance.GetTutorialImage(lessonType, currentTut);
+    }
+
+    public void SetButtonText(string str)
+    {
+        buttonText.text = str;
     }
 }
