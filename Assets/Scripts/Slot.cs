@@ -21,7 +21,16 @@ public class Slot  {
 	public void SetAns(int _id, string _text, bool _isCorrect, string _popupText = "")
 	{
         if(_popupText == "")
-            _popupText = (_isCorrect) ? "Correct" : "Incorrect";
+        {
+            if(_isCorrect)
+            {
+                _popupText = "Correct:  " + _text + ".";
+            }
+            else
+            {
+                _popupText = "Incorrect";
+            }
+        }
 
 		SlotInfo si = new SlotInfo (_id, _text, _isCorrect, _popupText);
 		if (slotInfoDict.ContainsKey (_id)) {

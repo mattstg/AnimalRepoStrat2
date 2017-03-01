@@ -189,7 +189,7 @@ public class LessonRetriever
             case 3://outro1
                 return "It is safe to say that wood ducks are somewhere in the middle between <i>r</i> and <i>K</i>. The ducklings are born in medium-sized clutches, mature at a medium pace, have a medium mortality rate, and receive a medium amount of parental care.\n\n" +
                     "Though the initial walk from the nest to the water is perilous, it allows wood ducks to lay their eggs in the relative safety of tall trees.\n\n" +
-                    "As the ducklings who make it to the water mature, several of them will fall prey to snakes, turtles, bass, and other predators. Some however, will probably survive.";
+                    "As the ducklings who make it to the water mature, several of them will fall prey to snakes, turtles, bass, and other predators. Some, however, will probably survive.";
             default:
                 Debug.Log("Lesson out of bounds " + lessonNumber);
                 return "";

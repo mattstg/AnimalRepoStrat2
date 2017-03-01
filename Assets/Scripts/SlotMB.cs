@@ -201,8 +201,8 @@ public class SlotMB : MonoBehaviour {
         buttons[0].transform.parent.gameObject.SetActive(true);
         panelImage.gameObject.SetActive (true);
 		panelImage.GetComponentInChildren<Text> ().text = slot.slotInfoDict[selectedAns].popupText;
-		if(panelImage.GetComponentInChildren<Button> ())
-			panelImage.GetComponentInChildren<Button> ().gameObject.SetActive (false);
+		/*if(panelImage.GetComponentInChildren<Button> ())
+			panelImage.GetComponentInChildren<Button> ().gameObject.SetActive (false);*/
         SetIsExplaining(false);
         SetIsEvaluating(true);
     }
