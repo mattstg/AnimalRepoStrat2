@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class SlotMB : MonoBehaviour {
 
+    public GraphManager graphManager;
+
     public Sprite unpressedGraphic;
 	public Sprite pressedGraphic;
 
@@ -43,6 +45,11 @@ public class SlotMB : MonoBehaviour {
         RefreshSlot();
         AdjustPanelWidths();
 	}
+
+    public void SetGraphManager(GraphManager gm)
+    {
+        graphManager = gm;
+    }
 
     public void Update()
     {
@@ -158,26 +165,32 @@ public class SlotMB : MonoBehaviour {
 
 	public void ButtonPressed(int butID)
 	{
-		if (butID == 0 ) {
+		if (butID == 0 )
+        {
             if (isEvaluating)
                 return;
-            if (!isExplaining) {
+            if (!isExplaining)
+            {
                 QuestionExplainedPressed();
                 return;
-            } else {
+            }
+            else
+            {
                 ClosePopupPressed();
                 return;
             }
 		}
 
 		selectedAns = butID;
-		for(int i = 1; i < 5; i++){
+		for(int i = 1; i < 5; i++)
+        {
 			if (selectedAns == i)
 				buttons [i].GetComponent<Image> ().sprite = pressedGraphic;
 			else
 				buttons [i].GetComponent<Image> ().sprite = unpressedGraphic;
-				
 		}
+
+        graphManager.SetButtonEnabled(true);
 	}
 
 	public void QuestionIsCorrect()

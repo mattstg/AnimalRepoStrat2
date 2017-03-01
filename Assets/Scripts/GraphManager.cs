@@ -17,12 +17,19 @@ public class GraphManager : MonoBehaviour {
 	public bool allCorrect = false;
     public bool hasEvaluated = false;
 
+    Text buttonText;
     int tries = 0;
     float totalScore = 0;
 
     public void Awake()
     {
         gameflow = GameObject.FindObjectOfType<GameFlow>();
+        buttonText = gridButton.GetComponentInChildren<Text>();
+    }
+
+    public void Start()
+    {
+        SetButtonEnabled(false);
     }
 
 	public void ResetGraphManager()
@@ -30,6 +37,7 @@ public class GraphManager : MonoBehaviour {
 		allCorrect = false;
 		foreach (Transform t in grid)
 			Destroy (t.gameObject);
+        SetButtonEnabled(false);
 	}
 
 	public void GridButtonPressed ()
@@ -130,7 +138,30 @@ public class GraphManager : MonoBehaviour {
 	public void AddSlot(Slot slot)
 	{
 		GameObject go = Instantiate (Resources.Load (slotmbPrefab)) as GameObject;
-		go.GetComponent<SlotMB> ().InitializeSlot (slot);
+        SlotMB slotMB = go.GetComponent<SlotMB>();
+        slotMB.SetGraphManager(this);
+		slotMB.InitializeSlot (slot);
 		go.transform.SetParent (grid);
 	}
+
+    public void SetButtonEnabled(bool isEnabled)
+    {
+        if (gridButton.interactable != isEnabled)
+        {
+            if (isEnabled)
+            {
+                gridButton.interactable = true;
+                Color c = buttonText.color;
+                c.a = 1;
+                buttonText.color = c;
+            }
+            else
+            {
+                gridButton.interactable = false;
+                Color c = buttonText.color;
+                c.a = .5f;
+                buttonText.color = c;
+            }
+        }
+    }
 }
