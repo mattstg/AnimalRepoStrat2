@@ -9,6 +9,7 @@ public class DuckGF : GameFlow {
 	public InputManager im;
     public GameObject playerDuck;
     public GameObject ducklingParent;
+    int ducklingsSaved;
 
     protected override void StartFlow()
 	{
@@ -26,7 +27,6 @@ public class DuckGF : GameFlow {
         scoreText.gameObject.SetActive(false);
         roundTimerActive = false;
         im.enabled = false;
-        int ducklingsSaved = (int)GameObject.FindObjectOfType<DuckEndZone>().ducklingsSaved;
         GameObject.FindObjectOfType<DuckEndZone>().finished = true;
         float timeScore = GetTimedRoundScore();
         float scorePerc = (((float)ducklingsSaved/10f) + timeScore)/2;
@@ -67,9 +67,10 @@ public class DuckGF : GameFlow {
 		nextStep = true;
 	}
 
-    public void GameFinished(float babyDucksSaved)
+    public void GameFinished(int babyDucksSaved)
     {
         nextStep = true;
+        ducklingsSaved = babyDucksSaved;
     }
     
 }

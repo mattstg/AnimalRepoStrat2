@@ -5,8 +5,7 @@ using UnityEngine; using LoLSDK;
 public class DuckEndZone : MonoBehaviour {
 
     float timeDuckInEndZone = 0;
-    float timeDuckInEndZoneToEndGame = 8;
-    public float ducklingsSaved = 0;
+    float timeDuckInEndZoneToEndGame = 12;
     public bool duckInEndZone = false;
     public bool finished = false;
 	// Update is called once per frame
@@ -16,6 +15,13 @@ public class DuckEndZone : MonoBehaviour {
             timeDuckInEndZone += Time.deltaTime;
             if(timeDuckInEndZone >= timeDuckInEndZoneToEndGame)
             {
+                int ducklingsSaved = 0;
+                List<Duckling> ducklings = GameObject.FindObjectOfType<DucklingManager>().Ducklings;
+                foreach(Duckling d in ducklings)
+                {
+                    if (d != null && d.transform.position.y < -36)
+                        ducklingsSaved++;
+                }
                 GameObject.FindObjectOfType<DuckGF>().GameFinished(ducklingsSaved);
                 finished = true;
             }
@@ -25,25 +31,12 @@ public class DuckEndZone : MonoBehaviour {
     public void OnTriggerEnter2D(Collider2D coli)
     {
         if(coli.gameObject.GetComponent<PlayerDuck>())
-        {
             duckInEndZone = true;
-        }
-        else if(coli.gameObject.GetComponent<Duckling>())
-        {
-            Debug.Log("duckling saved");
-            ducklingsSaved++;
-        }
     }
 
     public void OnTriggerExit2D(Collider2D coli)
     {
         if (coli.gameObject.GetComponent<PlayerDuck>())
-        {
             duckInEndZone = false;
-        }
-        else if (coli.gameObject.GetComponent<Duckling>())
-        {
-            ducklingsSaved--;
-        }
     }
 }

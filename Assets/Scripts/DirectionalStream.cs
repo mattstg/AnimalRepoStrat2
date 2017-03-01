@@ -22,8 +22,4 @@ public class DirectionalStream : WaterStream {
         SetDirection();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

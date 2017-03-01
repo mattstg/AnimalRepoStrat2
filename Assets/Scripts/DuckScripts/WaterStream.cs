@@ -7,7 +7,17 @@ public class WaterStream : MonoBehaviour {
 	public float forceOfStream = 0;
 	public Vector2 dirOfStream = new Vector2(1,0);
 
-	public void OnCollisionStay2D(Collision2D coli)
+    public void OnTriggerEnter2D(Collider2D coli)
+    {
+        coli.gameObject.GetComponent<AffectedByRiver>().SetMoveBy(dirOfStream, this, forceOfStream, false);
+    }
+
+    public void OnTriggerExit2D(Collider2D coli)
+    {
+        coli.gameObject.GetComponent<AffectedByRiver>().SetMoveBy(dirOfStream, this, forceOfStream, true);
+    }
+    /*
+    public void OnCollisionStay2D(Collision2D coli)
 	{
 		if (coli.gameObject.GetComponent<Rigidbody2D>())
 		{
@@ -37,4 +47,6 @@ public class WaterStream : MonoBehaviour {
             }
 		}
 	}
+    */
+   
 }

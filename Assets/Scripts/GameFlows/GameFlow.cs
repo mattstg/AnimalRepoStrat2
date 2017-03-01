@@ -48,7 +48,7 @@ public class GameFlow : MonoBehaviour {
 
     protected float GetTimedRoundScore()
     {
-        return 1 - ((roundTime - roundTimeToGetFullScore) / (maxRoundTime - roundTimeToGetFullScore));
+        return Mathf.Clamp01( 1 - ((roundTime - roundTimeToGetFullScore) / (maxRoundTime - roundTimeToGetFullScore)));
     }
 
     public virtual void AnsweredGraphCorrectly()
