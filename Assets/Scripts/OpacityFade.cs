@@ -15,7 +15,8 @@ public class OpacityFade : MonoBehaviour {
         if (fadeDuration <= 0)
             fadeDuration = 1;
         fadeProgress = fadeDuration;
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        if (!spriteRenderer)
+            spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 	
 	void Update ()
@@ -90,6 +91,8 @@ public class OpacityFade : MonoBehaviour {
 
     public void ApplyOpacity(float newOpacity)
     {
+        if (!spriteRenderer)
+            spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         Color c = spriteRenderer.color;
         c.a = newOpacity;
         spriteRenderer.color = c;
@@ -97,6 +100,8 @@ public class OpacityFade : MonoBehaviour {
 
     public float GetPresentOpacity()
     {
+        if (!spriteRenderer)
+            spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         return spriteRenderer.color.a;
     }
 }

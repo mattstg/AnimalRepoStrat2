@@ -28,7 +28,7 @@ public class Frog : MonoBehaviour {
 
     //calling state
 	public GameObject ribbitRing;
-    OpacityFade opactiyFade;
+    OpacityFade opacityFade;
     float maxRange = 4.4f;
 	float rangeRateIncrease = 3f;
     float chanceToRepeatCall = .4f;
@@ -61,8 +61,8 @@ public class Frog : MonoBehaviour {
 		if (frogInfo.playerDescendant) {
 			FrogGV.frogWS.frogGF.score++;
 		}
-        opactiyFade = ribbitRing.GetComponent<OpacityFade>();
-        opactiyFade.SetPresentOpacity(0);
+        opacityFade = ribbitRing.GetComponent<OpacityFade>();
+        opacityFade.SetPresentOpacity(0);
     }
 	// Update is called once per frame
 	void Update () {
@@ -242,7 +242,7 @@ public class Frog : MonoBehaviour {
 		{
 			ribbitRing.transform.localScale = new Vector3 (1, 1, 1);
             ribbitRing.SetActive (false);
-            opactiyFade.SetPresentOpacity(1);
+            opacityFade.SetPresentOpacity(1);
             firstCall = true;
             if (!playerCntrl) {
 				if (Random.Range (0f, 1f) > chanceToRepeatCall) {
@@ -263,7 +263,7 @@ public class Frog : MonoBehaviour {
             }
             ribbitRing.SetActive (true);
 			ribbitRing.transform.localScale = ribbitRing.transform.localScale + new Vector3 (1, 1) * rangeRateIncrease * Time.deltaTime;
-            opactiyFade.SetPresentOpacity(1 - opactiyFade.GetIntegral(Mathf.Max(0, 3 * ribbitRing.transform.localScale.x / maxRange - 2)));
+            opacityFade.SetPresentOpacity(1 - opacityFade.GetIntegral(Mathf.Max(0, 3 * ribbitRing.transform.localScale.x / maxRange - 2)));
         }
     }
 

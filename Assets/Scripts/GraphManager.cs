@@ -7,7 +7,7 @@ public class GraphManager : MonoBehaviour {
 
 	GameFlow gameflow;
 
-	string slotmbPrefab = "Prefabs/SlotMB";
+	string slotmbPrefab = "Prefabs/UI/SlotMB";
 
     public CanvasManager canvasManger;
 	public Transform grid;

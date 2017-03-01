@@ -7,6 +7,7 @@ using LoLSDK;
 public class ScoreScreenManager : MonoBehaviour {
 
     public static string nextSceneName;
+    public static LessonType thisLesson;
 
     public Transform textParent;
 
@@ -30,6 +31,10 @@ public class ScoreScreenManager : MonoBehaviour {
             {
                 string[] splitName = t.name.Split('-');
                 LessonType lessonType = (LessonType)System.Enum.Parse(typeof(LessonType), splitName[0], true);
+                if (lessonType > thisLesson)
+                {
+                    t.gameObject.SetActive(false);
+                }
                 switch (splitName[1])
                 {
                     case "GS":
