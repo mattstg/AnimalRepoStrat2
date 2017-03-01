@@ -18,6 +18,11 @@ public class AffectedByRiver : MonoBehaviour {
         }
     }
 
+    public void Cleanse()
+    { //When checkpoints happen and river colliders get disabled, it could lead to caribou still thinking there affected
+        moveBy = new Dictionary<WaterStream, WaterStreamStruct>();
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
