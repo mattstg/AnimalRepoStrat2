@@ -6589,7 +6589,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1587365131}
   - component: {fileID: 1587365130}
-  - component: {fileID: 1587365129}
   - component: {fileID: 1587365128}
   m_Layer: 10
   m_Name: PlayerFrog
@@ -6618,27 +6617,6 @@ MonoBehaviour:
   ribbitRing: {fileID: 143862654}
   publicGenNum: 0
   publicIsPlayer: 0
---- !u!50 &1587365129
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 50218519172996998, guid: 5e81ff0c761014149ac71aa5d426a76d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1587365127}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!58 &1587365130
 CircleCollider2D:
   m_ObjectHideFlags: 0

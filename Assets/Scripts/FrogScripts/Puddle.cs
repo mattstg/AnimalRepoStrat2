@@ -31,6 +31,12 @@ public class Puddle : MonoBehaviour {
         activeTadpoles.Remove(tadpole);
     }
 
+    public void ToggleColliders(bool setActive)
+    {
+        GetComponent<PolygonCollider2D>().enabled = setActive;
+        transform.GetChild(0).gameObject.SetActive(setActive);
+    }
+
     public void Update()
     {
         if (activeTadpoles.Count > carryingCapacity && activeTadpoles.Count > 0)

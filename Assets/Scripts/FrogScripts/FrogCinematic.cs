@@ -38,6 +38,7 @@ public class FrogCinematic : MonoBehaviour {
 		foreach (Transform t in FrogGV.frogWS.tadpoleParent)
 			Destroy (t.gameObject);
         puddle.activeTadpoles = new List<Tadpole>();
+        puddle.ToggleColliders(false);
     }
 
     public void StartSecondAridCinematic()
@@ -45,7 +46,8 @@ public class FrogCinematic : MonoBehaviour {
         transformationCounter = 0;
         timeToTransformation = 20;
         currentStage = FrogCinematicStage.BecomingArid;
-        evacuateAtEndOfCinematic = true;        
+        evacuateAtEndOfCinematic = true;
+        puddle.ToggleColliders(false);
     }
 
     public void StartWetlandCinematic() //also sets up level
@@ -62,7 +64,8 @@ public class FrogCinematic : MonoBehaviour {
 			newFrog.GetComponent<Frog> ().outtaBounds = true;
 		}
         GameObject.FindObjectOfType<SnakeManager>().SetupGame();
-	}
+        puddle.ToggleColliders(false);
+    }
 
 	public void Update()
 	{
@@ -87,7 +90,7 @@ public class FrogCinematic : MonoBehaviour {
         wetBg.color = moistColor;
 
         puddle.transform.localScale = Vector2.Lerp(puddle.originalSize, new Vector2(.01f, .01f), (transformationCounter / timeToTransformation));
-        puddle.carryingCapacity = (int)(( 1- (transformationCounter / timeToTransformation)) * puddle.originalCarryingCapacity);
+        //puddle.carryingCapacity = (int)(( 1- (transformationCounter / timeToTransformation)) * puddle.originalCarryingCapacity);
 
         if (evacuateAtEndOfCinematic && transformationCounter >= timeToTransformation)
             foreach (Transform t in FrogGV.frogWS.frogParent)
@@ -101,13 +104,18 @@ public class FrogCinematic : MonoBehaviour {
         moistColor.a = (transformationCounter / timeToTransformation);
         wetBg.color = moistColor;
         puddle.transform.localScale = Vector2.Lerp( new Vector2(.01f, .01f), puddle.originalSize, (transformationCounter / timeToTransformation));
-        puddle.carryingCapacity = (int)((transformationCounter / timeToTransformation) * puddle.originalCarryingCapacity);
+        if(transformationCounter >= timeToTransformation)
+        {
+            puddle.ToggleColliders(true);
+            currentStage = FrogCinematicStage.None;
+        }
+        //puddle.carryingCapacity = (int)((transformationCounter / timeToTransformation) * puddle.originalCarryingCapacity);
     }
 
 
 
 
-	private Vector2 GetRandomSpawnLoc()
+    private Vector2 GetRandomSpawnLoc()
 	{
 		//float spawnOffset = Random.Range (0, spawnOffsetRange);
 		float spawnX;// = spawnBoundry.x * ((Random.Range(0f,1f) > .5f)?1:-1);
