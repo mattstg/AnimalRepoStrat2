@@ -16,7 +16,7 @@ public class Frog : MonoBehaviour {
     public bool inPuddle = false;
     //Frog jump stuff
     Vector2 goalPos;
-    Vector2 sourcePos;
+    Vector3 sourcePos;
     protected Vector2 originalScale;
     float jumpProgress = 1f;
     float jumpDuration = 1f;
@@ -98,7 +98,7 @@ public class Frog : MonoBehaviour {
         Vector2 goalOffset = MathHelper.DegreeToVector2(ang);
         goalPos = MathHelper.V3toV2(transform.position) + goalOffset * frogSpeed;
         jumpProgress = 0f;
-        sourcePos = new Vector2(transform.position.x, transform.position.y);
+        sourcePos = transform.position;
         currentFrogState = FrogState.jumping;
     }
 
@@ -121,7 +121,7 @@ public class Frog : MonoBehaviour {
             goalPos = MathHelper.V3toV2(transform.position) + goalOffset * magnitude;
         }
         jumpProgress = 0f;
-        sourcePos = new Vector2(transform.position.x, transform.position.y);
+        sourcePos = transform.position;
         currentFrogState = FrogState.jumping;
     }
 
@@ -143,18 +143,31 @@ public class Frog : MonoBehaviour {
         //float delta = Time.deltaTime / (fadeDuration - fadeProgress);
         //float newOpacity = presentOpacity + (targetOpacity - presentOpacity) * delta;
 
-        float integral = GetIntegral(jumpProgress / jumpDuration);
-        Vector2 newPos = new Vector2( sourcePos.x + integral * (goalPos.x - sourcePos.x), sourcePos.y + integral * (goalPos.y - sourcePos.y));
-        float newScale = Mathf.Max((Mathf.Pow(integral - 0.5f, 2) * -4 + 1) * jumpScaleFactor + 1, 1);
-        jumpProgress += Time.deltaTime;
-        if (jumpProgress > jumpDuration)
+        Vector3 newPos;
+        float newScale;
+
+        if (jumpProgress != jumpDuration)
         {
-            jumpProgress = jumpDuration;
+            float integral = GetIntegral(jumpProgress / jumpDuration);                          // = non-linear progress, range: [0f, 1f], smooth, continuous speed
+            newScale = Mathf.Max((Mathf.Pow(integral - 0.5f, 2) * -4 + 1) * jumpScaleFactor + 1, 1);      // = max(f(x), 1);  f(x) = ( -4(x-.5)^2+1 ) * jSF + 1
+            float newPosZ = (newScale - 1) * -2;                                                // vertical displacement to match jump, so that layers are ordered correctly
+            newPos = new Vector3(sourcePos.x + integral * (goalPos.x - sourcePos.x),            // non-linear interpolation btw source + goal
+                sourcePos.y + integral * (goalPos.y - sourcePos.y),
+                sourcePos.z + newPosZ);
+
+            jumpProgress += Time.deltaTime;                                                     // = linear progress, range: [0f, jumpDuration]
+            if (jumpProgress > jumpDuration)
+                jumpProgress = jumpDuration;
         }
+        else
+        {
+            newPos = new Vector3(goalPos.x, goalPos.y, sourcePos.z);
+            newScale = 1f;
+            currentFrogState = FrogState.landedJump;
+        }
+
         transform.position = newPos;
         transform.localScale = new Vector3(originalScale.x * newScale, originalScale.y * newScale, transform.localScale.z);
-        if (new Vector2(transform.position.x, transform.position.y) == goalPos)
-            currentFrogState = FrogState.landedJump;
     }
 
     private void LandedJump()
@@ -236,7 +249,7 @@ public class Frog : MonoBehaviour {
     {
         SetNewRandomGoalPos();
         jumpProgress = 0f;
-        sourcePos = new Vector2(transform.position.x, transform.position.y);
+        sourcePos = transform.position;
         currentFrogState = FrogState.jumping;
     }
 
