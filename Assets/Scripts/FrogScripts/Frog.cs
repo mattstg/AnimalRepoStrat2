@@ -16,7 +16,12 @@ public class Frog : MonoBehaviour {
     public bool inPuddle = false;
     //Frog jump stuff
     Vector2 goalPos;
+    Vector2 sourcePos;
+    Vector2 originalScale;
+    float jumpProgress = 1f;
+    float jumpDuration = 1f;
     float frogSpeed = .7f;
+    float jumpScaleFactor = .3f;
     public bool outtaBounds = false;
 	public bool playerCntrl = false;
 	public bool isPlayerDescendant { get { return frogInfo.playerDescendant; }  }
@@ -63,6 +68,7 @@ public class Frog : MonoBehaviour {
 		}
         opacityFade = ribbitRing.GetComponent<OpacityFade>();
         opacityFade.SetPresentOpacity(0);
+        originalScale = new Vector2(transform.localScale.x, transform.localScale.y);
     }
 	// Update is called once per frame
 	void Update () {
@@ -91,6 +97,8 @@ public class Frog : MonoBehaviour {
     {
         Vector2 goalOffset = MathHelper.DegreeToVector2(ang);
         goalPos = MathHelper.V3toV2(transform.position) + goalOffset * frogSpeed;
+        jumpProgress = 0f;
+        sourcePos = new Vector2(transform.position.x, transform.position.y);
         currentFrogState = FrogState.jumping;
     }
 
@@ -102,6 +110,7 @@ public class Frog : MonoBehaviour {
         Vector2 diff = goalLoc - MathHelper.V3toV2(this.transform.position);
         float magnitude = diff.magnitude;
         magnitude = (magnitude > frogSpeed) ? frogSpeed:magnitude;
+                        //frogSpeed no longer actually affects velocity, just used in setting jump distance + goalPos
 
         if (diff.magnitude < frogSpeed)
         {
@@ -111,7 +120,41 @@ public class Frog : MonoBehaviour {
         {
             goalPos = MathHelper.V3toV2(transform.position) + goalOffset * magnitude;
         }
+        jumpProgress = 0f;
+        sourcePos = new Vector2(transform.position.x, transform.position.y);
         currentFrogState = FrogState.jumping;
+    }
+
+    private void JumpTowardsGoal()
+    {
+        /*float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goalPos);
+        transform.eulerAngles = new Vector3(0, 0, angToGoal - 90);
+        transform.position = Vector2.MoveTowards(transform.position, goalPos, frogSpeed * Time.deltaTime);
+        if (new Vector2(transform.position.x, transform.position.y) == goalPos)
+            currentFrogState = FrogState.landedJump;*/
+
+
+        float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goalPos);
+        transform.eulerAngles = new Vector3(0, 0, angToGoal - 90);
+
+        if (jumpDuration <= 0)
+            jumpDuration = 1;
+
+        //float delta = Time.deltaTime / (fadeDuration - fadeProgress);
+        //float newOpacity = presentOpacity + (targetOpacity - presentOpacity) * delta;
+
+        float integral = GetIntegral(jumpProgress / jumpDuration);
+        Vector2 newPos = new Vector2( sourcePos.x + integral * (goalPos.x - sourcePos.x), sourcePos.y + integral * (goalPos.y - sourcePos.y));
+        float newScale = Mathf.Max((Mathf.Pow(integral - 0.5f, 2) * -4 + 1) * jumpScaleFactor + 1, 1);
+        jumpProgress += Time.deltaTime;
+        if (jumpProgress > jumpDuration)
+        {
+            jumpProgress = jumpDuration;
+        }
+        transform.position = newPos;
+        transform.localScale = new Vector3(originalScale.x * newScale, originalScale.y * newScale, transform.localScale.z);
+        if (new Vector2(transform.position.x, transform.position.y) == goalPos)
+            currentFrogState = FrogState.landedJump;
     }
 
     private void LandedJump()
@@ -120,7 +163,7 @@ public class Frog : MonoBehaviour {
         {
             float angToExit = MathHelper.AngleBetweenPoints(new Vector2(), transform.position);
             JumpTowardsAngle(angToExit);
-            //Debug.Log(string.Format("at pos: {0}, goalPos {1} from offset {2}, angle is {3}", transform.position, goalPos, goalOffset, angToCenter));
+            //Debug.Log(string.Format("at pos: {0}, angle is {1}", transform.position, angToExit));
             return;
         }
 
@@ -192,6 +235,8 @@ public class Frog : MonoBehaviour {
     private void EnterRandomJump()
     {
         SetNewRandomGoalPos();
+        jumpProgress = 0f;
+        sourcePos = new Vector2(transform.position.x, transform.position.y);
         currentFrogState = FrogState.jumping;
     }
 
@@ -272,15 +317,6 @@ public class Frog : MonoBehaviour {
         ribbitRing.transform.localScale = new Vector3(1, 1, 1);
         ribbitRing.SetActive(false);
         firstCall = true;
-    }
-
-    private void JumpTowardsGoal()
-    {
-		float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goalPos);
-		transform.eulerAngles = new Vector3 (0, 0,  angToGoal - 90);
-        transform.position = Vector2.MoveTowards(transform.position, goalPos, frogSpeed * Time.deltaTime);
-        if(new Vector2(transform.position.x, transform.position.y) == goalPos)
-            currentFrogState = FrogState.landedJump;
     }
 
     private bool InPuddle()
@@ -364,6 +400,38 @@ public class Frog : MonoBehaviour {
 			FindObjectOfType<FrogGF> ().score--;
         FrogGV.RemoveFrogFromMasterList(this,isMale);
         Destroy(this.gameObject);
+    }
+
+    public float GetVelocity(float progress)
+    {
+        if (progress >= 0 && progress <= 1)
+        {
+            return -4 * Mathf.Abs(progress - 0.5f) + 2;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public float GetIntegral(float progress)
+    {
+        if (progress < 0)
+        {
+            return 0;
+        }
+        else if (progress > 1)
+        {
+            return 1;
+        }
+        else if (progress <= 0.5)
+        {
+            return progress * GetVelocity(progress) / 2;
+        }
+        else
+        {
+            return 0.5f + ((progress - 0.5f) * (GetVelocity(progress) + 2) / 2);
+        }
     }
 
     public class FrogInfo
