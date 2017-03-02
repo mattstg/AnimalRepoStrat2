@@ -145,7 +145,7 @@ public class Frog : MonoBehaviour {
         Vector3 newPos;
         float newScale;
 
-        if (jumpProgress != jumpDuration)
+        if (jumpProgress < jumpDuration)
         {
             float integral = GetIntegral(jumpProgress / jumpDuration);                          // = non-linear progress, range: [0f, 1f], smooth, continuous speed
             newScale = Mathf.Max((Mathf.Pow(integral - 0.5f, 2) * -4 + 1) * jumpScaleFactor + 1, 1);      // = max(f(x), 1);  f(x) = ( -4(x-.5)^2+1 ) * jSF + 1
@@ -155,8 +155,6 @@ public class Frog : MonoBehaviour {
                 sourcePos.z + newPosZ);
 
             jumpProgress += Time.deltaTime;                                                     // = linear progress, range: [0f, jumpDuration]
-            if (jumpProgress > jumpDuration)
-                jumpProgress = jumpDuration;
         }
         else
         {
