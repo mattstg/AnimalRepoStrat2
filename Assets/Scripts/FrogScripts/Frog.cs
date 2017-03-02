@@ -17,11 +17,11 @@ public class Frog : MonoBehaviour {
     //Frog jump stuff
     Vector2 goalPos;
     Vector2 sourcePos;
-    Vector2 originalScale;
+    protected Vector2 originalScale;
     float jumpProgress = 1f;
     float jumpDuration = 1f;
     float frogSpeed = .7f;
-    float jumpScaleFactor = .3f;
+    float jumpScaleFactor = .2f;
     public bool outtaBounds = false;
 	public bool playerCntrl = false;
 	public bool isPlayerDescendant { get { return frogInfo.playerDescendant; }  }
