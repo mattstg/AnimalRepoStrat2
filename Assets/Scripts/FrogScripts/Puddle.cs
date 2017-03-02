@@ -9,11 +9,15 @@ public class Puddle : MonoBehaviour {
     float tadpoleKillCounter = 3;
     public Vector2 originalSize;
     public float originalCarryingCapacity;
+    SpriteRenderer spriteRenderer;
+    float originalAlpha;
 
     public void Awake()
     {
         originalSize = transform.localScale;
         originalCarryingCapacity = carryingCapacity;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        originalAlpha = spriteRenderer.color.a;
     }
 
     public void AddTadpole(Tadpole tapdole)
@@ -58,5 +62,14 @@ public class Puddle : MonoBehaviour {
 		activeTadpoles.Remove(t);
 	}
 
-
+    public void SetAlpha(float alpha)
+    {
+        Color c = spriteRenderer.color;
+        float newAlpha = alpha * originalAlpha;
+        if (newAlpha >= 0f && newAlpha <= 1f)
+            c.a = newAlpha;
+        else
+            c.a = Mathf.Min(Mathf.Max(newAlpha, 0), 1);
+        spriteRenderer.color = c;
+    }
 }

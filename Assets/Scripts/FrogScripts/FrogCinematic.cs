@@ -85,11 +85,16 @@ public class FrogCinematic : MonoBehaviour {
     private void UpdateBecomingArid()
     {
         transformationCounter += Time.deltaTime;
+        float progress = 1 - (transformationCounter / timeToTransformation);
         Color moistColor = wetBg.color;
-        moistColor.a = 1 - (transformationCounter / timeToTransformation);
+        moistColor.a = progress;
         wetBg.color = moistColor;
+        //puddle.SetAlpha(progress);
+        float delay = 1f / (1f/2f);          //puddle finishes disappearing when progress == 1/2
+        float newAlpha = Mathf.Min(Mathf.Max((progress * delay) - delay + 1f, 0f), 1f);
+        puddle.SetAlpha(newAlpha);
 
-        puddle.transform.localScale = Vector2.Lerp(puddle.originalSize, new Vector2(.01f, .01f), (transformationCounter / timeToTransformation));
+        //puddle.transform.localScale = Vector2.Lerp(puddle.originalSize, new Vector2(.01f, .01f), (transformationCounter / timeToTransformation));
         //puddle.carryingCapacity = (int)(( 1- (transformationCounter / timeToTransformation)) * puddle.originalCarryingCapacity);
 
         if (evacuateAtEndOfCinematic && transformationCounter >= timeToTransformation)
@@ -100,11 +105,16 @@ public class FrogCinematic : MonoBehaviour {
     private void UpdateBecomingWet()
     {
         transformationCounter += Time.deltaTime;
+        float progress = transformationCounter / timeToTransformation;
         Color moistColor = wetBg.color;
-        moistColor.a = (transformationCounter / timeToTransformation);
+        moistColor.a = progress;
         wetBg.color = moistColor;
-        puddle.transform.localScale = Vector2.Lerp( new Vector2(.01f, .01f), puddle.originalSize, (transformationCounter / timeToTransformation));
-        if(transformationCounter >= timeToTransformation)
+        //puddle.SetAlpha(progress);
+        float delay = 1f / (1f - (1f/2f));      //puddle begin appearing when progress == 1/2
+        float newAlpha = Mathf.Min(Mathf.Max((progress * delay) - delay + 1f, 0f), 1f);
+        puddle.SetAlpha(newAlpha);
+        //puddle.transform.localScale = Vector2.Lerp( new Vector2(.01f, .01f), puddle.originalSize, (transformationCounter / timeToTransformation));
+        if (transformationCounter >= timeToTransformation)
         {
             puddle.ToggleColliders(true);
             currentStage = FrogCinematicStage.None;

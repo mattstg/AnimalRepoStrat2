@@ -13,7 +13,6 @@ public class Frog : MonoBehaviour {
     public bool isMale { get { return frogInfo.isMale; } }
     public FrogState currentFrogState;
 
-    public bool inPuddle = false;
     //Frog jump stuff
     Vector2 goalPos;
     Vector3 sourcePos;
@@ -334,7 +333,7 @@ public class Frog : MonoBehaviour {
 
     private bool InPuddle()
     {
-       RaycastHit2D rch = Physics2D.Raycast(transform.position, new Vector2(1f, 0), .1f, FrogGV.pond_layer_mask);
+        RaycastHit2D rch = Physics2D.Raycast(transform.position, new Vector2(1f, 0), .1f, FrogGV.pond_layer_mask);
         if (rch)
             return true;
         return false;
