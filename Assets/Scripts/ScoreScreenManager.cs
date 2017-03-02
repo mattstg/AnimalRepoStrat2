@@ -23,6 +23,7 @@ public class ScoreScreenManager : MonoBehaviour {
         {
             float _value = 0;
             bool truncate = false; //if false, its int, else float
+            bool isPercentage = false;
             //if (t.name == "Total")
             //{
             //    //_value = ProgressTracker.Instance.GetTotalScore(); do at bottom, float point errors show
@@ -41,8 +42,10 @@ public class ScoreScreenManager : MonoBehaviour {
                         _value = ProgressTracker.Instance.GetRoundScore(lessonType);
                         break;
                     case "QM":
-                        truncate = true;
-                        _value = ProgressTracker.Instance.GetMultScore(lessonType);
+                        //truncate = true;
+                        //_value = ProgressTracker.Instance.GetMultScore(lessonType);
+                        _value = (ProgressTracker.Instance.GetMultScore(lessonType) - 1) * 100;
+                        isPercentage = true;
                         break;
                     case "T":
                         _value = ProgressTracker.Instance.GetMultScore(lessonType) * ProgressTracker.Instance.GetRoundScore(lessonType);
@@ -54,15 +57,19 @@ public class ScoreScreenManager : MonoBehaviour {
                         break;
                 }
             }
+            string str;
             if (truncate)
             {
                 float helper = _value * 100;
                 int cutter = (int)helper;
                 float backTo = cutter / 100f;
-                t.GetComponent<Text>().text = string.Format("{0:0.##}", backTo);
+                str = string.Format("{0:0.##}", backTo);
             }
             else
-                t.GetComponent<Text>().text = ((int)_value).ToString();
+                str = ((int)_value).ToString();
+            if (isPercentage)
+                str += "%";
+            t.GetComponent<Text>().text = str;
         }
         textParent.transform.FindChild("Total").GetComponent<Text>().text = totalScore.ToString();
     }
