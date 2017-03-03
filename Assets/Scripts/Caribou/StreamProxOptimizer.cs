@@ -14,7 +14,8 @@ public class StreamProxOptimizer : MonoBehaviour {
 
     public void Start()
     {
-        foreach(Transform parents in allAffectedTransformParents)
+        affectedList = new List<AffectedByRiver>();
+        foreach (Transform parents in allAffectedTransformParents)
         {
             foreach(Transform t in parents)
             {
