@@ -102,7 +102,7 @@ public class GraphManager : MonoBehaviour {
             int roundNumber = GetRoundNumber();
             if (roundNumber != -1)
             {
-                int progressNumber = roundNumber * 2 + 1;
+                int progressNumber = roundNumber * 2 + 2;
                 ProgressTracker.Instance.SetRoundMult((float)totalScore / (float)tries, GetRoundNumber(), tries - 1);
                 ProgressTracker.Instance.SubmitProgress(progressNumber);
             }

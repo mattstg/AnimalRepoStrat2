@@ -49,7 +49,7 @@ public class DuckGF : GameFlow {
         textPanel.StartWriting();
         scoreText.gameObject.SetActive(false);
         ProgressTracker.Instance.SetRoundScore(scorePerc, 3);
-        ProgressTracker.Instance.SubmitProgress(6);
+        ProgressTracker.Instance.SubmitProgress(7);
     }
 
 	protected override void StartGame()

@@ -48,6 +48,9 @@ public class FrogCinematic : MonoBehaviour {
         currentStage = FrogCinematicStage.BecomingArid;
         evacuateAtEndOfCinematic = true;
         puddle.ToggleColliders(false);
+        foreach (Transform t in FrogGV.frogWS.tadpoleParent)
+            Destroy(t.gameObject);
+        puddle.activeTadpoles = new List<Tadpole>();
     }
 
     public void StartWetlandCinematic() //also sets up level

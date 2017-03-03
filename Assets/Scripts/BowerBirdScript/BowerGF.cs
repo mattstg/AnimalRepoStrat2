@@ -81,7 +81,7 @@ public class BowerGF : GameFlow {
         if (!playerWon)
             scorePerc = Mathf.Max(scorePerc, .9f);
         ProgressTracker.Instance.SetRoundScore(scorePerc, 2);
-        ProgressTracker.Instance.SubmitProgress(4);
+        ProgressTracker.Instance.SubmitProgress(5);
     }
 	
 }

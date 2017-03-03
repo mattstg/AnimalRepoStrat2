@@ -54,7 +54,7 @@ public class FishGF : GameFlow {
         scorePerc = Mathf.Clamp(scorePerc, 0, 1);
         scoreText.gameObject.SetActive(false);
         ProgressTracker.Instance.SetRoundScore(scorePerc, 1);
-        ProgressTracker.Instance.SubmitProgress(2);
+        ProgressTracker.Instance.SubmitProgress(3);
     }
 
 

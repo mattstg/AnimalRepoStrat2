@@ -59,7 +59,7 @@ public class CaribouGF : GameFlow {
         _score = Mathf.Clamp(_score, 0, 1);
 
         ProgressTracker.Instance.SetRoundScore(_score, 4);
-        ProgressTracker.Instance.SubmitProgress(8);
+        ProgressTracker.Instance.SubmitProgress(9);
 
         string toOut = "";
         if (gameForceEnded)
