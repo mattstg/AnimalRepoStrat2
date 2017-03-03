@@ -22,7 +22,7 @@ public class ProgressTracker {
 
 	float[] roundScores = new float[5];
 	float[] roundMult = new float[5];
-    float maxScorePerRound = 100;
+    float maxScorePerRound = 1500;
     float roundMultMax = .5f; //50% increase at 100% bonus
     float lossPerQuizAttempt = .05f;
     bool trackProgress = true;
@@ -38,14 +38,29 @@ public class ProgressTracker {
 
     public float GetRoundScore(LessonType lesson)
     {
-        return roundScores[(int)lesson]*maxScorePerRound;
+        float score = roundScores[(int)lesson] * maxScorePerRound;
+        int toInt = (int)score;
+        score = (float)toInt;
+        return score;
     }
 
     public float GetMultScore(LessonType lesson)
     {
-        return 1 + roundMult[(int)lesson]*roundMultMax;
+        float bonus = 1 + roundMult[(int)lesson]*roundMultMax;
+
+        //round down to nearest percentage
+        bonus *= 100f;
+        int toInt = (int)bonus;
+        bonus = ((float)toInt) / 100f;
+
+        return bonus;
     }
 
+    public float GetMultPercentage(LessonType lesson)
+    {
+        float bonus = roundMult[(int)lesson] * roundMultMax * 100f;
+        return (float)(int)bonus;
+    }
 
     public void SetRoundScore(float score, int round)
 	{
@@ -70,7 +85,11 @@ public class ProgressTracker {
     {
         float totalScore = 0;
         for (int i = 0; i < 5; i++)
-            totalScore += roundScores[i] * (1 + roundMult[i] * roundMultMax) * maxScorePerRound;
+        {
+            //totalScore += roundScores[i] * (1 + roundMult[i] * roundMultMax) * maxScorePerRound;
+            totalScore += GetRoundScore((LessonType)i) * GetMultScore((LessonType)i);
+            //Debug.Log(string.Format("i: {0}, TotalScore: {1}, GetRoundScore: {2}, GetMultScore: {3}, Score[i]: {4}", i, (int)totalScore, GetRoundScore((LessonType)i), GetMultScore((LessonType)i), GetRoundScore((LessonType)i) * GetMultScore((LessonType)i)));
+        }
         return (int)totalScore;
     }
 }

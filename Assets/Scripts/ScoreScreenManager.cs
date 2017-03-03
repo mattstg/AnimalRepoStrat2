@@ -44,7 +44,7 @@ public class ScoreScreenManager : MonoBehaviour {
                     case "QM":
                         //truncate = true;
                         //_value = ProgressTracker.Instance.GetMultScore(lessonType);
-                        _value = (ProgressTracker.Instance.GetMultScore(lessonType) - 1) * 100;
+                        _value = ProgressTracker.Instance.GetMultPercentage(lessonType);
                         isPercentage = true;
                         break;
                     case "T":
