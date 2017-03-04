@@ -35,7 +35,7 @@ public class Frog : MonoBehaviour {
     OpacityFade opacityFade;
     float maxRange = 4.4f;
 	float rangeRateIncrease = 3f;
-    float chanceToRepeatCall = .4f;
+    float chanceToRepeatCall = .33f;
 
     //mating
     Vector2 rangeOfKids = new Vector2(4, 8);
@@ -216,7 +216,7 @@ public class Frog : MonoBehaviour {
             EnterRandomJump();
         }
 
-        if(isMale && Random.Range(0,1f) >= .5f)
+        if(isMale && Random.Range(0,1f) >= .4f)
         {
             //landed in puddle, try ribbiting to attract mate
             EnterCallingState();
