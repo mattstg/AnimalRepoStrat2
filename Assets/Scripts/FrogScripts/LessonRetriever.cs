@@ -99,7 +99,7 @@ public class LessonRetriever
                     "Speed is the most important factor here, because only the tadpoles who have matured by the time the puddle dries up will survive. Female spadefoot toads can lay clutches of thousands of eggs, but most will never become adult toads.\n\n" +
                     "Instead of providing parental care, male spadefoot toads focus their energies on maximizing their mating. Suitable mating conditions may not come again for multiple years.";
             case 2:
-                return "You are a <i>male spadefoot toad</i>.\n\n" +
+                return "You are a male spadefoot toad.\n\n" +
                     "You have just found a fresh puddle following a rare desert thunderstorm. Many other toads have also arrived.\n\n" +
                     "But beware: the noisy toads have attracted some hungry predators!\n\n" +
                     "The more living descendants you have when the puddle dries up, the higher your score will be.";
@@ -128,7 +128,7 @@ public class LessonRetriever
                     "Shortly after mating, all pacific salmon die, and the life-cycle continues.\n\n" +
                     "Most of the young won’t survive to adulthood, but those who do will do so completely without their parents.";
             case 2://intro3
-                return "You are a <i>pacific salmon</i>.\n\n" +
+                return "You are a pacific salmon.\n\n" +
                     "It is autumn, and you have just arrived at the river mouth that leads to the pool where you once hatched. Alongside countless other salmon, you strike up against the current.\n\n" +
                     "Watch out for the grizzly bears! They wait for the salmon run all year, and are experts at fishing!\n\n" +
                     "The faster you reach your spawning ground, the higher your score will be.";
@@ -157,7 +157,7 @@ public class LessonRetriever
                     "Males try especially hard to find blue decorations, since blue is the favorite color of most female bowerbirds.\n\n" +
                     "Unlike spadefoot toads and salmon, female bowerbirds are extremely selective in their mating. Since they have so few offspring, they must ensure that the children they do have are as healthy and strong as possible. Therefore, it pays off to find the most impressive male in the neighborhood for a mate.";
             case 2: //L3
-                return "You are a <i>male bowerbird</i>.\n\n" +
+                return "You are a male bowerbird.\n\n" +
                     "It is mating season, and you have just completed your twig bower.\n\n" +
                     "You’ve spotted a female in the area who seems to be interested in finding a mate. However, a few rival males in the area seem to have taken notice as well. Outperform your rivals by collecting the most impressive assortment of decorations for your bower!\n\n" +
                     "For you to win, the female bowerbird must choose you over the others. She will only choose you if your bower impresses her enough when she visits.\n\n" +
@@ -185,7 +185,7 @@ public class LessonRetriever
                     "Though wood ducks have more offspring than many <i>K</i>-species, they have far fewer than salmon or toads, and about two thirds of them never reach adulthood.\n\n" +
                     "The mother duck provides moderate care for her young in the form of incubating the eggs, leading the ducklings to the water, and then raising them until they can fly.";
             case 2://into3
-                return "You are a <i>female wood duck</i>.\n\n" +
+                return "You are a female wood duck.\n\n" +
                     "It is early spring, and your hatchlings have just jumped to the forest floor.\n\n" +
                     "There is a large lake nearby to the south, but beware: this forest is a home for red foxes, and they would have no trouble catching a duckling if they see one.\n\n" +
                     "Call your young to you when they wander, and head for the open waters!\n\n" +
@@ -214,7 +214,7 @@ public class LessonRetriever
                     "While wolves won’t usually attack the adults, they will target the young and the weak. The herd will try to keep the calves in the center, to shield them from the wolves. But in the chaos of a chase, calves sometimes fall through the cracks.\n\n" +
                     "Eventually, the caribou will always outrun the wolves, but not always without losses. Since caribou usually have only one calf a year, losing a child is a heavy blow, so it is very important to defend them from predators.";
             case 2://3
-                return "You are a <i>female barren-ground caribou</i>.\n\n" +
+                return "You are a female barren-ground caribou.\n\n" +
                     "It is early autumn, and your calf is four months old. Soon, the lakes will freeze over, and the herd will begin its seasonal mating.\n\n" +
                     "Wolves are chasing your herd relentlessly to the south, and you must guide your calf to safety. The wolves cannot run for nearly as long as the caribou can, so your calf must only avoid them until the greater endurance of the herd prevails.\n\n" +
                     "The sooner your calf gets to safety, the higher your score will be!";
