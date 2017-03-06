@@ -9,12 +9,16 @@ public class WaterStream : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D coli)
     {
-        coli.gameObject.GetComponent<AffectedByRiver>().SetMoveBy(dirOfStream, this, forceOfStream, false);
+        AffectedByRiver abr = coli.gameObject.GetComponent<AffectedByRiver>();
+        if (abr != null)
+            coli.gameObject.GetComponent<AffectedByRiver>().SetMoveBy(dirOfStream, this, forceOfStream, false);
     }
 
     public void OnTriggerExit2D(Collider2D coli)
     {
-        coli.gameObject.GetComponent<AffectedByRiver>().SetMoveBy(dirOfStream, this, forceOfStream, true);
+        AffectedByRiver abr = coli.gameObject.GetComponent<AffectedByRiver>();
+        if (abr != null)
+            coli.gameObject.GetComponent<AffectedByRiver>().SetMoveBy(dirOfStream, this, forceOfStream, true);
     }
     /*
     public void OnCollisionStay2D(Collision2D coli)

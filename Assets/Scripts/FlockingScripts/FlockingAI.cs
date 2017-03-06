@@ -553,7 +553,6 @@ public class FlockingAI : MonoBehaviour
     {
         if(test && !hasDoneTest)
         {
-            Debug.Log(flockManager.flock.Count);
             hasDoneTest = true;
         }
         if (usesRandom)

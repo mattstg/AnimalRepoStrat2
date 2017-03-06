@@ -8007,6 +8007,7 @@ GameObject:
   - component: {fileID: 375390988}
   - component: {fileID: 375390989}
   - component: {fileID: 375390985}
+  - component: {fileID: 375390990}
   m_Layer: 13
   m_Name: PlayerSalmon
   m_TagString: Untagged
@@ -8109,6 +8110,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &375390990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 375390983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500ebe5888f641341ba3a8176b50db7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerDuck: 0
 --- !u!1 &382491536
 GameObject:
   m_ObjectHideFlags: 0
