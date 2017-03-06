@@ -294,7 +294,7 @@ public class QuestionRetriever : MonoBehaviour {
         s3.SetAns(2, "<i>K</i>", true);
 
         Slot s5 = new Slot();
-        s5.SetQuestion("What is the main reproductive drawback of providing little or no parental care?", "Do animals that do not provide any care for their young tend to higher or lower mortality rates?");
+        s5.SetQuestion("What is the main reproductive drawback of providing little or no parental care?", "Do animals that do not provide any care for their young tend to have higher or lower mortality rates?");
         s5.SetAns(1, "Lower mortality rates", false);
         s5.SetAns(2, "Higher mortality rates", true);
 
