@@ -294,6 +294,7 @@ MonoBehaviour:
   waterSlowCoeff: 1
   currentWaypoint: {fileID: 0}
   test: 0
+  hasDoneTest: 0
   isCorpse: 0
   activeWaypoint: 1
   speed: 0
@@ -301,7 +302,7 @@ MonoBehaviour:
   head: {fileID: 1286030784081590}
   headRotationSpeed: 10
   updateFrequency: 4
-  speedRange: {x: 735, y: 735}
+  speedRange: {x: 935, y: 935}
   rotationSpeedRange: {x: 6, y: 7}
   isCalf: 0
   isFish: 0

@@ -17,6 +17,7 @@ public class FlockingAI : MonoBehaviour
     public waypointScript currentWaypoint;
 
     public bool test = false;
+    public bool hasDoneTest = false;
 
     public bool isCorpse = false;
     Rigidbody2D rigidbody;
@@ -550,6 +551,11 @@ public class FlockingAI : MonoBehaviour
 
     void Update()
     {
+        if(test && !hasDoneTest)
+        {
+            Debug.Log(flockManager.flock.Count);
+            hasDoneTest = true;
+        }
         if (usesRandom)
         {
             if (Random.Range(0, randVectUpdateFrequency) == 0)

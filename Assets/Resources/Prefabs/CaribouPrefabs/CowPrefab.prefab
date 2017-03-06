@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4293373152855058}
   - component: {fileID: 212979923108250966}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: cARIBOU_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4898302123043380}
   - component: {fileID: 212344887990267904}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4748728027356556}
   - component: {fileID: 212744858947036704}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: cARIBOU_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4199410926855918}
   - component: {fileID: 212307679177384888}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: cARIBOU_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4011959352109992}
   - component: {fileID: 212494501978780600}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: cARIBOU_2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,8 @@ GameObject:
   - component: {fileID: 50091142890193854}
   - component: {fileID: 114594474429612702}
   - component: {fileID: 70460410347140680}
-  m_Layer: 0
+  - component: {fileID: 114228135334593398}
+  m_Layer: 20
   m_Name: CowPrefab
   m_TagString: Mother
   m_Icon: {fileID: 0}
@@ -184,14 +185,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1948676284348282}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7221992, w: 0.69168514}
-  m_LocalPosition: {x: 25.90501, y: 63.59665, z: 0}
-  m_LocalScale: {x: 0.90000045, y: 0.90000045, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7380013, w: 0.6747994}
+  m_LocalPosition: {x: 30.295074, y: 91.27794, z: 0}
+  m_LocalScale: {x: 0.9000014, y: 0.9000014, z: 1}
   m_Children:
   - {fileID: 4898302123043380}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 92.47301}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 95.123}
 --- !u!50 &50091142890193854
 Rigidbody2D:
   serializedVersion: 4
@@ -223,9 +224,21 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.22236574, y: 0.028507132}
-  m_Size: {x: 2.9431238, y: 0.92068803}
+  m_Offset: {x: -0.1071957, y: 0.009035586}
+  m_Size: {x: 3.5306523, y: 1.0375015}
   m_Direction: 1
+--- !u!114 &114228135334593398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1948676284348282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500ebe5888f641341ba3a8176b50db7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerDuck: 0
 --- !u!114 &114594474429612702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -241,6 +254,7 @@ MonoBehaviour:
   waterSlowCoeff: 1
   currentWaypoint: {fileID: 0}
   test: 0
+  hasDoneTest: 0
   isCorpse: 0
   activeWaypoint: 1
   speed: 0
@@ -248,7 +262,7 @@ MonoBehaviour:
   head: {fileID: 1880510081260924}
   headRotationSpeed: 40
   updateFrequency: 2
-  speedRange: {x: 820, y: 830}
+  speedRange: {x: 1020, y: 1030}
   rotationSpeedRange: {x: 8, y: 10}
   isCalf: 0
   isFish: 0

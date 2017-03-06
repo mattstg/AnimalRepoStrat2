@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4353521548589294}
   - component: {fileID: 212511273874888112}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: cARIBOU_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4878680140003548}
   - component: {fileID: 212392006877566562}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: cARIBOU_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4291759180836120}
   - component: {fileID: 212408314577864216}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: cARIBOU_2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4593369369074542}
   - component: {fileID: 212959952976257930}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: cARIBOU_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,8 @@ GameObject:
   - component: {fileID: 70247964224363532}
   - component: {fileID: 114013863354251278}
   - component: {fileID: 82446335193718410}
-  m_Layer: 0
+  - component: {fileID: 114460077010165474}
+  m_Layer: 20
   m_Name: LeaderPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4154955641028854}
   - component: {fileID: 212320552720650100}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,8 +225,8 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.09922074, y: 0.012013845}
-  m_Size: {x: 3.492181, y: 0.88248014}
+  m_Offset: {x: -0.24859512, y: 0.015518308}
+  m_Size: {x: 4.2107773, y: 1.3908517}
   m_Direction: 1
 --- !u!82 &82446335193718410
 AudioSource:
@@ -322,6 +323,7 @@ MonoBehaviour:
   waterSlowCoeff: 1
   currentWaypoint: {fileID: 0}
   test: 0
+  hasDoneTest: 0
   isCorpse: 0
   activeWaypoint: 1
   speed: 0
@@ -329,7 +331,7 @@ MonoBehaviour:
   head: {fileID: 1296992225907802}
   headRotationSpeed: 20
   updateFrequency: 4
-  speedRange: {x: 800, y: 820}
+  speedRange: {x: 1000, y: 1020}
   rotationSpeedRange: {x: 8, y: 10}
   isCalf: 0
   isFish: 0
@@ -373,6 +375,18 @@ MonoBehaviour:
   predNeighborhoodSize: 20
   predAverageHeadingWeight: 1
   predAveragePositionWeight: 1
+--- !u!114 &114460077010165474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1885383847807388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500ebe5888f641341ba3a8176b50db7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerDuck: 0
 --- !u!212 &212320552720650100
 SpriteRenderer:
   m_ObjectHideFlags: 1
