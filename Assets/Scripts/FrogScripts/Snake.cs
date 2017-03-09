@@ -5,8 +5,8 @@ using UnityEngine; using LoLSDK;
 public class Snake : MonoBehaviour {
 
 
-    float frogPts = .6f;
-    float tadpolePt = .3f;
+    float frogPts = .65f;
+    float tadpolePt = .35f;
     public float pointsEaten;
     float snakeSpeed = .9f;
     public Vector2 snakeMoveDir = new Vector2(0, -1);

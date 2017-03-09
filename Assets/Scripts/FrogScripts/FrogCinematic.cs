@@ -47,10 +47,7 @@ public class FrogCinematic : MonoBehaviour {
         timeToTransformation = 20;
         currentStage = FrogCinematicStage.BecomingArid;
         evacuateAtEndOfCinematic = true;
-        puddle.ToggleColliders(false);
-        foreach (Transform t in FrogGV.frogWS.tadpoleParent)
-            Destroy(t.gameObject);
-        puddle.activeTadpoles = new List<Tadpole>();
+        
     }
 
     public void StartWetlandCinematic() //also sets up level
@@ -101,8 +98,14 @@ public class FrogCinematic : MonoBehaviour {
         //puddle.carryingCapacity = (int)(( 1- (transformationCounter / timeToTransformation)) * puddle.originalCarryingCapacity);
 
         if (evacuateAtEndOfCinematic && transformationCounter >= timeToTransformation)
+        {
             foreach (Transform t in FrogGV.frogWS.frogParent)
                 t.GetComponent<Frog>().leaveMap = true;
+            puddle.ToggleColliders(false);
+            foreach (Transform t in FrogGV.frogWS.tadpoleParent)
+                Destroy(t.gameObject);
+            puddle.activeTadpoles = new List<Tadpole>();
+        }
     }
 
     private void UpdateBecomingWet()
