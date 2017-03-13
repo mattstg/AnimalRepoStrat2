@@ -97,14 +97,18 @@ public class FrogCinematic : MonoBehaviour {
         //puddle.transform.localScale = Vector2.Lerp(puddle.originalSize, new Vector2(.01f, .01f), (transformationCounter / timeToTransformation));
         //puddle.carryingCapacity = (int)(( 1- (transformationCounter / timeToTransformation)) * puddle.originalCarryingCapacity);
 
-        if (evacuateAtEndOfCinematic && transformationCounter >= timeToTransformation)
+        if (transformationCounter >= timeToTransformation)
         {
-            foreach (Transform t in FrogGV.frogWS.frogParent)
-                t.GetComponent<Frog>().leaveMap = true;
-            puddle.ToggleColliders(false);
-            foreach (Transform t in FrogGV.frogWS.tadpoleParent)
-                Destroy(t.gameObject);
-            puddle.activeTadpoles = new List<Tadpole>();
+            if(evacuateAtEndOfCinematic)
+            {
+                foreach (Transform t in FrogGV.frogWS.frogParent)
+                    t.GetComponent<Frog>().leaveMap = true;
+                puddle.ToggleColliders(false);
+                foreach (Transform t in FrogGV.frogWS.tadpoleParent)
+                    Destroy(t.gameObject);
+                puddle.activeTadpoles = new List<Tadpole>();
+            }            
+            currentStage = FrogCinematicStage.None;
         }
     }
 

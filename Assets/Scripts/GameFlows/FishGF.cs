@@ -40,7 +40,7 @@ public class FishGF : GameFlow {
         if(gameForceEnded)
         {
             toOut = "You have run out of time. You did not make it to your spawning grounds in time for mating.\n\n" +
-                "Because your body has undergone a tranformation to survive in fresh water, you will not survive back in the salty sea.\n\n" +
+                "Because your body has undergone a transformation to survive in fresh water, you will not survive back in the salty sea.\n\n" +
                 "Your lineage ends here.";
         }
         else

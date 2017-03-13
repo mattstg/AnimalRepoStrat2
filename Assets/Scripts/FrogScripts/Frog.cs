@@ -9,6 +9,7 @@ public class Frog : MonoBehaviour {
 
     public enum FrogState { jumping,landedJump, idle, calling }
     public FrogInfo frogInfo;
+    public Transform toScale;
 
     public bool isMale { get { return frogInfo.isMale; } }
     public FrogState currentFrogState;
@@ -67,10 +68,12 @@ public class Frog : MonoBehaviour {
 		}
         opacityFade = ribbitRing.GetComponent<OpacityFade>();
         opacityFade.SetPresentOpacity(0);
-        originalScale = new Vector2(transform.localScale.x, transform.localScale.y);
+        //originalScale = new Vector2(transform.localScale.x, transform.localScale.y);
+        //toScale
+        originalScale = new Vector2(toScale.transform.localScale.x, toScale.transform.localScale.y);
     }
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
 
         mateCooldown -= Time.deltaTime;
 
@@ -164,7 +167,7 @@ public class Frog : MonoBehaviour {
         }
 
         transform.position = newPos;
-        transform.localScale = new Vector3(originalScale.x * newScale, originalScale.y * newScale, transform.localScale.z);
+        toScale.transform.localScale = new Vector3(originalScale.x * newScale, originalScale.y * newScale, transform.localScale.z);
     }
 
     private void LandedJump()

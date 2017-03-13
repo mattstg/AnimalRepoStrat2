@@ -31,7 +31,7 @@ public class PlayerFrog : Frog {
 
     public override void FrogEaten()
     {
-        transform.localScale = new Vector3(originalScale.x, originalScale.y, transform.localScale.z);
+        toScale.transform.localScale = new Vector3(originalScale.x, originalScale.y, transform.localScale.z);
         Frog frogFound = null;
         foreach(Transform t in FrogGV.frogWS.frogParent)
         {

@@ -497,8 +497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5883c9c023470df46a7ea0209f62a1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toScale: {fileID: 4869031968881420}
   currentFrogState: 0
-  inPuddle: 0
   outtaBounds: 1
   playerCntrl: 0
   leaveMap: 0
