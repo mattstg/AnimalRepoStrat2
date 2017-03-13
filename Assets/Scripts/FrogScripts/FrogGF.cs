@@ -6,8 +6,9 @@ using LoLSDK;
 public class FrogGF : GameFlow {
 
     public static readonly int maxFrogCount = 75;
+    
 
-	public FrogCinematic frogCinematic;
+    public FrogCinematic frogCinematic;
 	//int stage = 0;
 	//bool nextStep = false;
 	public Frog playerFrog;

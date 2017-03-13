@@ -46,28 +46,28 @@ public class SnakeManager : MonoBehaviour {
     public void SnakeReachedEnd(Snake snake)
     {
         snakesReturned++;
-        if (FrogGV.frogWS.frogParent.childCount < (FrogGF.maxFrogCount * .9f))
+        /*if (FrogGV.frogWS.frogParent.childCount < (FrogGF.maxFrogCount * .9f))
             totalPoints += snake.pointsEaten;
         else
             totalPoints += snake.pointsEaten * 2f;
-        averageFoodPoints = Mathf.Max(totalPoints / snakesReturned,3);
+        averageFoodPoints = Mathf.Max(totalPoints / snakesReturned,3);*/
         //Debug.Log(string.Format("snake returned. point {0}, total pts {1}, total snakes {2}, score avrg {3}", snake.pointsEaten, totalPoints, snakesReturned, averageFoodPoints));
+
+        int prefferedSnakeCount = FrogGV.frogWS.frogParent.childCount / FrogGV.frogsPerSnake;
         bool resetSnake = true;
-        int avrgPts = (int)averageFoodPoints;
-        if(avrgPts != activeSnakes.Count)
+        //int avrgPts = (int)averageFoodPoints;
+        if(prefferedSnakeCount != activeSnakes.Count)
         {
-            if(avrgPts > activeSnakes.Count)
+            if(prefferedSnakeCount > activeSnakes.Count)
             {
                 CreateSnake();
-                //Debug.Log("Created snake");  
-                //Make more snakes
             }
-            else if (activeSnakes.Count <= 3)
+            else if (activeSnakes.Count <= FrogGV.minSnakes)
             {
                 //Debug.Log("reset snake norm");
                 //Its fine, dont remove more snakes
             }
-            else
+            else //Snake count too high
             {//remove snakes
                 //Debug.Log("Delete Snake");
                 resetSnake = false;

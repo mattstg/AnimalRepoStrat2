@@ -8,6 +8,8 @@ public class FrogGV  {
     public static readonly float frogMatingDistance = .25f;
     public static readonly int pond_layer_mask = LayerMask.GetMask("Pond");
     public static readonly Vector2 mapBounds = new Vector2(3.9f, 3.2f);
+    public static readonly int frogsPerSnake = 12; //how many frogs it takes to summon a snake
+    public static readonly int minSnakes = 3;
     //public static readonly bool playerFrogIsActive = false;
 
     static List<Frog> femaleFrogs = new List<Frog>();
