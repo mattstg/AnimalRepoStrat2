@@ -19,6 +19,8 @@ public class InputManager : MonoBehaviour {
         {
             _MouseClicked(Input.GetTouch(0).position);
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+            MouseClickedOnObjOfInterest();
 
     }
 	public void OnMouseOver()
