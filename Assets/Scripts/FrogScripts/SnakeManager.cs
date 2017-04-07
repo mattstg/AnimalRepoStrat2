@@ -2,89 +2,104 @@
 using System.Collections.Generic;
 using UnityEngine; using LoLSDK;
 
-public class SnakeManager : MonoBehaviour {
+public class SnakeManager  {
+
+    #region Singleton
+    private static SnakeManager instance;
+
+    private SnakeManager() { }
+
+    public static SnakeManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new SnakeManager();
+            }
+            return instance;
+        }
+    }
+    #endregion
 
     public enum cardinalDir { North, East, South, West }
     //consts
     public bool playerIsTargetable = false;
-    float averageFoodPoints;
-    float totalPoints = 3;
+    //float averageFoodPoints;
+    //float totalPoints = 3;
     int snakesReturned = 1;
     List<Snake> activeSnakes = new List<Snake>();
+    Stack<Snake> bankedSnakes = new Stack<Snake>();
     Transform player;
-
-    public void Start()
-    {
-        SetupGame();
-    }
 
     public void SetupGame()
     {
         foreach (Snake s in activeSnakes)
-            Destroy(s.gameObject);
+            MonoBehaviour.Destroy(s.gameObject);
         activeSnakes = new List<Snake>();
+        bankedSnakes = new Stack<Snake>();
         CreateSnake();
         CreateSnake();
         CreateSnake();
-        averageFoodPoints = 0;
-        totalPoints = 3;
-        snakesReturned = 1;
+        //totalPoints = 3;
+        //averageFoodPoints = 0;
+        //snakesReturned = 1;
         player = FrogGV.frogWS.frogGF.playerFrog.transform;
     }
 
     private void CreateSnake()
     {
-        GameObject snakego = Instantiate(Resources.Load("Prefabs/Snake")) as GameObject;
-        snakego.transform.SetParent(FrogGV.frogWS.snakeParent);
-        Snake newSnake = snakego.GetComponent<Snake>();
+        Snake newSnake;
+        if (bankedSnakes.Count > 0)
+        {
+            newSnake = bankedSnakes.Pop();
+            newSnake.gameObject.SetActive(true);
+        }
+        else
+        {
+            GameObject snakego = MonoBehaviour.Instantiate(Resources.Load("Prefabs/Snake")) as GameObject;
+            snakego.transform.SetParent(FrogGV.frogWS.snakeParent);
+            newSnake = snakego.GetComponent<Snake>();
+        }
         cardinalDir cardDir = (cardinalDir)(Random.Range(0, 4));
         SetupSnake(newSnake,cardDir);
         activeSnakes.Add(newSnake);   
     }
     
-
-    public void SnakeReachedEnd(Snake snake)
+    public void UpdateSnakeManager(float dt)
     {
-        snakesReturned++;
-        /*if (FrogGV.frogWS.frogParent.childCount < (FrogGF.maxFrogCount * .9f))
-            totalPoints += snake.pointsEaten;
-        else
-            totalPoints += snake.pointsEaten * 2f;
-        averageFoodPoints = Mathf.Max(totalPoints / snakesReturned,3);*/
-        //Debug.Log(string.Format("snake returned. point {0}, total pts {1}, total snakes {2}, score avrg {3}", snake.pointsEaten, totalPoints, snakesReturned, averageFoodPoints));
+        int prefferedSnakeCount = Mathf.Max(FrogGV.frogWS.frogParent.childCount / FrogGV.frogsPerSnake, FrogGV.minSnakes);
+        if(prefferedSnakeCount > activeSnakes.Count)
+            CreateSnake();
 
-        int prefferedSnakeCount = FrogGV.frogWS.frogParent.childCount / FrogGV.frogsPerSnake;
-        bool resetSnake = true;
-        //int avrgPts = (int)averageFoodPoints;
-        if(prefferedSnakeCount != activeSnakes.Count)
+        //mmove snakes
+        foreach (Snake s in activeSnakes)
+            s.UpdateSnake(dt);
+
+        //Check all snake collisions
+        List<Frog> allFrogs = FrogGV.masterList;
+        for(int i = allFrogs.Count - 1; i >= 0; i--)
         {
-            if(prefferedSnakeCount > activeSnakes.Count)
+            foreach(Snake s in activeSnakes)
             {
-                CreateSnake();
+                float dist = MathHelper.ApproxDist(s.transform.position, allFrogs[i].transform.position);
+                if(dist < FrogGV.snakeEatRange)
+                {
+                    allFrogs[i].FrogEaten();
+                    break;
+                }
             }
-            else if (activeSnakes.Count <= FrogGV.minSnakes)
-            {
-                //Debug.Log("reset snake norm");
-                //Its fine, dont remove more snakes
-            }
-            else //Snake count too high
-            {//remove snakes
-                //Debug.Log("Delete Snake");
-                resetSnake = false;
-                Destroy(snake.gameObject);
-                activeSnakes.Remove(snake);
-            }
-        }
-
-
-        if (resetSnake)
-        {
-            snake.pointsEaten = 0;
-            cardinalDir cardDir = (cardinalDir)(Random.Range(0, 4));
-            SetupSnake(snake, cardDir);
         }
     }
 
+    public void SnakeReachedEnd(Snake snake)
+    {
+        activeSnakes.Remove(snake);
+        bankedSnakes.Push(snake);
+        snake.gameObject.SetActive(false);
+    }
+
+    //Snake gets setup at random border depending on headingDir, random chance to spawn targeting player, so alligned with his position
     private void SetupSnake(Snake snake, cardinalDir headingDir)
     {
         bool playerTargeted = Random.Range(0,1f) > .8f;

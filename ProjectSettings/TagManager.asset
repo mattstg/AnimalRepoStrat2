@@ -11,6 +11,8 @@ TagManager:
   - Mother
   - Tree
   - BoostZone
+  - SnakeExit
+  - Tadpole
   layers:
   - Default
   - TransparentFX

@@ -60,10 +60,10 @@ public class FrogCinematic : MonoBehaviour {
 			newFrog.transform.SetParent(FrogGV.frogWS.frogParent);
 			newFrog.transform.position = GetRandomSpawnLoc();
             Frog.FrogInfo fi = new Frog.FrogInfo(0, false, Random.Range(0f, 1f) > .5f);
-			newFrog.GetComponent<Frog>().CreateFrog(fi);
+			newFrog.GetComponent<Frog>().InitializeFrog(fi);
 			newFrog.GetComponent<Frog> ().outtaBounds = true;
 		}
-        GameObject.FindObjectOfType<SnakeManager>().SetupGame();
+        SnakeManager.Instance.SetupGame();
         puddle.ToggleColliders(false);
     }
 

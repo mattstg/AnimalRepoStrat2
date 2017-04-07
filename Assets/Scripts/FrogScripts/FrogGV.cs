@@ -10,10 +10,13 @@ public class FrogGV  {
     public static readonly Vector2 mapBounds = new Vector2(3.9f, 3.2f);
     public static readonly int frogsPerSnake = 12; //how many frogs it takes to summon a snake
     public static readonly int minSnakes = 3;
+    public static readonly float snakeEatRange = .2f;
     //public static readonly bool playerFrogIsActive = false;
 
     static List<Frog> femaleFrogs = new List<Frog>();
     static List<Frog> maleFrogs = new List<Frog>();
+
+    public static List<Frog> masterList = new List<Frog>(); //Instead of merging each list each turn for snake check, just have two
 
     public static void AddFrogToMasterList(Frog newFrog, bool isMale)
     {
@@ -27,7 +30,9 @@ public class FrogGV  {
             if (!femaleFrogs.Contains(newFrog))
                 femaleFrogs.Add(newFrog);
         }
+        masterList.Add(newFrog);
     }
+    
 
     public static void RemoveFrogFromMasterList(Frog toRemove, bool isMale)
     {
@@ -35,6 +40,7 @@ public class FrogGV  {
             maleFrogs.Remove(toRemove);
         else
             femaleFrogs.Remove(toRemove);
+        masterList.Remove(toRemove);
     }
 
     public static Frog FemaleCanMate(Vector2 loc) //she should only call this if in water and cooldown is fine

@@ -47,7 +47,7 @@ public class Frog : MonoBehaviour {
     public float publicGenNum;
     public bool publicIsPlayer;
 
-	public virtual void CreateFrog(FrogInfo _frogInfo, bool pioneerFrog = false)
+	public virtual void InitializeFrog(FrogInfo _frogInfo, bool pioneerFrog = false)
     {
         frogInfo = new FrogInfo(_frogInfo);
 		if(!playerCntrl)
@@ -339,38 +339,6 @@ public class Frog : MonoBehaviour {
             return true;
         return false;
     }
-
-    /*public void OnCollisionEnter2D(Collision2D coli)
-    {
-        ResolveCollision(coli.collider,true);
-    }
-    public void OnTriggerEnter2D(Collider2D coli)
-    {
-        ResolveCollision(coli,true);
-    }
-    public void OnCollisionExit2D(Collision2D coli)
-    {
-        ResolveCollision(coli.collider, false);
-    }
-    public void OnTriggerExit2D(Collider2D coli)
-    {
-        ResolveCollision(coli, false);
-    }
-
-
-
-    public void ResolveCollision(Collider2D coli, bool entering)
-    {
-        GameObject otherObj = coli.gameObject;
-        if(otherObj.GetComponent<Puddle>())
-        {
-            inPuddle = entering;
-        }
-        else if(otherObj.name == "Boundry")
-        {
-            outtaBounds = !entering;
-        }
-    }*/
 
     public void HeardARibbit(Vector2 loc)
     {

@@ -45,7 +45,7 @@ public class Tadpole : MonoBehaviour {
                 GameObject newFrog = Instantiate(Resources.Load("Prefabs/Frog")) as GameObject;
                 newFrog.transform.SetParent(FrogGV.frogWS.frogParent);
                 newFrog.transform.position = transform.position;
-                newFrog.GetComponent<Frog>().CreateFrog(frogInfo);
+                newFrog.GetComponent<Frog>().InitializeFrog(frogInfo);
             }
             KillTadpole();
         }

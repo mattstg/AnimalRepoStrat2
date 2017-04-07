@@ -131,7 +131,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4439849962741582}
-  - component: {fileID: 58804253049904554}
   - component: {fileID: 114311982548040690}
   m_Layer: 10
   m_Name: Frog
@@ -461,20 +460,6 @@ Transform:
   m_Father: {fileID: 4439849962741582}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58804253049904554
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1415030581194756}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!114 &114128737748594954
 MonoBehaviour:
   m_ObjectHideFlags: 1

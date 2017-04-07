@@ -5,9 +5,9 @@ using LoLSDK;
 
 public class PlayerFrog : Frog {
 
-    public override void CreateFrog(FrogInfo _frogInfo, bool pioneerFrog = false)
+    public override void InitializeFrog(FrogInfo _frogInfo, bool pioneerFrog = false)
     {
-        base.CreateFrog(_frogInfo, pioneerFrog);
+        base.InitializeFrog(_frogInfo, pioneerFrog);
     }
 
     public void MousePressed(Vector3 loc)

@@ -28,16 +28,19 @@ public class FrogGF : GameFlow {
 		nextSceneName = "FishScene";
 		stage = -1;
 		nextStep = true;
+
+        //Pre game visual
         foreach (Transform t in FrogGV.frogWS.tadpoleParent)
             t.GetComponent<Tadpole>().enabled = true;
-
+        SnakeManager.Instance.SetupGame();
     }
 
 	public override void Update()
 	{
+        float dt = Time.deltaTime;
         if (stage == 2)
         {
-            gameTimer -= Time.deltaTime;
+            gameTimer -= dt;
             if (gameTimer <= 0)
                 GameFinished();
             if (!secondCinematicStarted && gameTimer <= 20)
@@ -46,7 +49,7 @@ public class FrogGF : GameFlow {
                 frogCinematic.StartSecondAridCinematic();
             }
         }
-
+        SnakeManager.Instance.UpdateSnakeManager(dt);
         base.Update();
 	}
 
@@ -82,8 +85,9 @@ public class FrogGF : GameFlow {
         Camera.main.transform.localPosition = new Vector3(0, 0, -10);
 		Camera.main.gameObject.GetComponent<CameraFollow> ().SetZoom (2);
 		im.gameObject.SetActive (true);
-		playerFrog.CreateFrog (new Frog.FrogInfo(0,true, true),true);
-        GameObject.FindObjectOfType<SnakeManager>().playerIsTargetable = true;
+		playerFrog.InitializeFrog (new Frog.FrogInfo(0,true, true),true);
+        FrogGV.masterList.Add(playerFrog);
+        
     }
 
 	public void GameFinished()
@@ -98,7 +102,7 @@ public class FrogGF : GameFlow {
         Camera.main.GetComponent<CameraFollow>().toFollow = null;
         Camera.main.transform.position = new Vector3(-.06f, 0, -10);
         Camera.main.orthographicSize = 2.9f;
-        GameObject.FindObjectOfType<SnakeManager>().playerIsTargetable = false;
+        FrogGV.masterList.Remove(playerFrog);
     }
 
 	
