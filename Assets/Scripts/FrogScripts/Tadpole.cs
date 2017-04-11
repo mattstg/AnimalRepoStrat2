@@ -9,7 +9,6 @@ public class Tadpole : MonoBehaviour {
     Vector2 tadpoleHatchRange = new Vector2(15,30);
     Puddle puddle = null;
     bool tadpoleInitialized = false;
-    bool oneUpdateWarning = true;
 
     // Use this for initialization
     public void Start()
@@ -27,16 +26,12 @@ public class Tadpole : MonoBehaviour {
         float randAngle = Random.Range(0, 360);
         Vector2 randStartForce = MathHelper.DegreeToVector2(randAngle) * 5;
         GetComponent<Rigidbody2D>().AddForce(randStartForce);
+        FrogGV.frogWS.puddle.AddTadpole(this);
     }
 	
 	// Update is called once per frame
 	void Update () {
         timeRemainingToGrow -= Time.deltaTime;
-        if (!puddle)
-            if (!oneUpdateWarning)
-                KillTadpole();
-            else
-                oneUpdateWarning = false;
 
         if (timeRemainingToGrow <= 0)
         {
@@ -59,18 +54,18 @@ public class Tadpole : MonoBehaviour {
         Destroy(this.gameObject);
     }
 
-    public void OnTriggerEnter2D(Collider2D coli)
-    {
-        if (coli.GetComponent<Puddle>())
-        {
-            puddle = coli.GetComponent<Puddle>();
-            puddle.AddTadpole(this);
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D coli)
-    {
-        if (coli.GetComponent<Puddle>())
-            KillTadpole();
-    }
+    //public void OnTriggerEnter2D(Collider2D coli)
+    //{
+    //    if (coli.GetComponent<Puddle>())
+    //    {
+    //        puddle = coli.GetComponent<Puddle>();
+    //        puddle.AddTadpole(this);
+    //    }
+    //}
+    //
+    //public void OnTriggerExit2D(Collider2D coli)
+    //{
+    //    if (coli.GetComponent<Puddle>())
+    //        KillTadpole();
+    //}
 }
