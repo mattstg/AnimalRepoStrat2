@@ -198,7 +198,7 @@ public class Frog : MonoBehaviour {
 			return;
 		}
 
-        if(!isMale && mateCooldown <= 0) //female rdy to mate has landed
+        if(!isMale && mateCooldown <= 0 && !Puddle.BirthsDenied) //female rdy to mate has landed
         {
             bool inWater = InPuddle();
             if (inWater)
@@ -359,7 +359,7 @@ public class Frog : MonoBehaviour {
         mateCooldown = matMaxCooldown;
         if (FrogGV.frogWS.frogParent.childCount < FrogGF.maxFrogCount)
         {
-            int numOfKids = (int)Random.Range(rangeOfKids.x, rangeOfKids.y);
+            int numOfKids = (Puddle.ReducedBirthActive)? 1 : (int)Random.Range(rangeOfKids.x, rangeOfKids.y); //only make one baby if reduced birth is active
             for (int i = 0; i < numOfKids; i++)
             {
                 GameObject newFrog = Instantiate(Resources.Load("Prefabs/Tadpole")) as GameObject;

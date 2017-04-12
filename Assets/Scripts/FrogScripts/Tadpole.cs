@@ -27,6 +27,7 @@ public class Tadpole : MonoBehaviour {
         Vector2 randStartForce = MathHelper.DegreeToVector2(randAngle) * 5;
         GetComponent<Rigidbody2D>().AddForce(randStartForce);
         FrogGV.frogWS.puddle.AddTadpole(this);
+        puddle = FrogGV.frogWS.puddle;
     }
 	
 	// Update is called once per frame
@@ -49,23 +50,7 @@ public class Tadpole : MonoBehaviour {
 
     public void KillTadpole()
     {
-        if(puddle)
-            puddle.TadpoleLeaves(this);
+        puddle.TadpoleLeaves(this);
         Destroy(this.gameObject);
     }
-
-    //public void OnTriggerEnter2D(Collider2D coli)
-    //{
-    //    if (coli.GetComponent<Puddle>())
-    //    {
-    //        puddle = coli.GetComponent<Puddle>();
-    //        puddle.AddTadpole(this);
-    //    }
-    //}
-    //
-    //public void OnTriggerExit2D(Collider2D coli)
-    //{
-    //    if (coli.GetComponent<Puddle>())
-    //        KillTadpole();
-    //}
 }

@@ -4,35 +4,51 @@ using UnityEngine; using LoLSDK;
 
 public class Puddle : MonoBehaviour {
 
-    public int carryingCapacity = 10; //how many it can handle
-    public List<Tadpole> activeTadpoles = new List<Tadpole>();
+    public static bool ReducedBirthActive = false;
+    public static bool BirthsDenied = false;
+
+
+    int carryingCapacity = 45; //how many it can handle, once it reaches max, each additional birth only produces 1 tadpole. Unless at maxLimit
+    int maxLimit = 60; //if max limit tadpoles, clears it
+    List<Tadpole> activeTadpoles = new List<Tadpole>();
     float tadpoleKillCounter = 3;
     public Vector2 originalSize;
-    public float originalCarryingCapacity;
     SpriteRenderer spriteRenderer;
     float originalAlpha;
 
     public void Awake()
     {
         originalSize = transform.localScale;
-        originalCarryingCapacity = carryingCapacity;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         originalAlpha = spriteRenderer.color.a;
     }
 
+    public void ClearTadpoleList()
+    {
+        activeTadpoles = new List<Tadpole>();
+        ReducedBirthActive = BirthsDenied = false;
+    }
+
     public void AddTadpole(Tadpole tapdole)
     {
-        //Debug.Log("tadpole added: " + activeTadpoles.Count + "/" + carryingCapacity);
-		if (activeTadpoles.Count > carryingCapacity * 1.5f)
-			KillTadpole (tapdole);
-		else
-       	 	activeTadpoles.Add(tapdole);
+		activeTadpoles.Add(tapdole);
+        SetLimits();
+    }
+
+    private void SetLimits()
+    {
+        int activeCount = activeTadpoles.Count;
+        ReducedBirthActive = BirthsDenied = false;
+        if (activeCount > carryingCapacity)
+            ReducedBirthActive = true;
+        if (activeCount >= maxLimit)
+            BirthsDenied = true;
     }
 
     public void TadpoleLeaves(Tadpole tadpole)
     {
-        //Debug.Log("tadpole left: " + activeTadpoles.Count + "/" + carryingCapacity);
         activeTadpoles.Remove(tadpole);
+        SetLimits();
     }
 
     public void ToggleColliders(bool setActive)
@@ -40,27 +56,6 @@ public class Puddle : MonoBehaviour {
         GetComponent<PolygonCollider2D>().enabled = setActive;
         transform.GetChild(0).gameObject.SetActive(setActive);
     }
-
-    public void Update()
-    {
-        if (activeTadpoles.Count > carryingCapacity && activeTadpoles.Count > 0)
-        {
-            tadpoleKillCounter -= Time.deltaTime;
-            if (tadpoleKillCounter <= 0)
-            {
-                //Debug.Log("tadpole killed: " + activeTadpoles.Count + "/" + carryingCapacity);
-                tadpoleKillCounter = 3;
-				KillTadpole(activeTadpoles[activeTadpoles.Count - 1]);
-            }
-        }
-    }
-
-	private void KillTadpole(Tadpole t)
-	{
-        if(t != null)
-		    Destroy(t.gameObject);
-		activeTadpoles.Remove(t);
-	}
 
     public void SetAlpha(float alpha)
     {
