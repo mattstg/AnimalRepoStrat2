@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4400252392988802}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: MouthLoc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4381523440902138}
   - component: {fileID: 212476349677564814}
   - component: {fileID: 60830643863949656}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: New Sprite (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4498526501956296}
   - component: {fileID: 114469726524879304}
   - component: {fileID: 50700588050676044}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4683583280066590}
   - component: {fileID: 212002256946146388}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: BearBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 4037352769943690}
   - component: {fileID: 212310215243704172}
   - component: {fileID: 60382968327825180}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4577861065749784}
   - component: {fileID: 212610675756150718}
   - component: {fileID: 60773690032101144}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: New Sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4428757798124840}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Swipes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,6 +332,7 @@ MonoBehaviour:
   bearMouth: {fileID: 4400252392988802}
   originalPos: {x: 0, y: 0}
   originalRot: {x: 0, y: 0, z: 0}
+  rotDampTime: 0.5
 --- !u!212 &212002256946146388
 SpriteRenderer:
   m_ObjectHideFlags: 1

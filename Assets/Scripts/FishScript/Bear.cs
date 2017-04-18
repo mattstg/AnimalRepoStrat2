@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine; using LoLSDK;
 
 public class Bear : MonoBehaviour {
-
+	public bool paused = true;
 	enum BearState{Hunting,Eating,Retrieving,Returning}
 
 	BearState curState = BearState.Eating;
@@ -35,85 +35,62 @@ public class Bear : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		curTimeToAct += Time.deltaTime;
+		if (!paused) {
+			curTimeToAct += Time.deltaTime;
 
-        if (curState == BearState.Hunting)
-        {
-            SetSwipeAlpha(bearSwipes[curSwipeIndex], curTimeToAct / maxTimeToAct);
-            if (curTimeToAct >= maxTimeToAct)
-                Swipes();
-        }
-        else if (curState == BearState.Retrieving)
-        {
-            if (eatingFish)
-            {
-                if (IsAtGoal(eatingFish.transform.position,true))
-                {
-                    curState = BearState.Returning;
-                    eatingFish.transform.position = bearMouth.position;
-                    curTimeToAct = 0;
-                }
-                else
-                {
-                    MoveTowardsGoal(eatingFish.transform.position);
-                }
-            }
-            else
-            {
-                curState = BearState.Returning;
-            }
-        }
-        else if (curState == BearState.Returning)
-        {
-            if (IsAtGoal(originalPos))
-            {
-                transform.position = originalPos;
-                //transform.eulerAngles = originalRot;
-		        float targetRot = transform.eulerAngles.z + GetMinimalRotation(transform.eulerAngles.z, originalRot.z);
-                transform.eulerAngles = Vector3.SmoothDamp(transform.eulerAngles, new Vector3(0, 0, targetRot), ref rotVelocity, rotDampTime);
-				if (eatingFish != null)
-                {
-					eatingFish.position = bearMouth.position;
-					eatingFish.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
+			if (curState == BearState.Hunting) {
+				SetSwipeAlpha (bearSwipes [curSwipeIndex], curTimeToAct / maxTimeToAct);
+				if (curTimeToAct >= maxTimeToAct)
+					Swipes ();
+			} else if (curState == BearState.Retrieving) {
+				if (eatingFish) {
+					if (IsAtGoal (eatingFish.transform.position, true)) {
+						curState = BearState.Returning;
+						eatingFish.transform.position = bearMouth.position;
+						curTimeToAct = 0;
+					} else {
+						MoveTowardsGoal (eatingFish.transform.position);
+					}
+				} else {
+					curState = BearState.Returning;
 				}
-                if (transform.eulerAngles.z <= targetRot + 2 && transform.eulerAngles.z >= targetRot -2)
-                {
-                    curState = BearState.Eating;
-                    curTimeToAct = 0;
-                }
-            }
-            else
-            {
-                MoveTowardsGoal(originalPos);
-				if (eatingFish && eatingFish != null)
-                {
-                    eatingFish.position = bearMouth.position;
-                    eatingFish.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
-                }                
-            }
-        }
-        else if(curState == BearState.Eating)
-        {
-            if (curTimeToAct >= maxTimeToAct/4)
-            {
-                if (eatingFish)
-                {
-                    if(eatingFish.gameObject.GetComponent<PlayerFish>())
-                    {
-                        GameObject.FindObjectOfType<FishGF>().PlayerDied(eatingFish.gameObject.GetComponent<PlayerFish>());
-                        eatingFish = null;
-                    }
-                    else
-                    {
-                        Destroy(eatingFish.gameObject);
-                        eatingFish = null;
-                    }                    
-                }
-                BeginSwipe();
-            }
-        }
+			} else if (curState == BearState.Returning) {
+				if (IsAtGoal (originalPos)) {
+					transform.position = originalPos;
+					//transform.eulerAngles = originalRot;
+					float targetRot = transform.eulerAngles.z + GetMinimalRotation (transform.eulerAngles.z, originalRot.z);
+					transform.eulerAngles = Vector3.SmoothDamp (transform.eulerAngles, new Vector3 (0, 0, targetRot), ref rotVelocity, rotDampTime);
+					if (eatingFish != null) {
+						eatingFish.position = bearMouth.position;
+						eatingFish.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
+					}
+					if (transform.eulerAngles.z <= targetRot + 2 && transform.eulerAngles.z >= targetRot - 2) {
+						curState = BearState.Eating;
+						curTimeToAct = 0;
+					}
+				} else {
+					MoveTowardsGoal (originalPos);
+					if (eatingFish && eatingFish != null) {
+						eatingFish.position = bearMouth.position;
+						eatingFish.eulerAngles = new Vector3 (0, 0, transform.eulerAngles.z);
+					}                
+				}
+			} else if (curState == BearState.Eating) {
+				if (curTimeToAct >= maxTimeToAct / 4) {
+					if (eatingFish) {
+						if (eatingFish.gameObject.GetComponent<PlayerFish> ()) {
+							GameObject.FindObjectOfType<FishGF> ().PlayerDied (eatingFish.gameObject.GetComponent<PlayerFish> ());
+							eatingFish = null;
+						} else {
+							Destroy (eatingFish.gameObject);
+							eatingFish = null;
+						}                    
+					}
+					BeginSwipe ();
+				}
+			}
 			
-		
+		}
 	}
 
 	private void TurnOffAllTrigger()
