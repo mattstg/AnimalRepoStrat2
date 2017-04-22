@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using UnityEngine; using LoLSDK;
 
 public class AutoWPAssigner : MonoBehaviour {
-
+	WaypointManager link;
     public bool upwardsOnly;
 
 	public void Start()
     {
-        waypointScript[] wps = GameObject.FindObjectsOfType<waypointScript>();
+		link = FindObjectOfType<WaypointManager> ();
+		staticWaypoint[] waypoints = link.waypoints.ToArray ();
         float dist = 0;
         float closestDistance = 9999;
         int closestIndex = 0;
-        for(int i = 0; i < wps.Length; i++)
+		for(int i = 0; i < waypoints.Length; i++)
         {
-            if (wps[i].transform.position.y > transform.position.y || !upwardsOnly)
+			if (waypoints[i].y > transform.position.y || !upwardsOnly)
             {
-                dist = (Vector2.Distance(transform.position, wps[i].transform.position));
+				dist = (Vector2.Distance (transform.position, new Vector2 (waypoints [i].x, waypoints [i].y)));
                 if (dist < closestDistance)
                 {
                     closestIndex = i;
@@ -24,7 +25,7 @@ public class AutoWPAssigner : MonoBehaviour {
                 }
             }
         }
-        GetComponent<FlockingAI>().currentWaypoint = wps[closestIndex];
+		GetComponent<FlockingAI>().currentWaypoint = waypoints[closestIndex];
         Destroy(this);
         //Debug.Log("fish: " + name + " got wp: " + wps[closestIndex].name);
     }

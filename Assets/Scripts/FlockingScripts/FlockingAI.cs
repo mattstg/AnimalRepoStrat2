@@ -14,7 +14,7 @@ public class FlockingAI : MonoBehaviour
 
     bool finishedWaypoints = false;
     int numOfWP;
-    public waypointScript currentWaypoint;
+	public staticWaypoint currentWaypoint;
 
     public bool test = false;
     public bool hasDoneTest = false;
@@ -270,7 +270,7 @@ public class FlockingAI : MonoBehaviour
             {
 				if (currentWaypoint != null)
                 {
-					vWaypoint = currentWaypoint.transform.position - transform.position;
+					vWaypoint = new Vector3(currentWaypoint.x,currentWaypoint.y) - transform.position;
 					vWaypoint = vWaypoint.normalized;
 				}
 				else if (waypointManager.waypointPositions[activeWaypoint] != null)
@@ -609,13 +609,13 @@ public class FlockingAI : MonoBehaviour
 			}
             else
             {
-			    Vector3 pos = currentWaypoint.transform.position;
+				Vector3 pos = new Vector3(currentWaypoint.x,currentWaypoint.y);
 				float dist = MathHelper.ApproxDist(pos, this.transform.position);
 				if (dist <= 1.25f)
                 {
-					if (currentWaypoint.hasNext ())
+					if (currentWaypoint.hasNextWaypoint)
                     {
-						currentWaypoint = currentWaypoint.getNextWaypoint ().GetComponent<waypointScript> ();
+						currentWaypoint = currentWaypoint.getNextWaypoint ();
 						ApplyRules ();
 					}
                     else

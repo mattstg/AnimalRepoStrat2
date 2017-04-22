@@ -10,20 +10,28 @@ public class waypointScript : MonoBehaviour {
 	public GameObject wayThree;
 	private int numberOfWaypoints = -1;
 	private bool hasNextWaypoint = false;
+	public staticWaypoint self;
+	public staticWaypoint[] ways = new staticWaypoint[3];
 
 	// Use this for initialization
-	void Start () {
-		if (wayOne != null)
+	void Start () {	}
+
+	public void Initial(){
+		if (wayOne != null) {
 			numberOfWaypoints++;
-		
-		if(wayTwo != null)
+		}
+
+		if (wayTwo != null) {
 			numberOfWaypoints++;
-		
-		if(wayThree != null)
+		}
+
+		if (wayThree != null) {
 			numberOfWaypoints++;
-		
+		}
+
 		if (wayOne != null)
 			hasNextWaypoint = true;
+		
 	}
 	
 	// Update is called once per frame
@@ -31,22 +39,32 @@ public class waypointScript : MonoBehaviour {
 		
 	}
 
-	public bool hasNext(){
-		return hasNextWaypoint;
-	}
 
-	public GameObject getNextWaypoint(){
-		int rand = Random.Range ((int)0, numberOfWaypoints + 1); //range 0 - 2
-		switch (rand) {
-		case 0:
-			return wayOne;
-		case 1:
-			return wayTwo;
-		case 2:
-			return wayThree;
-		default:
-			return wayOne;
+	public staticWaypoint toStatic(){
+		if(self == null){
+			Initial ();
+			self = new staticWaypoint (ways, this.transform.position.x, this.transform.position.y,hasNextWaypoint,numberOfWaypoints);
+			return self;
+		}else{
+			return self;
 		}
 	}
 
+	public void setWays(){
+		if (wayOne != null) {
+			ways [0] = wayOne.GetComponent<waypointScript> ().toStatic();
+		}
+
+		if (wayTwo != null) {
+			ways [1] = wayTwo.GetComponent<waypointScript> ().toStatic();
+		}
+
+		if (wayThree != null) {
+			ways [2] = wayThree.GetComponent<waypointScript> ().toStatic();
+		}
+		self = toStatic ();
+	}
+
 }
+
+
