@@ -275,10 +275,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSprintCooldown: 12
-  sprintCoolDownSpeed: 1
+  sprintCoolDownSpeed: 2.5
   sprintTriggerDistance: 20
-  maxSpeedBoost: 500
-  speedBoostDecayRate: 70
+  maxSpeedBoost: 750
+  speedBoostDecayRate: 140
 --- !u!114 &114703785759266646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,7 +292,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animals: []
   waterSlowCoeff: 1
-  currentWaypoint: {fileID: 0}
   test: 0
   hasDoneTest: 0
   isCorpse: 0
@@ -302,7 +301,7 @@ MonoBehaviour:
   head: {fileID: 1286030784081590}
   headRotationSpeed: 10
   updateFrequency: 4
-  speedRange: {x: 935, y: 935}
+  speedRange: {x: 1122, y: 1122}
   rotationSpeedRange: {x: 6, y: 7}
   isCalf: 0
   isFish: 0
@@ -336,11 +335,11 @@ MonoBehaviour:
   randomizesRotationSpeed: 0
   speedNormalizing: 0
   isPredator: 1
-  huntRange: 40
-  huntWeight: 13
+  huntRange: 55
+  huntWeight: 15
   scavenges: 1
-  scavengeDistance: 30
-  scavengeWeight: 18
+  scavengeDistance: 20
+  scavengeWeight: 12
   interPredatorRepelDistance: 10
   interPredatorRepelWeight: 4
   predNeighborhoodSize: 30

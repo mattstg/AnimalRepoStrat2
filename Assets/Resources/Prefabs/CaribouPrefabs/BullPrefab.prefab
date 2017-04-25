@@ -252,7 +252,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animals: []
   waterSlowCoeff: 1
-  currentWaypoint: {fileID: 0}
   test: 0
   hasDoneTest: 0
   isCorpse: 0
@@ -262,7 +261,7 @@ MonoBehaviour:
   head: {fileID: 1098573574622094}
   headRotationSpeed: 20
   updateFrequency: 2
-  speedRange: {x: 1020, y: 1030}
+  speedRange: {x: 1224, y: 1236}
   rotationSpeedRange: {x: 8, y: 10}
   isCalf: 0
   isFish: 0
