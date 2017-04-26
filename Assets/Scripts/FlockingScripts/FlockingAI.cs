@@ -67,7 +67,7 @@ public class FlockingAI : MonoBehaviour
     public float leaderInfluenceDistance;
 
     public bool followsMother = false;
-    public int motherInfluenceDistance = 40;
+    public float motherInfluenceDistance = 40;
     public GameObject mother;
     public float motherWeight = 1f; //multiplier for strength of mother influence
 
