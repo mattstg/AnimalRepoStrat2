@@ -236,8 +236,7 @@ public class LessonRetriever
         {
             case 0:
                 return "As you have seen, animals engage in all kinds of behaviors in their ongoing struggle to survive and reproduce.\n\n" +
-                    "Whether it's building nests, performing dances, or running rivers, all animals have ways of making a bid on life. While each strategy has its own costs and benefits, no one stategy is better than the others.\n\n" +
-                    "Now, a final test to see what you've learned!";
+                    "Whether it's building nests, performing dances, or running rivers, all animals have ways of making a bid on life. While each strategy has its own costs and benefits, no one stategy is better than the others.";
             case 1:
                 return "This has been <i>Bid for Life</i>. We hope you have enjoyed witnessing and using a few of the many strategies of survival and reproduction that exist in the vast animal kingdom!";
             case 2:

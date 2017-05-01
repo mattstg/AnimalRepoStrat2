@@ -43,7 +43,7 @@ public class PlayerFish : Fish {
     {
         if(coli.gameObject.CompareTag("BoostZone"))
         {
-            moveSpeed = 2f;
+            moveSpeed = 2.0f;
         }
         if (!triggeredEndGame && coli.gameObject.name == "EndZone")
         {

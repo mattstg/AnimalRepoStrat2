@@ -18,12 +18,12 @@ public class Fish : MonoBehaviour {
 
 	//FISH GV
 	private float rotateSpeed = 10; //45 degrees per Sec
-	private float speedBoost = .8f;
+	private float speedBoost = 1f;
 	private float timeSinceLastClick = 0f;
 
 
 	//Move Speed and Boost Upon Move
-	private float realMov = .9f;
+	private float realMov = 1.1f;
 	protected float moveSpeed {
 		set { realMov = value; } 
 		get {

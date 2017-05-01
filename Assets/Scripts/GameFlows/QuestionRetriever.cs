@@ -46,7 +46,7 @@ public class QuestionRetriever : MonoBehaviour {
                 SetupCaribouQuestions(gm);
                 break;
             case LessonType.Post:
-                SetupFinalQuestions(gm);
+                //SetupFinalQuestions(gm);
                 break;
         }
     }

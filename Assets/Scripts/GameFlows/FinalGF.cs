@@ -29,8 +29,8 @@ public class FinalGF : GameFlow {
                     DisplayLesson();
                     break;
                 case 1:
-                    PostGameQuestions(); //summary questions
-                    break;
+                    //PostGameQuestions(); //summary questions
+                    break; 
                 case 2:
                     DisplayLesson();
                     break;
