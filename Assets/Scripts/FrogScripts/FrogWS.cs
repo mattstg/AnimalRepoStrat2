@@ -11,7 +11,6 @@ public class FrogWS : MonoBehaviour {
     public Transform tadpoleParent;
     public Transform snakeParent;
     public FrogGF frogGF;
-    public PlayerFrog playerFrog;
 
     public void Awake()
     {

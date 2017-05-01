@@ -23,32 +23,14 @@ public class Puddle : MonoBehaviour {
         originalAlpha = spriteRenderer.color.a;
     }
 
-    public void ClearTadpoleList()
+    public void SetLimits()
     {
-        activeTadpoles = new List<Tadpole>();
-        ReducedBirthActive = BirthsDenied = false;
-    }
-
-    public void AddTadpole(Tadpole tapdole)
-    {
-		activeTadpoles.Add(tapdole);
-        SetLimits();
-    }
-
-    private void SetLimits()
-    {
-        int activeCount = activeTadpoles.Count;
+        int activeCount = FrogGV.masterTadpoleList.Count;
         ReducedBirthActive = BirthsDenied = false;
         if (activeCount > carryingCapacity)
             ReducedBirthActive = true;
         if (activeCount >= maxLimit)
             BirthsDenied = true;
-    }
-
-    public void TadpoleLeaves(Tadpole tadpole)
-    {
-        activeTadpoles.Remove(tadpole);
-        SetLimits();
     }
 
     public void ToggleColliders(bool setActive)

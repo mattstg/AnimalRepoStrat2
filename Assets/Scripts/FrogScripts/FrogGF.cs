@@ -49,6 +49,12 @@ public class FrogGF : GameFlow {
                 frogCinematic.StartSecondAridCinematic();
             }
         }
+
+        for(int i = FrogGV.masterList.Count - 1; i > 0; i--)
+            FrogGV.masterList[i].UpdateFrog(dt);
+        for (int i = FrogGV.masterTadpoleList.Count - 1; i > 0; i--)
+            FrogGV.masterTadpoleList[i].UpdateTadpole(dt);
+
         SnakeManager.Instance.UpdateSnakeManager(dt);
         base.Update();
 	}
@@ -85,9 +91,7 @@ public class FrogGF : GameFlow {
         Camera.main.transform.localPosition = new Vector3(0, 0, -10);
 		Camera.main.gameObject.GetComponent<CameraFollow> ().SetZoom (2);
 		im.gameObject.SetActive (true);
-		playerFrog.InitializeFrog (new Frog.FrogInfo(0,true, true),true);
-        FrogGV.masterList.Add(playerFrog);
-        
+		playerFrog.InitializeFrog (new Frog.FrogInfo(0,true, true),true);        
     }
 
 	public void GameFinished()

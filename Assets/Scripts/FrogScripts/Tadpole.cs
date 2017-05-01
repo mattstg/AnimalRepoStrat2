@@ -26,13 +26,14 @@ public class Tadpole : MonoBehaviour {
         float randAngle = Random.Range(0, 360);
         Vector2 randStartForce = MathHelper.DegreeToVector2(randAngle) * 5;
         GetComponent<Rigidbody2D>().AddForce(randStartForce);
-        FrogGV.frogWS.puddle.AddTadpole(this);
+        FrogGV.masterTadpoleList.Add(this);
         puddle = FrogGV.frogWS.puddle;
     }
 	
 	// Update is called once per frame
-	void Update () {
-        timeRemainingToGrow -= Time.deltaTime;
+	public void UpdateTadpole (float dt)
+    {
+        timeRemainingToGrow -= dt;
 
         if (timeRemainingToGrow <= 0)
         {
@@ -50,7 +51,7 @@ public class Tadpole : MonoBehaviour {
 
     public void KillTadpole()
     {
-        puddle.TadpoleLeaves(this);
-        Destroy(this.gameObject);
+        FrogGV.ModTadpole(this, false);
+        Destroy(this.gameObject);        
     }
 }

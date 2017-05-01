@@ -38,7 +38,7 @@ public class FrogCinematic : MonoBehaviour {
 		foreach (Transform t in FrogGV.frogWS.tadpoleParent)
 			Destroy (t.gameObject);
         FrogGV.masterList = new List<Frog>();
-        puddle.ClearTadpoleList();
+        FrogGV.ClearTadpoleList();
         puddle.ToggleColliders(false);
     }
 
@@ -107,7 +107,7 @@ public class FrogCinematic : MonoBehaviour {
                 puddle.ToggleColliders(false);
                 foreach (Transform t in FrogGV.frogWS.tadpoleParent)
                     Destroy(t.gameObject);
-                puddle.ClearTadpoleList();
+                FrogGV.ClearTadpoleList();
             }            
             currentStage = FrogCinematicStage.None;
         }

@@ -36,7 +36,7 @@ public class PlayerFrog : Frog {
         foreach(Transform t in FrogGV.frogWS.frogParent)
         {
             Frog f = t.GetComponent<Frog>();
-            if(f.isPlayerDescendant && f.isMale)
+            if(f.isPlayerDescendant && f.isMale && !f.outtaBounds)
             {
                 frogFound = f;
                 break;
@@ -66,10 +66,11 @@ public class PlayerFrog : Frog {
 			}
             if(safetyCatch)
             {
-                EnterIdleState();
                 transform.position = new Vector2(0, 0);
+                LandedJump();
             }
 
         }
     }
+    
 }

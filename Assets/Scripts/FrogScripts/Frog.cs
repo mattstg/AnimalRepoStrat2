@@ -19,8 +19,8 @@ public class Frog : MonoBehaviour {
     Vector3 sourcePos;
     protected Vector2 originalScale;
     float jumpProgress = 1f;
-    float jumpDuration = 1f;
-    float frogSpeed = .7f;
+    float jumpDuration = .85f;
+    float frogSpeed = .8f;
     float jumpScaleFactor = .2f;
     public bool outtaBounds = false;
 	public bool playerCntrl = false;
@@ -40,8 +40,8 @@ public class Frog : MonoBehaviour {
 
     //mating
     Vector2 rangeOfKids = new Vector2(4, 8);
-    float mateCooldown = 12;
-    float matMaxCooldown = 12;
+    float mateCooldown = 11;
+    float matMaxCooldown = 11;
     bool firstCall = true;
 
     public float publicGenNum;
@@ -73,9 +73,9 @@ public class Frog : MonoBehaviour {
         originalScale = new Vector2(toScale.transform.localScale.x, toScale.transform.localScale.y);
     }
     // Update is called once per frame
-    void Update () {
+    public void UpdateFrog (float dt) {
 
-        mateCooldown -= Time.deltaTime;
+        mateCooldown -= dt;
 
 		switch(currentFrogState)
         {
@@ -105,7 +105,7 @@ public class Frog : MonoBehaviour {
     }
 
     protected void JumpTowardsGoal(Vector2 goalLoc)
-    {
+    { //Sets up the goal location to jump
         float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goalLoc);
 		transform.eulerAngles = new Vector3 (0, 0, angToGoal - 90);
         Vector2 goalOffset = MathHelper.DegreeToVector2(angToGoal);
@@ -129,21 +129,11 @@ public class Frog : MonoBehaviour {
 
     private void JumpTowardsGoal()
     {
-        /*float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goalPos);
-        transform.eulerAngles = new Vector3(0, 0, angToGoal - 90);
-        transform.position = Vector2.MoveTowards(transform.position, goalPos, frogSpeed * Time.deltaTime);
-        if (new Vector2(transform.position.x, transform.position.y) == goalPos)
-            currentFrogState = FrogState.landedJump;*/
-
-
         float angToGoal = MathHelper.AngleBetweenPoints(this.transform.position, goalPos);
         transform.eulerAngles = new Vector3(0, 0, angToGoal - 90);
 
         if (jumpDuration <= 0)
             jumpDuration = 1;
-
-        //float delta = Time.deltaTime / (fadeDuration - fadeProgress);
-        //float newOpacity = presentOpacity + (targetOpacity - presentOpacity) * delta;
 
         Vector3 newPos;
         float newScale;
@@ -170,7 +160,7 @@ public class Frog : MonoBehaviour {
         toScale.transform.localScale = new Vector3(originalScale.x * newScale, originalScale.y * newScale, transform.localScale.z);
     }
 
-    private void LandedJump()
+    protected void LandedJump()
     {
         if(leaveMap)
         {

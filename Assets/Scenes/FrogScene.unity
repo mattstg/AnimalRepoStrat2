@@ -4679,7 +4679,6 @@ MonoBehaviour:
   tadpoleParent: {fileID: 1178448901}
   snakeParent: {fileID: 849833046}
   frogGF: {fileID: 1336928104}
-  playerFrog: {fileID: 0}
 --- !u!4 &1336928103
 Transform:
   m_ObjectHideFlags: 0
@@ -4712,7 +4711,7 @@ MonoBehaviour:
   textPanel: {fileID: 1318145790}
   scoreText: {fileID: 625164604}
   trackScoreAsTime: 0
-  maxRoundTime: 160
+  maxRoundTime: 100
   frogCinematic: {fileID: 1336928105}
   playerFrog: {fileID: 1587365128}
   im: {fileID: 1921402803}
@@ -6697,7 +6696,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 28cd63ee63080cb44824fe6bcc0c981a,
+      objectReference: {fileID: 21300000, guid: 506c624bfa4891a49ab451ac00a56a4d,
         type: 3}
     - target: {fileID: 4631333572684170, guid: 08118f3feb273f44ebbd688fed9919c2, type: 2}
       propertyPath: m_LocalScale.y

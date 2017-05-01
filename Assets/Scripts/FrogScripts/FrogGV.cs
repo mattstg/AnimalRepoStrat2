@@ -8,15 +8,38 @@ public class FrogGV  {
     public static readonly float frogMatingDistance = .25f;
     public static readonly int pond_layer_mask = LayerMask.GetMask("Pond");
     public static readonly Vector2 mapBounds = new Vector2(3.9f, 3.2f);
-    public static readonly int frogsPerSnake = 12; //how many frogs it takes to summon a snake
+    public static readonly int frogsPerSnake = 9; //how many frogs it takes to summon a snake
     public static readonly int minSnakes = 3;
     public static readonly float snakeEatRange = .2f;
     //public static readonly bool playerFrogIsActive = false;
 
     static List<Frog> femaleFrogs = new List<Frog>();
     static List<Frog> maleFrogs = new List<Frog>();
+    
 
     public static List<Frog> masterList = new List<Frog>(); //Instead of merging each list each turn for snake check, just have two
+    public static List<Tadpole> masterTadpoleList = new List<Tadpole>();
+
+
+    public static void ModTadpole(Tadpole t, bool toAdd)
+    {
+        if(toAdd)
+        {
+            masterTadpoleList.Add(t);
+        }
+        else
+        {
+            masterTadpoleList.Remove(t);
+        }
+        FrogGV.frogWS.puddle.SetLimits();
+    }
+
+    public static void ClearTadpoleList()
+    {
+        masterTadpoleList = new List<Tadpole>();
+        FrogGV.frogWS.puddle.SetLimits();
+    }
+
 
     public static void AddFrogToMasterList(Frog newFrog, bool isMale)
     {
