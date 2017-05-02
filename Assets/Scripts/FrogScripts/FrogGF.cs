@@ -13,7 +13,7 @@ public class FrogGF : GameFlow {
 	//bool nextStep = false;
 	public Frog playerFrog;
 	public InputManager im;
-    float gameTimer = 180; //3 mins
+    float gameTimer = 150; //3 mins
     bool secondCinematicStarted = false;
     int matureDescendants = 0;
 
