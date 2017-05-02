@@ -277,8 +277,8 @@ MonoBehaviour:
   maxSprintCooldown: 12
   sprintCoolDownSpeed: 2.5
   sprintTriggerDistance: 20
-  maxSpeedBoost: 750
-  speedBoostDecayRate: 140
+  maxSpeedBoost: 770
+  speedBoostDecayRate: 125
 --- !u!114 &114703785759266646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -312,8 +312,8 @@ MonoBehaviour:
   averageHeadingWeight: 1
   averagePositionWeight: 1
   neighbourDistance: 50
-  repulsionDistance: 9
-  repulsionWeight: 23
+  repulsionDistance: 7
+  repulsionWeight: 45
   usesWaypoints: 0
   waypointWeight: 5
   waypointReachedProximity: 40
@@ -336,7 +336,7 @@ MonoBehaviour:
   speedNormalizing: 0
   isPredator: 1
   huntRange: 55
-  huntWeight: 15
+  huntWeight: 35
   scavenges: 1
   scavengeDistance: 20
   scavengeWeight: 12

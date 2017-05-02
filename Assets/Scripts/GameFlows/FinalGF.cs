@@ -28,13 +28,13 @@ public class FinalGF : GameFlow {
                     //StartMusic();
                     DisplayLesson();
                     break;
+                /* case 1:
+                    PostGameQuestions(); //summary questions
+                    break; */ 
                 case 1:
-                    //PostGameQuestions(); //summary questions
-                    break; 
-                case 2:
                     DisplayLesson();
                     break;
-                case 3:
+                case 2:
                     CloseMusic();
                     GoToNextScene();
                     break;
