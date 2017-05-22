@@ -10,6 +10,7 @@ public class ScoreScreenManager : MonoBehaviour {
     public static LessonType thisLesson;
 
     public Transform textParent;
+    bool wasNextPressed = false;
 
     public void Start()
     {
@@ -76,6 +77,10 @@ public class ScoreScreenManager : MonoBehaviour {
 
     public void NextButtonPressed()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneName);
+        if (!wasNextPressed)
+        {
+            wasNextPressed = true;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneName);
+        }
     }
 }

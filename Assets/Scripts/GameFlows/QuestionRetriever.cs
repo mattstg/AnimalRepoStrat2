@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestionRetriever : MonoBehaviour {
+public class QuestionRetriever  {
 
 
     #region Singleton

@@ -28,6 +28,9 @@ public class TextPanel : MonoBehaviour {
 	private float margin = 80f;
 	public float offset = 4f;
 
+    bool wasNextPressed = false;
+    float safetyNextButtonTime = 2;
+
     public void Awake()
     {
         gameflow = GameObject.FindObjectOfType<GameFlow>();
@@ -62,6 +65,13 @@ public class TextPanel : MonoBehaviour {
             return;
 
         timeBanked += Time.deltaTime;
+        if (wasNextPressed)
+            safetyNextButtonTime -= Time.deltaTime;
+        if(safetyNextButtonTime <= 0)
+        {
+            safetyNextButtonTime = 2;
+            wasNextPressed = false;
+        }
 
 		if (curLetter < completeText.Length)
         {
@@ -159,7 +169,12 @@ public class TextPanel : MonoBehaviour {
 
 	public void NextPressed()
 	{
-		gameflow.TextButtonNextPressed ();
+        if (!wasNextPressed)
+        {
+            gameflow.TextButtonNextPressed();
+            wasNextPressed = true;
+            safetyNextButtonTime = 2;
+        }        
 	}
 
 }
